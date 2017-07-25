@@ -87,5 +87,7 @@
 <script src="{{ URL::asset('assets/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/select2/select2.full.min.js') }}"></script>
 <script src="{{ URL::asset('assets/dist/js/demo.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
 @yield('js')
 </html>

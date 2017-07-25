@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use App\Rekapkomplain;
 use Yajra\Datatables\Datatables;
 
@@ -37,4 +37,34 @@ class HomeController extends Controller
     public function getall(){
         return Datatables::of(Rekapkomplain::all())->make(true);
     }
+
+    public function getbydate(){
+        $temp = DB::table('crm')
+            ->select(DB::raw('count(*) as count, date'))
+            ->groupBy('date')->get();
+        return $temp;
+    }
+
+    public function getbystatus(){
+        $temp = DB::table('crm')
+            ->select(DB::raw('count(*) as count, status'))
+            ->groupBy('status')->get();
+        return $temp;
+    }
+
+    public function getbysumber(){
+        $temp = DB::table('crm')
+            ->select(DB::raw('count(*) as count, sumber'))
+            ->groupBy('sumber')->get();
+        return $temp;
+    }
+
+    public function getbykategori(){
+        $temp = DB::table('crm')
+            ->select(DB::raw('count(*) as count, kategori'))
+            ->groupBy('kategori')->get();
+        return $temp;
+    }
+
 }
+

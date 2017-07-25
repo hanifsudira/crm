@@ -30,4 +30,24 @@ Route::group(['prefix' => 'crm'], function () {
         'as'        => 'home.getall',
         'uses'      => 'HomeController@getall'
     ]);
+
+    Route::get('getbydate',[
+        'as'        => 'home.getbydate',
+        'uses'      => 'HomeController@getbydate'
+    ]);
+
+    Route::get('getbystatus',[
+        'as'        => 'home.getbystatus',
+        'uses'      => 'HomeController@getbystatus'
+    ]);
+
+    Route::get('getbysumber',[
+        'as'        => 'home.getbysumber',
+        'uses'      => 'HomeController@getbysumber'
+    ]);
+
+    Route::get('getbykategori',[
+        'as'        => 'home.getbykategori',
+        'uses'      => 'HomeController@getbykategori'
+    ]);
 });
