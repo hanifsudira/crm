@@ -14,6 +14,9 @@ for row in soup.find_all('tr'):
     cols = [ele.text.strip() for ele in cols]
     datas.append([ele for ele in cols])
 
+sqltruncate = 'TRUNCATE TABLE crm';
+cur.execute(sqltruncate)
+
 for i,data in enumerate(datas):
     if i<4:
         continue
