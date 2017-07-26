@@ -51,3 +51,14 @@ Route::group(['prefix' => 'crm'], function () {
         'uses'      => 'HomeController@getbykategori'
     ]);
 });
+
+Route::group(['prefix' => 'feedback'], function () {
+    Route::get('input', [
+        'as'        => 'feedback.input',
+        'uses'      => 'FeedbackController@index'
+    ]);
+    Route::get('result', [
+        'as'        => 'feedback.input',
+        'uses'      => 'FeedbackController@result'
+    ]);
+});

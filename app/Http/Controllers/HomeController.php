@@ -34,6 +34,7 @@ class HomeController extends Controller
 
     }
 
+    //get data
     public function getall(){
         return Datatables::of(Rekapkomplain::all())->make(true);
     }
