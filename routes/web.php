@@ -20,9 +20,15 @@ Route::group(['prefix' => 'crm'], function () {
         'as'        => 'home.data',
         'uses'      => 'HomeController@index'
     ]);
+
     Route::get('chart', [
         'as'        => 'home.chart',
         'uses'      => 'HomeController@chart'
+    ]);
+
+    Route::get('input', [
+        'as'        => 'home.input',
+        'uses'      => 'HomeController@input'
     ]);
 
     //get data

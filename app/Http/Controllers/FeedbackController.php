@@ -44,10 +44,10 @@ class FeedbackController extends Controller
 
     	return redirect()->route('feedback.input');
     }
+    /*
+    public function chart()
+    {
+        return view('dashboard.home');
 
-//    public function chart()
-//    {
-//        return view('dashboard.home');
-//
-//    }
+    }*/
 }

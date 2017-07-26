@@ -8,5 +8,6 @@
     <ul class="treeview-menu">
         <li><a href="{{route('home.chart')}}"><i class="fa fa-circle-o"></i>Chart</a></li>
         <li><a href="{{route('home.data')}}"><i class="fa fa-circle-o"></i>Data Table</a></li>
+        <li><a href="{{route('home.input')}}"><i class="fa fa-circle-o"></i>Input</a></li>
     </ul>
 </li>
