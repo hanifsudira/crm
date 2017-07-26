@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Http\DB;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -28,9 +28,11 @@ class FeedbackController extends Controller
     public function store(Request $request)
     {
 
+    	$last = \DB::table('feedback')->orderBy('created_at', 'desc')->first();
+
     	$file = $request->image;
 		$extension = $file->getClientOriginalExtension();
-		Storage::disk('public')->put($request->nik.'_'.$file->getClientOriginalName(),  File::get($file));
+		Storage::disk('public')->put((string)((int)$last->id+1).'_'.$request->nik.'_'.$file->getClientOriginalName(),  File::get($file));
 
     	$feedback = new Feedback;
     	$feedback->nik = $request->nik;
