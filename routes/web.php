@@ -57,8 +57,8 @@ Route::group(['prefix' => 'feedback'], function () {
         'as'        => 'feedback.input',
         'uses'      => 'FeedbackController@index'
     ]);
-    Route::get('result', [
-        'as'        => 'feedback.input',
-        'uses'      => 'FeedbackController@result'
+    Route::post('store', [
+        'as'        => 'feedback.store',
+        'uses'      => 'FeedbackController@store'
     ]);
 });

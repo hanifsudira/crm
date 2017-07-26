@@ -15,51 +15,53 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">Feedback New CRM</div>
-    <div class="login-box-body">
-        <p class="login-box-msg"><a href="https://produk.telkom.co.id/servlet/tk/id_ID/homepage/feedback.html" target="_black">Feedback DTP</a></p>
+    <div class="login-box">
+        <div class="login-logo">Feedback New CRM</div>
+        <div class="login-box-body">
+            <p class="login-box-msg"><a href="https://produk.telkom.co.id/servlet/tk/id_ID/homepage/feedback.html" target="_black">Feedback DTP</a></p>
 
-        <form action="../../index2.html" method="post">
-            <div class="form-group has-feedback">
-                <label>NIK</label>
-                <input type="email" class="form-control" placeholder="NIK Anda">
-                <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <label>Nama</label>
-                <input type="password" class="form-control" placeholder="Nama Anda">
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <label>Feedback</label>
-                <textarea class="form-control" rows="3" placeholder="Input Feedback"></textarea>
-            </div>
-            <div class="form-group has-feedback">
-                <label for="exampleInputFile">Input Gambar</label>
-                <input type="file" id="exampleInputFile">
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
+            <form action="{{ Route('feedback.store') }}" method="post" enctype="multipart/form-data">
+                <div class="form-group has-feedback">
+                    <label>NIK</label>
+                    <input name="nik" type="text" class="form-control" placeholder="NIK Anda">
+                    <span class="glyphicon glyphicon-barcode form-control-feedback"></span>
                 </div>
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
+                <div class="form-group has-feedback">
+                    <label>Nama</label>
+                    <input name="nama" type="text" class="form-control" placeholder="Nama Anda">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
-            </div>
-        </form>
+                <div class="form-group has-feedback">
+                    <label>Feedback</label>
+                    <textarea name="feedback" class="form-control" rows="3" placeholder="Input Feedback"></textarea>
+                </div>
+                <div class="form-group has-feedback">
+                    <label for="exampleInputFile">Input Gambar</label>
+                    <input type="file" name='image' id="exampleInputFile">
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Submit</button>
+                    </div>
+                </div>
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            </form>
+
+        </div>
     </div>
-</div>
-<script src="{{ URL::asset('assets/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
-<script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ URL::asset('assets/plugins/iCheck/icheck.min.js') }}"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
+    <script src="{{ URL::asset('assets/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/iCheck/icheck.min.js') }}"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
         });
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
