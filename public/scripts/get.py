@@ -14,7 +14,7 @@ for row in soup.find_all('tr'):
     cols = [ele.text.strip() for ele in cols]
     datas.append([ele for ele in cols])
 
-sqltruncate = 'TRUNCATE TABLE crm';
+sqltruncate = 'TRUNCATE TABLE crm'
 cur.execute(sqltruncate)
 
 for i,data in enumerate(datas):
@@ -37,6 +37,7 @@ for i,data in enumerate(datas):
         assignee = data[15]
         solusi = data[16]
         sql = "insert into crm (date,sumber,onsite_support,nama_user,nik_user,user_login,divisi,no_telp,no_quote,no_order,deskripsi_komplain,kategori,status,assignee,solusi) values('"+date+"','"+sumber+"','"+onsite_support+"','"+nama_user+"','"+nik_user+"','"+user_login+"','"+divisi+"','"+no_telp+"','"+no_quote+"','"+no_order+"','"+deskripsi_komplain+"','"+kategori+"','"+status+"','"+assignee+"','"+solusi+"')"
+        sql.replace(u'\u2014', '').encode('latin-1')
         cur.execute(sql)
 db.commit()
 cur.close()
