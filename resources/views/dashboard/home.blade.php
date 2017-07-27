@@ -125,6 +125,7 @@
         "rgb(201, 203, 207)"
 	];
 	$(function(){
+		// Chart Date
 		$.getJSON("{{ route('home.getbydate') }}", function (result) {
 			var labels = [],data=[];
 			for (var i = 0; i < result.length; i++) {
@@ -172,6 +173,7 @@
 			});
 		});
 
+		// Chart Status
 		$.getJSON("{{ route('home.getbystatus') }}", function (result) {
 			var labels = [],data=[];
 			for (var i = 0; i < result.length; i++) {
@@ -219,6 +221,7 @@
 			});
 		});
 
+		// Chart Sumber
 		$.getJSON("{{ route('home.getbysumber') }}", function (result) {
 			var labels = [],data=[];
 			for (var i = 0; i < result.length; i++) {
@@ -297,6 +300,7 @@
 			var myBarChart = new Chart(ctxdate, config);
 		});
 
+		// Chart Kategori
 		$.getJSON("{{ route('home.getbykategori') }}", function (result) {
 			var labels = [],data=[];
 			for (var i = 0; i < result.length; i++) {
@@ -376,6 +380,7 @@
 			var myBarChart = new Chart(ctxdate, config);
 		});
 
+		// Chart Quote Report
         $.getJSON("https://spreadsheets.google.com/feeds/list/15lS2Ik7CnOKFyi0pG1-TW-X67yPBdS5Jt7xZFc5kV20/od6/public/values?alt=json", function (result) {
             var mydata = result['feed']['entry'];
             var labels=[],inprogress=[],approvalprocess=[],acceptedbycustomer=[],orderplaced=[],cancelled=[],newtoday=[],totalquote=[];
@@ -446,10 +451,29 @@
             };
 
             var ctxdate = document.getElementById("ctxquote").getContext("2d");
-            var myBarChart = new Chart(ctxdate, {
-                type: 'bar',
+            var config = {
+            	type: 'bar',
                 data: data,
                 options: {
+                	animation: {
+						duration: 500,
+						onComplete: function() {
+							var ctx = this.chart.ctx;
+							ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+							ctx.fillStyle = "black";
+							ctx.textAlign = 'center';
+							ctx.textBaseline = 'bottom';
+
+							this.data.datasets.forEach(function(dataset) {
+								for (var i = 0; i < dataset.data.length; i++) {
+									for (var key in dataset._meta) {
+										var model = dataset._meta[key].data[i]._model;
+										ctx.fillText(dataset.data[i], model.x, model.y - 5);
+									}
+								}
+							});
+						}
+					},
                     barValueSpacing: 10,
                     scales: {
                         yAxes: [{
@@ -459,9 +483,11 @@
                         }]
                     }
                 }
-            });
+            };
+            var myBarChart = new Chart(ctxdate, config);
         });
 
+        // Chart Agreement Report
         $.getJSON("https://spreadsheets.google.com/feeds/list/1HN-7aiTT6r1j3BeJIeRWv2WhaW49vimMvyNd767rKv8/od6/public/values?alt=json", function (result) {
             var mydata = result['feed']['entry'];
             var labels=[],newtoday=[],totalagreement=[];
@@ -492,10 +518,29 @@
             };
 
             var ctxdate = document.getElementById("ctxagree").getContext("2d");
-            var myBarChart = new Chart(ctxdate, {
-                type: 'bar',
+            var config = {
+            	type: 'bar',
                 data: data,
                 options: {
+                	animation: {
+						duration: 500,
+						onComplete: function() {
+							var ctx = this.chart.ctx;
+							ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+							ctx.fillStyle = "black";
+							ctx.textAlign = 'center';
+							ctx.textBaseline = 'bottom';
+
+							this.data.datasets.forEach(function(dataset) {
+								for (var i = 0; i < dataset.data.length; i++) {
+									for (var key in dataset._meta) {
+										var model = dataset._meta[key].data[i]._model;
+										ctx.fillText(dataset.data[i], model.x, model.y - 5);
+									}
+								}
+							});
+						}
+					},
                     barValueSpacing: 10,
                     scales: {
                         yAxes: [{
@@ -505,9 +550,11 @@
                         }]
                     }
                 }
-            });
+            }
+            var myBarChart = new Chart(ctxdate, config);
         });
 
+        // Chart Order Report
         $.getJSON("https://spreadsheets.google.com/feeds/list/1TsQ59RKgTO9mVLKgp2sjW86eC_JJ0UCx9ox-0_Gv67I/od6/public/values?alt=json", function (result) {
             var mydata = result['feed']['entry'];
             var labels=[],submitted=[],ossprocess=[],baso=[],billingapproval=[],complete=[],invalidfailed=[],newtoday=[],totalorder=[];
@@ -586,10 +633,29 @@
             };
 
             var ctxdate = document.getElementById("ctxorder").getContext("2d");
-            var myBarChart = new Chart(ctxdate, {
-                type: 'bar',
+            var config = {
+            	type: 'bar',
                 data: data,
                 options: {
+                	animation: {
+						duration: 500,
+						onComplete: function() {
+							var ctx = this.chart.ctx;
+							ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
+							ctx.fillStyle = "black";
+							ctx.textAlign = 'center';
+							ctx.textBaseline = 'bottom';
+
+							this.data.datasets.forEach(function(dataset) {
+								for (var i = 0; i < dataset.data.length; i++) {
+									for (var key in dataset._meta) {
+										var model = dataset._meta[key].data[i]._model;
+										ctx.fillText(dataset.data[i], model.x, model.y - 5);
+									}
+								}
+							});
+						}
+					},
                     barValueSpacing: 10,
                     scales: {
                         yAxes: [{
@@ -599,7 +665,8 @@
                         }]
                     }
                 }
-            });
+            }
+            var myBarChart = new Chart(ctxdate, config);
         });
 
     });
