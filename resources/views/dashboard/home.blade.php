@@ -63,30 +63,66 @@
 			</div>
 		</div>
 	</div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Quote Report</h3>
+                </div>
+                <div class="box-body">
+                    <div class="chart">
+                        <canvas id="ctxquote" style="height:230px"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Agreement Report</h3>
+                </div>
+                <div class="box-body">
+                    <div class="chart">
+                        <canvas id="ctxagree" style="height:230px"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Order Report</h3>
+                </div>
+                <div class="box-body">
+                    <div class="chart">
+                        <canvas id="ctxorder" style="height:230px"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 @endsection
 @section('js')
 <script>
 
-	var bccolor =
-	[
-	"rgba(255, 99, 132, 0.2)",
-	"rgba(255, 159, 64, 0.2)",
-	"rgba(255, 205, 86, 0.2)",
-	"rgba(75, 192, 192, 0.2)",
-	"rgba(54, 162, 235, 0.2)",
-	"rgba(153, 102, 255, 0.2)",
-	"rgba(201, 203, 207, 0.2)"
+	var bccolor = [
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(255, 159, 64, 0.2)",
+        "rgba(255, 205, 86, 0.2)",
+        "rgba(75, 192, 192, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(201, 203, 207, 0.2)"
 	];
-	var bdcolor =
-	[
-	"rgb(255, 99, 132)",
-	"rgb(255, 159, 64)",
-	"rgb(255, 205, 86)",
-	"rgb(75, 192, 192)",
-	"rgb(54, 162, 235)",
-	"rgb(153, 102, 255)",
-	"rgb(201, 203, 207)"
+	var bdcolor = [
+        "rgb(255, 99, 132)",
+        "rgb(255, 159, 64)",
+        "rgb(255, 205, 86)",
+        "rgb(75, 192, 192)",
+        "rgb(54, 162, 235)",
+        "rgb(153, 102, 255)",
+        "rgb(201, 203, 207)"
 	];
 	$(function(){
 		$.getJSON("{{ route('home.getbydate') }}", function (result) {
@@ -264,7 +300,7 @@
 		$.getJSON("{{ route('home.getbykategori') }}", function (result) {
 			var labels = [],data=[];
 			for (var i = 0; i < result.length; i++) {
-				var temp = result[i].kategori == '' ? '-' : result[i].kategori  ;
+				var temp = result[i].kategori == '' ? '-' : result[i].kategori;
 				labels.push(temp);
 				data.push(result[i].count);
 			}
@@ -339,6 +375,233 @@
 			
 			var myBarChart = new Chart(ctxdate, config);
 		});
-	});
+
+        $.getJSON("https://spreadsheets.google.com/feeds/list/15lS2Ik7CnOKFyi0pG1-TW-X67yPBdS5Jt7xZFc5kV20/od6/public/values?alt=json", function (result) {
+            var mydata = result['feed']['entry'];
+            var labels=[],inprogress=[],approvalprocess=[],acceptedbycustomer=[],orderplaced=[],cancelled=[],newtoday=[],totalquote=[];
+            for (var i = 0; i < mydata.length; i++) {
+                labels.push(mydata[i].gsx$tanggal.$t);
+                inprogress.push(mydata[i].gsx$inprogress.$t);
+                approvalprocess.push(mydata[i].gsx$approvalprocess.$t);
+                acceptedbycustomer.push(mydata[i].gsx$acceptedbycustomer.$t);
+                orderplaced.push(mydata[i].gsx$orderplaced.$t);
+                cancelled.push(mydata[i].gsx$cancelled.$t);
+                newtoday.push(mydata[i].gsx$newtoday.$t);
+                totalquote.push(mydata[i].gsx$totalquote.$t);
+            }
+
+            var data = {
+                labels : labels,
+                datasets : [
+                    {
+                        label   : "In Progress",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(255, 159, 64, 0.2)",
+                        borderColor : "rgba(255, 159, 64, 0.2)",
+                        data    : inprogress
+                    },
+                    {
+                        label   : "Approval Process",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(255, 99, 132, 0.2)",
+                        borderColor : "rgba(255, 99, 132, 0.2)",
+                        data    : approvalprocess
+                    },
+                    {
+                        label   : "Accepted by Customer",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(255, 205, 86, 0.2)",
+                        borderColor : "rgba(255, 205, 86, 0.2)",
+                        data    : acceptedbycustomer
+                    },
+                    {
+                        label   : "Order Placed",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(75, 192, 192, 0.2)",
+                        borderColor : "rgba(75, 192, 192, 0.2)",
+                        data    : orderplaced
+                    },
+                    {
+                        label   : "Cancelled",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(54, 162, 235, 0.2)",
+                        borderColor : "rgba(54, 162, 235, 0.2)",
+                        data    : cancelled
+                    },
+                    {
+                        label   : "New Today",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(153, 102, 255, 0.2)",
+                        borderColor : "rgba(153, 102, 255, 0.2)",
+                        data    : newtoday
+                    },
+                    {
+                        label   : "Total Quote",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(201, 203, 207, 0.2)",
+                        borderColor : "rgba(201, 203, 207, 0.2)",
+                        data    : totalquote
+                    }
+                ]
+            };
+
+            var ctxdate = document.getElementById("ctxquote").getContext("2d");
+            var myBarChart = new Chart(ctxdate, {
+                type: 'bar',
+                data: data,
+                options: {
+                    barValueSpacing: 10,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+
+        $.getJSON("https://spreadsheets.google.com/feeds/list/1HN-7aiTT6r1j3BeJIeRWv2WhaW49vimMvyNd767rKv8/od6/public/values?alt=json", function (result) {
+            var mydata = result['feed']['entry'];
+            var labels=[],newtoday=[],totalagreement=[];
+            for (var i = 0; i < mydata.length; i++) {
+                labels.push(mydata[i].gsx$tanggal.$t);
+                newtoday.push(mydata[i].gsx$newtoday.$t);
+                totalagreement.push(mydata[i].gsx$totalagreement.$t);
+            }
+
+            var data = {
+                labels : labels,
+                datasets : [
+                    {
+                        label   : "New Today",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(153, 102, 255, 0.2)",
+                        borderColor : "rgba(153, 102, 255, 0.2)",
+                        data    : newtoday
+                    },
+                    {
+                        label   : "Total Agreement",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(201, 203, 207, 0.2)",
+                        borderColor : "rgba(201, 203, 207, 0.2)",
+                        data    : totalagreement
+                    }
+                ]
+            };
+
+            var ctxdate = document.getElementById("ctxagree").getContext("2d");
+            var myBarChart = new Chart(ctxdate, {
+                type: 'bar',
+                data: data,
+                options: {
+                    barValueSpacing: 10,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+
+        $.getJSON("https://spreadsheets.google.com/feeds/list/1TsQ59RKgTO9mVLKgp2sjW86eC_JJ0UCx9ox-0_Gv67I/od6/public/values?alt=json", function (result) {
+            var mydata = result['feed']['entry'];
+            var labels=[],submitted=[],ossprocess=[],baso=[],billingapproval=[],complete=[],invalidfailed=[],newtoday=[],totalorder=[];
+            for (var i = 0; i < mydata.length; i++) {
+                labels.push(mydata[i].gsx$tanggal.$t);
+                submitted.push(mydata[i].gsx$submitted.$t);
+                ossprocess.push(mydata[i].gsx$ossprocess.$t);
+                baso.push(mydata[i].gsx$baso.$t);
+                billingapproval.push(mydata[i].gsx$billingapproval.$t);
+                complete.push(mydata[i].gsx$complete.$t);
+                invalidfailed.push(mydata[i].gsx$invalidfailed.$t);
+                newtoday.push(mydata[i].gsx$newtoday.$t);
+                totalorder.push(mydata[i].gsx$totalorder.$t);
+            }
+
+            var data = {
+                labels : labels,
+                datasets : [
+                    {
+                        label   : "Submitted",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(255, 159, 64, 0.2)",
+                        borderColor : "rgba(255, 159, 64, 0.2)",
+                        data    : submitted
+                    },
+                    {
+                        label   : "OSS Process",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(255, 99, 132, 0.2)",
+                        borderColor : "rgba(255, 99, 132, 0.2)",
+                        data    : ossprocess
+                    },
+                    {
+                        label   : "BASO",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(255, 205, 86, 0.2)",
+                        borderColor : "rgba(255, 205, 86, 0.2)",
+                        data    : baso
+                    },
+                    {
+                        label   : "Billing Approval",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(75, 192, 192, 0.2)",
+                        borderColor : "rgba(75, 192, 192, 0.2)",
+                        data    : billingapproval
+                    },
+                    {
+                        label   : "Complete",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(54, 162, 235, 0.2)",
+                        borderColor : "rgba(54, 162, 235, 0.2)",
+                        data    : complete
+                    },
+                    {
+                        label   : "Invalid/Failed",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(54, 162, 144, 0.2)",
+                        borderColor : "rgba(54, 162, 144, 0.2)",
+                        data    : invalidfailed
+                    },
+                    {
+                        label   : "New Today",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(153, 102, 255, 0.2)",
+                        borderColor : "rgba(153, 102, 255, 0.2)",
+                        data    : newtoday
+                    },
+                    {
+                        label   : "Total Order",
+                        borderWidth : 1,
+                        backgroundColor: "rgba(201, 203, 207, 0.2)",
+                        borderColor : "rgba(201, 203, 207, 0.2)",
+                        data    : totalorder
+                    }
+                ]
+            };
+
+            var ctxdate = document.getElementById("ctxorder").getContext("2d");
+            var myBarChart = new Chart(ctxdate, {
+                type: 'bar',
+                data: data,
+                options: {
+                    barValueSpacing: 10,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min: 0,
+                            }
+                        }]
+                    }
+                }
+            });
+        });
+
+    });
 </script>
 @endsection
