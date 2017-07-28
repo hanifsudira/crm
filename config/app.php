@@ -162,6 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -225,44 +226,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 
     //own dictionary
-
-    'status' => ['PS','Kendala'],
-
-    'detail_status' => [
-        'PS',
-        'TIDAK ADA ODP',
-        'ODP LOSS',
-        'ODP FULL',
-        'ODP BELUM GOLIVE',
-        'PELANGGAN MENOLAK DI MIGRASI',
-        'RUMAH TIDAK BERPENGHUNI',
-        'RUMAH RENOVASI',
-        'ISOLIR',
-        'NO INET RETENSI',
-        'MENUNGGU KONFIRMASI PELANGGAN',
-        'PENARIKAN',
-        'OPG SETTING',
-        'ACT COMPLETED',
-        'RESCHEDULE',
-        'PELANGGAN',
-        'TELPON NOT OK',
-        'FALLOUT ACT',
-        'WORK FAIL',
-        'FALLOUT DATA'
-    ],
-
-    'keterangan_kendala' => [
-        'ODP FULL',
-        'MENOLAK',
-        'FALLOUT ACT',
-        'FALLOUT DATA',
-        'RUMAH KOSONG',
-        'RENOVASI',
-        'ISOLIR',
-        'AKTIF NOT PS'
-    ],
 ];

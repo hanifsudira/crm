@@ -23,6 +23,13 @@ use Yajra\Datatables\Request;
 class QueryBuilderEngine extends BaseEngine
 {
     /**
+     * Filtered query results.
+     *
+     * @var mixed
+     */
+    protected $results;
+
+    /**
      * @param \Illuminate\Database\Query\Builder $builder
      * @param \Yajra\Datatables\Request $request
      */
@@ -68,18 +75,6 @@ class QueryBuilderEngine extends BaseEngine
     }
 
     /**
-     * Organizes works
-     *
-     * @param bool $mDataSupport
-     * @param bool $orderFirst
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function make($mDataSupport = false, $orderFirst = false)
-    {
-        return parent::make($mDataSupport, $orderFirst);
-    }
-
-    /**
      * Count total items.
      *
      * @return integer
@@ -120,44 +115,11 @@ class QueryBuilderEngine extends BaseEngine
     }
 
     /**
-     * Perform global search.
-     *
-     * @return void
-     */
-    public function filtering()
-    {
-        $keyword = $this->request->keyword();
-
-        if ($this->isSmartSearch()) {
-            $this->smartGlobalSearch($keyword);
-
-            return;
-        }
-
-        $this->globalSearch($keyword);
-    }
-
-    /**
-     * Perform multi-term search by splitting keyword into
-     * individual words and searches for each of them.
-     *
-     * @param string $keyword
-     */
-    private function smartGlobalSearch($keyword)
-    {
-        $keywords = array_filter(explode(' ', $keyword));
-
-        foreach ($keywords as $keyword) {
-            $this->globalSearch($keyword);
-        }
-    }
-
-    /**
      * Perform global search for the given keyword.
      *
      * @param string $keyword
      */
-    private function globalSearch($keyword)
+    protected function globalSearch($keyword)
     {
         $this->query->where(
             function ($query) use ($keyword) {
@@ -596,7 +558,7 @@ class QueryBuilderEngine extends BaseEngine
                         $other   = $model->getQualifiedParentKeyName();
                     } else {
                         $foreign = $model->getQualifiedForeignKey();
-                        $other   = $model->getQualifiedOtherKeyName();
+                        $other   = $model->getQualifiedOwnerKeyName();
                     }
             }
             $this->performJoin($table, $foreign, $other);
@@ -654,6 +616,7 @@ class QueryBuilderEngine extends BaseEngine
             $sql = ! $this->isCaseInsensitive() ? 'REGEXP_LIKE( ' . $column . ' , ? )' : 'REGEXP_LIKE( LOWER(' . $column . ') , ?, \'i\' )';
             $this->query->whereRaw($sql, [$keyword]);
         } elseif ($this->database == 'pgsql') {
+            $column = $this->castColumn($column);
             $sql = ! $this->isCaseInsensitive() ? $column . ' ~ ?' : $column . ' ~* ? ';
             $this->query->whereRaw($sql, [$keyword]);
         } else {
@@ -776,7 +739,7 @@ class QueryBuilderEngine extends BaseEngine
      */
     public function results()
     {
-        return $this->query->get();
+        return $this->results ?: $this->results = $this->query->get();
     }
 
     /**

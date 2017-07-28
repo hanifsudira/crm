@@ -18,6 +18,9 @@
                         <h3 class="box-title">Data</h3>
                     </div>
                     <div class="box-body">
+                        <a href="{{ Route('ora.downloadexcel') }}" class="btn btn-app" id="btn-upload"><i class="fa fa-cloud-upload"></i>Export Excel</a>
+                    </div>
+                    <div class="box-body">
                         <table id="datatable" class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -53,13 +56,6 @@
                 serverSide: true,
                 ajax: '{{ route('ora.oraexcelget') }}',
                 columns: [
-                    {
-                        className       :'details-control',
-                        orderable       : false,
-                        searchable      : false,
-                        data            : null,
-                        defaultContent  : ''
-                    },
                     { data: 'ORDER_NUM',name: 'ORDER_NUM'},
                     { data: 'ORDER_SUBTYPE',name: 'ORDER_SUBTYPE'},
                     { data: 'OH_STATUS',name: 'OH_STATUS'},
@@ -73,7 +69,7 @@
                     { data: 'MOLI_SERVICE_ID',name: 'MOLI_SERVICE_ID'},
                     { data: 'MOLI_ASSET_INTEG_ID',name: 'MOLI_ASSET_INTEG_ID'},
                     { data: 'MOLI_BILL_',name: 'MOLI_BILL_'},
-                    { data: 'MOLI_AGREE_NUM',name: 'MOLI_AGREE_NUM'},
+                    { data: 'MOLI_AGREE_NUM',name: 'MOLI_AGREE_NUM'}
                 ]
             });
         });

@@ -80,4 +80,9 @@ Route::group(['prefix' => 'ora'], function () {
         'as'        => 'ora.oraexcelget',
         'uses'      => 'OraController@getora'
     ]);
+
+    Route::get('downloadexcel', [
+        'as'        => 'ora.downloadexcel',
+        'uses'      => 'OraController@downloadexcel'
+    ]);
 });

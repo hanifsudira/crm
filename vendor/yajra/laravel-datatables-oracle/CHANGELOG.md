@@ -8,6 +8,44 @@
 
 ## Change Log
 
+### v7.9.5 - 07-21-2017
+- Add text cast for pgsql regex search #1279, credits to @martimarkov.
+- Use static class to resolve datatables instance. #1282, Re-apply fix for #464, #465.
+- Fix duplicate queries when transforming the output. PR #1283, Fix #1280.
+
+### v7.9.4 - 07-14-2017
+- Change getQualifiedOtherKeyName to getQualifiedOwnerKeyName #1254. Credits to @zizohassan.
+- Readme: implictly set "--provider" when publishing #1255. Credits to @uniconstructor.
+
+### v7.9.3 - 07-12-2017
+- Revert transformed `DT_Row_Index` back to it's original values. #1259
+- Fix searching not triggered with zero value. #1257
+- Fix #1243, #1223.
+
+### v7.9.2 - 07-05-2017
+- Fix multi-column sort of collection #1238. 
+- Fix #1237, credits to @jond64
+
+### v7.9.1 - 06-30-2017
+- Fix transformer implementation when parameter requires an object. #1235
+
+### v7.9.0 - 06-29-2017
+- Process and transform data first before filtering and ordering collection #1232
+- Support searching and sorting of added/edited columns when using collection.
+- Refactor make & render method.
+- Fix #694, #1229, #1142, etc.
+- Fix merging of column definitions. #1233
+
+### v7.8.1 - 06-27-2017
+- Set columns orderable & searchable property as true by default. #1228
+- In relation to [yajra/laravel-datatables-html#13](https://github.com/yajra/laravel-datatables-html/pull/13).
+
+### v7.8.0 - 06-23-2017
+- Extract default columns definition to config. #1175
+
+### v7.7.1 - 06-22-2017
+- The global search keywords should not be an array on collection. #1221, credits to @liub1993.
+
 ### v7.7.0 - 06-07-2017
 - Add config for setting the default JsonResponse header and options. #1177
 - Allow sorting for blacklisted columns with custom handler. #1192
