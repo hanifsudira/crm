@@ -17,20 +17,20 @@ query = "select t2.order_num, t4.attrib_05 as order_subtype , t2.status_cd as oh
 result = cursor.execute(query)
 
 for data in result:
-	ORDER_NUM  				= data[0]
-	ORDER_SUBTYPE           = data[1]
-	OH_STATUS               = data[2]
-	MOLI_ROW_ID     		= data[3]
-	MOLI_CREATED_DT         = data[4]
-	MOLI_LAST_UPDATED_DT    = data[5]
-	MOLI_PRODUCT_NAME       = data[6]
-	MOLI_STATUS             = data[7]
-	MOLI_FULFILLMENT_STATUS = data[8]
-	MOLI_MILESTONE          = data[9]
-	MOLI_SERVICE_ID         = data[10]
-	MOLI_ASSET_INTEG_ID     = data[11]
-	MOLI_BILL_ 				= data[12]
-	MOLI_AGREE_NUM          = data[13]
+	ORDER_NUM  				= str(data[0]).strip()
+	ORDER_SUBTYPE           = str(data[1]).strip()
+	OH_STATUS               = str(data[2]).strip()
+	MOLI_ROW_ID     		= str(data[3]).strip()
+	MOLI_CREATED_DT         = str(data[4]).strip()
+	MOLI_LAST_UPDATED_DT    = str(data[5]).strip()
+	MOLI_PRODUCT_NAME       = str(data[6]).strip()
+	MOLI_STATUS             = str(data[7]).strip()
+	MOLI_FULFILLMENT_STATUS = str(data[8]).strip()
+	MOLI_MILESTONE          = str(data[9]).strip()
+	MOLI_SERVICE_ID         = str(data[10]).strip()
+	MOLI_ASSET_INTEG_ID     = str(data[11]).strip()
+	MOLI_BILL_ 				= str(data[12]).strip()
+	MOLI_AGREE_NUM          = str(data[13]).strip()
 	sql                		= "insert into oraexcel (ORDER_NUM,ORDER_SUBTYPE,OH_STATUS,MOLI_ROW_ID,MOLI_CREATED_DT,MOLI_LAST_UPDATED_DT,MOLI_PRODUCT_NAME,MOLI_STATUS,MOLI_FULFILLMENT_STATUS,MOLI_MILESTONE,MOLI_SERVICE_ID,MOLI_ASSET_INTEG_ID,MOLI_BILL_,MOLI_AGREE_NUM) values('"+ORDER_NUM+"','"+ORDER_SUBTYPE+"','"+OH_STATUS+"','"+MOLI_ROW_ID+"','"+MOLI_CREATED_DT+"','"+MOLI_LAST_UPDATED_DT+"','"+MOLI_PRODUCT_NAME+"','"+MOLI_STATUS+"','"+MOLI_FULFILLMENT_STATUS+"','"+MOLI_MILESTONE+"','"+MOLI_SERVICE_ID+"','"+MOLI_ASSET_INTEG_ID+"','"+MOLI_BILL_+"','"+MOLI_AGREE_NUM+"')"
 	cur.execute(sql)
 db.commit()
