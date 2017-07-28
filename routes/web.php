@@ -68,3 +68,16 @@ Route::group(['prefix' => 'feedback'], function () {
         'uses'      => 'FeedbackController@store'
     ]);
 });
+
+Route::group(['prefix' => 'ora'], function () {
+    Route::get('oraexcel', [
+        'as'        => 'ora.oraexcel',
+        'uses'      => 'OraController@index'
+    ]);
+
+    //get
+    Route::get('oraexcelget', [
+        'as'        => 'ora.oraexcelget',
+        'uses'      => 'OraController@getora'
+    ]);
+});
