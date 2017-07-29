@@ -8,7 +8,7 @@ sys.setdefaultencoding('utf-8')
 db = MySQLdb.connect(host="127.0.0.1", user="telkom", passwd="telkom", db="crm_dashboard")
 cur = db.cursor()
 
-sqltruncate = 'TRUNCATE TABLE oraexcel';
+sqltruncate = 'TRUNCATE TABLE oracount';
 cur.execute(sqltruncate)
 
 #oracle
