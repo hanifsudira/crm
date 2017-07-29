@@ -40,6 +40,24 @@
                                 <th>MOLI_AGREE_NUM</th>
                             </tr>
                             </thead>
+                            <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -72,7 +90,7 @@
                     { data: 'MOLI_AGREE_NUM',name: 'MOLI_AGREE_NUM'}
                 ],
                 initComplete: function () {
-                    this.api().columns().every(function () {
+                    this.api().columns([4,7,9]).every(function () {
                         var column = this;
                         var input = document.createElement("input");
                         $(input).appendTo($(column.footer()).empty())
