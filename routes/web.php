@@ -75,6 +75,11 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@index'
     ]);
 
+    Route::get('oracount', [
+        'as'        => 'ora.oracount',
+        'uses'      => 'OraController@oracount'
+    ]);
+
     //get
     Route::get('oraexcelget', [
         'as'        => 'ora.oraexcelget',

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Oracexcel;
+use App\Oracount;
 use Yajra\Datatables\Datatables;
 use Excel;
 
 class OraController extends Controller
 {
+    //full status
     public function index(){
         return view('dashboard.oraexcel');
     }
@@ -23,4 +25,11 @@ class OraController extends Controller
             });
         })->download('xlsx');
     }
+
+    //count
+    public function oracount(){
+        $data = Oracount::all();
+        return view('dashboard.oracount',['data'=>$data]);
+    }
+
 }
