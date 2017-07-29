@@ -48,8 +48,8 @@
     </section>
 @endsection
 @section('js')
-    <script>
-        $(function() {
+    <script type="text/javascript">
+        $(document).ready(function() {
             var table =  $('#datatable').DataTable({
                 scrollX: true,
                 processing: true,
@@ -70,7 +70,17 @@
                     { data: 'MOLI_ASSET_INTEG_ID',name: 'MOLI_ASSET_INTEG_ID'},
                     { data: 'MOLI_BILL_',name: 'MOLI_BILL_'},
                     { data: 'MOLI_AGREE_NUM',name: 'MOLI_AGREE_NUM'}
-                ]
+                ],
+                initComplete: function () {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var input = document.createElement("input");
+                        $(input).appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                column.search($(this).val(), false, false, true).draw();
+                            });
+                    });
+                }
             });
         });
     </script>
