@@ -10,6 +10,9 @@ sys.setdefaultencoding('utf-8')
 db = MySQLdb.connect(host="127.0.0.1", user="telkom", passwd="telkom", db="crm_dashboard")
 cur = db.cursor()
 
+sqltruncate = 'TRUNCATE TABLE oraexcel';
+cur.execute(sqltruncate)
+
 #oracle
 con = cx_Oracle.connect('reportcrm/Telkom#2016@10.6.16.8/siebprddb')
 cursor = con.cursor()
