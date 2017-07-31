@@ -30,6 +30,7 @@ class Rekap extends Migration
             $table->string('status',20)->nullable();
             $table->string('assignee',50)->nullable();
             $table->text('solusi')->nullable();
+            $table->string('lastupdate',50)->nullable();
         });
     }
 

@@ -19,6 +19,7 @@ class Oracount extends Migration
             $table->string('STATUS_FULFILLMENT',50)->nullable();
             $table->string('MILESTONE',50)->nullable();
             $table->string('JUMLAH',10)->nullable();
+            $table->string('lastupdate',50)->nullable();
         });
     }
 
