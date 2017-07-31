@@ -41,13 +41,11 @@
 
 #!/usr/bin/python
 import requests,datetime,MySQLdb,json,sys
-from bs4 import BeautifulSoup
-from calendar import monthrange
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-db = MySQLdb.connect(host="127.0.0.1", user="root", passwd="", db="crm_dashboard")
+db = MySQLdb.connect(host="127.0.0.1", user="telkom", passwd="telkom", db="crm_dashboard")
 cur = db.cursor()
 
 sqltruncate = 'TRUNCATE TABLE crm';
@@ -60,6 +58,8 @@ for row in soup.find_all('tr'):
      cols = row.find_all('td')
      cols = [ele.text.strip() for ele in cols]
      datas.append([ele for ele in cols])
+
+now = str(datetime.datetime.now())
 
 for i,data in enumerate(datas): 
     if i<4:
