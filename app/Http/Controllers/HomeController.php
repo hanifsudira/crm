@@ -25,13 +25,13 @@ class HomeController extends Controller
      */
     public function index(){
         $lastupdate = Rekapkomplain::select('lastupdate')->first();
-        $lastupdate = $lastupdate ? $lastupdate : 'Unknown';
+        $lastupdate = $lastupdate->lastupdate ? $lastupdate->lastupdate : 'Unknown';
         return view('dashboard.data',['lastupdate'=> $lastupdate]);
     }
 
     public function chart(){
         $lastupdate = Rekapkomplain::select('lastupdate')->first();
-        $lastupdate = $lastupdate ? $lastupdate : 'Unknown';
+        $lastupdate = $lastupdate->lastupdate ? $lastupdate->lastupdate : 'Unknown';
         return view('dashboard.home',['lastupdate'=> $lastupdate]);
     }
 
