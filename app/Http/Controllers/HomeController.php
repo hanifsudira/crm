@@ -24,11 +24,15 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('dashboard.data');
+        $lastupdate = Rekapkomplain::select('lastupdate')->first();
+        $lastupdate = $lastupdate->lastupdate ? $lastupdate->lastupdate : 'Unknown';
+        return view('dashboard.data',['lastupdate'=> $lastupdate]);
     }
 
     public function chart(){
-        return view('dashboard.home');
+        $lastupdate = Rekapkomplain::select('lastupdate')->first();
+        $lastupdate = $lastupdate->lastupdate ? $lastupdate->lastupdate : 'Unknown';
+        return view('dashboard.home',['lastupdate'=> $lastupdate]);
     }
 
     public function input(){

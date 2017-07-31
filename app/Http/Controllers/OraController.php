@@ -10,7 +10,9 @@ class OraController extends Controller
 {
     //full status
     public function index(){
-        return view('dashboard.oraexcel');
+        $lastupdate = Oracexcel::select('lastupdate')->first();
+        $lastupdate = $lastupdate->lastupdate? $lastupdate->lastupdate : 'Unknown';
+        return view('dashboard.oraexcel',['lastupdate'=> $lastupdate]);
     }
 
     public function getora(){
@@ -28,8 +30,10 @@ class OraController extends Controller
 
     //count
     public function oracount(){
+        $lastupdate = Oracount::select('lastupdate')->first();
+        $lastupdate = $lastupdate !=null ? $lastupdate : 'Unknown';
         $data = Oracount::all();
-        return view('dashboard.oracount',['data'=>$data]);
+        return view('dashboard.oracount',['data'=>$data, 'lastupdate'=> $lastupdate]);
     }
 
 }

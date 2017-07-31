@@ -22,6 +22,7 @@ class Oracexcel extends Model
         'MOLI_SERVICE_ID',
         'MOLI_ASSET_INTEG_ID',
         'MOLI_BILL_',
-        'MOLI_AGREE_NUM'
+        'MOLI_AGREE_NUM',
+        'lastupdate'
     ];
 }

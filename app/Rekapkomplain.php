@@ -24,6 +24,7 @@ class Rekapkomplain extends Model
         'kategori',
         'status',
         'assignee',
-        'solusi'
+        'solusi',
+        'lastupdate'
     ];
 }

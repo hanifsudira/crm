@@ -12,6 +12,7 @@ class Oracount extends Model
         'STATUS_ORDER',
         'STATUS_FULFILLMENT',
         'MILESTONE',
-        'JUMLAH'
+        'JUMLAH',
+        'lastupdate'
     ];
 }

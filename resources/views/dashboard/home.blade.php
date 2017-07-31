@@ -12,6 +12,13 @@
 
 <section class="content">
 	<div class="row">
+		<div class="col-md-12">
+			<div class="box-header">
+				<h1 class="box-title">Last Update : {{$lastupdate}}</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-xs-6">
 			<div class="box">
 				<div class="box-header">
