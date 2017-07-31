@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import cx_Oracle,requests,datetime,MySQLdb,json,sys
 
 reload(sys)
