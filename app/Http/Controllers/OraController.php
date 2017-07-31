@@ -31,7 +31,7 @@ class OraController extends Controller
     //count
     public function oracount(){
         $lastupdate = Oracount::select('lastupdate')->first();
-        $lastupdate = $lastupdate !=null ? $lastupdate : 'Unknown';
+        $lastupdate = $lastupdate->lastupdate !=null ? $lastupdate->lastupdate : 'Unknown';
         $data = Oracount::all();
         return view('dashboard.oracount',['data'=>$data, 'lastupdate'=> $lastupdate]);
     }
