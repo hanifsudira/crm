@@ -41,6 +41,7 @@
 
 #!/usr/bin/python
 import requests,datetime,MySQLdb,json,sys
+from bs4 import BeautifulSoup
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -80,7 +81,7 @@ for i,data in enumerate(datas):
         status             = str(data[14]).replace("'","")
         assignee           = str(data[15]).replace("'","")
         solusi             = str(data[16]).replace("'","")
-        sql                = "insert into crm (date,sumber,onsite_support,nama_user,nik_user,user_login,divisi,no_telp,no_quote,no_order,deskripsi_komplain,kategori,status,assignee,solusi) values('"+date+"','"+sumber+"','"+onsite_support+"','"+nama_user+"','"+nik_user+"','"+user_login+"','"+divisi+"','"+no_telp+"','"+no_quote+"','"+no_order+"','"+deskripsi_komplain+"','"+kategori+"','"+status+"','"+assignee+"','"+solusi+"')"
+        sql                = "insert into crm (date,sumber,onsite_support,nama_user,nik_user,user_login,divisi,no_telp,no_quote,no_order,deskripsi_komplain,kategori,status,assignee,solusi,lastupdate) values('"+date+"','"+sumber+"','"+onsite_support+"','"+nama_user+"','"+nik_user+"','"+user_login+"','"+divisi+"','"+no_telp+"','"+no_quote+"','"+no_order+"','"+deskripsi_komplain+"','"+kategori+"','"+status+"','"+assignee+"','"+solusi+"','"+now+"')"
         cur.execute(sql)
 db.commit()
 cur.close()
