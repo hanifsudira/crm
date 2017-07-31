@@ -18,7 +18,7 @@
                         <h3 class="box-title">Data</h3>
                     </div>
                     <div class="box-body">
-                        <table id="datatable" class="table table-bordered table-striped">
+                        <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
                             <thead>
                             <tr>
                                 <th>STATUS_ORDER</th>

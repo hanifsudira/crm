@@ -15,10 +15,10 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Data Migrasi</h3>
+                        <h3 class="box-title">Data</h3>
                     </div>
                     <div class="box-body">
-                        <table id="datatable" class="table table-bordered table-striped">
+                        <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
                             <thead>
                             <tr>
                                 <th></th>
@@ -30,6 +30,15 @@
                                 <th>Status Follow Up</th>
                             </tr>
                             </thead>
+                            <tfoot>
+                                <th></th>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Sumber</th>
+                                <th>Onsite Support</th>
+                                <th>Kategori</th>
+                                <th>Status Follow Up</th>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -90,7 +99,6 @@
         }
         $(function() {
             var table =  $('#datatable').DataTable({
-                scrollX: true,
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('home.getall') }}',
@@ -107,7 +115,7 @@
                     { data: 'sumber',name: 'sumber'},
                     { data: 'onsite_support',name: 'onsite_support'},
                     { data: 'kategori',name: 'kategori'},
-                    { data: 'status',name: 'status'},
+                    { data: 'status',name: 'status'}
                 ]
             });
             $('#datatable tbody').on('click', 'td.details-control', function () {
