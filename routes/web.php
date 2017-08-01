@@ -99,7 +99,7 @@ Route::group(['prefix' => 'force'], function () {
     ]);
 
     Route::get('oracount', [
-        'as'        => 'ora.oracount',
+        'as'        => 'force.oracount',
         'uses'      => 'OraController@forcecount'
     ]);
 
