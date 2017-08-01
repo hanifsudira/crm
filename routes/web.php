@@ -91,3 +91,16 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@downloadexcel'
     ]);
 });
+
+Route::group(['prefix' => 'force'], function () {
+    Route::get('oraexcel', [
+        'as'        => 'force.oraexcel',
+        'uses'      => 'OraController@forceexcel'
+    ]);
+
+    Route::get('oracount', [
+        'as'        => 'ora.oracount',
+        'uses'      => 'OraController@forcecount'
+    ]);
+
+});

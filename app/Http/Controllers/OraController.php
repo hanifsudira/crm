@@ -36,4 +36,17 @@ class OraController extends Controller
         return view('dashboard.oracount',['data'=>$data, 'lastupdate'=> $lastupdate]);
     }
 
+    //force
+    public function forceexcel(){
+        $command = escapeshellcmd('/usr/bin/python /var/www/html/crm/public/scripts/geto.py');
+        shell_exec($command);
+        redirect('force.oraexcel');
+    }
+
+    public function forcecount(){
+        $command = escapeshellcmd('/usr/bin/python /var/www/html/crm/public/scripts/getc.py');
+        shell_exec($command);
+        redirect('force.oracount');
+    }
+
 }
