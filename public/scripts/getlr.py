@@ -22,7 +22,7 @@ result = cursor.execute(query)
 now = str(datetime.datetime.now())
 
 for data in result:
-	ORDER			= str(data[0]).strip()
+	ORDER_NUM		= str(data[0]).strip()
 	REV				= str(data[1]).strip()
 	PRODUCT			= str(data[2]).strip()
 	OH_STATUS		= str(data[3]).strip()
@@ -34,7 +34,7 @@ for data in result:
 	ACC_NAS			= str(data[9]).strip()
 	NIPNAS			= str(data[10]).strip()
 	SID_NUM			= str(data[11]).strip()
-	sql             = "insert into lineitem_report (ORDER,REV,PRODUCT,OH_STATUS,LI_STATUS,MILESTONE,ORDER_SUBTYPE,CREATED_AT,FULFILL_STATUS,ACC_NAS,NIPNAS,SID_NUM,lastupdate) values('"+ORDER+"','"+REV+"','"+PRODUCT+"','"+OH_STATUS+"','"+LI_STATUS+"','"+MILESTONE+"','"+ORDER_SUBTYPE+"','"+CREATED_AT+"','"+FULFILL_STATUS+"','"+ACC_NAS+"','"+NIPNAS+"','"+SID_NUM+"','"+now+"')"
+	sql             = "insert into lineitem_report (ORDER_NUM,REV,PRODUCT,OH_STATUS,LI_STATUS,MILESTONE,ORDER_SUBTYPE,CREATED_AT,FULFILL_STATUS,ACC_NAS,NIPNAS,SID_NUM,lastupdate) values('"+ORDER_NUM+"','"+REV+"','"+PRODUCT+"','"+OH_STATUS+"','"+LI_STATUS+"','"+MILESTONE+"','"+ORDER_SUBTYPE+"','"+CREATED_AT+"','"+FULFILL_STATUS+"','"+ACC_NAS+"','"+NIPNAS+"','"+SID_NUM+"','"+now+"')"
 	cur.execute(sql)
 db.commit()
 cur.close()
