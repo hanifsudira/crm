@@ -90,7 +90,6 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var table =  $('#datatable').DataTable({
-                scrollX: true,
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('ora.getoreport') }}',
