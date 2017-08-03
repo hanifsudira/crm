@@ -15,7 +15,7 @@ class LineitemReport extends Migration
     {
         Schema::create('lineitem_report', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ORDER#',50)->nullable();
+            $table->string('ORDER',50)->nullable();
             $table->string('REV',50)->nullable();
             $table->string('PRODUCT',50)->nullable();
             $table->string('OH_STATUS',50)->nullable();
