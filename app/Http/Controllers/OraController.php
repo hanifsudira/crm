@@ -9,9 +9,10 @@ class OraController extends Controller
 {
     //full status
     public function index(){
+        $data = $data = Oracount::all();
         $lastupdate = Oracexcel::select('lastupdate')->first();
         $lastupdate = $lastupdate->lastupdate? $lastupdate->lastupdate : 'Unknown';
-        return view('dashboard.oraexcel',['lastupdate'=> $lastupdate]);
+        return view('dashboard.oraexcel',['data' => $data, 'lastupdate'=> $lastupdate]);
     }
 
     public function getora(){
@@ -37,14 +38,6 @@ class OraController extends Controller
 
     public function getlireport(){
         return Datatables::of(Lireport::all())->make(true);
-    }
-
-    //count
-    public function oracount(){
-        $lastupdate = Oracount::select('lastupdate')->first();
-        $lastupdate = $lastupdate->lastupdate !=null ? $lastupdate->lastupdate : 'Unknown';
-        $data = Oracount::all();
-        return view('dashboard.oracount',['data'=>$data, 'lastupdate'=> $lastupdate]);
     }
 
     //force

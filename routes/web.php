@@ -75,11 +75,6 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@index'
     ]);
 
-    Route::get('oracount', [
-        'as'        => 'ora.oracount',
-        'uses'      => 'OraController@oracount'
-    ]);
-
     Route::get('lineitem', [
         'as'        => 'ora.lineitem',
         'uses'      => 'OraController@lineitem'
