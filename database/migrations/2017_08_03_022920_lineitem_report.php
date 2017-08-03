@@ -27,6 +27,7 @@ class LineitemReport extends Migration
             $table->string('ACC_NAS',50)->nullable();
             $table->string('NIPNAS',50)->nullable();
             $table->string('SID_NUM',50)->nullable();
+            $table->string('lastupdate',50)->nullable();
         });
     }
     /**
