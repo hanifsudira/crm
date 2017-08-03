@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li>Oracle</li>
-            <li class="active">Line Items</li>
+            <li class="active">All Status</li>
         </ol>
     </section>
     <section class="content">

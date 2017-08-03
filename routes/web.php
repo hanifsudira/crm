@@ -80,6 +80,11 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@lineitem'
     ]);
 
+    Route::get('order', [
+        'as'        => 'ora.order',
+        'uses'      => 'OraController@order'
+    ]);
+
     //get
     Route::get('oraexcelget', [
         'as'        => 'ora.oraexcelget',
@@ -95,6 +100,12 @@ Route::group(['prefix' => 'ora'], function () {
         'as'        => 'ora.getlireport',
         'uses'      => 'OraController@getlireport'
     ]);
+
+    Route::get('getoreport', [
+        'as'        => 'ora.getoreport',
+        'uses'      => 'OraController@getoreport'
+    ]);
+
 
 
 });

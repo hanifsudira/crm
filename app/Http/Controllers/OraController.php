@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Oracexcel,App\Oracount,App\Lireport,App\Lisummary;
+use App\Oracexcel,App\Oracount,App\Lireport,App\Lisummary,App\Oreport,App\Osummary;
 use Yajra\Datatables\Datatables;
 use Excel;
 
@@ -38,6 +38,18 @@ class OraController extends Controller
 
     public function getlireport(){
         return Datatables::of(Lireport::all())->make(true);
+    }
+
+    //order
+    public function order(){
+        $osummary = Osummary::all();
+        $lastupdate = Osummary::select('lastupdate')->first();
+        $lastupdate = $lastupdate->lastupdate !=null ? $lastupdate->lastupdate : 'Unknown';
+        return view('dashboard.order',['osummary' => $osummary, 'lastupdate' => $lastupdate]);
+    }
+
+    public function getoreport(){
+        return Datatables::of(Oreport::all())->make(true);
     }
 
     //force

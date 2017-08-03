@@ -13,9 +13,15 @@ class OrderReport extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('order_report', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('ORDER_NUM',50)->nullable();
+            $table->string('STATUS',50)->nullable();
+            $table->string('ACC_NAS',50)->nullable();
+            $table->string('NIPNAS',50)->nullable();
+            $table->string('lastupdate',50)->nullable();
+        });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -23,6 +29,6 @@ class OrderReport extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('order_report');
     }
 }

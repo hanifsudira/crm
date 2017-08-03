@@ -13,9 +13,13 @@ class OrderSummary extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('order_summary', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('STATUS',50)->nullable();
+            $table->string('JUMLAH',50)->nullable();
+            $table->string('lastupdate',50)->nullable();
+        });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -23,6 +27,6 @@ class OrderSummary extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('order_summary');
     }
 }
