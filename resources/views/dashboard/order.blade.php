@@ -67,7 +67,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($lisummary as $d)
+                                                @foreach($osummary as $d)
                                                     <tr>
                                                         <td>{{$d->STATUS}}</td>
                                                         <td>{{$d->JUMLAH}}</td>
