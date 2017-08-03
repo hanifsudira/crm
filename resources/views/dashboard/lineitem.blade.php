@@ -23,7 +23,7 @@
                             <div class="row">
                             <div class="col-md-12">
                                 <div class="box-header">
-                                    <h1 class="box-title">Last Update : <a>Unknown</a></h1>
+                                    <h1 class="box-title">Last Update : <a>{{$lastupdate}}</a></h1>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="box-header">
-                                        <h1 class="box-title">Last Update : <a>Unknown</a></h1>
+                                        <h1 class="box-title">Last Update : <a>{{$lastupdate}}</a></h1>
                                     </div>
                                 </div>
                             </div>
@@ -76,6 +76,16 @@
                                                     <th>JUMLAH</th>
                                                 </tr>
                                                 </thead>
+                                                <tbody>
+                                                @foreach($lisummary as $d)
+                                                    <tr>
+                                                        <td>{{$d->OH_STATUS}}</td>
+                                                        <td>{{$d->LI_STATUS}}</td>
+                                                        <td>{{$d->MILESTONE}}</td>
+                                                        <td>{{$d->JUMLAH}}</td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
                                             </table>
                                         </div>
                                     </div>
@@ -87,4 +97,30 @@
             </div>
         </div>
     </section>
+@endsection
+@section('js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var table =  $('#datatable').DataTable({
+                scrollX: true,
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route('ora.getlireport') }}',
+                columns: [
+                    { data: 'ORDER_NUM',name: 'ORDER_NUM'},
+                    { data: 'REV',name: 'REV'},
+                    { data: 'PRODUCT',name: 'PRODUCT'},
+                    { data: 'OH_STATUS',name: 'OH_STATUS'},
+                    { data: 'LI_STATUS',name: 'LI_STATUS'},
+                    { data: 'MILESTONE',name: 'MILESTONE'},
+                    { data: 'ORDER_SUBTYPE',name: 'ORDER_SUBTYPE'},
+                    { data: 'CREATED_AT',name: 'CREATED_AT'},
+                    { data: 'FULFILL_STATUS',name: 'FULFILL_STATUS'},
+                    { data: 'ACC_NAS',name: 'ACC_NAS'},
+                    { data: 'NIPNAS',name: 'NIPNAS'},
+                    { data: 'SID_NUM',name: 'SID_NUM'}
+                ]
+            });
+        });
+    </script>
 @endsection

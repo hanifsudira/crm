@@ -95,6 +95,13 @@ Route::group(['prefix' => 'ora'], function () {
         'as'        => 'ora.downloadexcel',
         'uses'      => 'OraController@downloadexcel'
     ]);
+
+    Route::get('getlireport', [
+        'as'        => 'ora.getlireport',
+        'uses'      => 'OraController@getlireport'
+    ]);
+
+
 });
 
 Route::group(['prefix' => 'force'], function () {
