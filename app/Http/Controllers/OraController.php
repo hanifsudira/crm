@@ -32,7 +32,7 @@ class OraController extends Controller
         $lisummary = Lisummary::all();
         $lastupdate = Lisummary::select('lastupdate')->first();
         $lastupdate = $lastupdate->lastupdate !=null ? $lastupdate->lastupdate : 'Unknown';
-        return view('dashboard.lineitem',['lireport' => $lisummary, 'lastupdate' => $lastupdate]);
+        return view('dashboard.lineitem',['lisummary' => $lisummary, 'lastupdate' => $lastupdate]);
     }
 
     public function getlireport(){
