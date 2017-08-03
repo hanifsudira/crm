@@ -28,6 +28,10 @@ class OraController extends Controller
         })->download('xlsx');
     }
 
+    public function lineitem(){
+        return view('dashboard.lineitem');
+    }
+
     //count
     public function oracount(){
         $lastupdate = Oracount::select('lastupdate')->first();

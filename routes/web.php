@@ -80,6 +80,11 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@oracount'
     ]);
 
+    Route::get('lineitem', [
+        'as'        => 'ora.lineitem',
+        'uses'      => 'OraController@lineitem'
+    ]);
+
     //get
     Route::get('oraexcelget', [
         'as'        => 'ora.oraexcelget',
@@ -102,5 +107,4 @@ Route::group(['prefix' => 'force'], function () {
         'as'        => 'force.oracount',
         'uses'      => 'OraController@forcecount'
     ]);
-
 });

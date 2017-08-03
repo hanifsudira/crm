@@ -15,6 +15,7 @@
             <ul class="treeview-menu">
                 <li><a href="{{route('ora.oraexcel')}}"><i class="fa fa-circle-o"></i>Full Status</a></li>
                 <li><a href="{{route('ora.oracount')}}"><i class="fa fa-circle-o"></i>Count Status</a></li>
+                <li><a href="{{route('ora.lineitem')}}"><i class="fa fa-circle-o"></i>Line</a></li>
             </ul>
         </li>
     </ul>
