@@ -13,9 +13,15 @@ class LineitemSummary extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('lineitem_summary', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('OH_STATUS',50)->nullable();
+            $table->string('LI_STATUS',50)->nullable();
+            $table->string('MILESTONE',50)->nullable();
+            $table->string('JUMLAH',50)->nullable();
+            $table->string('lastupdate',50)->nullable();
+        });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -23,6 +29,6 @@ class LineitemSummary extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('lineitem_summary');
     }
 }
