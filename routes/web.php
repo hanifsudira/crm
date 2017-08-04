@@ -75,6 +75,11 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@index'
     ]);
 
+    Route::get('tomsom/{id}',[
+        'as'        => 'ora.tomsom',
+        'uses'      => 'OraController@tomsom'
+    ]);
+
     Route::get('lineitem', [
         'as'        => 'ora.lineitem',
         'uses'      => 'OraController@lineitem'

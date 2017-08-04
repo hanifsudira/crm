@@ -37,6 +37,7 @@
                                             <table id="datatable" class="table table-bordered table-striped">
                                                 <thead>
                                                 <tr>
+                                                    <th>TOMSOM</th>
                                                     <th>ORDER_NUM</th>
                                                     <th>ORDER_SUBTYPE</th>
                                                     <th>OH_STATUS</th>
@@ -55,6 +56,7 @@
                                                 </thead>
                                                 <tfoot>
                                                 <tr>
+                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -130,6 +132,7 @@
                 serverSide: true,
                 ajax: '{{ route('ora.oraexcelget') }}',
                 columns: [
+                    { data: 'action', name: 'action', orderable: false, searchable: false},
                     { data: 'ORDER_NUM',name: 'ORDER_NUM'},
                     { data: 'ORDER_SUBTYPE',name: 'ORDER_SUBTYPE'},
                     { data: 'OH_STATUS',name: 'OH_STATUS'},

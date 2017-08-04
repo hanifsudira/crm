@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Oracexcel,App\Oracount,App\Lireport,App\Lisummary,App\Oreport,App\Osummary;
 use Yajra\Datatables\Datatables;
 use Excel;
+use Illuminate\Support\Facades\Crypt;
 
 class OraController extends Controller
 {
@@ -16,7 +17,12 @@ class OraController extends Controller
     }
 
     public function getora(){
-        return Datatables::of(Oracexcel::all())->make(true);
+        $data = Oracexcel::all();
+        return Datatables::of($data)
+            ->addColumn('action', function ($data) {
+                return '<a target="_blank" href="' . route("ora.tomsom", Crypt::encryptString($data->ORDER_NUM)) . '" class="btn btn-block btn-xs btn-primary"><i class="glyphicon glyphicon-check"></i>Check</a>';
+            })
+            ->make(true);
     }
 
     public function downloadexcel(){
@@ -26,6 +32,62 @@ class OraController extends Controller
                 $sheet->fromArray($data);
             });
         })->download('xlsx');
+    }
+
+    public function tomsom($id){
+        $order_num =  Crypt::decryptString($id);
+        $postdata = http_build_query(array('search' => $order_num));
+        $opts = array('http' =>
+            array(
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postdata
+            )
+        );
+        $context  = stream_context_create($opts);
+        $result = file_get_contents('http://10.65.10.212/reqi/tomsom/index.php?p=search',false, $context);
+
+        $doc = new \DOMDocument();
+        $doc->validateOnParse = true;
+        libxml_use_internal_errors(true);
+        $doc->loadHTML($result);
+        $xpath = new \DOMXPath($doc);
+        $table = $xpath->query("//*[@class='table table-striped table-bordered table-hover dataTables-example']");
+
+        $noss = $table->item(0);
+        $nossrows = $noss->getElementsByTagName("tr");
+        $nossarr = array();
+        foreach ($nossrows as $row) {
+            $temp = array();
+            $cells = $row->getElementsByTagName('td');
+            foreach ($cells as $cell) {
+                array_push($temp,$cell->nodeValue);
+            }
+            array_push($nossarr,$temp);
+        }
+
+        $realnossarr = array();
+        for($i = 2;$i<sizeof($nossarr);$i++){
+            array_push($realnossarr,$nossarr[$i]);
+        }
+
+        $tenoss = $table->item(1);
+        $tenossrows = $tenoss->getElementsByTagName("tr");
+        $tenossarr = array();
+        foreach ($tenossrows as $row) {
+            $temp = array();
+            $cells = $row->getElementsByTagName('td');
+            foreach ($cells as $cell) {
+                array_push($temp,$cell->nodeValue);
+            }
+            array_push($tenossarr,$temp);
+        }
+
+        $realtenossarr = array();
+        for($i = 2;$i<sizeof($tenossarr);$i++){
+            array_push($realtenossarr,$tenossarr[$i]);
+        }
+        return view('dashboard.tomsom',['noss'=>$realnossarr, 'tenoss'=>$realtenossarr]);
     }
 
     //line item
