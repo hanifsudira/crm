@@ -102,8 +102,7 @@ class OraController extends Controller
         $output = shell_exec($command);
         $output = json_decode($output);
         $response = array(
-            'status'    => $ordernum,
-            'value'     => $output
+            'ret'     => $output
         );
         return response()->json($response);
     }
