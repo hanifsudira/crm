@@ -101,7 +101,7 @@ class OraController extends Controller
         $command = "/usr/bin/python /var/www/html/crm/public/scripts/getwp.py ".$ordernum;
         $output = shell_exec($command);
         $output = json_decode($output);
-        return view('dashboard.coajax',['data'=>$output]);
+        return view('dashboard.coajax',['data' => $output])->make();
     }
 
     //line item

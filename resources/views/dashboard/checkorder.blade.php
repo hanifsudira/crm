@@ -66,7 +66,7 @@
                         },
                         complete : function (result) {
                             $('#loading-image').hide();
-                            console.log(result.responseText.ret);
+                            console.log(result);
                         }
                     });
                 }
