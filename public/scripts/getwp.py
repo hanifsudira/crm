@@ -6,8 +6,8 @@ import cx_Oracle
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-order_num = str(sys.argv[2]).strip()
-check = sys.argv[3]
+order_num = str(sys.argv[1]).strip()
+check = str(sys.argv[2]).strip()
 
 #oracle
 con = cx_Oracle.connect('reportcrm/Telkom#2016@10.6.16.8/siebprddb')
@@ -18,6 +18,8 @@ querywwp = "select t2.order_num as ORDER#, t2.rev_num as REV, t3.name as PRODUCT
 
 
 query = querywwp if (check=='1') else querynwp
+
+print queryn
 
 result = cursor.execute(query)
 
