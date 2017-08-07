@@ -90,6 +90,20 @@ class OraController extends Controller
         return view('dashboard.tomsom',['noss'=>$realnossarr, 'tenoss'=>$realtenossarr]);
     }
 
+    //ggwp
+    public function checkorder(){
+        return view('dashborad.ggwp');
+    }
+
+    public function getcheckorder(){
+
+    }
+
+    public function getcheckorderwp(){
+
+    }
+
+
     //line item
     public function lineitem(){
         $lisummary = Lisummary::all();

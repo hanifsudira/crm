@@ -90,6 +90,11 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@order'
     ]);
 
+    Route::get('ggwp', [
+        'as'        => 'ora.ggwp',
+        'uses'      => 'OraController@ggwp'
+    ]);
+
     //get
     Route::get('oraexcelget', [
         'as'        => 'ora.oraexcelget',
