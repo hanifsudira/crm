@@ -20,6 +20,7 @@
                 </div>
             </div>
         </div>
+        <div id="response"></div>
         <div id="loading-image" style="display: none"></div>
     </section>
 @endsection
@@ -67,6 +68,7 @@
                         complete : function (result) {
                             $('#loading-image').hide();
                             console.log(result);
+                            $('#response').html(result);
                         }
                     });
                 }
