@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Oracexcel,App\Oracount,App\Lireport,App\Lisummary,App\Oreport,App\Osummary;
 use Yajra\Datatables\Datatables;
 use Excel;
@@ -95,8 +96,16 @@ class OraController extends Controller
         return view('dashboard.checkorder');
     }
 
-    public function getcheckorder(){
-
+    public function getcheckorder(Request $request){
+        $ordernum = $request->order;
+        $command = "/usr/bin/python /var/www/html/crm/public/scripts/getwp.py ".$ordernum;
+        $output = shell_exec($command);
+//        $output = json_encode($output);
+        $response = array(
+            'status'    => $ordernum,
+            'value'     => $output
+        );
+        return response()->json($response);
     }
 
     //line item

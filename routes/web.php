@@ -95,6 +95,7 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@checkorder'
     ]);
 
+
     //get
     Route::get('oraexcelget', [
         'as'        => 'ora.oraexcelget',
@@ -116,7 +117,10 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@getoreport'
     ]);
 
-
+    Route::post('getcheckorder', [
+        'as'        => 'ora.getcheckorder',
+        'uses'      => 'OraController@getcheckorder'
+    ]);
 
 });
 

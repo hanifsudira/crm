@@ -11,28 +11,66 @@
     </section>
 
     <section class="content">
-        <div class="error-page">
-            <h2 class="headline text-yellow"> 404</h2>
-
-            <div class="error-content">
-                <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
-
-                <p>
-                    We could not find the page you were looking for.
-                    Meanwhile, you may <a href="../../index.html">return to dashboard</a> or try using the search form.
-                </p>
-
-                <form class="search-form">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="search-form">
                     <div class="input-group">
-                        <input type="text" name="search" class="form-control" placeholder="Search">
-
-                        <div class="input-group-btn">
-                            <button type="submit" name="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i>
-                            </button>
-                        </div>
+                        <input type="text" id="ordernum" name="search" class="form-control" placeholder="Search">
                     </div>
-                </form>
+                </div>
             </div>
         </div>
+        <div id="loading-image" style="display: none"></div>
     </section>
+@endsection
+@section('css')
+    <style>
+        #loading-image{
+            position:fixed;
+            top:0px;
+            right:0px;
+            width:100%;
+            height:100%;
+            background-color:#666;
+            background-image:url('{{ URL::asset('assets/img/loader.gif')}}');
+            background-repeat:no-repeat;
+            background-position:center;
+            z-index:10000000;
+            opacity: 0.4;
+        }
+    </style>
+@endsection
+@section('js')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#ordernum").on('keyup', function (e) {
+                if (e.keyCode == 13) {
+                    e.preventDefault();
+                    var ordernum = $("#ordernum").val();
+                    $('#loading-image').show();
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type    : 'POST',
+                        url     : '{{ route('ora.getcheckorder') }}',
+                        data    : {order: ordernum},
+                        dataType: 'json',
+                        succes  : function () {
+                            console.log('tambah');
+                        },
+                        error   : function (xhr, status, error) {
+                            console.log(xhr);
+                            console.log(status);
+                            console.log(error);
+                        },
+                        complete : function (result) {
+                            $('#loading-image').hide();
+                            console.log(result.responseText);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
