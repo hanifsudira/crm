@@ -100,7 +100,7 @@ class OraController extends Controller
         $ordernum = $request->order;
         $command = "/usr/bin/python /var/www/html/crm/public/scripts/getwp.py ".$ordernum;
         $output = shell_exec($command);
-//        $output = json_encode($output);
+        $output = json_decode($output);
         $response = array(
             'status'    => $ordernum,
             'value'     => $output

@@ -57,7 +57,7 @@
                         data    : {order: ordernum},
                         dataType: 'json',
                         succes  : function () {
-                            console.log('tambah');
+                            console.log('Sukses');
                         },
                         error   : function (xhr, status, error) {
                             console.log(xhr);
@@ -66,7 +66,7 @@
                         },
                         complete : function (result) {
                             $('#loading-image').hide();
-                            console.log(result.responseText);
+                            console.log(result.responseText.value);
                         }
                     });
                 }
