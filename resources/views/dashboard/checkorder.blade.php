@@ -56,7 +56,6 @@
                         type    : 'POST',
                         url     : '{{ route('ora.getcheckorder') }}',
                         data    : {order: ordernum},
-                        dataType: 'json',
                         succes  : function () {
                             console.log('Sukses');
                         },
