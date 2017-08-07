@@ -92,17 +92,12 @@ class OraController extends Controller
 
     //ggwp
     public function checkorder(){
-        return view('dashborad.ggwp');
+        return view('dashborad.checkorder');
     }
 
     public function getcheckorder(){
 
     }
-
-    public function getcheckorderwp(){
-
-    }
-
 
     //line item
     public function lineitem(){

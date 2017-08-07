@@ -90,9 +90,9 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@order'
     ]);
 
-    Route::get('ggwp', [
-        'as'        => 'ora.ggwp',
-        'uses'      => 'OraController@ggwp'
+    Route::get('checkorder', [
+        'as'        => 'ora.checkorder',
+        'uses'      => 'OraController@checkorder'
     ]);
 
     //get
