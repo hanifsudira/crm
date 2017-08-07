@@ -22,7 +22,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if sizeof($data[0]==13)
+                    @if (count($data[0])==13)
                         @foreach($data as $d)
                             <tr>
                                 <td>{{$d[0]}}</td>
