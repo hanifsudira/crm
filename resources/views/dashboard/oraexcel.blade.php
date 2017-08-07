@@ -36,22 +36,39 @@
                                         <div class="box-body">
                                             <table id="datatable" class="table table-bordered table-striped">
                                                 <thead>
+                                                {{--<tr>--}}
+                                                    {{--<th>TOMSOM</th>--}}
+                                                    {{--<th>ORDER_NUM</th>--}}
+                                                    {{--<th>ORDER_SUBTYPE</th>--}}
+                                                    {{--<th>OH_STATUS</th>--}}
+                                                    {{--<th>MOLI_ROW_ID</th>--}}
+                                                    {{--<th>MOLI_CREATED_DT</th>--}}
+                                                    {{--<th>MOLI_LAST_UPDATED_DT</th>--}}
+                                                    {{--<th>MOLI_PRODUCT_NAME</th>--}}
+                                                    {{--<th>MOLI_STATUS</th>--}}
+                                                    {{--<th>MOLI_FULFILLMENT_STATUS</th>--}}
+                                                    {{--<th>MOLI_MILESTONE</th>--}}
+                                                    {{--<th>MOLI_SERVICE_ID</th>--}}
+                                                    {{--<th>MOLI_ASSET_INTEG_ID</th>--}}
+                                                    {{--<th>MOLI_BILL_</th>--}}
+                                                    {{--<th>MOLI_AGREE_NUM</th>--}}
+                                                {{--</tr>--}}
                                                 <tr>
                                                     <th>TOMSOM</th>
                                                     <th>ORDER_NUM</th>
+                                                    <th>MOLI_ASSET_INTEG_ID</th>
+                                                    <th>MOLI_PRODUCT_NAME</th>
                                                     <th>ORDER_SUBTYPE</th>
                                                     <th>OH_STATUS</th>
-                                                    <th>MOLI_ROW_ID</th>
-                                                    <th>MOLI_CREATED_DT</th>
-                                                    <th>MOLI_LAST_UPDATED_DT</th>
-                                                    <th>MOLI_PRODUCT_NAME</th>
                                                     <th>MOLI_STATUS</th>
                                                     <th>MOLI_FULFILLMENT_STATUS</th>
                                                     <th>MOLI_MILESTONE</th>
+                                                    <th>MOLI_CREATED_DT</th>
+                                                    <th>MOLI_LAST_UPDATED_DT</th>
+                                                    <th>MOLI_ROW_ID</th>
                                                     <th>MOLI_SERVICE_ID</th>
-                                                    <th>MOLI_ASSET_INTEG_ID</th>
-                                                    <th>MOLI_BILL_</th>
                                                     <th>MOLI_AGREE_NUM</th>
+                                                    <th>MOLI_BILL_</th>
                                                 </tr>
                                                 </thead>
                                                 <tfoot>
@@ -123,6 +140,15 @@
         </div>
     </section>
 @endsection
+@section('css')
+<style>
+    tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
+</style>
+@endsection
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
@@ -134,22 +160,22 @@
                 columns: [
                     { data: 'action', name: 'action', orderable: false, searchable: false},
                     { data: 'ORDER_NUM',name: 'ORDER_NUM'},
+                    { data: 'MOLI_ASSET_INTEG_ID',name: 'MOLI_ASSET_INTEG_ID'},
+                    { data: 'MOLI_PRODUCT_NAME',name: 'MOLI_PRODUCT_NAME'},
                     { data: 'ORDER_SUBTYPE',name: 'ORDER_SUBTYPE'},
                     { data: 'OH_STATUS',name: 'OH_STATUS'},
-                    { data: 'MOLI_ROW_ID',name: 'MOLI_ROW_ID'},
-                    { data: 'MOLI_CREATED_DT',name: 'MOLI_CREATED_DT'},
-                    { data: 'MOLI_LAST_UPDATED_DT',name: 'MOLI_LAST_UPDATED_DT'},
-                    { data: 'MOLI_PRODUCT_NAME',name: 'MOLI_PRODUCT_NAME'},
                     { data: 'MOLI_STATUS',name: 'MOLI_STATUS'},
                     { data: 'MOLI_FULFILLMENT_STATUS',name: 'MOLI_FULFILLMENT_STATUS'},
                     { data: 'MOLI_MILESTONE',name: 'MOLI_MILESTONE'},
+                    { data: 'MOLI_CREATED_DT',name: 'MOLI_CREATED_DT'},
+                    { data: 'MOLI_LAST_UPDATED_DT',name: 'MOLI_LAST_UPDATED_DT'},
+                    { data: 'MOLI_ROW_ID',name: 'MOLI_ROW_ID'},
                     { data: 'MOLI_SERVICE_ID',name: 'MOLI_SERVICE_ID'},
-                    { data: 'MOLI_ASSET_INTEG_ID',name: 'MOLI_ASSET_INTEG_ID'},
-                    { data: 'MOLI_BILL_',name: 'MOLI_BILL_'},
-                    { data: 'MOLI_AGREE_NUM',name: 'MOLI_AGREE_NUM'}
+                    { data: 'MOLI_AGREE_NUM',name: 'MOLI_AGREE_NUM'},
+                    { data: 'MOLI_BILL_',name: 'MOLI_BILL_'}
                 ],
                 initComplete: function () {
-                    this.api().columns([4,7,9]).every(function () {
+                    this.api().columns([3,5,6,7,8]).every(function () {
                         var column = this;
                         var input = document.createElement("input");
                         $(input).appendTo($(column.footer()).empty())
