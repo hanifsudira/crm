@@ -7,7 +7,8 @@
                     <thead>
                     <tr>
                         <th>ORDER#</th>
-                        <th>REV PRODUCT</th>
+                        <th>REV</th>
+                        <th>PRODUCT</th>
                         <th>OH_STATUS</th>
                         <th>LI_STATUS</th>
                         <th>MILESTONE</th>
@@ -33,6 +34,9 @@
                             <td>{{$d[7]}}</td>
                             <td>{{$d[8]}}</td>
                             <td>{{$d[9]}}</td>
+                            <td>{{$d[10]}}</td>
+                            <td>{{$d[11]}}</td>
+                            <td>{{$d[12]}}</td>
                         </tr>
                     @endforeach
                     </tbody>
