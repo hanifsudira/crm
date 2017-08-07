@@ -40,7 +40,7 @@
                                 <td>{{$d[12]}}</td>
                             </tr>
                         @endforeach
-                    @elseif
+                    @else
                         @foreach($data as $d)
                             <tr>
                                 <td>{{$d[0]}}</td>
