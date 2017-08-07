@@ -68,7 +68,7 @@
                         complete : function (result) {
                             $('#loading-image').hide();
                             console.log(result);
-                            $('#response').html(result);
+                            $('#response').html(result.responseText);
                         }
                     });
                 }
