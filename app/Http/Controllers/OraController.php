@@ -152,7 +152,10 @@ class OraController extends Controller
 
     //nossf-tenoss
     public function nossftenoss(){
-
+        $command = "/usr/bin/python /var/www/html/crm/public/scripts/getnt.py";
+        $output = shell_exec($command);
+        $output = json_decode($output);
+        var_dump($output);
     }
 
 }
