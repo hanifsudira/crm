@@ -132,6 +132,11 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@getcheckorder'
     ]);
 
+    Route::get('getnossftenoss', [
+        'as'        => 'ora.getnossftenoss',
+        'uses'      => 'OraController@getnossftenoss'
+    ]);
+
 });
 
 Route::group(['prefix' => 'force'], function () {
