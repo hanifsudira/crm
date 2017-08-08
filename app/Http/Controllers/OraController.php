@@ -116,6 +116,15 @@ class OraController extends Controller
         return Datatables::of(Lireport::all())->make(true);
     }
 
+    public function downloadexcelli(){
+        $data =  Lisummary::all()->toArray();
+        return Excel::create('line_item', function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        })->download('xlsx');
+    }
+
     //order
     public function order(){
         $osummary = Osummary::all();

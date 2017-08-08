@@ -36,23 +36,6 @@
                                         <div class="box-body">
                                             <table id="datatable" class="table table-bordered table-striped">
                                                 <thead>
-                                                {{--<tr>--}}
-                                                    {{--<th>TOMSOM</th>--}}
-                                                    {{--<th>ORDER_NUM</th>--}}
-                                                    {{--<th>ORDER_SUBTYPE</th>--}}
-                                                    {{--<th>OH_STATUS</th>--}}
-                                                    {{--<th>MOLI_ROW_ID</th>--}}
-                                                    {{--<th>MOLI_CREATED_DT</th>--}}
-                                                    {{--<th>MOLI_LAST_UPDATED_DT</th>--}}
-                                                    {{--<th>MOLI_PRODUCT_NAME</th>--}}
-                                                    {{--<th>MOLI_STATUS</th>--}}
-                                                    {{--<th>MOLI_FULFILLMENT_STATUS</th>--}}
-                                                    {{--<th>MOLI_MILESTONE</th>--}}
-                                                    {{--<th>MOLI_SERVICE_ID</th>--}}
-                                                    {{--<th>MOLI_ASSET_INTEG_ID</th>--}}
-                                                    {{--<th>MOLI_BILL_</th>--}}
-                                                    {{--<th>MOLI_AGREE_NUM</th>--}}
-                                                {{--</tr>--}}
                                                 <tr>
                                                     <th>TOMSOM</th>
                                                     <th>ORDER_NUM</th>

@@ -31,6 +31,9 @@
                                 <div class="col-xs-12">
                                     <div class="box">
                                         <div class="box-body">
+                                            <a href="{{ Route('ora.downloadexcelli') }}" class="btn btn-app" id="btn-upload"><i class="fa fa-cloud-upload"></i>Export Excel</a>
+                                        </div>
+                                        <div class="box-body">
                                             <table id="datatable" class="table table-bordered table-striped">
                                                 <thead>
                                                 <tr>
