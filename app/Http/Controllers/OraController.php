@@ -159,9 +159,10 @@ class OraController extends Controller
     public function getnossftenoss(){
         $command = "/usr/bin/python /var/www/html/crm/public/scripts/getnt.py";
         $output = shell_exec($command);
-        $output = json_decode($output);
+        $output = json_decode($output, true);
         foreach($output as $subKey => $subArray){
             unset($subArray['#text']);
+            $output[$subKey] = $subArray;
         }
         return Datatables::of($output)->make(true);
     }
