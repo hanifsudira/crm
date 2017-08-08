@@ -2,11 +2,11 @@
 @section('title', 'Nossf-Tenoss')
 @section('content')
     <section class="content-header">
-        <h1>Line Items</h1>
+        <h1>NOSSF-TENOSS</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li>Oracle</li>
-            <li class="active">Line Items</li>
+            <li class="active">Nossf-Tenoss</li>
         </ol>
     </section>
     <section class="content">
