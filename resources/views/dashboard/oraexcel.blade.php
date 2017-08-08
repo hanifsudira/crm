@@ -136,9 +136,11 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var table =  $('#datatable').DataTable({
+                responsive: true,
                 scrollX: true,
                 processing: true,
                 serverSide: true,
+                bSortCellsTop : true,
                 ajax: '{{ route('ora.oraexcelget') }}',
                 columns: [
                     { data: 'action', name: 'action', orderable: false, searchable: false},
@@ -156,18 +158,19 @@
                     { data: 'MOLI_SERVICE_ID',name: 'MOLI_SERVICE_ID'},
                     { data: 'MOLI_AGREE_NUM',name: 'MOLI_AGREE_NUM'},
                     { data: 'MOLI_BILL_',name: 'MOLI_BILL_'}
-                ],
-                initComplete: function () {
-                    this.api().columns([3,5,6,7,8]).every(function () {
+                ],initComplete: function () {
+                    this.api().columns([3,4,5,6,7,8]).every(function () {
                         var column = this;
                         var input = document.createElement("input");
                         $(input).appendTo($(column.footer()).empty())
                             .on('change', function () {
-                                column.search($(this).val(), false, false, true).draw();
+                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
+                                column.search(val ? val : '', true, false).draw();
                             });
                     });
                 }
             });
+
         });
     </script>
 @endsection

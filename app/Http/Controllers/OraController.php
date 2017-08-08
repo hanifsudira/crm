@@ -150,4 +150,9 @@ class OraController extends Controller
         redirect('force.oracount');
     }
 
+    //nossf-tenoss
+    public function nossftenoss(){
+
+    }
+
 }
