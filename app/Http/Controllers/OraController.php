@@ -162,10 +162,10 @@ class OraController extends Controller
         $output = json_decode($output, true);
         foreach($output as $subKey => $subArray){
             unset($subArray['#text']);
-            $subArray['TSQ_STATE'] = is_string($subArray['TSQ_STATE']) ? $subArray['TSQ_STATE'] : null;
-            $subArray['TSQ_DESC'] = is_string($subArray['TSQ_DESC']) ? $subArray['TSQ_DESC'] : null;
-            $subArray['DELIVER_STATE'] = is_string($subArray['DELIVER_STATE']) ? $subArray['DELIVER_STATE'] : null;
-            $subArray['DELIVER_DESC'] = is_string($subArray['DELIVER_DESC']) ? $subArray['DELIVER_DESC'] : null;
+            $subArray['TSQ_STATE'] = is_string($subArray['TSQ_STATE']) ? $subArray['TSQ_STATE'] : 'None';
+            $subArray['TSQ_DESC'] = is_string($subArray['TSQ_DESC']) ? $subArray['TSQ_DESC'] : 'None';
+            $subArray['DELIVER_STATE'] = is_string($subArray['DELIVER_STATE']) ? $subArray['DELIVER_STATE'] : 'None';
+            $subArray['DELIVER_DESC'] = is_string($subArray['DELIVER_DESC']) ? $subArray['DELIVER_DESC'] : 'None';
             $output[$subKey] = $subArray;
         }
         return Datatables::of($output)->make(true);
