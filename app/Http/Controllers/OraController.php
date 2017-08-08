@@ -160,6 +160,6 @@ class OraController extends Controller
         $command = "/usr/bin/python /var/www/html/crm/public/scripts/getnt.py";
         $output = shell_exec($command);
         $output = json_decode($output);
-        return Datatables::eloquent($output)->make(true);
+        return Datatables::of($output)->make(true);
     }
 }
