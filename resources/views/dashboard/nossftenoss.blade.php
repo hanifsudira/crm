@@ -37,28 +37,25 @@
     </section>
 @endsection
 @section('js')
-    {{--<script type="text/javascript">--}}
-        {{--$(document).ready(function() {--}}
-            {{--var table =  $('#datatable').DataTable({--}}
-                {{--scrollX: true,--}}
-                {{--processing: true,--}}
-                {{--serverSide: true,--}}
-                {{--ajax: '{{ route('ora.getlireport') }}',--}}
-                {{--columns: [--}}
-                    {{--{ data: 'ORDER_NUM',name: 'ORDER_NUM'},--}}
-                    {{--{ data: 'REV',name: 'REV'},--}}
-                    {{--{ data: 'PRODUCT',name: 'PRODUCT'},--}}
-                    {{--{ data: 'OH_STATUS',name: 'OH_STATUS'},--}}
-                    {{--{ data: 'LI_STATUS',name: 'LI_STATUS'},--}}
-                    {{--{ data: 'MILESTONE',name: 'MILESTONE'},--}}
-                    {{--{ data: 'ORDER_SUBTYPE',name: 'ORDER_SUBTYPE'},--}}
-                    {{--{ data: 'CREATED_AT',name: 'CREATED_AT'},--}}
-                    {{--{ data: 'FULFILL_STATUS',name: 'FULFILL_STATUS'},--}}
-                    {{--{ data: 'ACC_NAS',name: 'ACC_NAS'},--}}
-                    {{--{ data: 'NIPNAS',name: 'NIPNAS'},--}}
-                    {{--{ data: 'SID_NUM',name: 'SID_NUM'}--}}
-                {{--]--}}
-            {{--});--}}
-        {{--});--}}
-    {{--</script>--}}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var table =  $('#datatable').DataTable({
+                scrollX: true,
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route('ora.getnossftenoss') }}',
+                columns: [
+                    { data: 'CRMORDERID',name: 'CRMORDERID'},
+                    { data: 'INSTALLEDPRODUCTID',name: 'INSTALLEDPRODUCTID'},
+                    { data: 'EXTERNALID',name: 'EXTERNALID'},
+                    { data: 'PRODUCTNAME',name: 'PRODUCTNAME'},
+                    { data: 'ORDERTYPE',name: 'ORDERTYPE'},
+                    { data: 'TSQ_STATE',name: 'TSQ_STATE'},
+                    { data: 'TSQ_DESC',name: 'TSQ_DESC'},
+                    { data: 'DELIVER_STATE',name: 'DELIVER_STATE'},
+                    { data: 'DELIVER_DESC',name: 'DELIVER_DESC'}
+                ]
+            });
+        });
+    </script>
 @endsection
