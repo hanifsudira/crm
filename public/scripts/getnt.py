@@ -17,4 +17,4 @@ body =  """
 response = requests.post(url, data=body, headers=headers)
 
 d = xmltodict.parse(response.text, xml_attribs=True)
-print json.dumps(d, indent=4)
+print json.dumps(d, indent=4)['SOAP-ENV:Envelope']['SOAP-ENV:Body']['ser-root:getTOMSOMALLDataResponse']['DATA']
