@@ -140,7 +140,6 @@
                 scrollX: true,
                 processing: true,
                 serverSide: true,
-//                bSortCellsTop : true,
                 aLengthMenu: [5, 10, 25, 50],
                 ajax: '{{ route('ora.oraexcelget') }}',
                 columns: [
@@ -160,7 +159,7 @@
                     { data: 'MOLI_AGREE_NUM',name: 'MOLI_AGREE_NUM'},
                     { data: 'MOLI_BILL_',name: 'MOLI_BILL_'}
                 ],initComplete: function () {
-                    this.api().columns([3,4,5,6,7,8]).every(function () {
+                    this.api().columns().every(function () {
                         var column = this;
                         var input = document.createElement("input");
                         $(input).appendTo($(column.footer()).empty())
