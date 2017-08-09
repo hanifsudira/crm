@@ -140,7 +140,8 @@
                 scrollX: true,
                 processing: true,
                 serverSide: true,
-                bSortCellsTop : true,
+//                bSortCellsTop : true,
+                aLengthMenu: [5, 10, 25, 50],
                 ajax: '{{ route('ora.oraexcelget') }}',
                 columns: [
                     { data: 'action', name: 'action', orderable: false, searchable: false},

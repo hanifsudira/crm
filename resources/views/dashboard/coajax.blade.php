@@ -22,42 +22,44 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if(count($data[0])==13)
-                        @foreach($data as $d)
-                            <tr>
-                                <td>{{$d[0]}}</td>
-                                <td>{{$d[1]}}</td>
-                                <td>{{$d[2]}}</td>
-                                <td>{{$d[3]}}</td>
-                                <td>{{$d[4]}}</td>
-                                <td>{{$d[5]}}</td>
-                                <td>{{$d[6]}}</td>
-                                <td>{{$d[7]}}</td>
-                                <td>{{$d[8]}}</td>
-                                <td>{{$d[9]}}</td>
-                                <td>{{$d[10]}}</td>
-                                <td>{{$d[11]}}</td>
-                                <td>{{$d[12]}}</td>
-                            </tr>
-                        @endforeach
-                    @else
-                        @foreach($data as $d)
-                            <tr>
-                                <td>{{$d[0]}}</td>
-                                <td>{{$d[1]}}</td>
-                                <td>{{$d[2]}}</td>
-                                <td>{{$d[3]}}</td>
-                                <td>{{$d[4]}}</td>
-                                <td>{{$d[5]}}</td>
-                                <td>{{$d[6]}}</td>
-                                <td>{{$d[7]}}</td>
-                                <td>{{$d[8]}}</td>
-                                <td>{{$d[9]}}</td>
-                                <td></td>
-                                <td>{{$d[10]}}</td>
-                                <td>{{$d[11]}}</td>
-                            </tr>
-                        @endforeach
+                    @if(isset($data[0]))
+                        @if(count($data[0])==13)
+                            @foreach($data as $d)
+                                <tr>
+                                    <td>{{$d[0]}}</td>
+                                    <td>{{$d[1]}}</td>
+                                    <td>{{$d[2]}}</td>
+                                    <td>{{$d[3]}}</td>
+                                    <td>{{$d[4]}}</td>
+                                    <td>{{$d[5]}}</td>
+                                    <td>{{$d[6]}}</td>
+                                    <td>{{$d[7]}}</td>
+                                    <td>{{$d[8]}}</td>
+                                    <td>{{$d[9]}}</td>
+                                    <td>{{$d[10]}}</td>
+                                    <td>{{$d[11]}}</td>
+                                    <td>{{$d[12]}}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            @foreach($data as $d)
+                                <tr>
+                                    <td>{{$d[0]}}</td>
+                                    <td>{{$d[1]}}</td>
+                                    <td>{{$d[2]}}</td>
+                                    <td>{{$d[3]}}</td>
+                                    <td>{{$d[4]}}</td>
+                                    <td>{{$d[5]}}</td>
+                                    <td>{{$d[6]}}</td>
+                                    <td>{{$d[7]}}</td>
+                                    <td>{{$d[8]}}</td>
+                                    <td>{{$d[9]}}</td>
+                                    <td></td>
+                                    <td>{{$d[10]}}</td>
+                                    <td>{{$d[11]}}</td>
+                                </tr>
+                            @endforeach
+                        @endif
                     @endif
                     </tbody>
                 </table>

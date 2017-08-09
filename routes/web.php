@@ -69,6 +69,17 @@ Route::group(['prefix' => 'feedback'], function () {
     ]);
 });
 
+Route::group(['prefix' => 'com'], function () {
+    Route::get('input', [
+        'as'        => 'feedback.input',
+        'uses'      => 'FeedbackController@index'
+    ]);
+    Route::post('store', [
+        'as'        => 'feedback.store',
+        'uses'      => 'FeedbackController@store'
+    ]);
+});
+
 Route::group(['prefix' => 'ora'], function () {
     Route::get('oraexcel', [
         'as'        => 'ora.oraexcel',
