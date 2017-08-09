@@ -22,7 +22,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if(isset($data[0]))
+                    @if($data)
                         @if(count($data[0])==13)
                             @foreach($data as $d)
                                 <tr>
