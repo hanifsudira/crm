@@ -170,4 +170,12 @@ class OraController extends Controller
         }
         return Datatables::of($output)->make(true);
     }
+
+    //com
+
+    public function allcom(){
+        $result = file_get_contents('http://10.65.10.212/reqi/comaia/json.php?crmid=all',false);
+        $result = json_decode($result);
+        var_dump($result);
+    }
 }

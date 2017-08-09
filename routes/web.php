@@ -100,6 +100,11 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@nossftenoss'
     ]);
 
+    Route::get('allcom', [
+        'as'        => 'ora.allcom',
+        'uses'      => 'OraController@allcom'
+    ]);
+
 
     //get
     Route::get('oraexcelget', [
