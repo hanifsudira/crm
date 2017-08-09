@@ -22,7 +22,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if($data)
+                    @if(is_array($data))
                         @if(count($data[0])==13)
                             @foreach($data as $d)
                                 <tr>
