@@ -176,7 +176,11 @@ class OraController extends Controller
     public function allcom(){
         $com = file_get_contents('http://10.65.10.212/reqi/comaia/json.php?crmid=all',false);
         $com = json_decode($com);
-        $siebel = Oracexcel::select('ORDER_NUM')->groupBy('ORDER_NUM')->get()->toJson();
+        $ordnumquery = Oracexcel::select('ORDER_NUM')->groupBy('ORDER_NUM')->get()->toArray();
+        $siebel = array();
+        foreach ($ordnumquery as $d){
+            array_push($siebel,$d['ORDER_NUM']);
+        }
         var_dump($siebel);
     }
 
