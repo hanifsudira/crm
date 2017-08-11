@@ -105,6 +105,15 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@allcom'
     ]);
 
+    Route::get('exploreora', [
+        'as'        => 'ora.exploreora',
+        'uses'      => 'OraController@exploreora'
+    ]);
+
+    Route::get('test', function() {
+        dd (DB::connection('oracle')->getPdo());
+    });
+
 
     //get
     Route::get('oraexcelget', [
