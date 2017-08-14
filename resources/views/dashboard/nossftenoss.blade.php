@@ -14,7 +14,6 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-body">
-                        <h1>Result</h1>
                         <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
                             <thead>
                             <tr>

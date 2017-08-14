@@ -17,6 +17,7 @@
                 <li><a href="{{route('ora.lineitem')}}"><i class="fa fa-circle-o"></i>Line Item</a></li>
                 <li><a href="{{route('ora.order')}}"><i class="fa fa-circle-o"></i>Order</a></li>
                 <li><a href="{{route('ora.nossftenoss')}}"><i class="fa fa-circle-o"></i>Nossf-Tenoss</a></li>
+                <li><a href="{{route('ora.com')}}"><i class="fa fa-circle-o"></i>COM</a></li>
             </ul>
         </li>
     </ul>

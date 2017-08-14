@@ -100,9 +100,14 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@nossftenoss'
     ]);
 
-    Route::get('allcom', [
-        'as'        => 'ora.allcom',
-        'uses'      => 'OraController@allcom'
+    Route::get('getcom', [
+        'as'        => 'ora.getcom',
+        'uses'      => 'OraController@getcom'
+    ]);
+
+    Route::get('com', [
+        'as'        => 'ora.com',
+        'uses'      => 'OraController@com'
     ]);
 
     Route::get('exploreora', [
