@@ -186,7 +186,7 @@ class OraController extends Controller
                 $temp = array(
                     'ID'    => $d['ORDER_NUM'],
                     'ORD_CREATION_DATE' => $com[$ordernum]['ORD_CREATION_DATE'],
-                    'ORD_COMPLETION_DATE' => $com[$ordernum]['ORD_COMPLETION_DATE'],
+                    'ORD_COMPLETION_DATE' => $com[$ordernum]['ORD_COMPLETION_DATE'] == '31-DEC-99' ? 'Process' : $com[$ordernum]['ORD_COMPLETION_DATE'],
                     'TASK_MNEMONIC' => $com[$ordernum]['TASK_MNEMONIC'],
                 );
                 array_push($allcom,$temp);
