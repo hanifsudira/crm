@@ -136,7 +136,7 @@
 		$.getJSON("{{ route('home.getbydate') }}", function (result) {
 			var labels = [],data=[];
 			for (var i = 0; i < result.length; i++) {
-				labels.push(result[i].date);
+				labels.push(result[i].tanggal);
 				data.push(result[i].count);
 			}
 			var data = {

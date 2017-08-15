@@ -45,9 +45,10 @@ class HomeController extends Controller
     }
 
     public function getbydate(){
-        $temp = DB::table('crm')
-            ->select(DB::raw('count(*) as count, date'))
-            ->groupBy('date')->get();
+//        $temp = DB::table('crm')
+//            ->select(DB::raw('count(*) as count, date'))
+//            ->groupBy('date')->get();
+        $temp = DB::select('select * from (select count(date) as count, date as tanggal from crm group by tanggal order by tanggal desc limit 10) as t order by tanggal');
         return $temp;
     }
 
