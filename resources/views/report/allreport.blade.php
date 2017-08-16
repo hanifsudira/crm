@@ -31,42 +31,75 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @for($i=0;$i<21;$i++)
+                                {{--@for($i=0;$i<21;$i++)--}}
+                                    {{--<tr>--}}
+                                        {{--@if($i-1>-1 and $status[$i]==$status[$i-1])--}}
+                                            {{--<td></td>--}}
+                                        {{--@else($i)--}}
+                                            {{--<td>{{$status[$i]}}</td>--}}
+                                        {{--@endif--}}
+
+                                        {{--<td>{{$milestone[$i]}}</td>--}}
+                                        {{--@php--}}
+                                            {{--$temp = null;--}}
+                                            {{--foreach ($data as $pivot){--}}
+                                                {{--if($pivot->moli_status==$status[$i] and $pivot->moli_milestone==$milestone[$i]){--}}
+                                                    {{--$temp = $pivot;--}}
+                                                    {{--break;--}}
+                                                {{--}--}}
+                                            {{--}--}}
+                                        {{--@endphp--}}
+                                        {{--@if($temp)--}}
+                                            {{--<td>{{$pivot->do}}</td>--}}
+                                            {{--<td>{{$pivot->mo}}</td>--}}
+                                            {{--<td>{{$pivot->ao}}</td>--}}
+                                            {{--<td>{{$pivot->ro}}</td>--}}
+                                            {{--<td>{{$pivot->so}}</td>--}}
+                                            {{--<td></td>--}}
+                                            {{--<td></td>--}}
+                                            {{--<td></td>--}}
+                                            {{--<td></td>--}}
+                                        {{--@else--}}
+                                            {{--<td>0</td>--}}
+                                            {{--<td>0</td>--}}
+                                            {{--<td>0</td>--}}
+                                            {{--<td>0</td>--}}
+                                            {{--<td>0</td>--}}
+                                            {{--<td></td>--}}
+                                            {{--<td></td>--}}
+                                            {{--<td></td>--}}
+                                            {{--<td></td>--}}
+                                        {{--@endif--}}
+                                    {{--</tr>--}}
+                                {{--@endfor--}}
+                                @for($i=0;$i<count($data);$i++)
                                     <tr>
-                                        <td>{{$status[$i]}}</td>
-                                        <td>{{$milestone[$i]}}</td>
-                                        @if($data[$i]!=null)
+                                        @if($i-1>-1 and $data[$i]->moli_status==$data[$i-1]->moli_status)
+                                            <td></td>
+                                        @else($i)
+                                            <td>{{$data[$i]->moli_status}}</td>
+                                        @endif
+                                            <td>{{$data[$i]->moli_milestone}}</td>
                                             <td>{{$data[$i]->do}}</td>
                                             <td>{{$data[$i]->mo}}</td>
                                             <td>{{$data[$i]->ao}}</td>
                                             <td>{{$data[$i]->ro}}</td>
                                             <td>{{$data[$i]->so}}</td>
+                                            <td>{{$ver[$i]}}</td>
                                             <td></td>
+                                            <td>{{number_format($ver[$i]/($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]),2).'%'}}</td>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        @else
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        @endif
                                     </tr>
                                 @endfor
                                 <tr>
-                                    <td>Total</td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$hor[0]}}</td>
+                                    <td>{{$hor[1]}}</td>
+                                    <td>{{$hor[2]}}</td>
+                                    <td>{{$hor[3]}}</td>
+                                    <td>{{$hor[4]}}</td>
+                                    <td>{{$hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>

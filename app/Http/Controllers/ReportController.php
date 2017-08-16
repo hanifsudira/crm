@@ -14,77 +14,48 @@ class ReportController extends Controller
                                 count(case when ORDER_SUBTYPE=\'new install\' then 1 end) ao,
                                 count(case when ORDER_SUBTYPE=\'resume\' then 1 end) ro,
                                 count(case when ORDER_SUBTYPE=\'suspend\' then 1 end) so
-                            from crm_dashboard.oraexcel pt group by moli_milestone,moli_status');
-        $data = array();
-        foreach ($pivot as $d){
-            $data[0] = ($d->moli_status=='Pending' and $d->moli_milestone='None') ? $d : null;
-            $data[1] = ($d->moli_status=='Submitted' and $d->moli_milestone='None') ? $d : null;
-            $data[2] = ($d->moli_status=='In Progress' and $d->moli_milestone='None') ? $d : null;
-            $data[3] = ($d->moli_status=='In Progress' and $d->moli_milestone='SYNC CUSTOMER START') ? $d : null;
-            $data[4] = ($d->moli_status=='In Progress' and $d->moli_milestone='SYNC CUSTOMER COMPLETE') ? $d : null;
-            $data[5] = ($d->moli_status=='In Progress' and $d->moli_milestone='PROVISION START') ? $d : null;
-            $data[6] =($d->moli_status=='In Progress' and $d->moli_milestone='PROVISION ISSUED') ? $d : null;
-            $data[7] =($d->moli_status=='Pending BASO' and $d->moli_milestone='PROVISION COMPLETE') ? $d : null;
-            $data[8] =($d->moli_status=='Pending BASO' and $d->moli_milestone='BASO STARTED') ? $d : null;
-            $data[9] =($d->moli_status=='Pending Billing Approval' and $d->moli_milestone='BILLING APPROVAL STARTED') ? $d : null;
-            $data[10] =($d->moli_status=='Pending Billing Approval' and $d->moli_milestone='FULFILL BILLING START') ? $d : null;
-            $data[11] =($d->moli_status=='Complete' and $d->moli_milestone='PROVISION COMPLETE') ? $d : null;
-            $data[12] =($d->moli_status=='Complete' and $d->moli_milestone='FULFILL BILLING COMPLETE') ? $d : null;
-            $data[13] =($d->moli_status=='Failed' and $d->moli_milestone='SYNC CUSTOMER START') ? $d : null;
-            $data[14] =($d->moli_status=='Pending Cancel' and $d->moli_milestone='None') ? $d : null;
-            $data[15] =($d->moli_status=='Pending Cancel' and $d->moli_milestone='SYNC CUSTOMER START') ? $d : null;
-            $data[16] =($d->moli_status=='Pending Cancel' and $d->moli_milestone='SYNC CUSTOMER COMPLETE') ? $d : null;
-            $data[17] =($d->moli_status=='Pending Cancel' and $d->moli_milestone='PROVISION START') ? $d : null;
-            $data[18] =($d->moli_status=='Pending Cancel' and $d->moli_milestone='PROVISION COMPLETE') ? $d : null;
-            $data[19] =($d->moli_status=='Cancelled' and $d->moli_milestone='None') ? $d : null;
-            $data[20] =($d->moli_status=='Pending' and $d->moli_milestone='SYNC CUSTOMER COMPLETE') ? $d : null;
+                            from oraexcel pt group by moli_milestone,moli_status');
+
+        $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
+        $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
+
+        $return = array();
+        $countverarr = array();
+        $all = 0;
+        for($i=0;$i<count($status);$i++){
+            $state = 0;
+            foreach ($pivot as $data){
+                if($data->moli_status==$status[$i] and $data->moli_milestone==$milestone[$i]){
+                    $state = 1;
+                    array_push($return,$data);
+                    $countver = $data->do+$data->mo+$data->ao+$data->ro+$data->so;
+                    array_push($countverarr,$countver);
+                    break;
+                }
+            }
+            if(!$state){
+                $temp = new \stdClass();
+                $temp->moli_status = $status[$i];
+                $temp->moli_milestone = $milestone[$i];
+                $temp->do = 0;
+                $temp->mo = 0;
+                $temp->ao = 0;
+                $temp->ro = 0;
+                $temp->so = 0;
+                array_push($return,$temp);
+                array_push($countverarr,0);
+            }
         }
-        $status = [
-            'Pending',
-            'Submitted',
-            'In Progress',
-            '',
-            '',
-            '',
-            '',
-            'Pending BASO',
-            '',
-            'Pending Billing Approval',
-            '',
-            'Complete',
-            '',
-            'Failed',
-            'Pending Cancel',
-            '',
-            '',
-            '',
-            '',
-            'Cancelled',
-            ''
-        ];
-        $milestone = [
-            'NULL',
-            'NULL',
-            'NULL',
-            'SYNC CUSTOMER START',
-            'SYNC CUSTOMER COMPLETE',
-            'PROVISION START',
-            'PROVISION ISSUED',
-            'PROVISION COMPLETE',
-            'BASO STARTED',
-            'BILLING APPROVAL STARTED',
-            'FULFILL BILLING START',
-            'PROVISION COMPLETE',
-            'FULFILL BILLING COMPLETE',
-            'SYNC CUSTOMER START',
-            'NULL',
-            'SYNC CUSTOMER START',
-            'SYNC CUSTOMER COMPLETE',
-            'PROVISION START',
-            'PROVISION COMPLETE',
-            'NULL',
-            'SYNC CUSTOMER COMPLETE'
-        ];
-        return view('report.allreport',['data'=>$data,'status'=>$status,'milestone'=>$milestone]);
+        $counthorarr = array();
+        $counthorarr[0] = 0;$counthorarr[1] = 0;$counthorarr[2] = 0;$counthorarr[3] = 0;$counthorarr[4] = 0;
+        foreach ($return as $r){
+            $counthorarr[0] += $r->do;
+            $counthorarr[1] += $r->mo;
+            $counthorarr[2] += $r->ao;
+            $counthorarr[3] += $r->ro;
+            $counthorarr[4] += $r->so;
+        }
+
+        return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr]);
     }
 }
