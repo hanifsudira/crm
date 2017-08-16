@@ -11,6 +11,13 @@
     </section>
     <section class="content">
         <div class="row">
+            <div class="col-md-12">
+                <div class="box-header">
+                    <h1 class="box-title">Last Update : <a>{{$lu}}</a></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-body">
@@ -31,47 +38,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{--@for($i=0;$i<21;$i++)--}}
-                                    {{--<tr>--}}
-                                        {{--@if($i-1>-1 and $status[$i]==$status[$i-1])--}}
-                                            {{--<td></td>--}}
-                                        {{--@else($i)--}}
-                                            {{--<td>{{$status[$i]}}</td>--}}
-                                        {{--@endif--}}
-
-                                        {{--<td>{{$milestone[$i]}}</td>--}}
-                                        {{--@php--}}
-                                            {{--$temp = null;--}}
-                                            {{--foreach ($data as $pivot){--}}
-                                                {{--if($pivot->moli_status==$status[$i] and $pivot->moli_milestone==$milestone[$i]){--}}
-                                                    {{--$temp = $pivot;--}}
-                                                    {{--break;--}}
-                                                {{--}--}}
-                                            {{--}--}}
-                                        {{--@endphp--}}
-                                        {{--@if($temp)--}}
-                                            {{--<td>{{$pivot->do}}</td>--}}
-                                            {{--<td>{{$pivot->mo}}</td>--}}
-                                            {{--<td>{{$pivot->ao}}</td>--}}
-                                            {{--<td>{{$pivot->ro}}</td>--}}
-                                            {{--<td>{{$pivot->so}}</td>--}}
-                                            {{--<td></td>--}}
-                                            {{--<td></td>--}}
-                                            {{--<td></td>--}}
-                                            {{--<td></td>--}}
-                                        {{--@else--}}
-                                            {{--<td>0</td>--}}
-                                            {{--<td>0</td>--}}
-                                            {{--<td>0</td>--}}
-                                            {{--<td>0</td>--}}
-                                            {{--<td>0</td>--}}
-                                            {{--<td></td>--}}
-                                            {{--<td></td>--}}
-                                            {{--<td></td>--}}
-                                            {{--<td></td>--}}
-                                        {{--@endif--}}
-                                    {{--</tr>--}}
-                                {{--@endfor--}}
                                 @for($i=0;$i<count($data);$i++)
                                     <tr>
                                         @if($i-1>-1 and $data[$i]->moli_status==$data[$i-1]->moli_status)

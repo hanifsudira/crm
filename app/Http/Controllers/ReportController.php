@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use App\Oracexcel;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Null_;
 
 class ReportController extends Controller
 {
     public function allreport(){
+        $lastupdate = Oracexcel::select('lastupdate')->first();
         $pivot = DB::select('select moli_status, moli_milestone, 
                                 count(case when ORDER_SUBTYPE=\'disconnect\' then 1 end) do,
                                 count(case when ORDER_SUBTYPE=\'modify\' then 1 end) mo,
@@ -56,6 +58,6 @@ class ReportController extends Controller
             $counthorarr[4] += $r->so;
         }
 
-        return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr]);
+        return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'lu'=>$lastupdate]);
     }
 }
