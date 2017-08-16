@@ -69,6 +69,13 @@ Route::group(['prefix' => 'feedback'], function () {
     ]);
 });
 
+Route::group(['prefix' => 'report'], function () {
+    Route::get('input', [
+        'as'        => 'report.allreport',
+        'uses'      => 'ReportController@allreport'
+    ]);
+});
+
 Route::group(['prefix' => 'ora'], function () {
     Route::get('oraexcel', [
         'as'        => 'ora.oraexcel',

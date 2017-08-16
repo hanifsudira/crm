@@ -20,5 +20,15 @@
                 <li><a href="{{route('ora.com')}}"><i class="fa fa-circle-o"></i>COM</a></li>
             </ul>
         </li>
+        <li class="treeview menu-open">
+            <a href="#"><i class="fa fa-circle-o"></i>Report
+                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{route('report.allreport')}}"><i class="fa fa-circle-o"></i>All Report</a></li>
+                {{--<li><a href="{{route('report.transaction')}}"><i class="fa fa-circle-o"></i>Transaction Review</a></li>--}}
+                {{--<li><a href="{{route('report.floworder')}}"><i class="fa fa-circle-o"></i>Flow Order</a></li>--}}
+            </ul>
+        </li>
     </ul>
 </li>
