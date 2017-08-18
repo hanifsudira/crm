@@ -14,7 +14,7 @@
             <div class="box">
                 <div class="box-body">
                     <div class="col-lg-12">
-                        <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category"></p>
@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="col-lg-2 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">UnQualified</p>
