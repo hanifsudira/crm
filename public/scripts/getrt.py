@@ -14,9 +14,13 @@ sqlagree	= "select agree_cd as jenis, count(1) jumlah from (select row_id,name,a
 sqlorder	= "select new_status, decode(new_status,'Pending',1,'Submitted',2,'In Progress',3,'Complete',4,'Failed',5,'Cancelled',6,99) as status_seq,jumlah from (select decode(status,'Pending Cancel','Cancelled',status) as new_status,count(1) jumlah from (select distinct t2.order_num,t2.status_cd as status from sblprd.s_order_item t1 inner join sblprd.s_order t2 on t2.row_id = t1.order_id inner join sblprd.s_prod_int t3 on t3.row_id = t1.prod_id inner join sblprd.s_order_x t4 on t4.par_row_id = t2.row_id left outer join sblprd.s_doc_agree t5 on t5.row_id = t1.agree_id where T1.CREATED > TO_DATE ('24/07/2017','DD/MM/YYYY') and t1.row_id = t1.root_order_item_id and t2.rev_num = (select max(rev_num) from sblprd.s_order x where x.order_num = t2.order_num and x.status_cd not in ('Abandoned','x'))) group by decode(status,'Pending Cancel','Cancelled',status))order by status_seq"
 
 querylead 	= cursor.execute(sqllead)
+querylead	= [i for i in querylead]
 queryquote 	= cursor.execute(sqlquote)
+queryquote	= [i for i in queryquote]
 queryagree 	= cursor.execute(sqlagree)
+queryagree	= [i for i in queryagree]
 queryorder 	= cursor.execute(sqlorder)
+queryorder	= [i for i in queryorder]
 query 		= [querylead,queryquote,queryagree,queryorder]
 
 print json.dumps(query)

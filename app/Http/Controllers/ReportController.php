@@ -62,7 +62,7 @@ class ReportController extends Controller
     }
 
     public function reviewtransaksi(){
-        $command = "/usr/bin/python /var/www/html/crm/public/scripts/getrt.py";
+        $command = "c";
         $output = shell_exec($command);
         $output = json_decode($output);
         var_dump($output);
