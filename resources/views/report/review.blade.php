@@ -26,7 +26,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">UnQualified</p>
-                                    <h1 class="title">{{$lead[0][1]}}</h1>
+                                    <h1 class="title">{{$lead[0][2]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Qualified</p>
-                                    <h1 class="title">{{$lead[1][1]}}</h1>
+                                    <h1 class="title">{{$lead[1][2]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Converted</p>
-                                    <h1 class="title">{{$lead[2][1]}}</h1>
+                                    <h1 class="title">{{$lead[2][2]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Retired</p>
-                                    <h1 class="title">{{$lead[3][1]}}</h1>
+                                    <h1 class="title">{{$lead[3][2]}}</h1>
                                 </div>
                             </div>
                         </div>
