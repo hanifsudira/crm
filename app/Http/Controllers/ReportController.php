@@ -60,4 +60,11 @@ class ReportController extends Controller
 
         return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'lu'=>$lastupdate->lastupdate]);
     }
+
+    public function reviewtransaksi(){
+        $command = "/usr/bin/python /var/www/html/crm/public/scripts/getrt.py";
+        $output = shell_exec($command);
+        $output = json_decode($output);
+        var_dump($output);
+    }
 }

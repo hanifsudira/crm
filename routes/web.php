@@ -70,9 +70,14 @@ Route::group(['prefix' => 'feedback'], function () {
 });
 
 Route::group(['prefix' => 'report'], function () {
-    Route::get('input', [
+    Route::get('allreport', [
         'as'        => 'report.allreport',
         'uses'      => 'ReportController@allreport'
+    ]);
+
+    Route::get('reviewtransaksi', [
+        'as'        => 'report.reviewtransaksi',
+        'uses'      => 'ReportController@reviewtransaksi'
     ]);
 });
 

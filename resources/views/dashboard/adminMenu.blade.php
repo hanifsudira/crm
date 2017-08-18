@@ -26,7 +26,7 @@
             </a>
             <ul class="treeview-menu">
                 <li><a href="{{route('report.allreport')}}"><i class="fa fa-circle-o"></i>All Report</a></li>
-                {{--<li><a href="{{route('report.transaction')}}"><i class="fa fa-circle-o"></i>Transaction Review</a></li>--}}
+                <li><a href="{{route('report.reviewtransaksi')}}"><i class="fa fa-circle-o"></i>Transaction Review</a></li>
                 {{--<li><a href="{{route('report.floworder')}}"><i class="fa fa-circle-o"></i>Flow Order</a></li>--}}
             </ul>
         </li>
