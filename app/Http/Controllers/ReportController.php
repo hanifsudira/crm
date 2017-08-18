@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Oracexcel;
-use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Null_;
 
 class ReportController extends Controller
@@ -17,6 +16,42 @@ class ReportController extends Controller
                                 count(case when ORDER_SUBTYPE=\'resume\' then 1 end) ro,
                                 count(case when ORDER_SUBTYPE=\'suspend\' then 1 end) so
                             from oraexcel pt group by moli_milestone,moli_status');
+
+        #call integrasi
+        $call = array();
+
+        $a = array();
+        $nol = DB::select('select order_num from crm_dashboard.oraexcel where moli_status = \'submitted\' and moli_milestone=\'none\'');
+        foreach ($nol as $n){
+            array_push($a,$n->order_num);
+        }
+        array_push($call,$a);
+
+        $a = array();
+        $nol = DB::select('select order_num from crm_dashboard.oraexcel where moli_status = \'in progress\' and moli_milestone=\'none\'');
+        foreach ($nol as $n){
+            array_push($a,$n->order_num);
+        }
+        array_push($call,$a);
+
+        $a = array();
+        $nol = DB::select('select order_num from crm_dashboard.oraexcel where moli_status = \'in progress\' and moli_milestone=\'SYNC CUSTOMER START\'');
+        foreach ($nol as $n){
+            array_push($a,$n->order_num);
+        }
+        array_push($call,$a);
+
+        $a = array();
+        $nol = DB::select('select order_num from crm_dashboard.oraexcel where moli_status = \'in progress\' and moli_milestone=\'SYNC CUSTOMER COMPLETE\'');
+        foreach ($nol as $n){
+            array_push($a,$n->order_num);
+        }
+        array_push($call,$a);
+
+        $command    = "/usr/bin/python /var/www/html/crm/public/scripts/getint.py ".json_encode($call);
+        $output     = shell_exec($command);
+        $output     = json_decode($output);
+        var_dump($output);
 
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
@@ -58,7 +93,7 @@ class ReportController extends Controller
             $counthorarr[4] += $r->so;
         }
 
-        return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'lu'=>$lastupdate->lastupdate]);
+        #return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'lu'=>$lastupdate->lastupdate]);
     }
 
     public function reviewtransaksi(){
