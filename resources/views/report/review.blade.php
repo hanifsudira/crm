@@ -26,7 +26,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">UnQualified</p>
-                                    <h1 class="title">{{$lead[0][2]}}</h1>
+                                    <h1 class="title">{{$lead[0][1]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Qualified</p>
-                                    <h1 class="title">{{$lead[1][2]}}</h1>
+                                    <h1 class="title">{{$lead[1][1]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Converted</p>
-                                    <h1 class="title">{{$lead[2][2]}}</h1>
+                                    <h1 class="title">{{$lead[2][1]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Retired</p>
-                                    <h1 class="title">{{$lead[3][2]}}</h1>
+                                    <h1 class="title">{{$lead[3][1]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Pending</p>
-                                    <h1 class="title">{{$order[0][1]}}</h1>
+                                    <h1 class="title">{{$order[0][2]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Submitted</p>
-                                    <h1 class="title">{{$order[1][1]}}</h1>
+                                    <h1 class="title">{{$order[1][2]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">InProgress</p>
-                                    <h1 class="title">{{$order[2][1]}}</h1>
+                                    <h1 class="title">{{$order[2][2]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +178,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Complete</p>
-                                    <h1 class="title">{{$order[3][1]}}</h1>
+                                    <h1 class="title">{{$order[3][2]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -186,7 +186,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Failed</p>
-                                    <h1 class="title">{{$order[4][1]}}</h1>
+                                    <h1 class="title">{{$order[4][2]}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -194,7 +194,7 @@
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Cancelled</p>
-                                    <h1 class="title">{{$order[5][1]}}</h1>
+                                    <h1 class="title">{{$order[5][2]}}</h1>
                                 </div>
                             </div>
                         </div>
