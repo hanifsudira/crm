@@ -62,9 +62,13 @@ class ReportController extends Controller
     }
 
     public function reviewtransaksi(){
-        $command = "c";
-        $output = shell_exec($command);
-        $output = json_decode($output);
-        var_dump($output);
+        $command    = "/usr/bin/python /var/www/html/crm/public/scripts/getrt.py";
+        $output     = shell_exec($command);
+        $output     = json_decode($output);
+        $lead       = $output[0];
+        $quote      = $output[1];
+        $agree      = $output[2];
+        $order      = $output[3];
+        return view('report.review',['lead'=>$lead,'quote'=>$quote,'agree'=>$agree,'order'=>$order]);
     }
 }
