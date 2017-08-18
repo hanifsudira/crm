@@ -174,7 +174,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="col-lg-1 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Complete</p>
@@ -190,7 +190,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="col-lg-1 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-content">
                                     <p class="category">Cancelled</p>
