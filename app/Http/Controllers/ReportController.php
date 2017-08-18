@@ -51,7 +51,7 @@ class ReportController extends Controller
         $command    = "/usr/bin/python /var/www/html/crm/public/scripts/getint.py ".json_encode($call);
         $output     = shell_exec($command);
         $output     = json_decode($output);
-        var_dump($output);
+        #var_dump($output);
 
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
@@ -93,7 +93,7 @@ class ReportController extends Controller
             $counthorarr[4] += $r->so;
         }
 
-        #return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'lu'=>$lastupdate->lastupdate]);
+        return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'lu'=>$lastupdate->lastupdate]);
     }
 
     public function reviewtransaksi(){
