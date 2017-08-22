@@ -47,16 +47,16 @@ class ReportController extends Controller
             array_push($a,$n->order_num);
         }
         array_push($call,$a);
-        var_dump($call);
+        #var_dump($call);
 
         $file = fopen('/var/www/html/crm/public/scripts/param.txt','w+');
         fwrite($file,json_encode($call));
         fclose($file);
 
-        $command    = "/usr/bin/python /var/www/html/crm/public/scripts/getint.py";
-        $output     = shell_exec($command);
-        $output     = json_decode($output);
-        var_dump($output);
+        #$command    = "/usr/bin/python /var/www/html/crm/public/scripts/getint.py";
+        #$output     = shell_exec($command);
+        #$output     = json_decode($output);
+        #var_dump($output);
 
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
