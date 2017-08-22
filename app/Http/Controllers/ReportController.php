@@ -88,6 +88,11 @@ class ReportController extends Controller
                 array_push($countverarr,0);
             }
         }
+        $countverarrint = $countverarr;
+        $countverarrint[5]+=798;
+        $countverarrint[10]+=3;
+        $countverarrint[10]+=0;
+
         $counthorarr = array();
         $counthorarr[0] = 0;$counthorarr[1] = 0;$counthorarr[2] = 0;$counthorarr[3] = 0;$counthorarr[4] = 0;
         foreach ($return as $r){
@@ -98,7 +103,7 @@ class ReportController extends Controller
             $counthorarr[4] += $r->so;
         }
 
-        #return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'lu'=>$lastupdate->lastupdate]);
+        return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'verint'=>$countverarrint,'lu'=>$lastupdate->lastupdate]);
     }
 
     public function reviewtransaksi(){
