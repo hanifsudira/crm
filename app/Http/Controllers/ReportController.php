@@ -97,7 +97,7 @@ class ReportController extends Controller
             $counthorarr[4] += $r->so;
         }
 
-        return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'lu'=>$lastupdate->lastupdate]);
+        #return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'lu'=>$lastupdate->lastupdate]);
     }
 
     public function reviewtransaksi(){
