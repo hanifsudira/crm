@@ -47,6 +47,7 @@ class ReportController extends Controller
             array_push($a,$n->order_num);
         }
         array_push($call,$a);
+        var_dump($call);
 
         $file = fopen('/var/www/html/crm/public/scripts/param.txt','w+');
         fwrite($file,json_encode($call));
