@@ -92,7 +92,20 @@ class OraController extends Controller
         return view('dashboard.tomsom',['noss'=>$realnossarr, 'tenoss'=>$realtenossarr]);
     }
 
-    //ggwp
+    //checkproduct
+    public function checkproduct(){
+        return view('dashboard.checkproduct');
+    }
+
+    public function getcheckproduct(Request $request){
+        $ordernum = $request->order;
+        $command = "/usr/bin/python /var/www/html/crm/public/scripts/getpro.py ".$ordernum;
+        $output = shell_exec($command);
+        $output = json_decode($output);
+        return view('dashboard.prodajax',['data' => $output]);
+    }
+
+    //checkorder
     public function checkorder(){
         return view('dashboard.checkorder');
     }
