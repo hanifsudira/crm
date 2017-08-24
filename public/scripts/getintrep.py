@@ -1,5 +1,6 @@
 #!/usr/bin/python
-import cx_Oracle,requests,datetime,MySQLdb,json,sys
+import cx_Oracle,requests,MySQLdb,sys
+from bs4 import BeautifulSoup
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -44,8 +45,8 @@ clause 		= "SELECT DISTINCT order_num FROM int_report WHERE (LI_STATUS = 'Submit
 cur.execute(clause)
 
 for data in cur.fetchall():
-	result = req.post('http://10.65.10.212/reqi/comaia/index.php?p=search',data={'search' : str(data[0])})
-	soup = bs(result.content, 'html.parser')
+	result = requests.post('http://10.65.10.212/reqi/comaia/index.php?p=search',data={'search' : str(data[0])})
+	soup = BeautifulSoup(result.content, 'html.parser')
 	table = soup.findAll('table')[2]
 	rows = table.find('tbody').findAll('tr')
 	status = ""
