@@ -53,8 +53,8 @@
                                             <td>{{$data[$i]->so}}</td>
                                             <td>{{$ver[$i]}}</td>
                                             <td>{{$verint[$i]}}</td>
-                                            <td>{{number_format($ver[$i]/($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]),2).'%'}}</td>
-                                            <td>{{number_format($verint[$i]/($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]),2).'%'}}</td>
+                                            <td>{{number_format(($ver[$i]/($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4])*100),2).'%'}}</td>
+                                            <td>{{number_format(($verint[$i]/($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4])*100),2).'%'}}</td>
                                     </tr>
                                 @endfor
                                 <tr>
