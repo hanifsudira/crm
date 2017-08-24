@@ -12,7 +12,7 @@ orasql = "select t2.order_num as ORDER#, t1.row_id as ROW_ID, t4.attrib_05 as OR
 result = cursor.execute(orasql).fetchall()
 
 #mysql
-db = MySQLdb.connect(host="127.0.0.1", user="telkom", passwd="telkom", db="crm_dashboard")
+db = MySQLdb.connect(host="10.62.170.36", port=3310, user="telkom", passwd="telkom", db="crm_dashboard")
 cur = db.cursor()
 
 for i,data in enumerate(result):
