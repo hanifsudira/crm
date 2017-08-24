@@ -17,12 +17,20 @@ class ReportController extends Controller
                                 count(case when ORDER_SUBTYPE=\'suspend\' then 1 end) so
                             from int_report pt group by milestone,li_status');
 
+        $pivotint = DB::select('select li_status_int, mile_status_int, count(*) as jumlah
+                                from int_report 
+                                group by mile_status_int,li_status_int order by li_status_int desc;');
+
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
 
         $return = array();
         $countverarr = array();
+        $countverarrint = array();
+        $countint = 0;
         for($i=0;$i<count($status);$i++){
+
+            #db crm
             $state = 0;
             foreach ($pivot as $data){
                 if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
@@ -45,11 +53,16 @@ class ReportController extends Controller
                 array_push($return,$temp);
                 array_push($countverarr,0);
             }
+
+            #int
+            foreach ($pivotint as $int){
+                if($int->li_status_int==$status[$i] and $int->mile_status_int==$milestone[$i]){
+                    array_push($countverarrint,$int->jumlah);
+                    $countint+=$int->jumlah;
+                    break;
+                }
+            }
         }
-        $countverarrint = $countverarr;
-        $countverarrint[5]+=798;
-        $countverarrint[10]+=3;
-        $countverarrint[10]+=0;
 
         $counthorarr = array();
         $counthorarr[0] = 0;$counthorarr[1] = 0;$counthorarr[2] = 0;$counthorarr[3] = 0;$counthorarr[4] = 0;
@@ -61,7 +74,7 @@ class ReportController extends Controller
             $counthorarr[4] += $r->so;
         }
 
-        return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'verint'=>$countverarrint,'lu'=>$lastupdate->lastupdate]);
+        return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'countint'=>$countint,'verint'=>$countverarrint,'lu'=>$lastupdate->lastupdate]);
     }
 
     public function reviewtransaksi(){

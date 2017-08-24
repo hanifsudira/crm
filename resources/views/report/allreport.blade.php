@@ -66,7 +66,7 @@
                                     <td>{{$hor[3]}}</td>
                                     <td>{{$hor[4]}}</td>
                                     <td>{{$hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]}}</td>
-                                    <td></td>
+                                    <td>{{$countint}}</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
