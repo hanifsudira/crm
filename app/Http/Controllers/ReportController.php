@@ -8,7 +8,7 @@ use phpDocumentor\Reflection\Types\Null_;
 class ReportController extends Controller
 {
     public function allreport(){
-        $lastupdate = DB::select('select lastupdate from int_report limit 1');
+        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
         $pivot = DB::select('select li_status, milestone, 
                                 count(case when ORDER_SUBTYPE=\'disconnect\' then 1 end) do,
                                 count(case when ORDER_SUBTYPE=\'modify\' then 1 end) mo,
@@ -86,5 +86,9 @@ class ReportController extends Controller
         $agree      = $output[2];
         $order      = $output[3];
         return view('report.review',['lead'=>$lead,'quote'=>$quote,'agree'=>$agree,'order'=>$order]);
+    }
+
+    public function intexcel(){
+
     }
 }
