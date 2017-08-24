@@ -40,12 +40,12 @@
                             <tbody>
                                 @for($i=0;$i<count($data);$i++)
                                     <tr>
-                                        @if($i-1>-1 and $data[$i]->moli_status==$data[$i-1]->moli_status)
+                                        @if($i-1>-1 and $data[$i]->li_status==$data[$i-1]->li_status)
                                             <td></td>
                                         @else($i)
-                                            <td>{{$data[$i]->moli_status}}</td>
+                                            <td>{{$data[$i]->li_status}}</td>
                                         @endif
-                                            <td>{{$data[$i]->moli_milestone}}</td>
+                                            <td>{{$data[$i]->milestone}}</td>
                                             <td>{{$data[$i]->do}}</td>
                                             <td>{{$data[$i]->mo}}</td>
                                             <td>{{$data[$i]->ao}}</td>
