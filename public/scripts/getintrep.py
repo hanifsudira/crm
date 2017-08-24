@@ -36,5 +36,8 @@ for i,data in enumerate(result):
 	sql 			= "insert into int_report (ORDER_NUM, ROW_ID, ORDER_SUBTYPE, REV, PRODUCT, OH_STATUS, LI_STATUS, MILESTONE, CREATED_AT, FULFILL_STATUS, ACC_NAS, NIPNAS, SID_NUM, OH_SEQ, MSTONE_SEQ, LI_STATUS_INT, MILE_STATUS_INT) values('"+ORDER+"','"+ROW_ID+"','"+ORDER_SUBTYPE+"','"+REV+"','"+PRODUCT+"','"+OH_STATUS+"','"+LI_STATUS+"','"+MILESTONE+"','"+CREATED_AT+"','"+FULFILL_STATUS+"','"+ACC_NAS+"','"+NIPNAS+"','"+SID_NUM+"','"+OH_SEQ+"','"+MSTONE_SEQ+"','"+LI_STATUS_INT+"','"+MILE_STATUS_INT+"')"
 	cur.execute(sql)
 db.commit()
-cur.close()
-db.close()
+
+clause 		= "select distinct order_num from int_report where (LI_STATUS = 'Submitted' and MILESTONE = 'None') or (LI_STATUS = 'In Progress' and MILESTONE = 'None') or (LI_STATUS = 'In Progress' and MILESTONE = 'SYNC CUSTOMER START') or (LI_STATUS = 'In Progress' and MILESTONE = 'SYNC CUSTOMER COMPLETE')"
+order_num 	= cur.execute(sql).fetchall()
+
+print len(order_num)
