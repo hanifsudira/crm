@@ -16,17 +16,16 @@ class ReportController extends Controller
                                 count(case when ORDER_SUBTYPE=\'resume\' then 1 end) ro,
                                 count(case when ORDER_SUBTYPE=\'suspend\' then 1 end) so
                             from int_report pt group by milestone,li_status');
-        
+
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
 
         $return = array();
         $countverarr = array();
-        $all = 0;
         for($i=0;$i<count($status);$i++){
             $state = 0;
             foreach ($pivot as $data){
-                if($data->moli_status==$status[$i] and $data->moli_milestone==$milestone[$i]){
+                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
                     $state = 1;
                     array_push($return,$data);
                     $countver = $data->do+$data->mo+$data->ao+$data->ro+$data->so;
@@ -36,8 +35,8 @@ class ReportController extends Controller
             }
             if(!$state){
                 $temp = new \stdClass();
-                $temp->moli_status = $status[$i];
-                $temp->moli_milestone = $milestone[$i];
+                $temp->li_status = $status[$i];
+                $temp->milestone = $milestone[$i];
                 $temp->do = 0;
                 $temp->mo = 0;
                 $temp->ao = 0;
