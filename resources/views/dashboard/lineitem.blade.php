@@ -37,18 +37,23 @@
                                             <table id="datatable" class="table table-bordered table-striped">
                                                 <thead>
                                                 <tr>
-                                                    <th>ORDER#</th>
+                                                    <th>ORDER_NUM</th>
+                                                    <th>ROW_ID</th>
+                                                    <th>ORDER_SUBTYPE</th>
                                                     <th>REV</th>
                                                     <th>PRODUCT</th>
                                                     <th>OH_STATUS</th>
                                                     <th>LI_STATUS</th>
                                                     <th>MILESTONE</th>
-                                                    <th>ORDER_SUBTYPE</th>
                                                     <th>CREATED_AT</th>
                                                     <th>FULFILL_STATUS</th>
                                                     <th>ACC_NAS</th>
                                                     <th>NIPNAS</th>
                                                     <th>SID_NUM</th>
+                                                    <th>OH_SEQ</th>
+                                                    <th>MSTONE_SEQ</th>
+                                                    <th>LI_STATUS_INT</th>
+                                                    <th>MILE_STATUS_INT</th>
                                                 </tr>
                                                 </thead>
                                             </table>
@@ -111,17 +116,22 @@
                 ajax: '{{ route('ora.getlireport') }}',
                 columns: [
                     { data: 'ORDER_NUM',name: 'ORDER_NUM'},
+                    { data: 'ROW_ID',name: 'ROW_ID'},
+                    { data: 'ORDER_SUBTYPE',name: 'ORDER_SUBTYPE'},
                     { data: 'REV',name: 'REV'},
                     { data: 'PRODUCT',name: 'PRODUCT'},
                     { data: 'OH_STATUS',name: 'OH_STATUS'},
                     { data: 'LI_STATUS',name: 'LI_STATUS'},
                     { data: 'MILESTONE',name: 'MILESTONE'},
-                    { data: 'ORDER_SUBTYPE',name: 'ORDER_SUBTYPE'},
                     { data: 'CREATED_AT',name: 'CREATED_AT'},
                     { data: 'FULFILL_STATUS',name: 'FULFILL_STATUS'},
                     { data: 'ACC_NAS',name: 'ACC_NAS'},
                     { data: 'NIPNAS',name: 'NIPNAS'},
-                    { data: 'SID_NUM',name: 'SID_NUM'}
+                    { data: 'SID_NUM',name: 'SID_NUM'},
+                    { data: 'OH_SEQ',name: 'OH_SEQ'},
+                    { data: 'MSTONE_SEQ',name: 'MSTONE_SEQ'},
+                    { data: 'LI_STATUS_INT',name: 'LI_STATUS_INT'},
+                    { data: 'MILE_STATUS_INT',name: 'MILE_STATUS_INT'}
                 ]
             });
         });
