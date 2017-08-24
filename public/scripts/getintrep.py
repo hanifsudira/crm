@@ -42,5 +42,4 @@ db.commit()
 
 clause 		= "select distinct order_num from int_report where (LI_STATUS = 'Submitted' and MILESTONE = 'None') or (LI_STATUS = 'In Progress' and MILESTONE = 'None') or (LI_STATUS = 'In Progress' and MILESTONE = 'SYNC CUSTOMER START') or (LI_STATUS = 'In Progress' and MILESTONE = 'SYNC CUSTOMER COMPLETE')"
 order_num 	= cur.execute(clause).fetchall()
-
 print len(order_num)
