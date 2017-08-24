@@ -121,7 +121,7 @@ class OraController extends Controller
     //line item
     public function lineitem(){
         $lisummary = Lisummary::all();
-        $lastupdate = Lisummary::select('lastupdate')->first();
+        $lastupdate = DB::select('select lastupdate from int_report limit 1');
         $lastupdate = $lastupdate->lastupdate !=null ? $lastupdate->lastupdate : 'Unknown';
         return view('dashboard.lineitem',['lisummary' => $lisummary, 'lastupdate' => $lastupdate]);
     }
