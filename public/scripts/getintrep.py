@@ -41,5 +41,9 @@ for i,data in enumerate(result):
 db.commit()
 
 clause 		= "SELECT DISTINCT order_num FROM int_report WHERE (LI_STATUS = 'Submitted' and MILESTONE = 'None') or (LI_STATUS = 'In Progress' and MILESTONE = 'None') or (LI_STATUS = 'In Progress' and MILESTONE = 'SYNC CUSTOMER START') or (LI_STATUS = 'In Progress' and MILESTONE = 'SYNC CUSTOMER COMPLETE')"
-order_num 	= cur.execute(clause).fetchall()
-print order_num
+cur.execute(clause)
+
+for data in cur.fetchall():
+	order_num = data[0]
+	print order_num
+	break
