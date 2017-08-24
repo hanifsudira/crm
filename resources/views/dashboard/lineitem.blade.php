@@ -67,7 +67,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="box-header">
-                                        <h1 class="box-title">Last Update : <a>{{$lastupdate}}</a></h1>
+                                        <h1 class="box-title">Last Update : <a>{{$luli}}</a></h1>
                                     </div>
                                 </div>
                             </div>
