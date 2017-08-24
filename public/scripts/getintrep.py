@@ -12,8 +12,11 @@ orasql = "select t2.order_num as ORDER#, t1.row_id as ROW_ID, t4.attrib_05 as OR
 result = cursor.execute(orasql).fetchall()
 
 #mysql
-db = MySQLdb.connect(host="10.62.170.36", port=3310, user="telkom", passwd="telkom", db="crm_dashboard")
-cur = db.cursor()
+db 		= MySQLdb.connect(host="10.62.170.36", port=3310, user="telkom", passwd="telkom", db="crm_dashboard")
+cur 	= db.cursor()
+
+sqltruncate = 'TRUNCATE TABLE int_report';
+cur.execute(sqltruncate)
 
 for i,data in enumerate(result):
 	ORDER 			= str(data[0])
@@ -36,8 +39,10 @@ for i,data in enumerate(result):
 	sql 			= "insert into int_report (ORDER_NUM, ROW_ID, ORDER_SUBTYPE, REV, PRODUCT, OH_STATUS, LI_STATUS, MILESTONE, CREATED_AT, FULFILL_STATUS, ACC_NAS, NIPNAS, SID_NUM, OH_SEQ, MSTONE_SEQ, LI_STATUS_INT, MILE_STATUS_INT) values('"+ORDER+"','"+ROW_ID+"','"+ORDER_SUBTYPE+"','"+REV+"','"+PRODUCT+"','"+OH_STATUS+"','"+LI_STATUS+"','"+MILESTONE+"','"+CREATED_AT+"','"+FULFILL_STATUS+"','"+ACC_NAS+"','"+NIPNAS+"','"+SID_NUM+"','"+OH_SEQ+"','"+MSTONE_SEQ+"','"+LI_STATUS_INT+"','"+MILE_STATUS_INT+"')"
 	cur.execute(sql)
 db.commit()
+cur.close()
 
+cur2 		= db.cursor()
 clause 		= "select distinct order_num from int_report where (LI_STATUS = 'Submitted' and MILESTONE = 'None') or (LI_STATUS = 'In Progress' and MILESTONE = 'None') or (LI_STATUS = 'In Progress' and MILESTONE = 'SYNC CUSTOMER START') or (LI_STATUS = 'In Progress' and MILESTONE = 'SYNC CUSTOMER COMPLETE')"
-order_num 	= cur.execute(sql)
+order_num 	= cur2.execute(sql)
 
 print len(order_num)
