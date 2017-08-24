@@ -9,55 +9,14 @@ class ReportController extends Controller
 {
     public function allreport(){
         $lastupdate = Oracexcel::select('lastupdate')->first();
-        $pivot = DB::select('select moli_status, moli_milestone, 
+        $pivot = DB::select('select li_status, milestone, 
                                 count(case when ORDER_SUBTYPE=\'disconnect\' then 1 end) do,
                                 count(case when ORDER_SUBTYPE=\'modify\' then 1 end) mo,
                                 count(case when ORDER_SUBTYPE=\'new install\' then 1 end) ao,
                                 count(case when ORDER_SUBTYPE=\'resume\' then 1 end) ro,
                                 count(case when ORDER_SUBTYPE=\'suspend\' then 1 end) so
-                            from oraexcel pt group by moli_milestone,moli_status');
-
-        #call integrasi
-        $call = array();
-
-        $a = array();
-        $nol = DB::select('select order_num from crm_dashboard.oraexcel where moli_status = \'submitted\' and moli_milestone=\'none\'');
-        foreach ($nol as $n){
-            array_push($a,$n->order_num);
-        }
-        array_push($call,$a);
-
-        $a = array();
-        $nol = DB::select('select order_num from crm_dashboard.oraexcel where moli_status = \'in progress\' and moli_milestone=\'none\'');
-        foreach ($nol as $n){
-            array_push($a,$n->order_num);
-        }
-        array_push($call,$a);
-
-        $a = array();
-        $nol = DB::select('select order_num from crm_dashboard.oraexcel where moli_status = \'in progress\' and moli_milestone=\'SYNC CUSTOMER START\'');
-        foreach ($nol as $n){
-            array_push($a,$n->order_num);
-        }
-        array_push($call,$a);
-
-        $a = array();
-        $nol = DB::select('select order_num from crm_dashboard.oraexcel where moli_status = \'in progress\' and moli_milestone=\'SYNC CUSTOMER COMPLETE\'');
-        foreach ($nol as $n){
-            array_push($a,$n->order_num);
-        }
-        array_push($call,$a);
-        #var_dump($call);
-
-        $file = fopen('/var/www/html/crm/public/scripts/param.txt','w+');
-        fwrite($file,json_encode($call));
-        fclose($file);
-
-        #$command    = "/usr/bin/python /var/www/html/crm/public/scripts/getint.py";
-        #$output     = shell_exec($command);
-        #$output     = json_decode($output);
-        #var_dump($output);
-
+                            from int_report pt group by milestone,li_status');
+        
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
 
