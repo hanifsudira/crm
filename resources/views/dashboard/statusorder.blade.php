@@ -65,11 +65,6 @@
         </div>
     </section>
 @endsection
-@section('css')
-<style>
-
-</style>
-@endsection
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
