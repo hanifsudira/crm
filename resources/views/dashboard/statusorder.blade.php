@@ -39,25 +39,6 @@
                                 <th>SID_NUM</th>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -76,22 +57,15 @@
                 ajax: '{{ route('ora.getlireport') }}',
                 columns: [
                     { data: 'ORDER_NUM',name: 'ORDER_NUM'},
-                    { data: 'ROW_ID',name: 'ROW_ID'},
                     { data: 'ORDER_SUBTYPE',name: 'ORDER_SUBTYPE'},
                     { data: 'REV',name: 'REV'},
                     { data: 'PRODUCT',name: 'PRODUCT'},
-                    { data: 'OH_STATUS',name: 'OH_STATUS'},
                     { data: 'LI_STATUS',name: 'LI_STATUS'},
                     { data: 'MILESTONE',name: 'MILESTONE'},
                     { data: 'CREATED_AT',name: 'CREATED_AT'},
-                    { data: 'FULFILL_STATUS',name: 'FULFILL_STATUS'},
                     { data: 'ACC_NAS',name: 'ACC_NAS'},
                     { data: 'NIPNAS',name: 'NIPNAS'},
-                    { data: 'SID_NUM',name: 'SID_NUM'},
-                    { data: 'OH_SEQ',name: 'OH_SEQ'},
-                    { data: 'MSTONE_SEQ',name: 'MSTONE_SEQ'},
-                    { data: 'LI_STATUS_INT',name: 'LI_STATUS_INT'},
-                    { data: 'MILE_STATUS_INT',name: 'MILE_STATUS_INT'}
+                    { data: 'SID_NUM',name: 'SID_NUM'}
                 ],initComplete: function () {
                     this.api().columns().every(function () {
                         var column = this;
@@ -104,7 +78,6 @@
                     });
                 }
             });
-
         });
     </script>
 @endsection
