@@ -60,6 +60,17 @@
         </div>
     </section>
 @endsection
+@section('css')
+    <style>
+        tfoot input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+        .wrapper .sidebar-menu{
+            display: none;
+        }
+    </style>
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
@@ -92,7 +103,6 @@
                     });
                 }
             });
-            $('wrapper').removeClass('main-sidebar');
         });
     </script>
 @endsection
