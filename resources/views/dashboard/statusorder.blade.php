@@ -51,11 +51,6 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                             </tr>
                             </tfoot>
                         </table>
@@ -97,6 +92,7 @@
                     });
                 }
             });
+            $('wrapper').removeClass('main-sidebar');
         });
     </script>
 @endsection
