@@ -97,7 +97,6 @@
                     });
                 }
             });
-            $('.main-sidebar').removeClass('sidebar');
         });
     </script>
 @endsection
