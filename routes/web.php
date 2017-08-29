@@ -82,6 +82,11 @@ Route::group(['prefix' => 'report'], function () {
 });
 
 Route::group(['prefix' => 'ora'], function () {
+    Route::get('statusorder', [
+        'as'        => 'ora.statusorder',
+        'uses'      => 'OraController@statusorder'
+    ]);
+    
     Route::get('oraexcel', [
         'as'        => 'ora.oraexcel',
         'uses'      => 'OraController@index'
