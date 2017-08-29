@@ -74,6 +74,7 @@
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
+            $('body').addClass('sidebar-collapse');
             var table =  $('#datatable').DataTable({
                 scrollX: true,
                 responsive: true,
