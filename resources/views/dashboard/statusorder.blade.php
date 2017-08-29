@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li>Oracle</li>
-            <li class="active">Line Items</li>
+            <li class="active">Status Order</li>
         </ol>
     </section>
     <section class="content">
@@ -39,6 +39,25 @@
                                 <th>SID_NUM</th>
                             </tr>
                             </thead>
+                            <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -46,9 +65,15 @@
         </div>
     </section>
 @endsection
+@section('css')
+<style>
+
+</style>
+@endsection
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
+            $('.wrapper').removeClass('main-sidebar');
             var table =  $('#datatable').DataTable({
                 scrollX: true,
                 responsive: true,
