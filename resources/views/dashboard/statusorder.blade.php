@@ -11,88 +11,35 @@
     </section>
     <section class="content">
         <div class="row">
+            <div class="col-md-12">
+                <div class="box-header">
+                    <h1 class="box-title">Last Update : <a>{{$lastupdate}}</a></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xs-12">
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#data" data-toggle="tab">Data</a></li>
-                        <li><a href="#summary" data-toggle="tab">Summary</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <!-- DATA -->
-                        <div class="tab-pane active" id="data">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="box-header">
-                                        <h1 class="box-title">Last Update : <a>{{$lastupdate}}</a></h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="box">
-                                        <div class="box-body">
-                                            <a href="{{ Route('ora.downloadexcelli') }}" class="btn btn-app" id="btn-upload"><i class="fa fa-cloud-upload"></i>Export Excel</a>
-                                        </div>
-                                        <div class="box-body">
-                                            <table id="datatable" class="table table-bordered table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th>ORDER_NUM</th>
-                                                    <th>ORDER_SUBTYPE</th>
-                                                    <th>REV</th>
-                                                    <th>PRODUCT</th>
-                                                    <th>LI_STATUS</th>
-                                                    <th>MILESTONE</th>
-                                                    <th>CREATED_AT</th>
-                                                    <th>ACC_NAS</th>
-                                                    <th>NIPNAS</th>
-                                                    <th>SID_NUM</th>
-                                                </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- SUMMARY -->
-                        <div class="tab-pane" id="summary">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="box-header">
-                                        <h1 class="box-title">Last Update : <a>{{$luli}}</a></h1>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="box">
-                                        <div class="box-body">
-                                            <table id="summarytable" class="table table-bordered table-striped">
-                                                <thead>
-                                                <tr>
-                                                    <th>OH_STATUS</th>
-                                                    <th>LI_STATUS</th>
-                                                    <th>MILESTONE</th>
-                                                    <th>JUMLAH</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($lisummary as $d)
-                                                    <tr>
-                                                        <td>{{$d->OH_STATUS}}</td>
-                                                        <td>{{$d->LI_STATUS}}</td>
-                                                        <td>{{$d->MILESTONE}}</td>
-                                                        <td>{{$d->JUMLAH}}</td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="box">
+                    <div class="box-body">
+                        <a href="{{ Route('ora.downloadexcelli') }}" class="btn btn-app" id="btn-upload"><i class="fa fa-cloud-upload"></i>Export Excel</a>
+                    </div>
+                    <div class="box-body">
+                        <table id="datatable" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>ORDER_NUM</th>
+                                <th>ORDER_SUBTYPE</th>
+                                <th>REV</th>
+                                <th>PRODUCT</th>
+                                <th>LI_STATUS</th>
+                                <th>MILESTONE</th>
+                                <th>CREATED_AT</th>
+                                <th>ACC_NAS</th>
+                                <th>NIPNAS</th>
+                                <th>SID_NUM</th>
+                            </tr>
+                            </thead>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -104,6 +51,7 @@
         $(document).ready(function() {
             var table =  $('#datatable').DataTable({
                 scrollX: true,
+                responsive: true,
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('ora.getlireport') }}',
@@ -117,7 +65,7 @@
                     { data: 'CREATED_AT',name: 'CREATED_AT'},
                     { data: 'ACC_NAS',name: 'ACC_NAS'},
                     { data: 'NIPNAS',name: 'NIPNAS'},
-                    { data: 'SID_NUM',name: 'SID_NUM'},
+                    { data: 'SID_NUM',name: 'SID_NUM'}
                 ],initComplete: function () {
                     this.api().columns().every(function () {
                         var column = this;
