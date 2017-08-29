@@ -1,5 +1,5 @@
 @extends('dashboard.app')
-@section('title', 'Line Item')
+@section('title', 'Status Order')
 @section('content')
     <section class="content-header">
         <h1>Line Items</h1>
