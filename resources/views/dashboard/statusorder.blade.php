@@ -73,7 +73,6 @@
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
-            $('.wrapper').removeClass('main-sidebar');
             var table =  $('#datatable').DataTable({
                 scrollX: true,
                 responsive: true,
@@ -103,6 +102,7 @@
                     });
                 }
             });
+            $('.main-sidebar').removeClass('sidebar');
         });
     </script>
 @endsection
