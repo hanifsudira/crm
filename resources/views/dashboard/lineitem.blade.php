@@ -39,6 +39,7 @@
                                                 <tr>
                                                     <th>ORDER_NUM</th>
                                                     <th>ROW_ID</th>
+                                                    <th>INT_ID</th>
                                                     <th>ORDER_SUBTYPE</th>
                                                     <th>REV</th>
                                                     <th>PRODUCT</th>
@@ -117,6 +118,7 @@
                 columns: [
                     { data: 'ORDER_NUM',name: 'ORDER_NUM'},
                     { data: 'ROW_ID',name: 'ROW_ID'},
+                    { data: 'INT_ID',name: 'INT_ID'},
                     { data: 'ORDER_SUBTYPE',name: 'ORDER_SUBTYPE'},
                     { data: 'REV',name: 'REV'},
                     { data: 'PRODUCT',name: 'PRODUCT'},
