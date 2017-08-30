@@ -129,6 +129,15 @@
         </div>
     </section>
 @endsection
+@section('css')
+    <style>
+        tfoot input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+    </style>
+@endsection
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
