@@ -7,6 +7,8 @@
                     <thead>
                     <tr>
                         <th>ORDER#</th>
+                        <th>ROW_ID</th>
+                        <th>INT_ID</th>
                         <th>REV</th>
                         <th>PRODUCT</th>
                         <th>OH_STATUS</th>
@@ -39,6 +41,8 @@
                                     <td>{{$d[10]}}</td>
                                     <td>{{$d[11]}}</td>
                                     <td>{{$d[12]}}</td>
+                                    <td>{{$d[13]}}</td>
+                                    <td>{{$d[14]}}</td>
                                 </tr>
                             @endforeach
                         @else
@@ -54,14 +58,18 @@
                                     <td>{{$d[7]}}</td>
                                     <td>{{$d[8]}}</td>
                                     <td>{{$d[9]}}</td>
-                                    <td></td>
                                     <td>{{$d[10]}}</td>
                                     <td>{{$d[11]}}</td>
+                                    <td></td>
+                                    <td>{{$d[12]}}</td>
+                                    <td>{{$d[13]}}</td>
                                 </tr>
                             @endforeach
                         @endif
                     @else
                         <tr>
+                            <td>-</td>
+                            <td>-</td>
                             <td>-</td>
                             <td>-</td>
                             <td>-</td>

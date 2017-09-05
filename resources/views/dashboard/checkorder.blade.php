@@ -30,6 +30,8 @@
                                 <thead>
                                 <tr>
                                     <th>ORDER#</th>
+                                    <th>ROW_ID</th>
+                                    <th>INT_ID</th>
                                     <th>REV</th>
                                     <th>PRODUCT</th>
                                     <th>OH_STATUS</th>
@@ -46,6 +48,8 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>-</td>
+                                        <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
