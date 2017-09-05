@@ -26,7 +26,7 @@
                     <div class="box">
                         <div class="box-body">
                             <h1>Result</h1>
-                            <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
+                            <table id="datatable" class="table table-bordered table-striped " style="overflow: scroll;overflow: auto;">
                                 <thead>
                                 <tr>
                                     <th>ORDER#</th>
