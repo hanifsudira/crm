@@ -87,8 +87,4 @@ class ReportController extends Controller
         $order      = $output[3];
         return view('report.review',['lead'=>$lead,'quote'=>$quote,'agree'=>$agree,'order'=>$order]);
     }
-
-    public function intexcel(){
-
-    }
 }
