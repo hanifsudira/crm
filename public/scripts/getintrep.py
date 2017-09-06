@@ -54,6 +54,7 @@ for data in cur.fetchall():
 	result = requests.post('http://10.65.10.212/reqi/comaia/index.php?p=search',data={'search' : str(data[0])})
 	soup = BeautifulSoup(result.content, 'html.parser')
 	table = soup.findAll('table')[2]
+	tipe = table.findAll('td')[6].getText().lower()
 	rows = table.find('tbody').findAll('tr')
 	status = ""
 	for row in rows:
@@ -70,7 +71,13 @@ for data in cur.fetchall():
 
 	#ProvisionOrderFunction = PROVISION START 
 	if status == 'ProvisionOrderFunction':
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+		if 'provisionordersi' in tipe:
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='DELIVER' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+		elif 'provisionordertsq' in tipe:
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='DELIVER' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+		else:
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+
 
 	#FulfillBillingFunction = FULFILL BILLING START
 	elif status == 'FulfillBillingFunction':
