@@ -55,12 +55,17 @@ class ReportController extends Controller
             }
 
             #int
+            $stateint = 0;
             foreach ($pivotint as $int){
                 if($int->li_status_int==$status[$i] and $int->mile_status_int==$milestone[$i]){
+                    $stateint = 1;
                     array_push($countverarrint,$int->jumlah);
                     $countint+=$int->jumlah;
                     break;
                 }
+            }
+            if(!$stateint){
+                array_push($countverarrint,0);
             }
         }
 
