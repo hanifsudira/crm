@@ -72,7 +72,7 @@ for data in cur.fetchall():
 	try:
 		tipe = table2.findAll('td')[6].getText().lower()
 	except IndexError:
-    	tipe = 'None'
+		tipe = 'None'
 
 	#ProvisionOrderFunction = PROVISION START 
 	if status == 'ProvisionOrderFunction':
