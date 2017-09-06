@@ -34,6 +34,6 @@ for i,data in enumerate(result):
 	if REV_NUM is None:	
 		sql 		= "insert into tree (SITE, AGG_NAME, AGG_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
 	else:
-		sql 		= "insert into tree (SITE, AGG_NAME, AGG_NUM, REV_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+float(REV_NUM)+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
+		sql 		= "insert into tree (SITE, AGG_NAME, AGG_NUM, REV_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+str(float(REV_NUM))+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
 	cur.execute(sql)
 db.commit()
