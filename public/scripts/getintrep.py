@@ -79,9 +79,9 @@ for data in cur.fetchall():
 		if 'provisionordersi' in tipe:
 			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='DELIVER' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 		elif 'provisionordertsq' in tipe:
-			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='TSQ' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE', INT_NOTE='TSQ' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 		else:
-			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 
 
 	#FulfillBillingFunction = FULFILL BILLING START
