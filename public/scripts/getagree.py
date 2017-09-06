@@ -30,7 +30,7 @@ for i,data in enumerate(result):
 	PRODUCT 	= str(data[4])
 	AGG_TYPE 	= str(data[5])
 	PROD 		= str(data[6])	
-	sql 			= "insert into tree  values('"+AGG_NAME+"','"+AGG_NUM+"','"+REV_NUM+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"')"
+	sql 			= "insert into tree  values('"+AGG_NAME+"','"+AGG_NUM+"','"+REV_NUM+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
 	cur.execute(sql)
 db.commit()
 
