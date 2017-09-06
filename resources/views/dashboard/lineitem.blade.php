@@ -55,10 +55,12 @@
                                                     <th>MSTONE_SEQ</th>
                                                     <th>LI_STATUS_INT</th>
                                                     <th>MILE_STATUS_INT</th>
+                                                    <th>INT_NOTE</th>
                                                 </tr>
                                                 </thead>
                                                 <tfoot>
                                                 <tr>
+                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -164,7 +166,8 @@
                     { data: 'OH_SEQ',name: 'OH_SEQ'},
                     { data: 'MSTONE_SEQ',name: 'MSTONE_SEQ'},
                     { data: 'LI_STATUS_INT',name: 'LI_STATUS_INT'},
-                    { data: 'MILE_STATUS_INT',name: 'MILE_STATUS_INT'}
+                    { data: 'MILE_STATUS_INT',name: 'MILE_STATUS_INT'},
+                    { data: 'INT_NOTE',name: 'INT_NOTE'}
                 ],initComplete: function () {
                     this.api().columns().every(function () {
                         var column = this;
