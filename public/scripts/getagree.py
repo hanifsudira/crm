@@ -31,6 +31,6 @@ for i,data in enumerate(result):
 	PRODUCT 	= str(data[5]).replace("'","\\'")
 	AGG_TYPE 	= str(data[6]).replace("'","\\'")
 	PROD 		= str(data[7]).replace("'","\\'")	
-	sql 			= "insert into tree  values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"',"+REV_NUM+",'"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
+	sql 			= "insert into tree  values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"',"REV_NUM",'"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
 	cur.execute(sql)
 db.commit()
