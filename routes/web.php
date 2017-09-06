@@ -196,3 +196,10 @@ Route::group(['prefix' => 'force'], function () {
         'uses'      => 'OraController@forcecount'
     ]);
 });
+
+Route::group(['prefix' => 'tree'], function () {
+    Route::get('agreement', [
+        'as'        => 'tree.agreement',
+        'uses'      => 'TreeController@treeview'
+    ]);
+});
