@@ -10,7 +10,7 @@ con = cx_Oracle.connect('reportcrm/Telkom#2016@10.6.16.8/siebprddb')
 cursor = con.cursor()
 
 print 'agree query process'
-orasql = "select t1.loc as site ,t2.name as agg_name ,t2.agree_num as agg_num ,t2.rev_num as rev_num ,t2.par_agree_id as parent ,t4.name as product ,t2.agree_type_cd as agg_type ,t4.billing_type_cd as prod from sblprd.s_org_ext t1 left join sblprd.s_doc_agree t2 on t2.target_ou_id = t1.row_id left join sblprd.s_asset t3 on t3.cur_agree_id = t2.row_id left join sblprd.s_prod_int t4 on t4.row_id = t3.prod_id where (t4.billing_type_cd = 'Service Bundle' or t4.billing_type_cd is null) and t1.accnt_type_cd = 'Customer' order by t2.agree_num"
+orasql = "select t1.row_id as ca_id, t2.row_ID agg_id, t1.loc as site ,t2.name as agg_name ,t2.agree_num as agg_num ,t2.rev_num as rev_num ,t2.par_agree_id as parent ,t4.name as product ,t2.agree_type_cd as agg_type ,t4.billing_type_cd as prod from sblprd.s_org_ext t1 left join sblprd.s_doc_agree t2 on t2.target_ou_id = t1.row_id left join sblprd.s_asset t3 on t3.cur_agree_id = t2.row_id left join sblprd.s_prod_int t4 on t4.row_id = t3.prod_id where (t4.billing_type_cd = 'Service Bundle' or t4.billing_type_cd is null) and t1.accnt_type_cd = 'Customer' order by t2.agree_num"
 result = cursor.execute(orasql).fetchall()
 
 #mysql
