@@ -34,8 +34,8 @@ for i,data in enumerate(result):
 	AGG_TYPE 	= str(data[8]).replace("'","\\'")
 	PROD 		= str(data[9]).replace("'","\\'")
 	if REV_NUM is None:	
-		sql 	= "insert into tree (CA_ID, AGG_ID, SITE, AGG_NAME, AGG_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
+		sql 	= "insert into tree (CA_ID, AGG_ID, SITE, AGG_NAME, AGG_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+CA_ID+"','"+AGG_ID+"','"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
 	else:
-		sql 	= "insert into tree (CA_ID, AGG_ID, SITE, AGG_NAME, AGG_NUM, REV_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+str(float(REV_NUM))+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
+		sql 	= "insert into tree (CA_ID, AGG_ID, SITE, AGG_NAME, AGG_NUM, REV_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+CA_ID+"','"+AGG_ID+"','"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+str(float(REV_NUM))+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
 	cur.execute(sql)
 db.commit()
