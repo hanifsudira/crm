@@ -17,7 +17,7 @@ for row in rows:
     if cell[1].text == 'STARTED':
         status = cell[0].text
         break
-    if i == len(cell) and cell[1].text == 'COMPLETED':
+    if cell[1].text == 'COMPLETED':
         status = cell[0].text + 'Complete'
         break
 table = soup.findAll('table')[1]
