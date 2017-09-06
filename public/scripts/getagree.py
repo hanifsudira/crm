@@ -23,14 +23,13 @@ cur.execute(sqltruncate)
 now = str(datetime.datetime.now())
 print 'Inserting process'
 for i,data in enumerate(result):
-	AGG_NAME 	= str(data[0])
-	AGG_NUM 	= str(data[1])
-	REV_NUM 	= str(data[2])
-	PARENT 		= str(data[3])
-	PRODUCT 	= str(data[4])
-	AGG_TYPE 	= str(data[5])
-	PROD 		= str(data[6])	
+	AGG_NAME 	= str(data[0]).replace("'","\\'")
+	AGG_NUM 	= str(data[1]).replace("'","\\'")
+	REV_NUM 	= str(data[2]).replace("'","\\'")
+	PARENT 		= str(data[3]).replace("'","\\'")
+	PRODUCT 	= str(data[4]).replace("'","\\'")
+	AGG_TYPE 	= str(data[5]).replace("'","\\'")
+	PROD 		= str(data[6]).replace("'","\\'")	
 	sql 			= "insert into tree  values('"+AGG_NAME+"','"+AGG_NUM+"','"+REV_NUM+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
 	cur.execute(sql)
 db.commit()
-
