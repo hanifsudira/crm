@@ -26,7 +26,7 @@
                         </thead>
                         <tbody>
                         @if($data)
-                            @if(count($data[0])==14)
+                            @if(count($data[0])==15)
                                 @foreach($data as $d)
                                     <tr>
                                         <td>{{$d[0]}}</td>
