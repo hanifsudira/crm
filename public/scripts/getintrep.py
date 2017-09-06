@@ -54,7 +54,7 @@ for data in cur.fetchall():
 	result = requests.post('http://10.65.10.212/reqi/comaia/index.php?p=search',data={'search' : str(data[0])})
 	soup = BeautifulSoup(result.content, 'html.parser')
 	table = soup.findAll('table')[2]
-	tipe = table.findAll('td')[6].getText().lower()
+	table2 = soup.findAll('table')[1]
 	rows = table.find('tbody').findAll('tr')
 	status = ""
 	for row in rows:
@@ -69,12 +69,17 @@ for data in cur.fetchall():
 			status = cell[0].text + 'Complete'
 			break
 
+	try:
+		tipe = table2.findAll('td')[6].getText().lower()
+	except IndexError:
+    	tipe = 'None'
+
 	#ProvisionOrderFunction = PROVISION START 
 	if status == 'ProvisionOrderFunction':
 		if 'provisionordersi' in tipe:
 			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='DELIVER' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 		elif 'provisionordertsq' in tipe:
-			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='DELIVER' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='TSQ' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 		else:
 			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 
