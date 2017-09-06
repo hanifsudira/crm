@@ -23,17 +23,19 @@ cur.execute(sqltruncate)
 now = str(datetime.datetime.now())
 print 'Inserting process'
 for i,data in enumerate(result):
-	SITE 		= str(data[0]).replace("'","\\'")
-	AGG_NAME 	= str(data[1]).replace("'","\\'")
-	AGG_NUM 	= str(data[2]).replace("'","\\'")
-	REV_NUM 	= data[3]
-	PARENT 		= str(data[4]).replace("'","\\'")
-	PRODUCT 	= str(data[5]).replace("'","\\'")
-	AGG_TYPE 	= str(data[6]).replace("'","\\'")
-	PROD 		= str(data[7]).replace("'","\\'")
+	CA_ID 		= str(data[0]).replace("'","\\'")
+	AGG_ID 		= str(data[1]).replace("'","\\'")
+	SITE 		= str(data[2]).replace("'","\\'")
+	AGG_NAME 	= str(data[3]).replace("'","\\'")
+	AGG_NUM 	= str(data[4]).replace("'","\\'")
+	REV_NUM 	= data[5]
+	PARENT 		= str(data[6]).replace("'","\\'")
+	PRODUCT 	= str(data[7]).replace("'","\\'")
+	AGG_TYPE 	= str(data[8]).replace("'","\\'")
+	PROD 		= str(data[9]).replace("'","\\'")
 	if REV_NUM is None:	
-		sql 		= "insert into tree (SITE, AGG_NAME, AGG_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
+		sql 	= "insert into tree (CA_ID, AGG_ID, SITE, AGG_NAME, AGG_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
 	else:
-		sql 		= "insert into tree (SITE, AGG_NAME, AGG_NUM, REV_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+str(float(REV_NUM))+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
+		sql 	= "insert into tree (CA_ID, AGG_ID, SITE, AGG_NAME, AGG_NUM, REV_NUM, PARENT, PRODUCT, AGG_TYPE, PROD, lastupdate) values('"+SITE+"','"+AGG_NAME+"','"+AGG_NUM+"','"+str(float(REV_NUM))+"','"+PARENT+"','"+PRODUCT+"','"+AGG_TYPE+"','"+PROD+"','"+now+"')"
 	cur.execute(sql)
 db.commit()
