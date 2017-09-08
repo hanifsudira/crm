@@ -79,6 +79,11 @@ Route::group(['prefix' => 'report'], function () {
         'as'        => 'report.reviewtransaksi',
         'uses'      => 'ReportController@reviewtransaksi'
     ]);
+
+    Route::get('flowreport', [
+        'as'        => 'report.flowreport',
+        'uses'      => 'ReportController@flowreport'
+    ]);
 });
 
 Route::group(['prefix' => 'ora'], function () {
