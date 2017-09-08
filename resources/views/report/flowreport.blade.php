@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box-header">
-                    <h1 class="box-title">Last Update : {{$lu}}</h1>
+                    <h1 class="box-title">Last Update : </h1>
                 </div>
             </div>
         </div>
@@ -355,10 +355,7 @@
                 }
                 return go.Link.prototype.computeCurviness.call(this);
             };
-            // end CustomLink class
 
-
-            // Add a port to the specified side of the selected nodes.
             function addPort(side) {
                 myDiagram.startTransaction("addPort");
                 myDiagram.selection.each(function(node) {
@@ -385,8 +382,6 @@
                 myDiagram.commitTransaction("addPort");
             }
 
-            // Remove the clicked port from the node.
-            // Links to the port will be redrawn to the node's shape.
             function removePort(port) {
                 myDiagram.startTransaction("removePort");
                 var pid = port.portId;
@@ -400,7 +395,6 @@
                 myDiagram.commitTransaction("removePort");
             }
 
-            // Remove all ports from the same side of the node as the clicked port.
             function removeAll(port) {
                 myDiagram.startTransaction("removePorts");
                 var nodedata = port.part.data;
@@ -409,7 +403,6 @@
                 myDiagram.commitTransaction("removePorts");
             }
 
-            // Change the color of the clicked port.
             function changeColor(port) {
                 myDiagram.startTransaction("colorPort");
                 var data = port.data;
@@ -417,77 +410,74 @@
                 myDiagram.commitTransaction("colorPort");
             }
 
-
-            // Save the model to / load it from JSON text shown on the page itself, not in a database.
-            function save() {
-                document.getElementById("mySavedModel").value = myDiagram.model.toJson();
-                myDiagram.isModified = false;
+            function temp() {
+                value = { "class": "go.GraphLinksModel",
+                    "copiesArrays": true,
+                    "copiesArrayObjects": true,
+                    "linkFromPortIdProperty": "fromPort",
+                    "linkToPortIdProperty": "toPort",
+                    "nodeDataArray": [
+                        {"name":"1.Pending : [0]", "leftArray":[ {"portId":"left0", "portColor":"#000"} ], "rightArray":[], "topArray":[], "bottomArray":[], "key":-3, "loc":"200 0", "color": "#203864", "width":"10", "height":"5"},
+                        {"name":"2.Submitted : [1]", "leftArray":[ {"portId":"left0", "portColor":"#000"} ], "rightArray":[], "topArray":[], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"} ], "key":-4, "loc":"200 60", "color": "#203864", "width":"10", "height":"5"},
+                        {"name":"1.Pending : [0]", "leftArray":[], "rightArray":[], "topArray":[], "bottomArray":[], "key":-5, "loc":"310 0", "color": "#2F5596", "width":"10", "height":"5"},
+                        {"name":"2.Submitted : [1]", "leftArray":[], "rightArray":[], "topArray":[], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"} ], "key":-6, "loc":"310 60", "color": "#2F5596", "width":"10", "height":"5"},
+                        {"name":"3.Inprogress : [1]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-7, "loc":"200 310", "color": "#203864", "width":"10", "height":"17"},
+                        {"name":"17.Complete : [1]", "leftArray":[], "rightArray":[], "topArray":[], "bottomArray":[], "key":-8, "loc":"200 440", "color": "#203864", "width":"10", "height":"5"},
+                        {"name":"X.Pending Cancel", "leftArray":[ {"portId":"left0", "portColor":"#000"} ], "rightArray":[], "topArray":[], "bottomArray":[], "key":-9, "loc":"200 500", "color": "#203864", "width":"10", "height":"5"},
+                        {"name":"17.Complete : [1]", "leftArray":[], "rightArray":[ {"portId":"right0", "portColor":"#000"} ], "topArray":[], "bottomArray":[], "key":-10, "loc":"310 440", "color": "#2F5596", "width":"10", "height":"5"},
+                        {"name":"X.Pending Cancel", "leftArray":[], "rightArray":[], "topArray":[], "bottomArray":[], "key":-11, "loc":"310 500", "color": "#2F5596", "width":"10", "height":"5"},
+                        {"name":"3.Inprogress : [2]", "leftArray":[], "rightArray":[], "topArray":[], "bottomArray":[], "key":-12, "loc":"310 250", "color": "#2F5596", "width":"10", "height":"5"},
+                        {"name":"11.Pending BASO : [2]", "leftArray":[], "rightArray":[ {"portId":"right0", "portColor":"#000"} ], "topArray":[], "bottomArray":[], "key":-13, "loc":"310 310", "color": "#2F5596", "width":"10", "height":"5"},
+                        {"name":"13.Pending Billing\nApproval : [2]", "leftArray":[], "rightArray":[ {"portId":"right0", "portColor":"#000"} ], "topArray":[], "bottomArray":[], "key":-14, "loc":"310 370", "color": "#2F5596", "width":"10", "height":"5"},
+                        {"name":"AIA\nCOM", "leftArray":[ {"portId":"left0", "portColor":"#000"},{"portId":"left1", "portColor":"#000"},{"portId":"left2", "portColor":"#000"},{"portId":"left3", "portColor":"#000"},{"portId":"left4", "portColor":"#000"},{"portId":"left5", "portColor":"#000"} ], "rightArray":[ {"portId":"right0", "portColor":"#000"},{"portId":"right1", "portColor":"#000"},{"portId":"right2", "portColor":"#000"},{"portId":"right3", "portColor":"#000"},{"portId":"right4", "portColor":"#000"},{"portId":"right5", "portColor":"#000"} ], "topArray":[ {"portId":"top0", "portColor":"#000"},{"portId":"top1", "portColor":"#000"},{"portId":"top2", "portColor":"#000"},{"portId":"top3", "portColor":"#000"},{"portId":"top4", "portColor":"#000"},{"portId":"top5", "portColor":"#000"} ], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"},{"portId":"bottom1", "portColor":"#000"},{"portId":"bottom2", "portColor":"#000"},{"portId":"bottom3", "portColor":"#000"},{"portId":"bottom4", "portColor":"#000"},{"portId":"bottom5", "portColor":"#000"} ], "key":-15, "loc":"460 157", "color": "green", "width":"10", "height":"10"},
+                        {"name":"X.Failed", "leftArray":[ {"portId":"left0", "portColor":"#000"} ], "rightArray":[], "topArray":[], "bottomArray":[], "key":-16, "loc":"255 560", "color": "#000", "width":"20", "height":"5"},
+                        {"name":"TSQ\n[2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-17, "loc":"460 500", "color": "red", "width":"5", "height":"5"},
+                        {"name":"Deliver\n[2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-18, "loc":"520 500", "color": "red", "width":"5", "height":"5"},
+                        {"name":"TREMS", "leftArray":[ {"portId":"left0", "portColor":"#000"} ], "rightArray":[], "topArray":[], "bottomArray":[], "key":-20, "loc":"450 -60 ", "color": "#ED7D31", "width":"10", "height":"5"},
+                        {"name":"TIBS", "leftArray":[], "rightArray":[ {"portId":"right0", "portColor":"#000"} ], "topArray":[], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"},{"portId":"bottom1", "portColor":"#000"} ], "key":-21, "loc":"450 0 ", "color": "#ED7D31", "width":"10", "height":"5"},
+                        {"name":"3.SCS : [0]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-22, "loc":"550 250", "color": "#B3C7E8", "width":"5", "height":"5"},
+                        {"name":"5.SCC : [0]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-23, "loc":"610 250", "color": "#B3C7E8", "width":"5", "height":"5"},
+                        {"name":"8.PS : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-24, "loc":"670 250", "color": "#B3C7E8", "width":"5", "height":"5"},
+                        {"name":"10.PC : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-25, "loc":"730 250", "color": "#B3C7E8", "width":"5", "height":"5"},
+                        {"name":"12.BAS : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"} ], "key":-27, "loc":"850 260", "color": "#B3C7E8", "width":"5", "height":"8"},
+                        {"name":"15.FBS : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-28, "loc":"910 260", "color": "#B3C7E8", "width":"5", "height":"8"},
+                        {"name":"17.FBC : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-29, "loc":"970 260", "color": "#B3C7E8", "width":"5", "height":"8"},
+                        {"name":"11.BS : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"} ], "key":-30, "loc":"790 250", "color": "#B3C7E8", "width":"5", "height":"5"}
+                    ],
+                    "linkDataArray": [
+                        {"from":-3, "to":-4, "fromPort":"left0", "toPort":"left0", "points":[161.29644687500004,-52.437872812499876,151.29644687500004,-52.437872812499876,151.29644687500004,16.767127187500193,161.73642734375002,16.767127187500193,172.1764078125,16.767127187500193,186.1764078125,16.767127187500193]},
+                        {"from":-6, "to":-15, "fromPort":"bottom0", "toPort":"left0", "points":[360.3814078125,58.5761408593751,360.3814078125,68.5761408593751,360.3814078125,77.62036148697885,469.7483154787101,77.62036148697885,579.1152231449202,77.62036148697885,593.1152231449202,77.62036148697885],"text":"2"},
+                        {"from":-4, "to":-15, "fromPort":"bottom0", "toPort":"left1", "points":[222.1764078125,52.76712718750019,222.1764078125,62.76712718750019,222.1764078125,87.62036148697885,396.64581547871006,87.62036148697885,571.1152231449202,87.62036148697885,593.1152231449202,87.62036148697885],"text":"2"},
+                        {"from":-15, "to":-16, "fromPort":"left2", "toPort":"left0", "points":[593.1152231449202,97.62036148697885,559.1152231449202,97.62036148697885,119.97046687500006,97.62036148697885,119.97046687500006,606.3750000000002,139.34318359375,606.3750000000002,153.34318359375,606.3750000000002]},
+                        {"from":-15, "to":-9, "fromPort":"left3", "toPort":"left0", "points":[593.1152231449202,107.62036148697885,567.1152231449202,107.62036148697885,137.41536864440107,107.62036148697885,137.41536864440107,321.68902618337614,137.41536864440107,535.7576908797735,151.41536864440107,535.7576908797735]},
+                        {"from":-15, "to":-7, "fromPort":"left4", "toPort":"top0", "points":[593.1152231449202,117.62036148697885,575.1152231449202,117.62036148697885,224.27898192565104,117.62036148697885,224.27898192565104,150.25532989431366,224.27898192565104,182.89029830164844,224.27898192565104,192.89029830164844],"text":"3"},
+                        {"from":-15, "to":-13, "fromPort":"left5", "toPort":"right0", "points":[593.1152231449202,127.62036148697885,583.1152231449202,127.62036148697885,527.4971745580938,127.62036148697885,527.4971745580938,336.5990483122387,475.8791259712674,336.5990483122387,461.8791259712674,336.5990483122387],"text":"11"},
+                        {"from":-15, "to":-14, "fromPort":"bottom0", "toPort":"right0", "points":[606.1152231449202,140.62036148697885,606.1152231449202,154.62036148697885,606.1152231449202,408.5990483122387,530.9986394018438,408.5990483122387,455.8820556587674,408.5990483122387,441.8820556587674,408.5990483122387],"text":"13"},
+                        {"from":-15, "to":-10, "fromPort":"bottom1", "toPort":"right0", "points":[616.1152231449202,140.62036148697885,616.1152231449202,162.62036148697885,616.1152231449202,472.75769087977346,532.6839970665355,472.75769087977346,449.25277098815104,472.75769087977346,435.25277098815104,472.75769087977346],"text":"17"},
+                        {"from":-15, "to":-17, "fromPort":"bottom2", "toPort":"top0", "points":[626.1152231449202,140.62036148697885,626.1152231449202,174.62036148697885,626.1152231449202,343.52001277473954,626.6542471875001,343.52001277473954,626.6542471875001,492.41966406250026,626.6542471875001,506.41966406250026],"text":"5"},
+                        {"from":-15, "to":-18, "fromPort":"bottom3", "toPort":"top0", "points":[636.1152231449202,140.62036148697885,636.1152231449202,166.62036148697885,636.1152231449202,340.34858359505205,698.1260146875003,340.34858359505205,698.1260146875003,482.0768057031253,698.1260146875003,496.0768057031253],"text":"6"},
+                        {"from":-20, "to":-15, "fromPort":"left0", "toPort":"top0", "points":[589.8069079687502,-121.24674843750012,579.8069079687502,-121.24674843750012,579.8069079687502,-1.3131934752606327,606.1152231449202,-1.3131934752606327,606.1152231449202,50.62036148697885,606.1152231449202,64.62036148697885],"text":"3"},
+                        {"from":-15, "to":-21, "fromPort":"top1", "toPort":"bottom0", "points":[616.1152231449202,64.62036148697885,616.1152231449202,22.62036148697885,616.1152231449202,-1.301028162760609,625.4830918750004,-1.301028162760609,625.4830918750004,2.777582187499931,625.4830918750004,-11.222417812500069],"text":"3"},
+                        {"from":-15, "to":-21, "fromPort":"top2", "toPort":"bottom1", "points":[626.1152231449202,64.62036148697885,626.1152231449202,30.62036148697885,626.1152231449202,14.698971837239391,635.4830918750004,14.698971837239391,635.4830918750004,10.777582187499931,635.4830918750004,-11.222417812500069],"text":"15"},
+                        {"from":-21, "to":-15, "fromPort":"right0", "toPort":"top3", "points":[666.4830918750004,-47.22241781250007,676.4830918750004,-47.22241781250007,676.4830918750004,33.69897183723939,636.1152231449202,33.69897183723939,636.1152231449202,38.62036148697885,636.1152231449202,64.62036148697885]},
+                        {"from":-15, "to":-29, "fromPort":"top4", "toPort":"top0", "points":[646.1152231449202,64.62036148697885,646.1152231449202,46.62036148697885,1481.5184462594839,46.62036148697885,1481.5184462594839,97.5951865661145,1481.5184462594839,148.57001164525016,1481.5184462594839,162.57001164525016],"text":"15"},
+                        {"from":-15, "to":-28, "fromPort":"top5", "toPort":"top0", "points":[656.1152231449202,64.62036148697885,656.1152231449202,54.62036148697885,1366.7201582770733,54.62036148697885,1366.7201582770733,101.5951865661145,1366.7201582770733,148.57001164525016,1366.7201582770733,162.57001164525016],"text":"17"},
+                        {"from":-15, "to":-27, "fromPort":"right0", "toPort":"top0", "points":[669.1152231449202,77.62036148697885,719.1152231449202,77.62036148697885,1251.921870294663,77.62036148697885,1251.921870294663,111.54385835013599,1251.921870294663,145.46735521329313,1251.921870294663,159.46735521329313],"text":"13"},
+                        {"from":-15, "to":-30, "fromPort":"right1", "toPort":"top0", "points":[669.1152231449202,87.62036148697885,711.1152231449202,87.62036148697885,1146.431551608124,87.62036148697885,1146.431551608124,115.76819424214673,1146.431551608124,143.91602699731462,1146.431551608124,157.91602699731462],"text":"11"},
+                        {"from":-15, "to":-25, "fromPort":"right2", "toPort":"top0", "points":[669.1152231449202,97.62036148697885,703.1152231449202,97.62036148697885,1035.0643471875007,97.62036148697885,1035.0643471875007,119.53129793098947,1035.0643471875007,141.44223437500008,1035.0643471875007,155.44223437500008],"text":"10"},
+                        {"from":-15, "to":-24, "fromPort":"right3", "toPort":"top0", "points":[669.1152231449202,107.62036148697885,695.1152231449202,107.62036148697885,938.0669484375006,107.62036148697885,938.0669484375006,123.8931571497395,938.0669484375006,140.16595281250014,938.0669484375006,154.16595281250014],"text":"8"},
+                        {"from":-15, "to":-23, "fromPort":"right4", "toPort":"top0", "points":[669.1152231449202,117.62036148697885,687.1152231449202,117.62036148697885,838.5169865625005,117.62036148697885,838.5169865625005,128.8931571497395,838.5169865625005,140.16595281250014,838.5169865625005,154.16595281250014],"text":"4"},
+                        {"from":-15, "to":-22, "fromPort":"right5", "toPort":"top0", "points":[669.1152231449202,127.62036148697885,679.1152231449202,127.62036148697885,736.4144615625005,127.62036148697885,736.4144615625005,132.61687558723946,736.4144615625005,137.61338968750007,736.4144615625005,151.61338968750007],"text":"3"},
+                        {"from":-30, "to":-15, "fromPort":"bottom0", "toPort":"bottom5", "points":[1146.431551608124,229.91602699731462,1146.431551608124,243.91602699731462,656.1152231449202,243.91602699731462,656.1152231449202,197.26819424214673,656.1152231449202,150.62036148697885,656.1152231449202,140.62036148697885],"text":"12. BASO Approved"},
+                        {"from":-27, "to":-15, "fromPort":"bottom0", "toPort":"bottom4", "points":[1251.921870294663,231.46735521329313,1251.921870294663,245.46735521329313,1251.921870294663,262.17446850036936,646.1152231449202,262.17446850036936,646.1152231449202,158.62036148697885,646.1152231449202,140.62036148697885],"text":"14. Billing Approved"}
+                    ]
+                }
             }
 
             function load() {
-                myDiagram.model = myDiagram.model = go.Model.fromJson(
-                    { "class": "go.GraphLinksModel",
-                        "copiesArrays": true,
-                        "copiesArrayObjects": true,
-                        "linkFromPortIdProperty": "fromPort",
-                        "linkToPortIdProperty": "toPort",
-                        "nodeDataArray": [
-                            {"name":"1.Pending : [0]", "leftArray":[ {"portId":"left0", "portColor":"#000"} ], "rightArray":[], "topArray":[], "bottomArray":[], "key":-3, "loc":"200 0", "color": "#203864", "width":"10", "height":"5"},
-                            {"name":"2.Submitted : [1]", "leftArray":[ {"portId":"left0", "portColor":"#000"} ], "rightArray":[], "topArray":[], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"} ], "key":-4, "loc":"200 60", "color": "#203864", "width":"10", "height":"5"},
-                            {"name":"1.Pending : [0]", "leftArray":[], "rightArray":[], "topArray":[], "bottomArray":[], "key":-5, "loc":"310 0", "color": "#2F5596", "width":"10", "height":"5"},
-                            {"name":"2.Submitted : [1]", "leftArray":[], "rightArray":[], "topArray":[], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"} ], "key":-6, "loc":"310 60", "color": "#2F5596", "width":"10", "height":"5"},
-                            {"name":"3.Inprogress : [1]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-7, "loc":"200 310", "color": "#203864", "width":"10", "height":"17"},
-                            {"name":"17.Complete : [1]", "leftArray":[], "rightArray":[], "topArray":[], "bottomArray":[], "key":-8, "loc":"200 440", "color": "#203864", "width":"10", "height":"5"},
-                            {"name":"X.Pending Cancel", "leftArray":[ {"portId":"left0", "portColor":"#000"} ], "rightArray":[], "topArray":[], "bottomArray":[], "key":-9, "loc":"200 500", "color": "#203864", "width":"10", "height":"5"},
-                            {"name":"17.Complete : [1]", "leftArray":[], "rightArray":[ {"portId":"right0", "portColor":"#000"} ], "topArray":[], "bottomArray":[], "key":-10, "loc":"310 440", "color": "#2F5596", "width":"10", "height":"5"},
-                            {"name":"X.Pending Cancel", "leftArray":[], "rightArray":[], "topArray":[], "bottomArray":[], "key":-11, "loc":"310 500", "color": "#2F5596", "width":"10", "height":"5"},
-                            {"name":"3.Inprogress : [2]", "leftArray":[], "rightArray":[], "topArray":[], "bottomArray":[], "key":-12, "loc":"310 250", "color": "#2F5596", "width":"10", "height":"5"},
-                            {"name":"11.Pending BASO : [2]", "leftArray":[], "rightArray":[ {"portId":"right0", "portColor":"#000"} ], "topArray":[], "bottomArray":[], "key":-13, "loc":"310 310", "color": "#2F5596", "width":"10", "height":"5"},
-                            {"name":"13.Pending Billing\nApproval : [2]", "leftArray":[], "rightArray":[ {"portId":"right0", "portColor":"#000"} ], "topArray":[], "bottomArray":[], "key":-14, "loc":"310 370", "color": "#2F5596", "width":"10", "height":"5"},
-                            {"name":"AIA\nCOM", "leftArray":[ {"portId":"left0", "portColor":"#000"},{"portId":"left1", "portColor":"#000"},{"portId":"left2", "portColor":"#000"},{"portId":"left3", "portColor":"#000"},{"portId":"left4", "portColor":"#000"},{"portId":"left5", "portColor":"#000"} ], "rightArray":[ {"portId":"right0", "portColor":"#000"},{"portId":"right1", "portColor":"#000"},{"portId":"right2", "portColor":"#000"},{"portId":"right3", "portColor":"#000"},{"portId":"right4", "portColor":"#000"},{"portId":"right5", "portColor":"#000"} ], "topArray":[ {"portId":"top0", "portColor":"#000"},{"portId":"top1", "portColor":"#000"},{"portId":"top2", "portColor":"#000"},{"portId":"top3", "portColor":"#000"},{"portId":"top4", "portColor":"#000"},{"portId":"top5", "portColor":"#000"} ], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"},{"portId":"bottom1", "portColor":"#000"},{"portId":"bottom2", "portColor":"#000"},{"portId":"bottom3", "portColor":"#000"},{"portId":"bottom4", "portColor":"#000"},{"portId":"bottom5", "portColor":"#000"} ], "key":-15, "loc":"460 157", "color": "green", "width":"10", "height":"10"},
-                            {"name":"X.Failed", "leftArray":[ {"portId":"left0", "portColor":"#000"} ], "rightArray":[], "topArray":[], "bottomArray":[], "key":-16, "loc":"255 560", "color": "#000", "width":"20", "height":"5"},
-                            {"name":"TSQ\n[2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-17, "loc":"460 500", "color": "red", "width":"5", "height":"5"},
-                            {"name":"Deliver\n[2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-18, "loc":"520 500", "color": "red", "width":"5", "height":"5"},
-                            {"name":"TREMS", "leftArray":[ {"portId":"left0", "portColor":"#000"} ], "rightArray":[], "topArray":[], "bottomArray":[], "key":-20, "loc":"450 -60 ", "color": "#ED7D31", "width":"10", "height":"5"},
-                            {"name":"TIBS", "leftArray":[], "rightArray":[ {"portId":"right0", "portColor":"#000"} ], "topArray":[], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"},{"portId":"bottom1", "portColor":"#000"} ], "key":-21, "loc":"450 0 ", "color": "#ED7D31", "width":"10", "height":"5"},
-                            {"name":"3.SCS : [0]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-22, "loc":"550 250", "color": "#B3C7E8", "width":"5", "height":"5"},
-                            {"name":"5.SCC : [0]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-23, "loc":"610 250", "color": "#B3C7E8", "width":"5", "height":"5"},
-                            {"name":"8.PS : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-24, "loc":"670 250", "color": "#B3C7E8", "width":"5", "height":"5"},
-                            {"name":"10.PC : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-25, "loc":"730 250", "color": "#B3C7E8", "width":"5", "height":"5"},
-                            {"name":"12.BAS : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"} ], "key":-27, "loc":"850 260", "color": "#B3C7E8", "width":"5", "height":"8"},
-                            {"name":"15.FBS : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-28, "loc":"910 260", "color": "#B3C7E8", "width":"5", "height":"8"},
-                            {"name":"17.FBC : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[], "key":-29, "loc":"970 260", "color": "#B3C7E8", "width":"5", "height":"8"},
-                            {"name":"11.BS : [2]", "leftArray":[], "rightArray":[], "topArray":[ {"portId":"top0", "portColor":"#000"} ], "bottomArray":[ {"portId":"bottom0", "portColor":"#000"} ], "key":-30, "loc":"790 250", "color": "#B3C7E8", "width":"5", "height":"5"}
-                        ],
-                        "linkDataArray": [
-                            {"from":-3, "to":-4, "fromPort":"left0", "toPort":"left0", "points":[161.29644687500004,-52.437872812499876,151.29644687500004,-52.437872812499876,151.29644687500004,16.767127187500193,161.73642734375002,16.767127187500193,172.1764078125,16.767127187500193,186.1764078125,16.767127187500193]},
-                            {"from":-6, "to":-15, "fromPort":"bottom0", "toPort":"left0", "points":[360.3814078125,58.5761408593751,360.3814078125,68.5761408593751,360.3814078125,77.62036148697885,469.7483154787101,77.62036148697885,579.1152231449202,77.62036148697885,593.1152231449202,77.62036148697885],"text":"2"},
-                            {"from":-4, "to":-15, "fromPort":"bottom0", "toPort":"left1", "points":[222.1764078125,52.76712718750019,222.1764078125,62.76712718750019,222.1764078125,87.62036148697885,396.64581547871006,87.62036148697885,571.1152231449202,87.62036148697885,593.1152231449202,87.62036148697885],"text":"2"},
-                            {"from":-15, "to":-16, "fromPort":"left2", "toPort":"left0", "points":[593.1152231449202,97.62036148697885,559.1152231449202,97.62036148697885,119.97046687500006,97.62036148697885,119.97046687500006,606.3750000000002,139.34318359375,606.3750000000002,153.34318359375,606.3750000000002]},
-                            {"from":-15, "to":-9, "fromPort":"left3", "toPort":"left0", "points":[593.1152231449202,107.62036148697885,567.1152231449202,107.62036148697885,137.41536864440107,107.62036148697885,137.41536864440107,321.68902618337614,137.41536864440107,535.7576908797735,151.41536864440107,535.7576908797735]},
-                            {"from":-15, "to":-7, "fromPort":"left4", "toPort":"top0", "points":[593.1152231449202,117.62036148697885,575.1152231449202,117.62036148697885,224.27898192565104,117.62036148697885,224.27898192565104,150.25532989431366,224.27898192565104,182.89029830164844,224.27898192565104,192.89029830164844],"text":"3"},
-                            {"from":-15, "to":-13, "fromPort":"left5", "toPort":"right0", "points":[593.1152231449202,127.62036148697885,583.1152231449202,127.62036148697885,527.4971745580938,127.62036148697885,527.4971745580938,336.5990483122387,475.8791259712674,336.5990483122387,461.8791259712674,336.5990483122387],"text":"11"},
-                            {"from":-15, "to":-14, "fromPort":"bottom0", "toPort":"right0", "points":[606.1152231449202,140.62036148697885,606.1152231449202,154.62036148697885,606.1152231449202,408.5990483122387,530.9986394018438,408.5990483122387,455.8820556587674,408.5990483122387,441.8820556587674,408.5990483122387],"text":"13"},
-                            {"from":-15, "to":-10, "fromPort":"bottom1", "toPort":"right0", "points":[616.1152231449202,140.62036148697885,616.1152231449202,162.62036148697885,616.1152231449202,472.75769087977346,532.6839970665355,472.75769087977346,449.25277098815104,472.75769087977346,435.25277098815104,472.75769087977346],"text":"17"},
-                            {"from":-15, "to":-17, "fromPort":"bottom2", "toPort":"top0", "points":[626.1152231449202,140.62036148697885,626.1152231449202,174.62036148697885,626.1152231449202,343.52001277473954,626.6542471875001,343.52001277473954,626.6542471875001,492.41966406250026,626.6542471875001,506.41966406250026],"text":"5"},
-                            {"from":-15, "to":-18, "fromPort":"bottom3", "toPort":"top0", "points":[636.1152231449202,140.62036148697885,636.1152231449202,166.62036148697885,636.1152231449202,340.34858359505205,698.1260146875003,340.34858359505205,698.1260146875003,482.0768057031253,698.1260146875003,496.0768057031253],"text":"6"},
-                            {"from":-20, "to":-15, "fromPort":"left0", "toPort":"top0", "points":[589.8069079687502,-121.24674843750012,579.8069079687502,-121.24674843750012,579.8069079687502,-1.3131934752606327,606.1152231449202,-1.3131934752606327,606.1152231449202,50.62036148697885,606.1152231449202,64.62036148697885],"text":"3"},
-                            {"from":-15, "to":-21, "fromPort":"top1", "toPort":"bottom0", "points":[616.1152231449202,64.62036148697885,616.1152231449202,22.62036148697885,616.1152231449202,-1.301028162760609,625.4830918750004,-1.301028162760609,625.4830918750004,2.777582187499931,625.4830918750004,-11.222417812500069],"text":"3"},
-                            {"from":-15, "to":-21, "fromPort":"top2", "toPort":"bottom1", "points":[626.1152231449202,64.62036148697885,626.1152231449202,30.62036148697885,626.1152231449202,14.698971837239391,635.4830918750004,14.698971837239391,635.4830918750004,10.777582187499931,635.4830918750004,-11.222417812500069],"text":"15"},
-                            {"from":-21, "to":-15, "fromPort":"right0", "toPort":"top3", "points":[666.4830918750004,-47.22241781250007,676.4830918750004,-47.22241781250007,676.4830918750004,33.69897183723939,636.1152231449202,33.69897183723939,636.1152231449202,38.62036148697885,636.1152231449202,64.62036148697885]},
-                            {"from":-15, "to":-29, "fromPort":"top4", "toPort":"top0", "points":[646.1152231449202,64.62036148697885,646.1152231449202,46.62036148697885,1481.5184462594839,46.62036148697885,1481.5184462594839,97.5951865661145,1481.5184462594839,148.57001164525016,1481.5184462594839,162.57001164525016],"text":"15"},
-                            {"from":-15, "to":-28, "fromPort":"top5", "toPort":"top0", "points":[656.1152231449202,64.62036148697885,656.1152231449202,54.62036148697885,1366.7201582770733,54.62036148697885,1366.7201582770733,101.5951865661145,1366.7201582770733,148.57001164525016,1366.7201582770733,162.57001164525016],"text":"17"},
-                            {"from":-15, "to":-27, "fromPort":"right0", "toPort":"top0", "points":[669.1152231449202,77.62036148697885,719.1152231449202,77.62036148697885,1251.921870294663,77.62036148697885,1251.921870294663,111.54385835013599,1251.921870294663,145.46735521329313,1251.921870294663,159.46735521329313],"text":"13"},
-                            {"from":-15, "to":-30, "fromPort":"right1", "toPort":"top0", "points":[669.1152231449202,87.62036148697885,711.1152231449202,87.62036148697885,1146.431551608124,87.62036148697885,1146.431551608124,115.76819424214673,1146.431551608124,143.91602699731462,1146.431551608124,157.91602699731462],"text":"11"},
-                            {"from":-15, "to":-25, "fromPort":"right2", "toPort":"top0", "points":[669.1152231449202,97.62036148697885,703.1152231449202,97.62036148697885,1035.0643471875007,97.62036148697885,1035.0643471875007,119.53129793098947,1035.0643471875007,141.44223437500008,1035.0643471875007,155.44223437500008],"text":"10"},
-                            {"from":-15, "to":-24, "fromPort":"right3", "toPort":"top0", "points":[669.1152231449202,107.62036148697885,695.1152231449202,107.62036148697885,938.0669484375006,107.62036148697885,938.0669484375006,123.8931571497395,938.0669484375006,140.16595281250014,938.0669484375006,154.16595281250014],"text":"8"},
-                            {"from":-15, "to":-23, "fromPort":"right4", "toPort":"top0", "points":[669.1152231449202,117.62036148697885,687.1152231449202,117.62036148697885,838.5169865625005,117.62036148697885,838.5169865625005,128.8931571497395,838.5169865625005,140.16595281250014,838.5169865625005,154.16595281250014],"text":"4"},
-                            {"from":-15, "to":-22, "fromPort":"right5", "toPort":"top0", "points":[669.1152231449202,127.62036148697885,679.1152231449202,127.62036148697885,736.4144615625005,127.62036148697885,736.4144615625005,132.61687558723946,736.4144615625005,137.61338968750007,736.4144615625005,151.61338968750007],"text":"3"},
-                            {"from":-30, "to":-15, "fromPort":"bottom0", "toPort":"bottom5", "points":[1146.431551608124,229.91602699731462,1146.431551608124,243.91602699731462,656.1152231449202,243.91602699731462,656.1152231449202,197.26819424214673,656.1152231449202,150.62036148697885,656.1152231449202,140.62036148697885],"text":"12. BASO Approved"},
-                            {"from":-27, "to":-15, "fromPort":"bottom0", "toPort":"bottom4", "points":[1251.921870294663,231.46735521329313,1251.921870294663,245.46735521329313,1251.921870294663,262.17446850036936,646.1152231449202,262.17446850036936,646.1152231449202,158.62036148697885,646.1152231449202,140.62036148697885],"text":"14. Billing Approved"}
-                        ]
-                    }
-                );
+                $.getJSON("{{ route('report.flowdatareturn') }}", function (result) {
+                    myDiagram.model = myDiagram.model = go.Model.fromJson(result)
+                })
             }
             init();
         });
