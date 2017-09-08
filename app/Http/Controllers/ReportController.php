@@ -94,7 +94,8 @@ class ReportController extends Controller
     }
 
     public function flowreport(){
-        return view('report.flowreport');
+        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
+        return view('report.flowreport',['lu'=>$lastupdate->lastupdate]);
     }
 
 }
