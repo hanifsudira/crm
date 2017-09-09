@@ -8,9 +8,9 @@ use phpDocumentor\Reflection\Types\Null_;
 
 class ReportController extends Controller
 {
-    public function allreport(){
-        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
-        $pivot = DB::select('select li_status, milestone, 
+
+    public function query(){
+        $GLOBALS['pivot'] = DB::select('select li_status, milestone, 
                                 count(case when ORDER_SUBTYPE=\'disconnect\' then 1 end) do,
                                 count(case when ORDER_SUBTYPE=\'modify\' then 1 end) mo,
                                 count(case when ORDER_SUBTYPE=\'new install\' then 1 end) ao,
@@ -18,12 +18,16 @@ class ReportController extends Controller
                                 count(case when ORDER_SUBTYPE=\'suspend\' then 1 end) so
                             from int_report pt group by milestone,li_status');
 
-        $pivotint = DB::select('select li_status_int, mile_status_int, count(*) as jumlah
+        $GLOBALS['pivotint'] = DB::select('select li_status_int, mile_status_int, count(*) as jumlah
                                 from int_report 
                                 group by mile_status_int,li_status_int order by li_status_int desc;');
 
-        $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
-        $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
+        $GLOBALS['status'] = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
+        $GLOBALS['milestone'] = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
+    }
+    public function allreport(){
+        $this->query();
+        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
 
         $return = array();
         $countverarr = array();
@@ -743,8 +747,8 @@ class ReportController extends Controller
     }
 
     public function flowreport(){
-        //$lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
-        return view('report.flowreport');
+        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
+        return view('report.flowreport',['lu'=>$lastupdate]);
     }
 
 }
