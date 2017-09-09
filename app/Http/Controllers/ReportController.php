@@ -517,6 +517,28 @@ class ReportController extends Controller
                 "width"=>"5",
                 "height"=>"5"
             ),
+            array(
+                "name"=>"Dictionary:\n
+                SCS: Sync Customer Start\n
+                SCC: Sync Customer Complete\n
+                PS: Provision Start\n
+                PC: Provision Complete\n
+                BS: BASO Started\n
+                BAS: Billing Approval Start\n
+                FBS: Fulfill Billing Start\n
+                FBC: Fulfill Billing Complete\n
+                MS: Milestone
+                ",
+                "leftArray"=>[],
+                "rightArray"=>[],
+                "topArray"=>[],
+                "bottomArray"=>[],
+                "key"=>41,
+                "loc"=>"800 460",
+                "color"=> "#95a5a6",
+                "width"=>"23",
+                "height"=>"23"
+            ),
         );
         $data->linkDataArray            = array(
             array(
@@ -633,7 +655,8 @@ class ReportController extends Controller
                 "to"=>-15,
                 "fromPort"=>"right0",
                 "toPort"=>"top3",
-                "points"=>[666.4830918750004,-47.22241781250007,676.4830918750004,-47.22241781250007,676.4830918750004,33.69897183723939,636.1152231449202,33.69897183723939,636.1152231449202,38.62036148697885,636.1152231449202,64.62036148697885]
+                "points"=>[666.4830918750004,-47.22241781250007,676.4830918750004,-47.22241781250007,676.4830918750004,33.69897183723939,636.1152231449202,33.69897183723939,636.1152231449202,38.62036148697885,636.1152231449202,64.62036148697885],
+                "text"=>"16. BillComp"
             ),
             array(
                 "from"=>-15,
