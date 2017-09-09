@@ -250,7 +250,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=>"17.Complete : [".(string)($countverarr[11]+$countverarr[12])."]",
+                "name"=>"17.Complete : \n[".(string)($countverarr[11]+$countverarr[12])."]",
                 "leftArray"=>[],
                 "rightArray"=>[
                     array(
@@ -279,7 +279,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=>"3.Inprogress : [".(string)($countverarr[2]+$countverarr[3]+$countverarr[4]+$countverarr[5]+$countverarr[6])."]",
+                "name"=>"3.Inprogress : \n[".(string)($countverarr[2]+$countverarr[3]+$countverarr[4]+$countverarr[5]+$countverarr[6])."]",
                 "leftArray"=>[],
                 "rightArray"=>[],
                 "topArray"=>[],
@@ -291,7 +291,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=>"11.Pending BASO : [".(string)($countverarr[7]+$countverarr[8])."]",
+                "name"=>"11.Pending BASO : \n[".(string)($countverarr[7]+$countverarr[8])."]",
                 "leftArray"=>[],
                 "rightArray"=>[
                     array(
@@ -536,7 +536,7 @@ class ReportController extends Controller
                 "height"=>"8"
             ),
             array(
-                "name"=>"11.BS : [".(string)$countverarr[8]."]",
+                "name"=>"11.BS \n: [".(string)$countverarr[8]."]",
                 "leftArray"=>[],
                 "rightArray"=>[],
                 "topArray"=>[
