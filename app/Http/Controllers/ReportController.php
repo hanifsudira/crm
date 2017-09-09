@@ -12,6 +12,7 @@ class ReportController extends Controller
     public function query(){
 
     }
+
     public function allreport(){
         $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
         $pivot = DB::select('select li_status, milestone, 
@@ -99,6 +100,35 @@ class ReportController extends Controller
     }
 
     public function flowdatareturn(){
+        $pivot = DB::select('select li_status, milestone, 
+                                count(case when ORDER_SUBTYPE=\'disconnect\' then 1 end) do,
+                                count(case when ORDER_SUBTYPE=\'modify\' then 1 end) mo,
+                                count(case when ORDER_SUBTYPE=\'new install\' then 1 end) ao,
+                                count(case when ORDER_SUBTYPE=\'resume\' then 1 end) ro,
+                                count(case when ORDER_SUBTYPE=\'suspend\' then 1 end) so
+                            from int_report pt group by milestone,li_status');
+
+        $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
+        $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
+
+        $countverarr = array();
+        for($i=0;$i<count($status);$i++){
+
+            #db crm
+            $state = 0;
+            foreach ($pivot as $data){
+                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
+                    $state = 1;
+                    $countver = $data->do+$data->mo+$data->ao+$data->ro+$data->so;
+                    array_push($countverarr,$countver);
+                    break;
+                }
+            }
+            if(!$state){
+                array_push($countverarr,0);
+            }
+        }
+
         $data = new \stdClass();
         $data->class                    = "go.GraphLinksModel";
         $data->copiesArrays             = true;
@@ -743,7 +773,9 @@ class ReportController extends Controller
                 "text"=>"14. Billing Approved"
             )
         );
-        return json_encode($data);
+
+        var_dump($countverarr);
+        #return json_encode($data);
     }
 
     public function flowreport(){
