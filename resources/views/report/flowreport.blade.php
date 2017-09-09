@@ -83,6 +83,18 @@
 
                 var portSize = new go.Size(8, 8);
 
+                var portMenu =  // context menu for each port
+                    $(go.Adornment, "Vertical",
+                        makeButton("Remove port",
+                            // in the click event handler, the obj.part is the Adornment;
+                            // its adornedObject is the port
+                            function (e, obj) { removePort(obj.part.adornedObject); }),
+                        makeButton("Change color",
+                            function (e, obj) { changeColor(obj.part.adornedObject); }),
+                        makeButton("Remove side ports",
+                            function (e, obj) { removeAll(obj.part.adornedObject); })
+                    );
+
                 // the node template
                 // includes a panel on each side with an itemArray of panels containing ports
                 myDiagram.nodeTemplate =
@@ -196,6 +208,57 @@
                             }
                         )  // end Horizontal Panel
                     );  // end Node
+
+                // an orthogonal link template, reshapable and relinkable
+                myDiagram.linkTemplate =
+                    $(CustomLink,  // defined below
+                        {
+                            routing: go.Link.AvoidsNodes,
+                            corner: 4,
+                            curve: go.Link.JumpGap,
+                            reshapable: true,
+                            resegmentable: true,
+                            relinkableFrom: true,
+                            relinkableTo: true
+                        },
+                        new go.Binding("points").makeTwoWay(),
+                        $(go.Shape, { stroke: "#2F4F4F", strokeWidth: 2 })
+                    );
+
+                // support double-clicking in the background to add a copy of this data as a node
+                myDiagram.toolManager.clickCreatingTool.archetypeNodeData = {
+                    name: "Unit",
+                    leftArray: [],
+                    rightArray: [],
+                    topArray: [],
+                    bottomArray: []
+                };
+
+                myDiagram.contextMenu =
+                    $(go.Adornment, "Vertical",
+                        makeButton("Paste",
+                            function(e, obj) { e.diagram.commandHandler.pasteSelection(e.diagram.lastInput.documentPoint); },
+                            function(o) { return o.diagram.commandHandler.canPasteSelection(); }),
+                        makeButton("Undo",
+                            function(e, obj) { e.diagram.commandHandler.undo(); },
+                            function(o) { return o.diagram.commandHandler.canUndo(); }),
+                        makeButton("Redo",
+                            function(e, obj) { e.diagram.commandHandler.redo(); },
+                            function(o) { return o.diagram.commandHandler.canRedo(); })
+                    );
+
+                myDiagram.linkTemplate =
+                    $(go.Link,
+                        {
+                            routing: go.Link.Orthogonal, corner: 5,
+                            relinkableFrom: true, relinkableTo: true
+                        },
+                        $(go.Shape, { stroke: "gray", strokeWidth: 2 }),
+                        $(go.Shape, { stroke: "gray", fill: "gray", toArrow: "Standard" }),
+                        $(go.TextBlock, // this is a Link label
+                            new go.Binding("text", "text"),{segmentOffset: new go.Point(8, 5)})
+                    );
+
                 // load the diagram from JSON data
                 load();
             }
