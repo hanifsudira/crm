@@ -10,7 +10,11 @@ class ReportController extends Controller
 {
 
     public function query(){
-        $GLOBALS['pivot'] = DB::select('select li_status, milestone, 
+
+    }
+    public function allreport(){
+        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
+        $pivot = DB::select('select li_status, milestone, 
                                 count(case when ORDER_SUBTYPE=\'disconnect\' then 1 end) do,
                                 count(case when ORDER_SUBTYPE=\'modify\' then 1 end) mo,
                                 count(case when ORDER_SUBTYPE=\'new install\' then 1 end) ao,
@@ -18,27 +22,23 @@ class ReportController extends Controller
                                 count(case when ORDER_SUBTYPE=\'suspend\' then 1 end) so
                             from int_report pt group by milestone,li_status');
 
-        $GLOBALS['pivotint'] = DB::select('select li_status_int, mile_status_int, count(*) as jumlah
+        $pivotint = DB::select('select li_status_int, mile_status_int, count(*) as jumlah
                                 from int_report 
                                 group by mile_status_int,li_status_int order by li_status_int desc;');
 
-        $GLOBALS['status'] = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
-        $GLOBALS['milestone'] = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
-    }
-    public function allreport(){
-        $this->query();
-        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
+        $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
+        $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
 
         $return = array();
         $countverarr = array();
         $countverarrint = array();
         $countint = 0;
-        for($i=0;$i<count($GLOBALS['status']);$i++){
+        for($i=0;$i<count($status);$i++){
 
             #db crm
             $state = 0;
-            foreach ($GLOBALS['pivot'] as $data){
-                if($data->li_status==$GLOBALS['status'][$i] and $data->milestone==$GLOBALS['milestone'][$i]){
+            foreach ($pivot as $data){
+                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
                     $state = 1;
                     array_push($return,$data);
                     $countver = $data->do+$data->mo+$data->ao+$data->ro+$data->so;
@@ -48,8 +48,8 @@ class ReportController extends Controller
             }
             if(!$state){
                 $temp = new \stdClass();
-                $temp->li_status = $GLOBALS['status'][$i];
-                $temp->milestone = $GLOBALS['milestone'][$i];
+                $temp->li_status = $status[$i];
+                $temp->milestone = $milestone[$i];
                 $temp->do = 0;
                 $temp->mo = 0;
                 $temp->ao = 0;
@@ -61,8 +61,8 @@ class ReportController extends Controller
 
             #int
             $stateint = 0;
-            foreach ($GLOBALS['pivotint'] as $int){
-                if($int->li_status_int==$GLOBALS['pivotint'][$i] and $int->mile_status_int==$GLOBALS['milestone'][$i]){
+            foreach ($pivotint as $int){
+                if($int->li_status_int==$status[$i] and $int->mile_status_int==$milestone[$i]){
                     $stateint = 1;
                     array_push($countverarrint,$int->jumlah);
                     $countint+=$int->jumlah;
@@ -99,7 +99,6 @@ class ReportController extends Controller
     }
 
     public function flowdatareturn(){
-        $this->query();
         $data = new \stdClass();
         $data->class                    = "go.GraphLinksModel";
         $data->copiesArrays             = true;
