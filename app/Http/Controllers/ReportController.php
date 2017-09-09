@@ -33,12 +33,12 @@ class ReportController extends Controller
         $countverarr = array();
         $countverarrint = array();
         $countint = 0;
-        for($i=0;$i<count($status);$i++){
+        for($i=0;$i<count($GLOBALS['status']);$i++){
 
             #db crm
             $state = 0;
-            foreach ($pivot as $data){
-                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
+            foreach ($GLOBALS['pivot'] as $data){
+                if($data->li_status==$GLOBALS['status'][$i] and $data->milestone==$GLOBALS['milestone'][$i]){
                     $state = 1;
                     array_push($return,$data);
                     $countver = $data->do+$data->mo+$data->ao+$data->ro+$data->so;
@@ -48,8 +48,8 @@ class ReportController extends Controller
             }
             if(!$state){
                 $temp = new \stdClass();
-                $temp->li_status = $status[$i];
-                $temp->milestone = $milestone[$i];
+                $temp->li_status = $GLOBALS['status'][$i];
+                $temp->milestone = $GLOBALS['milestone'][$i];
                 $temp->do = 0;
                 $temp->mo = 0;
                 $temp->ao = 0;
@@ -61,8 +61,8 @@ class ReportController extends Controller
 
             #int
             $stateint = 0;
-            foreach ($pivotint as $int){
-                if($int->li_status_int==$status[$i] and $int->mile_status_int==$milestone[$i]){
+            foreach ($GLOBALS['pivotint'] as $int){
+                if($int->li_status_int==$GLOBALS['pivotint'][$i] and $int->mile_status_int==$GLOBALS['milestone'][$i]){
                     $stateint = 1;
                     array_push($countverarrint,$int->jumlah);
                     $countint+=$int->jumlah;
@@ -99,6 +99,7 @@ class ReportController extends Controller
     }
 
     public function flowdatareturn(){
+        $this->query();
         $data = new \stdClass();
         $data->class                    = "go.GraphLinksModel";
         $data->copiesArrays             = true;
