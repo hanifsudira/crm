@@ -137,7 +137,7 @@ class ReportController extends Controller
         $data->linkToPortIdProperty     = "toPort";
         $data->nodeDataArray            =  array(
             array(
-                "name"=>"1.Pending : [0]",
+                "name"=>"1.Pending : ["+str($countverarr[0])+"]",
                 "leftArray"=> [
                     array(
                         "portId"=>"left0",
@@ -154,7 +154,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=> "2.Submitted : [1]",
+                "name"=> "2.Submitted : ["+str($countverarr[0])+"]",
                 "leftArray"=>[
                     array(
                         "portId"=>"left0",
@@ -773,9 +773,7 @@ class ReportController extends Controller
                 "text"=>"14. Billing Approved"
             )
         );
-
-        var_dump($countverarr);
-        #return json_encode($data);
+        return json_encode($data);
     }
 
     public function flowreport(){
