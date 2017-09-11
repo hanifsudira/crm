@@ -568,7 +568,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>41,
-                "loc"=>"800 460",
+                "loc"=>"800 500",
                 "color"=> "#95a5a6",
                 "width"=>"23",
                 "height"=>"23"
