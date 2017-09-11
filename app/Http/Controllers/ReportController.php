@@ -139,7 +139,7 @@ class ReportController extends Controller
         $data->linkToPortIdProperty     = "toPort";
         $data->nodeDataArray            =  array(
             array(
-                "name"=>"1.Pending [?]",
+                "name"=>"1.Pending\n[".(string)$orderheader[4]->JUMLAH."]",
                 "leftArray"=> [
                     array(
                         "portId"=>"left0",
@@ -156,7 +156,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=> "2.Submitted [?]",
+                "name"=> "2.Submitted\n[".(string)$orderheader[6]->JUMLAH."]",
                 "leftArray"=>[
                     array(
                         "portId"=>"left0",
@@ -177,7 +177,7 @@ class ReportController extends Controller
                 "width"=>"10",
                 "height"=>"5"),
             array(
-                "name"=>"1.Pending [".(string)$countverarr[0]."]",
+                "name"=>"1.Pending\n[".(string)$countverarr[0]."]",
                 "leftArray"=>[],
                 "rightArray"=>[],
                 "topArray"=>[],
@@ -189,7 +189,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=>"2.Submitted [".(string)$countverarr[1]."]",
+                "name"=>"2.Submitted\n[".(string)$countverarr[1]."]",
                 "leftArray"=>[],
                 "rightArray"=>[],
                 "topArray"=>[],
@@ -206,7 +206,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=>"3.Inprogress [?]",
+                "name"=>"3.Inprogress\n[".(string)$orderheader[3]->JUMLAH."]",
                 "leftArray"=>[],
                 "rightArray"=>[],
                 "topArray"=>[
@@ -223,7 +223,7 @@ class ReportController extends Controller
                 "height"=>"17"
             ),
             array(
-                "name"=>"17.Complete [?]",
+                "name"=>"17.Complete\n[".(string)$orderheader[1]->JUMLAH."]",
                 "leftArray"=>[],
                 "rightArray"=>[],
                 "topArray"=>[],
@@ -252,7 +252,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=>"17.Complete [".(string)($countverarr[11]+$countverarr[12])."]",
+                "name"=>"17.Complete\n[".(string)($countverarr[11]+$countverarr[12])."]",
                 "leftArray"=>[],
                 "rightArray"=>[
                     array(
@@ -281,7 +281,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=>"3.Inprogress [".(string)($countverarr[2]+$countverarr[3]+$countverarr[4]+$countverarr[5]+$countverarr[6])."]",
+                "name"=>"3.Inprogress\n[".(string)($countverarr[2]+$countverarr[3]+$countverarr[4]+$countverarr[5]+$countverarr[6])."]",
                 "leftArray"=>[],
                 "rightArray"=>[],
                 "topArray"=>[],
