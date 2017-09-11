@@ -112,6 +112,8 @@ class ReportController extends Controller
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
 
         $orderheader = DB::select('SELECT OH_STATUS, count(OH_STATUS) as JUMLAH FROM crm_dashboard.int_report group by OH_STATUS;');
+        $tsqdeliver = DB::select('SELECT INT_NOTE, count(INT_NOTE) as JUMLAH FROM crm_dashboard.int_report group by INT_NOTE;');
+
         $countverarr = array();
         for($i=0;$i<count($status);$i++){
 
@@ -292,7 +294,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=>"11.Pending BASO [".(string)($countverarr[7]+$countverarr[8])."]",
+                "name"=>"11.Pending BASO\n[".(string)($countverarr[7]+$countverarr[8])."]",
                 "leftArray"=>[],
                 "rightArray"=>[
                     array(
@@ -380,7 +382,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=>"TSQ\n[?]",
+                "name"=>"TSQ\n[".(string)$tsqdeliver[2]->JUMLAH."]",
                 "leftArray"=>[],
                 "rightArray"=>[],
                 "topArray"=>[
@@ -394,7 +396,7 @@ class ReportController extends Controller
                 "height"=>"5"
             ),
             array(
-                "name"=>"Deliver\n[?]",
+                "name"=>"Deliver\n[".(string)$tsqdeliver[0]->JUMLAH."]",
                 "leftArray"=>[],
                 "rightArray"=>[],
                 "topArray"=>[
