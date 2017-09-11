@@ -111,7 +111,7 @@ class ReportController extends Controller
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
 
-        $orderheader = DB::select('SELECT OH_STATUS, count(OH_STATUS) as JUMLAH FROM crm_dashboard.int_report group by OH_STATUS;')->toArray();
+        $orderheader = DB::select('SELECT OH_STATUS, count(OH_STATUS) as JUMLAH FROM crm_dashboard.int_report group by OH_STATUS;');
         var_dump($orderheader);
         $countverarr = array();
         for($i=0;$i<count($status);$i++){
@@ -775,7 +775,7 @@ class ReportController extends Controller
                 "text"=>"14"
             )
         );
-        #return json_encode($data);
+        return json_encode($data);
     }
 
     public function flowreport(){
