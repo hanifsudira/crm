@@ -112,7 +112,6 @@ class ReportController extends Controller
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
 
         $orderheader = DB::select('SELECT OH_STATUS, count(OH_STATUS) as JUMLAH FROM crm_dashboard.int_report group by OH_STATUS;');
-        var_dump($orderheader);
         $countverarr = array();
         for($i=0;$i<count($status);$i++){
 
