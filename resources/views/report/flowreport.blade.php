@@ -139,7 +139,7 @@
                                         $(go.Shape, "Rectangle",
                                             { stroke: null, strokeWidth: 0,
                                                 desiredSize: portSize,
-                                                margin: new go.Margin(1,0) },
+                                                margin: new go.Margin(7,0) },
                                             new go.Binding("fill", "portColor"))
                                     )  // end itemTemplate
                             }
@@ -160,7 +160,7 @@
                                         $(go.Shape, "Rectangle",
                                             { stroke: null, strokeWidth: 0,
                                                 desiredSize: portSize,
-                                                margin: new go.Margin(0, 1) },
+                                                margin: new go.Margin(0, 7) },
                                             new go.Binding("fill", "portColor"))
                                     )  // end itemTemplate
                             }
@@ -181,7 +181,7 @@
                                         $(go.Shape, "Rectangle",
                                             { stroke: null, strokeWidth: 0,
                                                 desiredSize: portSize,
-                                                margin: new go.Margin(1, 0) },
+                                                margin: new go.Margin(7, 0) },
                                             new go.Binding("fill", "portColor"))
                                     )  // end itemTemplate
                             }
@@ -202,7 +202,7 @@
                                         $(go.Shape, "Rectangle",
                                             { stroke: null, strokeWidth: 0,
                                                 desiredSize: portSize,
-                                                margin: new go.Margin(0, 1) },
+                                                margin: new go.Margin(0, 7) },
                                             new go.Binding("fill", "portColor"))
                                     )  // end itemTemplate
                             }
@@ -256,7 +256,7 @@
                         $(go.Shape, { stroke: "gray", strokeWidth: 2 }),
                         $(go.Shape, { stroke: "gray", fill: "gray", toArrow: "Standard" }),
                         $(go.TextBlock, // this is a Link label
-                            new go.Binding("text", "text"),{segmentOffset: new go.Point(8, 5)})
+                            new go.Binding("text", "text"),{segmentIndex : 4, segmentOffset: new go.Point(8, 5)})
                     );
 
                 // load the diagram from JSON data
