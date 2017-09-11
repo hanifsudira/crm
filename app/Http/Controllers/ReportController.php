@@ -148,7 +148,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-3,
-                "loc"=>"200 0",
+                "loc"=>"155 0",
                 "color"=>"#203864",
                 "width"=>"10",
                 "height"=>"5"
@@ -170,7 +170,7 @@ class ReportController extends Controller
                     ),
                 ],
                 "key"=>-4,
-                "loc"=>"200 60",
+                "loc"=>"155 58",
                 "color"=> "#203864",
                 "width"=>"10",
                 "height"=>"5"),
@@ -181,7 +181,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-5,
-                "loc"=>"310 0",
+                "loc"=>"265 0",
                 "color"=> "#2F5596",
                 "width"=>"10",
                 "height"=>"5"
@@ -198,7 +198,7 @@ class ReportController extends Controller
                     ),
                 ],
                 "key"=>-6,
-                "loc"=>"310 60",
+                "loc"=>"265 58",
                 "color"=> "#2F5596",
                 "width"=>"10",
                 "height"=>"5"
@@ -215,7 +215,7 @@ class ReportController extends Controller
                 ],
                 "bottomArray"=>[],
                 "key"=>-7,
-                "loc"=>"200 310",
+                "loc"=>"155 310",
                 "color"=> "#203864",
                 "width"=>"10",
                 "height"=>"17"
@@ -227,7 +227,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-8,
-                "loc"=>"200 440",
+                "loc"=>"155 441",
                 "color"=> "#203864",
                 "width"=>"10",
                 "height"=>"5"
@@ -244,7 +244,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-9,
-                "loc"=>"200 500",
+                "loc"=>"155 501",
                 "color"=> "#203864",
                 "width"=>"10",
                 "height"=>"5"
@@ -261,7 +261,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-10,
-                "loc"=>"310 440",
+                "loc"=>"265 441",
                 "color"=> "#2F5596",
                 "width"=>"10",
                 "height"=>"5"
@@ -273,7 +273,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-11,
-                "loc"=>"310 500",
+                "loc"=>"265 501",
                 "color"=> "#2F5596",
                 "width"=>"10",
                 "height"=>"5"
@@ -285,7 +285,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-12,
-                "loc"=>"310 250",
+                "loc"=>"265 251",
                 "color"=> "#2F5596",
                 "width"=>"10",
                 "height"=>"5"
@@ -302,7 +302,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-13,
-                "loc"=>"310 310",
+                "loc"=>"265 311",
                 "color"=> "#2F5596",
                 "width"=>"10",
                 "height"=>"5"
@@ -319,7 +319,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-14,
-                "loc"=>"310 370",
+                "loc"=>"265 371",
                 "color"=> "#2F5596",
                 "width"=>"10",
                 "height"=>"5"
@@ -359,7 +359,7 @@ class ReportController extends Controller
                     array("portId"=>"bottom5", "portColor"=>"#000"),
                 ],
                 "key"=>-15,
-                "loc"=>"460 157",
+                "loc"=>"480 160",
                 "color"=> "green",
                 "width"=>"15",
                 "height"=>"15"
@@ -373,7 +373,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-16,
-                "loc"=>"255 560",
+                "loc"=>"209 560",
                 "color"=> "#000",
                 "width"=>"20",
                 "height"=>"5"
@@ -387,7 +387,7 @@ class ReportController extends Controller
                 ],
                 "bottomArray"=>[],
                 "key"=>-17,
-                "loc"=>"460 500",
+                "loc"=>"469 522",
                 "color"=> "red",
                 "width"=>"5",
                 "height"=>"5"
@@ -401,7 +401,7 @@ class ReportController extends Controller
                 ],
                 "bottomArray"=>[],
                 "key"=>-18,
-                "loc"=>"520 500",
+                "loc"=>"531 522",
                 "color"=> "red",
                 "width"=>"5",
                 "height"=>"5"),
@@ -414,7 +414,7 @@ class ReportController extends Controller
                 "topArray"=>[],
                 "bottomArray"=>[],
                 "key"=>-20,
-                "loc"=>"450 -60",
+                "loc"=>"458 -105",
                 "color"=> "#ED7D31",
                 "width"=>"10",
                 "height"=>"5"
@@ -431,7 +431,7 @@ class ReportController extends Controller
                     array("portId"=>"bottom1", "portColor"=>"#000"),
                 ],
                 "key"=>-21,
-                "loc"=>"450 0 ",
+                "loc"=>"458 -45",
                 "color"=> "#ED7D31",
                 "width"=>"10",
                 "height"=>"5"
@@ -445,7 +445,7 @@ class ReportController extends Controller
                 ],
                 "bottomArray"=>[],
                 "key"=>-22,
-                "loc"=>"550 250",
+                "loc"=>"625 281",
                 "color"=> "#B3C7E8",
                 "width"=>"5", "height"=>"5"
             ),
@@ -458,7 +458,7 @@ class ReportController extends Controller
                 ],
                 "bottomArray"=>[],
                 "key"=>-23,
-                "loc"=>"610 250",
+                "loc"=>"685 281",
                 "color"=> "#B3C7E8",
                 "width"=>"5",
                 "height"=>"5"
@@ -472,7 +472,7 @@ class ReportController extends Controller
                 ],
                 "bottomArray"=>[],
                 "key"=>-24,
-                "loc"=>"670 250",
+                "loc"=>"745 281",
                 "color"=> "#B3C7E8",
                 "width"=>"5",
                 "height"=>"5"
@@ -486,7 +486,7 @@ class ReportController extends Controller
                 ],
                 "bottomArray"=>[],
                 "key"=>-25,
-                "loc"=>"730 250",
+                "loc"=>"805 281",
                 "color"=> "#B3C7E8",
                 "width"=>"5",
                 "height"=>"5"
@@ -502,7 +502,7 @@ class ReportController extends Controller
                     array("portId"=>"bottom0", "portColor"=>"#000"),
                 ],
                 "key"=>-27,
-                "loc"=>"850 260",
+                "loc"=>"925 290",
                 "color"=> "#B3C7E8",
                 "width"=>"5",
                 "height"=>"8"
@@ -516,7 +516,7 @@ class ReportController extends Controller
                 ],
                 "bottomArray"=>[],
                 "key"=>-28,
-                "loc"=>"910 260",
+                "loc"=>"984 290",
                 "color"=> "#B3C7E8",
                 "width"=>"5",
                 "height"=>"8"
@@ -530,7 +530,7 @@ class ReportController extends Controller
                 ],
                 "bottomArray"=>[],
                 "key"=>-29,
-                "loc"=>"970 260",
+                "loc"=>"1045 290",
                 "color"=> "#B3C7E8",
                 "width"=>"5",
                 "height"=>"8"
@@ -546,7 +546,7 @@ class ReportController extends Controller
                     array("portId"=>"bottom0", "portColor"=>"#000"),
                 ],
                 "key"=>-30,
-                "loc"=>"790 250",
+                "loc"=>"865 281",
                 "color"=> "#B3C7E8",
                 "width"=>"5",
                 "height"=>"5"
