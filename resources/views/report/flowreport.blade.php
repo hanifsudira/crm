@@ -256,7 +256,7 @@
                         $(go.Shape, { stroke: "gray", strokeWidth: 2 }),
                         $(go.Shape, { stroke: "gray", fill: "gray", toArrow: "Standard" }),
                         $(go.TextBlock, // this is a Link label
-                            new go.Binding("text", "text"),{segmentIndex : 4, segmentOffset: new go.Point(8, 5)})
+                            new go.Binding("text", "text"),{segmentIndex : 4, segmentOffset: new go.Point(-10, 10)})
                     );
 
                 // load the diagram from JSON data
