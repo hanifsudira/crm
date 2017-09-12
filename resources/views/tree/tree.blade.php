@@ -51,7 +51,7 @@
                     'dataType': 'json',
                     'type' : 'get',
                     'url': function (node) {
-                        return node.id === '#' ? '{{route('ora.getroot',$order)}}' : 'ajax_children.json';
+                        return node.parent === '#' ? '{{route('ora.getroot',$order)}}' : 'ajax_children.json';
                     },
                     'data': function (node) {
                         return {
@@ -59,7 +59,8 @@
                         };
                     }
                 }
-            }
+            },
+            'plugins': ["search","json_data","wholerow","contextmenu","dnd","state","cookies"],
         });
 
     });
