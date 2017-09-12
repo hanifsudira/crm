@@ -15,30 +15,23 @@
             <div class="lockscreen-logo">
                 <a href="../../index2.html"><b>Admin</b>LTE</a>
             </div>
-
-            <!-- START LOCK SCREEN ITEM -->
             <div class="lockscreen-item">
-                <!-- /.lockscreen-image -->
-
-                <!-- lockscreen credentials (contains the form) -->
                 <form class="lockscreen-credentials">
                     <div class="input-group">
-                        <input type="password" class="form-control" placeholder="password">
+                        <input type="password" id="ordernum" class="form-control" placeholder="password">
 
                         <div class="input-group-btn">
                             <button type="button" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
                         </div>
                     </div>
                 </form>
-                <!-- /.lockscreen credentials -->
-
             </div>
             <!-- /.lockscreen-item -->
             <div class="help-block text-center">
                 Total Row : {{$count}}
             </div>
             <div class="text-center">
-                <a href="#">Last Update : {{$lu}}r</a>
+                <a href="#">Last Update : {{$lu}}</a>
             </div>
         </div>
     </section>
