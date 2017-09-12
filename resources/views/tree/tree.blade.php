@@ -52,9 +52,11 @@
                     'type' : 'get',
                     'url' : function(node){
                         if(node.id === "#") {
+                            console.log('masuk');
                             return "{{route('ora.getroot',$order)}}";
                         }
                         else{
+                            console.log('masuak');
                             return "{{route('ora.getroot',$order)}}";
                         }
                     },
@@ -68,7 +70,7 @@
                     }
                 }
             },
-            'plugins': ["search","json_data","wholerow","contextmenu","dnd","state","cookies"],
+            'plugins': ["json_data","wholerow","dnd",],
         });
 
     });
