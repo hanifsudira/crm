@@ -13,12 +13,11 @@
     <section class="content">
         <div class="lockscreen-wrapper">
             <div class="lockscreen-logo">
-                <a href="../../index2.html"><b>Admin</b>LTE</a>
+                <a href="#">Amandment</a>
             </div>
             <div class="lockscreen-item">
                 <input type="text" id="ordernum" class="form-control" placeholder="password">
             </div>
-            <!-- /.lockscreen-item -->
             <div class="help-block text-center">
                 Total Row : {{$count}}
             </div>
