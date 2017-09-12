@@ -16,7 +16,7 @@
                 <a href="#">Amandment</a>
             </div>
             <div class="lockscreen-item">
-                <input type="text" id="ordernum" class="form-control" placeholder="password">
+                <input type="text" id="ordernum" class="form-control" placeholder="Site">
             </div>
             <div class="help-block text-center">
                 Total Row : {{$count}}
