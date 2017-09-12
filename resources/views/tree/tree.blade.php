@@ -72,7 +72,7 @@
                     'data': function (node) {
                         console.log(node);
                         return {
-                            'id'            : node.original.id,
+                            'id'            : node.id,
                             'parent_num'    : node.original.parent_num,
                             'rev_num'       : node.original.rev_num,
                             'agg_num'       : node.original.agg_num,
