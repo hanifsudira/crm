@@ -223,7 +223,7 @@ Route::group(['prefix' => 'tree'], function () {
         'uses'      => 'TreeController@getroot'
     ]);
 
-    Route::get('getchild/{{id}}',[
+    Route::get('getchild',[
         'as'        => 'ora.getchild',
         'uses'      => 'TreeController@getchild'
     ]);

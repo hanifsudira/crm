@@ -39,13 +39,12 @@ class TreeController extends Controller
         echo json_encode($jstree);
     }
 
-    public function getchild($value){
-        $data       = json_decode($value);
-        $id         = $data[0];
-        $agg_num    = $data[3];
-        $rev_num    = $data[2];
-        $parent_num = $data[1];
-        $level      = $data[4];
+    public function getchild(Request $request){
+        $id         = $request->id;
+        $agg_num    = $request->agg_num;
+        $rev_num    = $request->rev_num;
+        $parent_num = $request->parent_num;
+        $level      = $request->level;
 
         $child = DB::select("select distinct(agg_num), agg_name, rev_num, agg_id, parent from tree where  (agg_num='$agg_num' and rev_num<>'$rev_num') or (parent='$parent_num');");
         $jstree = array();
