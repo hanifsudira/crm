@@ -47,17 +47,20 @@
 
         $('#tree').jstree({
             'core' : {
-                'data' : {
-                    'url' : function (node) {
+                'data': {
+                    'dataType': 'json',
+                    'type' : 'get',
+                    'url': function (node) {
                         return node.id === '#' ? '{{route('ora.getroot',$order)}}' : 'ajax_children.json';
                     },
-                    'data' : function (node) {
+                    'data': function (node) {
                         return {
-                            'id' : node.id
+                            'id': node.id
                         };
                     }
                 }
-            });
+            }
+        });
 
     });
 </script>
