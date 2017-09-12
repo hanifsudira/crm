@@ -15,14 +15,9 @@
             <div class="lockscreen-logo">
                 <a href="../../index2.html"><b>Admin</b>LTE</a>
             </div>
-            <div class="lockscreen-name">John Doe</div>
 
             <!-- START LOCK SCREEN ITEM -->
             <div class="lockscreen-item">
-                <!-- lockscreen image -->
-                <div class="lockscreen-image">
-                    <img src="../../dist/img/user1-128x128.jpg" alt="User Image">
-                </div>
                 <!-- /.lockscreen-image -->
 
                 <!-- lockscreen credentials (contains the form) -->
@@ -40,14 +35,10 @@
             </div>
             <!-- /.lockscreen-item -->
             <div class="help-block text-center">
-                Enter your password to retrieve your session
+                Total Row : {{$count}}
             </div>
             <div class="text-center">
-                <a href="login.html">Or sign in as a different user</a>
-            </div>
-            <div class="lockscreen-footer text-center">
-                Copyright &copy; 2014-2016 <b><a href="http://almsaeedstudio.com" class="text-black">Almsaeed Studio</a></b><br>
-                All rights reserved
+                <a href="#">Last Update : {{$lu}}r</a>
             </div>
         </div>
     </section>
