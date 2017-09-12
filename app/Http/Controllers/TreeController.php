@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Tree;
 
 class TreeController extends Controller
 {
     public function treeview(){
-        return view('tree.hirarchy');
+        $count = DB::table('tree')->count();
+        $lastupdate = Tree::select('lastupdate')->first();
+        var_dump($count);
+        var_dump($lastupdate);
+        #return view('tree.hirarchy');
     }
 
     public function gettreeview(Request $request){

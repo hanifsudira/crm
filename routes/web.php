@@ -213,7 +213,7 @@ Route::group(['prefix' => 'tree'], function () {
         'uses'      => 'TreeController@treeview'
     ]);
 
-    Route::post('gettreeview', [
+    Route::get('gettreeview/{id}',[
         'as'        => 'ora.gettreeview',
         'uses'      => 'TreeController@gettreeview'
     ]);

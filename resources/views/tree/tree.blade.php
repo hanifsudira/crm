@@ -11,20 +11,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
     <script>
         $(function() {
-            {{--$('#tree').jstree({--}}
-                {{--'core' : {--}}
-                    {{--'data': {--}}
-                        {{--'dataType': 'json',--}}
-                        {{--'type' : 'get',--}}
-                        {{--'url': function (node) {--}}
-                            {{--return node.id === '#' ? '{{$data}}' : [];--}}
-                        {{--},--}}
-                        {{--'data': function (node) {--}}
-                            {{--return {'id': node.id};--}}
-                        {{--}--}}
-                    {{--}--}}
-                {{--}--}}
-            {{--});--}}
+            $('#tree').jstree({
+                'core' : {
+                    'data': {
+                        'dataType': 'json',
+                        'type' : 'get',
+                        'url': function (node) {
+                            return node.id === '#' ? '{{$data}}' : [];
+                        },
+                        'data': function (node) {
+                            return {'id': node.id};
+                        }
+                    }
+                }
+            });
             $('#jstree').jstree({ 'core' : {
                 'data' : [
                     { "id" : "ajson1", "parent" : "#", "text" : "Simple root node" },
