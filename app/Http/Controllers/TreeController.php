@@ -23,6 +23,6 @@ class TreeController extends Controller
             );
         }
         $jstree[] = $temp;
-        view('tree.tree',['data' => $jstree]);
+        return view('tree.tree',['data' => $jstree]);
     }
 }
