@@ -42,7 +42,8 @@
                 if (e.keyCode == 13) {
                     e.preventDefault();
                     var ordernum = $("#ordernum").val();
-                    window.open(route("ora.tomsom",ordernum), '_blank');
+                    console.log(ordernum);
+                    window.open('{{route("ora.tomsom")}}',ordernum, '_blank');
                 }
             });
         });
