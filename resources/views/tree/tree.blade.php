@@ -61,10 +61,10 @@
                         }
                     },
                     'success' : function(data){
-                        console.log(data);
                         return data;
                     },
                     'data': function (node) {
+                        console.log(node);
                         return {
                             'id'            : node.id,
                             'parent_num'    : node.parent_num,
