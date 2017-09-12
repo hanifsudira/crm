@@ -208,8 +208,13 @@ Route::group(['prefix' => 'force'], function () {
 });
 
 Route::group(['prefix' => 'tree'], function () {
-    Route::get('agreement', [
-        'as'        => 'tree.agreement',
+    Route::get('treeview', [
+        'as'        => 'tree.treeview',
         'uses'      => 'TreeController@treeview'
+    ]);
+
+    Route::post('gettreeview', [
+        'as'        => 'ora.gettreeview',
+        'uses'      => 'TreeController@gettreeview'
     ]);
 });
