@@ -29,7 +29,7 @@ class TreeController extends Controller
                 'parent'        => '#',
                 'parent_num'    => $d->parent,
                 'rev_num'       => $d->rev_num,
-                'agg_num'       => $d->agg_num,
+                'agg_num'       => str_replace('/',':_:',$d->agg_num),
                 'level'         => '0',
                 'children'	    => true
             );
@@ -59,7 +59,7 @@ class TreeController extends Controller
 //                'parent'        => $id,
 //                'parent_num'    => $d->parent,
 //                'rev_num'       => $d->rev_num,
-//                'agg_num'       => $d->agg_num,
+//                'agg_num'       => str_replace('/',':_:',$d->agg_num),
 //                'level'         => '1',
 //                'children'	    => true
 //            );

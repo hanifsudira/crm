@@ -60,7 +60,7 @@
                                 .replace(':one',node.original.id)
                                 .replace(':two',node.original.parent_num)
                                 .replace(':three',node.original.rev_num)
-                                .replace(':four',node.original.agg_num.replace('/',':_:'))
+                                .replace(':four',node.original.agg_num)
                                 .replace(':five',node.original.level);
                             console.log(url);
                             return "{{route('ora.getchild',[1,2,3,4,5])}}";
