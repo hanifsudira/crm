@@ -62,7 +62,7 @@
                             console.log(node.level);
 
                             //console.log(url);
-                            //return "{{route('ora.getchild')}}";
+                            {{--return "{{route('ora.getchild')}}";--}}
                         }
                     },
                     'success' : function(data){
