@@ -42,7 +42,9 @@
                 if (e.keyCode == 13) {
                     e.preventDefault();
                     var ordernum = $("#ordernum").val();
-                    console.log(ordernum);
+                    var url = '{{route("ora.gettreeview",":ordernum")}}';
+                    url = url.replace(":ordernum",ordernum);
+                    window.open(url, '_blank');
                 }
             });
         });
