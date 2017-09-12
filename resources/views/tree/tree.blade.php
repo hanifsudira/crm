@@ -56,10 +56,10 @@
                         }
                         else{
                             console.log(node);
-                            console.log(node.id);
-                            console.log(node.parent_num);
-                            console.log(node.rev_num);
-                            console.log(node.agg_num);
+                            console.log(node.original.id);
+                            console.log(node.original.parent_num);
+                            console.log(node.original.rev_num);
+                            console.log(node.original.agg_num);
                             console.log(node.level);
                             return "{{route('ora.getchild',[1,2,3,4,5])}}";
                         }
@@ -69,7 +69,7 @@
                     },
                     'data': function (node) {
                         return {
-                            'id' : node.id,
+                            'id' : node.id
                         };
                     }
                 }
