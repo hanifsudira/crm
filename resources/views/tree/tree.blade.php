@@ -58,9 +58,9 @@
                             var url = "{{route('ora.getchild',["1","2","3","4","5"])}}";
                             url = url
                                 .replace('1',node.original.id)
-                                .replace('2',original.parent_num)
-                                .replace('3',original.rev_num)
-                                .replace('4',original.agg_num)
+                                .replace('2',node.original.parent_num)
+                                .replace('3',node.original.rev_num)
+                                .replace('4',node.original.agg_num)
                                 .replace('5',node.original.level);
                             console.log(url);
                             return "{{route('ora.getchild',[1,2,3,4,5])}}";
