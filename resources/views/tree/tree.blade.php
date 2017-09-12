@@ -57,6 +57,7 @@
                         }
                         else{
                             console.log('masuak');
+                            console.log(node);
                             return "{{route('ora.getchild')}}";
                         }
                     },
@@ -64,7 +65,6 @@
                         return data;
                     },
                     'data': function (node) {
-                        console.log(node);
                         return {
                             'id'            : node.id,
                             'parent_num'    : node.parent_num,
