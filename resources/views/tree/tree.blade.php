@@ -59,7 +59,7 @@
                             url = url.replace(':id',node.original.id);
                             url = url.replace(':parent_num',node.original.parent_num);
                             url = url.replace(':rev_num',node.original.rev_num);
-                            url = url.replace(':agg_num',aggnum);
+                            url = url.replace(':agg_num',node.original.agg_num);
                             url = url.replace(':level',node.original.level);
                             console.log(url);
                             return url;
