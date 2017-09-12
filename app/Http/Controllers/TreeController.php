@@ -40,6 +40,6 @@ class TreeController extends Controller
     }
 
     public function getchild(Request $request){
-        var_dump($request);
+        echo $request;
     }
 }
