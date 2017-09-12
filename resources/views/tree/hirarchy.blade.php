@@ -43,7 +43,7 @@
                     e.preventDefault();
                     var ordernum = $("#ordernum").val();
                     var url = '{{route("ora.gettreeview",":ordernum")}}';
-                    url = url.replace(":ordernum",ordernum);
+                    url = url.replace(":ordernum",btoa(ordernum));
                     window.open(url, '_blank');
                 }
             });
