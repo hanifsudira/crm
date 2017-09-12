@@ -52,18 +52,15 @@
                     'type' : 'get',
                     'url' : function(node){
                         if(node.id === "#") {
-                            console.log('masuk');
                             return "{{route('ora.getroot',$order)}}";
                         }
                         else{
-                            console.log('masuak');
-                            console.log(node.original);
                             var url = '{{route('ora.getchild',array(':id',':parent_num',':rev_num',':agg_num',':level'))}}';
-                            url = url.replace(':id',node.id);
-                            url = url.replace(':parent_num',node.parent_num);
-                            url = url.replace(':rev_num',node.rev_num);
-                            url = url.replace(':agg_num',node.agg_num);
-                            url = url.replace(':level',node.level);
+                            url = url.replace(':id',node.original.id);
+                            url = url.replace(':parent_num',node.original.parent_num);
+                            url = url.replace(':rev_num',node.original.rev_num);
+                            url = url.replace(':agg_num',node.original.agg_num);
+                            url = url.replace(':level',node.original.level);
                             console.log(url);
                             return url;
                         }
