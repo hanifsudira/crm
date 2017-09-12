@@ -39,7 +39,7 @@ class TreeController extends Controller
         echo json_encode($jstree);
     }
 
-    public function getchild($request){
+    public function getchild(Request $request){
         var_dump($request);
     }
 }
