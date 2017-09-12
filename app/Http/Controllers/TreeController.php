@@ -40,31 +40,31 @@ class TreeController extends Controller
     }
 
     public function getchild($id,$agg_num,$rev_num,$parent_num,$level){
-        echo $id;
-        echo '<pre>';
-        echo $agg_num;
-        echo '<pre>';
-        echo $rev_num;
-        echo '<pre>';
-        echo $parent_num;
-        echo '<pre>';
-        echo $level;
-        echo '<pre>';
-//        $child = DB::select("select distinct(agg_num), agg_name, rev_num, agg_id, parent from tree where  (agg_num='$agg_num' and rev_num<>'$rev_num') or (parent='$parent_num');");
-//        $jstree = array();
-//        foreach ($child as $d){
-//            $temp = array(
-//                'id'            => $d->agg_id,
-//                'text'          => $d->agg_name,
-//                'parent'        => $id,
-//                'parent_num'    => $d->parent,
-//                'rev_num'       => $d->rev_num,
-//                'agg_num'       => $d->agg_num,
-//                'level'         => '1',
-//                'children'	    => true
-//            );
-//            $jstree[] = $temp;
-//        }
-//        echo json_encode($jstree);
+//        echo $id;
+//        echo '<pre>';
+//        echo $agg_num;
+//        echo '<pre>';
+//        echo $rev_num;
+//        echo '<pre>';
+//        echo $parent_num;
+//        echo '<pre>';
+//        echo $level;
+//        echo '<pre>';
+        $child = DB::select("select distinct(agg_num), agg_name, rev_num, agg_id, parent from tree where  (agg_num='$agg_num' and rev_num<>'$rev_num') or (parent='$parent_num');");
+        $jstree = array();
+        foreach ($child as $d){
+            $temp = array(
+                'id'            => $d->agg_id,
+                'text'          => $d->agg_name,
+                'parent'        => $id,
+                'parent_num'    => $d->parent,
+                'rev_num'       => $d->rev_num,
+                'agg_num'       => $d->agg_num,
+                'level'         => '1',
+                'children'	    => true
+            );
+            $jstree[] = $temp;
+        }
+        echo json_encode($jstree);
     }
 }

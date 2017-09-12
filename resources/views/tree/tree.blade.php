@@ -55,17 +55,14 @@
                             return "{{route('ora.getroot',$order)}}";
                         }
                         else{
-                            {{--var url = '{{route('ora.getchild',':value')}}';--}}
-//                            var value = [
-//                                node.original.id,
-//                                node.original.parent_num,
-//                                node.original.rev_num,
-//                                node.original.agg_num,
-//                                node.original.level
-//                            ];
-//                            url = url.replace(':value',JSON.stringify(value));
-//                            console.log(url);
-                            return "{{route('ora.getchild')}}";
+                            console.log(node.id);
+                            console.log(node.parent_num);
+                            console.log(node.rev_num);
+                            console.log(node.agg_num);
+                            console.log(node.level);
+
+                            //console.log(url);
+                            //return "{{route('ora.getchild')}}";
                         }
                     },
                     'success' : function(data){
