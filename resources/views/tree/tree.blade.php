@@ -65,7 +65,7 @@
 //                            ];
 //                            url = url.replace(':value',JSON.stringify(value));
 //                            console.log(url);
-                            return {{route('ora.getchild')}};
+                            return "{{route('ora.getchild')}}";
                         }
                     },
                     'success' : function(data){
