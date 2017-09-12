@@ -9,7 +9,7 @@ use App\Tree;
 class TreeController extends Controller
 {
     public function treeview(){
-        $count = Tree::all()->count();
+        $count = DB::table('tree')->count();
         $lastupdate = Tree::select('lastupdate')->first();
         var_dump($count);
         var_dump($lastupdate);
