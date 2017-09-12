@@ -66,7 +66,7 @@
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         type    : 'POST',
-                        url     : '{{ route('ora.getcheckorder') }}',
+                        url     : '{{ route('ora.gettreeview') }}',
                         data    : {order: ordernum},
                         succes  : function () {
                             console.log('Sukses');
