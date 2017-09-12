@@ -55,13 +55,13 @@
                             return "{{route('ora.getroot',$order)}}";
                         }
                         else{
-                            var url = "{{route('ora.getchild',[":1",":2",":3",":4",":5"])}}";
+                            var url = "{{route('ora.getchild',[":one",":two",":three",":four",":five"])}}";
                             url = url
-                                .replace(':1',node.original.id)
-                                .replace(':2',node.original.parent_num)
-                                .replace(':3',node.original.rev_num)
-                                .replace(':4',node.original.agg_num)
-                                .replace(':5',node.original.level);
+                                .replace(':one',node.original.id)
+                                .replace(':two',node.original.parent_num)
+                                .replace(':three',node.original.rev_num)
+                                .replace(':four',node.original.agg_num)
+                                .replace(':five',node.original.level);
                             console.log(url);
                             return "{{route('ora.getchild',[1,2,3,4,5])}}";
                         }
