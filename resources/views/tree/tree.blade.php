@@ -45,7 +45,7 @@
             increaseArea: '20%' // optional
         });
 
-        $('#tree').jstree({
+        $('#jstree').jstree({
             'core' : {
                 'data': {
                     'dataType': 'json',
@@ -70,7 +70,7 @@
                     }
                 }
             },
-            'plugins': ["json_data","wholerow","dnd",],
+            'plugins': ["json_data","wholerow","dnd"],
         });
 
     });
