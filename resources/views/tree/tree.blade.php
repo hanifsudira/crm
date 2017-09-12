@@ -62,6 +62,7 @@
                             url = url.replace(':rev_num',node.original.rev_num);
                             url = url.replace(':agg_num',aggnum);
                             url = url.replace(':level',node.original.level);
+                            url = url.replace('%7D','');
                             console.log(url);
                             return url;
                         }
