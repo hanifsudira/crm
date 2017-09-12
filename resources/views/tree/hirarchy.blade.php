@@ -16,15 +16,7 @@
                 <a href="../../index2.html"><b>Admin</b>LTE</a>
             </div>
             <div class="lockscreen-item">
-                <form class="lockscreen-credentials">
-                    <div class="input-group">
-                        <input type="password" id="ordernum" class="form-control" placeholder="password">
-
-                        <div class="input-group-btn">
-                            <button type="button" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
-                        </div>
-                    </div>
-                </form>
+                <input type="text" id="ordernum" class="form-control" placeholder="password">
             </div>
             <!-- /.lockscreen-item -->
             <div class="help-block text-center">
