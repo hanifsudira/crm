@@ -50,8 +50,16 @@
                 'data': {
                     'dataType': 'json',
                     'type' : 'get',
-                    'url': function (node) {
-                        return node.parent === '#' ? '{{route('ora.getroot',$order)}}' : 'ajax_children.json';
+                    'url' : function(node){
+                        if(node.id === "#") {
+                            return "{{route('ora.getroot',$order)}}";
+                        }
+                        else{
+                            return "{{route('ora.getroot',$order)}}";
+                        }
+                    },
+                    'success' : function(data){
+                        return data;
                     },
                     'data': function (node) {
                         return {
