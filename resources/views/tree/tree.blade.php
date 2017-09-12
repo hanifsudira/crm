@@ -55,33 +55,26 @@
                             return "{{route('ora.getroot',$order)}}";
                         }
                         else{
-//                            console.log(node);
-//                            console.log(node.id);
-//                            console.log(node.parent_num);
-//                            console.log(node.rev_num);
-//                            console.log(node.agg_num);
-//                            console.log(node.level);
-
-                            //console.log(url);
-                            return "{{route('ora.getchild')}}";
+                            console.log(node);
+                            console.log(node.id);
+                            console.log(node.parent_num);
+                            console.log(node.rev_num);
+                            console.log(node.agg_num);
+                            console.log(node.level);
+                            return "{{route('ora.getchild',[1,2,3,4,5])}}";
                         }
                     },
                     'success' : function(data){
                         return data;
                     },
                     'data': function (node) {
-                        console.log(node);
                         return {
-                            'id'            : node.id,
-                            'parent_num'    : node.original.parent_num,
-                            'rev_num'       : node.original.rev_num,
-                            'agg_num'       : node.original.agg_num,
-                            'level'         : node.original.level
+                            'id' : node.id,
                         };
                     }
                 }
             },
-            'plugins': ["json_data","wholerow","dnd"],
+            'plugins': ["json_data","wholerow","dnd"]
         });
 
     });
