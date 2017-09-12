@@ -58,8 +58,14 @@
                         else{
                             console.log('masuak');
                             console.log(node.original);
-                            console.log(typeof node.original);
-                            {{--return "{{route('ora.getchild')}}";--}}
+                            var url = '{{route('ora.getchild',array(':id',':parent_num',':rev_num',':agg_num',':level'))}}';
+                            url = url.replace(':id',node.id);
+                            url = url.replace(':parent_num',node.parent_num);
+                            url = url.replace(':rev_num',node.rev_num);
+                            url = url.replace(':agg_num',node.agg_num);
+                            url = url.replace(':level',node.level);
+                            console.log(url);
+                            return url;
                         }
                     },
                     'success' : function(data){
