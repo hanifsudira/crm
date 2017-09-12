@@ -55,7 +55,7 @@
                             return "{{route('ora.getroot',$order)}}";
                         }
                         else{
-                            var aggnum = replace(node.original.agg_num,'%2F');
+                            var aggnum = node.original.agg_num.replace('/','%2F');
                             var url = '{{route('ora.getchild',array(':id',':parent_num',':rev_num',':agg_num',':level'))}}';
                             url = url.replace(':id',node.original.id);
                             url = url.replace(':parent_num',node.original.parent_num);
