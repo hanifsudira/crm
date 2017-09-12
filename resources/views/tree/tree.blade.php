@@ -57,7 +57,7 @@
                         }
                         else{
                             console.log('masuak');
-                            return "{{route('ora.getroot',$order)}}";
+                            return "{{route('ora.getchild')}}";
                         }
                     },
                     'success' : function(data){
@@ -65,7 +65,10 @@
                     },
                     'data': function (node) {
                         return {
-                            'id': node.id
+                            'parent_num'    : node.parent_num,
+                            'rev_num'       : node.rev_num,
+                            'agg_num'       : node.agg_num,
+                            'level'         : node.level
                         };
                     }
                 }

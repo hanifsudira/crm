@@ -24,14 +24,22 @@ class TreeController extends Controller
         $jstree = array();
         foreach ($root as $d){
             $temp = array(
-                'id'        => $d->agg_id,
-                'text'      => $d->agg_name,
-                'parent'    => '#',
-                'children'	=> true
+                'id'            => $d->agg_id,
+                'text'          => $d->agg_name,
+                'parent'        => '#',
+                'parent_num'    => $d->parent,
+                'rev_num'       => $d->rev_num,
+                'agg_num'       => $d->agg_num,
+                'level'         => 0,
+                'children'	    => true
             );
             $jstree[] = $temp;
         }
 
         echo json_encode($jstree);
+    }
+
+    public function getchild($request){
+        var_dump($request);
     }
 }
