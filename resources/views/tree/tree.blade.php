@@ -45,13 +45,19 @@
             increaseArea: '20%' // optional
         });
 
-        $('#jstree').jstree({ 'core' : {
-            'data' : [
-                { "id" : "ajson1", "parent" : "#", "text" : "Simple root node" },
-                { "id" : "ajson2", "parent" : "#", "text" : "Root node 2" },
-                { "id" : "ajson3", "parent" : "ajson2", "text" : "Child 1" },
-                { "id" : "ajson4", "parent" : "ajson2", "text" : "Child 2" }]
-        } });
+        $('#tree').jstree({
+            'core' : {
+                'data' : {
+                    'url' : function (node) {
+                        return node.id === '#' ? '{{route('ora.getroot',$order)}}' : 'ajax_children.json';
+                    },
+                    'data' : function (node) {
+                        return {
+                            'id' : node.id
+                        };
+                    }
+                }
+            });
 
     });
 </script>
