@@ -27,6 +27,6 @@ class TreeController extends Controller
             );
         }
         $jstree[] = $temp;
-        return view('tree.tree',['data' => $jstree]);
+        return view('tree.tree',['data' => $jstree, 'order'=>$ordernum]);
     }
 }
