@@ -39,7 +39,9 @@ class TreeController extends Controller
         echo json_encode($jstree);
     }
 
-    public function getchild($id,$agg_num,$rev_num,$parent_num,$level){
+    public function getchild(Request $request){
+        var_dump($request);
+        //$id,$agg_num,$rev_num,$parent_num,$level
 //        echo $id;
 //        echo '<pre>';
 //        echo $agg_num;

@@ -63,7 +63,7 @@
 //                            console.log(node.level);
 
                             //console.log(url);
-                            {{--return "{{route('ora.getchild')}}";--}}
+                            return "{{route('ora.getchild')}}";
                         }
                     },
                     'success' : function(data){
@@ -72,11 +72,11 @@
                     'data': function (node) {
                         console.log(node);
                         return {
-                            'id'            : node.id,
-                            'parent_num'    : node.parent_num,
-                            'rev_num'       : node.rev_num,
-                            'agg_num'       : node.agg_num,
-                            'level'         : node.level
+                            'id'            : node.original.id,
+                            'parent_num'    : node.original.parent_num,
+                            'rev_num'       : node.original.rev_num,
+                            'agg_num'       : node.original.agg_num,
+                            'level'         : node.original.level
                         };
                     }
                 }
