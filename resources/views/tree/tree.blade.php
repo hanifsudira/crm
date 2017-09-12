@@ -42,7 +42,7 @@
         $('input').iCheck({
             checkboxClass: 'icheckbox_square-blue',
             radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
+            increaseArea: '20%'
         });
 
         $('#jstree').jstree({
@@ -65,6 +65,7 @@
                     },
                     'data': function (node) {
                         return {
+                            'id'            : node.id,
                             'parent_num'    : node.parent_num,
                             'rev_num'       : node.rev_num,
                             'agg_num'       : node.agg_num,
