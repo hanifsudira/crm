@@ -61,6 +61,7 @@
                         }
                     },
                     'success' : function(data){
+                        console.log(data);
                         return data;
                     },
                     'data': function (node) {
