@@ -20,14 +20,12 @@
                 </div>
             </div>
         </div>
-        <div id="response">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-body">
-                            <div id="hasil">
-                                <h1>Result</h1>
-                            </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div id="hasil">
+                            <h1>Result</h1>
                         </div>
                     </div>
                 </div>
