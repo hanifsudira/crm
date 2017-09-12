@@ -55,11 +55,12 @@
                             return "{{route('ora.getroot',$order)}}";
                         }
                         else{
-                            console.log(node.id);
-                            console.log(node.parent_num);
-                            console.log(node.rev_num);
-                            console.log(node.agg_num);
-                            console.log(node.level);
+//                            console.log(node);
+//                            console.log(node.id);
+//                            console.log(node.parent_num);
+//                            console.log(node.rev_num);
+//                            console.log(node.agg_num);
+//                            console.log(node.level);
 
                             //console.log(url);
                             {{--return "{{route('ora.getchild')}}";--}}
@@ -69,6 +70,7 @@
                         return data;
                     },
                     'data': function (node) {
+                        console.log(node);
                         return {
                             'id'            : node.id,
                             'parent_num'    : node.parent_num,
