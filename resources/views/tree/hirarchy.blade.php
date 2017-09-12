@@ -43,7 +43,7 @@
                     e.preventDefault();
                     var ordernum = $("#ordernum").val();
                     console.log(ordernum);
-                    window.open('{{route("ora.tomsom")}}',ordernum, '_blank');
+                    window.open('{{route('ora.gettreeview')}}'+ordernum, '_blank');
                 }
             });
         });
