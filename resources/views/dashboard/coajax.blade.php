@@ -58,6 +58,8 @@
                                         <td>Complete Gan</td>
                                     @elseif($d['OH_STATUS']=='Pending')
                                         <td>Klik Submit Dulu Gan</td>
+                                    @elseif($d['MILESTONE']!=$d['MILE_STATUS_INT'])
+                                        <td>Status Tidak Update, Hubungi Tim CRM dan Integrasi</td>
                                     @else
                                         <td>In Progress. Semoga Lancar</td>
                                     @endif
