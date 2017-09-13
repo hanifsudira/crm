@@ -44,16 +44,14 @@
                                         <th>ACC_NAS</th>
                                         <th>NIPNAS</th>
                                         <th>SID_NUM</th>
-                                        <th>OH_SEQ</th>
-                                        <th>MSTONE_SEQ</th>
                                         <th>LI_STATUS_INT</th>
                                         <th>MILE_STATUS_INT</th>
                                         <th>INT_NOTE</th>
+                                        <th>Catatan</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>

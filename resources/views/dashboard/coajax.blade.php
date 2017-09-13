@@ -26,6 +26,7 @@
                             <th>LI_STATUS_INT</th>
                             <th>MILE_STATUS_INT</th>
                             <th>INT_NOTE</th>
+                            <th>Catatan</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -46,16 +47,26 @@
                                     <td>{{$d['ACC_NAS']}}</td>
                                     <td>{{$d['NIPNAS']}}</td>
                                     <td>{{$d['SID_NUM']}}</td>
-                                    <td>{{$d['OH_SEQ']}}</td>
-                                    <td>{{$d['MSTONE_SEQ']}}</td>
                                     <td>{{$d['LI_STATUS_INT']}}</td>
                                     <td>{{$d['MILE_STATUS_INT']}}</td>
                                     <td>{{$d['INT_NOTE']}}</td>
+                                    @if($d['INT_NOTE']=='ERROR TSQ' or $d['INT_NOTE']=='ERROR DELIVER' )
+                                        <td>Hubungi Tim OSS dan CRM</td>
+                                    @elseif($d['INT_NOTE']=='Error Sync Customer')
+                                        <td>Hubungi Tim Integrasi dan CRM</td>
+                                    @elseif($d['ORDER_SUBTYPE']!='New Install' and $d['SID_NUM']=='None')
+                                        <td>SID Kosong. Hubungi Tim CRM</td>
+                                    @elseif($d['LI_STATUS']=='Complete')
+                                        <td>Complete Gan</td>
+                                    @elseif($d['OH_STATUS']=='Pending')
+                                        <td>Klik Submit Dulu Gan</td>
+                                    @else
+                                        <td>In Progress. Semoga Lancar</td>
+                                    @endif
                                 </tr>
                             @endforeach
                         @else
                             <tr>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
