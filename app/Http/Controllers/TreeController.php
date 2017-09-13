@@ -47,6 +47,7 @@ class TreeController extends Controller
             : "select distinct(agg_num), agg_name, rev_num, agg_id, parent from tree where site= '$site' and agg_num='$agg_num' and parent='$id';";
 
         $child = DB::select($query);
+        $jstree = array();
         foreach ($child as $d){
             $temp = array(
                 'id'            => $d->agg_id,
