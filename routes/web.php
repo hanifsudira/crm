@@ -122,6 +122,11 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@checkorder'
     ]);
 
+    Route::get('checkorder2', [
+        'as'        => 'ora.checkorder2',
+        'uses'      => 'OraController@checkorder2'
+    ]);
+
     Route::get('checkproduct', [
         'as'        => 'ora.checkproduct',
         'uses'      => 'OraController@checkproduct'
@@ -181,6 +186,11 @@ Route::group(['prefix' => 'ora'], function () {
     Route::post('getcheckorder', [
         'as'        => 'ora.getcheckorder',
         'uses'      => 'OraController@getcheckorder'
+    ]);
+
+    Route::post('getcheckorder2', [
+        'as'        => 'ora.getcheckorder2',
+        'uses'      => 'OraController@getcheckorder2'
     ]);
 
     Route::post('getcheckproduct', [
