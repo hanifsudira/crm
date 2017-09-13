@@ -62,7 +62,7 @@
                                 .replace(':three',node.original.rev_num)
                                 .replace(':four',node.original.agg_num)
                                 .replace(':five',node.original.level)
-                                .replace(':six',$order);
+                                .replace(':six',"{{$order}}");
                             console.log(url);
                             return url;
                         }
