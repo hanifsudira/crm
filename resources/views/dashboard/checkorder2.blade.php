@@ -45,10 +45,20 @@
                                         <th>WORK_PHONE</th>
                                         <th>LATITUDE</th>
                                         <th>LONGITUDE</th>
+                                        <th>CA</th>
+                                        <th>BA</th>
+                                        <th>SA</th>
+                                        <th>CA_CONT</th>
+                                        <th>BA_CONT</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
