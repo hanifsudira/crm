@@ -7,83 +7,69 @@
                     <table id="datatable" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>ORDER#</th>
+                            <th>ORDER_NUM</th>
                             <th>ROW_ID</th>
                             <th>INT_ID</th>
+                            <th>ORDER_SUBTYPE</th>
                             <th>REV</th>
                             <th>PRODUCT</th>
                             <th>OH_STATUS</th>
                             <th>LI_STATUS</th>
                             <th>MILESTONE</th>
-                            <th>ORDER_SUBTYPE</th>
                             <th>CREATED_AT</th>
+                            <th>FULFILL_STATUS</th>
                             <th>ACC_NAS</th>
                             <th>NIPNAS</th>
-                            <th>WORK_PHONE</th>
-                            <th>LATITUDE</th>
-                            <th>LONGITUDE</th>
+                            <th>SID_NUM</th>
+                            <th>OH_SEQ</th>
+                            <th>MSTONE_SEQ</th>
+                            <th>LI_STATUS_INT</th>
+                            <th>MILE_STATUS_INT</th>
+                            <th>INT_NOTE</th>
                         </tr>
                         </thead>
                         <tbody>
                         @if($data)
-                            @if(count($data[0])==15)
-                                @foreach($data as $d)
-                                    <tr>
-                                        <td>{{$d[0]}}</td>
-                                        <td>{{$d[1]}}</td>
-                                        <td>{{$d[2]}}</td>
-                                        <td>{{$d[3]}}</td>
-                                        <td>{{$d[4]}}</td>
-                                        <td>{{$d[5]}}</td>
-                                        <td>{{$d[6]}}</td>
-                                        <td>{{$d[7]}}</td>
-                                        <td>{{$d[8]}}</td>
-                                        <td>{{$d[9]}}</td>
-                                        <td>{{$d[10]}}</td>
-                                        <td>{{$d[11]}}</td>
-                                        <td>{{$d[12]}}</td>
-                                        <td>{{$d[13]}}</td>
-                                        <td>{{$d[14]}}</td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                @foreach($data as $d)
-                                    <tr>
-                                        <td>{{$d[0]}}</td>
-                                        <td>{{$d[1]}}</td>
-                                        <td>{{$d[2]}}</td>
-                                        <td>{{$d[3]}}</td>
-                                        <td>{{$d[4]}}</td>
-                                        <td>{{$d[5]}}</td>
-                                        <td>{{$d[6]}}</td>
-                                        <td>{{$d[7]}}</td>
-                                        <td>{{$d[8]}}</td>
-                                        <td>{{$d[9]}}</td>
-                                        <td>{{$d[10]}}</td>
-                                        <td>{{$d[11]}}</td>
-                                        <td></td>
-                                        <td>{{$d[12]}}</td>
-                                        <td>{{$d[13]}}</td>
-                                    </tr>
-                                @endforeach
-                            @endif
+                            @foreach($data as $d)
+                                <tr>
+                                    <td>{{$d[0]}}</td>
+                                    <td>{{$d[1]}}</td>
+                                    <td>{{$d[2]}}</td>
+                                    <td>{{$d[3]}}</td>
+                                    <td>{{$d[4]}}</td>
+                                    <td>{{$d[5]}}</td>
+                                    <td>{{$d[6]}}</td>
+                                    <td>{{$d[7]}}</td>
+                                    <td>{{$d[8]}}</td>
+                                    <td>{{$d[9]}}</td>
+                                    <td>{{$d[10]}}</td>
+                                    <td>{{$d[11]}}</td>
+                                    <td>{{$d[12]}}</td>
+                                    <td>{{$d[13]}}</td>
+                                    <td>{{$d[14]}}</td>
+                                </tr>
+                            @endforeach
                         @else
                             <tr>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         @endif
                         </tbody>

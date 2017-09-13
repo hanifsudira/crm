@@ -25,6 +25,8 @@ class Lireport extends Model
         'OH_SEQ',
         'MSTONE_SEQ',
         'LI_STATUS_INT',
-        'MILE_STATUS_INT'
+        'MILE_STATUS_INT',
+        'INT_ID',
+        'INT_NOTE'
     ];
 }

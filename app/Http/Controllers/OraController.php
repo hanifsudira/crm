@@ -111,11 +111,14 @@ class OraController extends Controller
     }
 
     public function getcheckorder(Request $request){
+//        $command = "/usr/bin/python /var/www/html/crm/public/scripts/getwp.py ".$ordernum;
+//        $output = shell_exec($command);
+//        $output = json_decode($output);
+
         $ordernum = $request->order;
-        $command = "/usr/bin/python /var/www/html/crm/public/scripts/getwp.py ".$ordernum;
-        $output = shell_exec($command);
-        $output = json_decode($output);
-        return view('dashboard.coajax',['data' => $output]);
+        $result = Lireport::where('ORDER_NUM','=',$ordernum)->get();
+        var_dump($result);
+        #return view('dashboard.coajax',['data' => $result]);
     }
 
     //line item
