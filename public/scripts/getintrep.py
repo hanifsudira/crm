@@ -97,7 +97,7 @@ for data in cur.fetchall():
 		elif 'synccustomerwaitinforsccdresponse' in tipe:
 			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER START', INT_NOTE='Error Sync Customer' `WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 		elif tipe == '' or len(tipe)==0:
-			cur.execute("UPDATE int_report SET LI_STATUS_INT='Complete' ,MILE_STATUS_INT='FULFILL BILLING COMPLETE' INT_NOTE='Complete' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='Complete' ,MILE_STATUS_INT='FULFILL BILLING COMPLETE', INT_NOTE='Complete' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 		# else:
 		# 	cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 
