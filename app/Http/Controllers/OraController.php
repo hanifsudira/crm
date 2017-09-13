@@ -117,8 +117,8 @@ class OraController extends Controller
 
         $ordernum = $request->order;
         $result = Lireport::where('ORDER_NUM','=',$ordernum)->get();
-        var_dump($result);
-        #return view('dashboard.coajax',['data' => $result]);
+        #var_dump($result);
+        return view('dashboard.coajax',['data' => $result]);
     }
 
     //line item

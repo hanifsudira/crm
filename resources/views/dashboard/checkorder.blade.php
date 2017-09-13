@@ -30,40 +30,48 @@
                                 <table id="datatable" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>ORDER#</th>
+                                        <th>ORDER_NUM</th>
                                         <th>ROW_ID</th>
                                         <th>INT_ID</th>
+                                        <th>ORDER_SUBTYPE</th>
                                         <th>REV</th>
                                         <th>PRODUCT</th>
                                         <th>OH_STATUS</th>
                                         <th>LI_STATUS</th>
                                         <th>MILESTONE</th>
-                                        <th>ORDER_SUBTYPE</th>
                                         <th>CREATED_AT</th>
+                                        <th>FULFILL_STATUS</th>
                                         <th>ACC_NAS</th>
                                         <th>NIPNAS</th>
-                                        <th>WORK_PHONE</th>
-                                        <th>LATITUDE</th>
-                                        <th>LONGITUDE</th>
+                                        <th>SID_NUM</th>
+                                        <th>OH_SEQ</th>
+                                        <th>MSTONE_SEQ</th>
+                                        <th>LI_STATUS_INT</th>
+                                        <th>MILE_STATUS_INT</th>
+                                        <th>INT_NOTE</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                        <td>-</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     </tbody>
                                 </table>

@@ -32,21 +32,25 @@
                         @if($data)
                             @foreach($data as $d)
                                 <tr>
-                                    <td>{{$d[0]}}</td>
-                                    <td>{{$d[1]}}</td>
-                                    <td>{{$d[2]}}</td>
-                                    <td>{{$d[3]}}</td>
-                                    <td>{{$d[4]}}</td>
-                                    <td>{{$d[5]}}</td>
-                                    <td>{{$d[6]}}</td>
-                                    <td>{{$d[7]}}</td>
-                                    <td>{{$d[8]}}</td>
-                                    <td>{{$d[9]}}</td>
-                                    <td>{{$d[10]}}</td>
-                                    <td>{{$d[11]}}</td>
-                                    <td>{{$d[12]}}</td>
-                                    <td>{{$d[13]}}</td>
-                                    <td>{{$d[14]}}</td>
+                                    <td>{{$d['ORDER_NUM']}}</td>
+                                    <td>{{$d['ROW_ID']}}</td>
+                                    <td>{{$d['INT_ID']}}</td>
+                                    <td>{{$d['ORDER_SUBTYPE']}}</td>
+                                    <td>{{$d['REV']}}</td>
+                                    <td>{{$d['PRODUCT']}}</td>
+                                    <td>{{$d['OH_STATUS']}}</td>
+                                    <td>{{$d['LI_STATUS']}}</td>
+                                    <td>{{$d['MILESTONE']}}</td>
+                                    <td>{{$d['CREATED_AT']}}</td>
+                                    <td>{{$d['FULFILL_STATUS']}}</td>
+                                    <td>{{$d['ACC_NAS']}}</td>
+                                    <td>{{$d['NIPNAS']}}</td>
+                                    <td>{{$d['SID_NUM']}}</td>
+                                    <td>{{$d['OH_SEQ']}}</td>
+                                    <td>{{$d['MSTONE_SEQ']}}</td>
+                                    <td>{{$d['LI_STATUS_INT']}}</td>
+                                    <td>{{$d['MILE_STATUS_INT']}}</td>
+                                    <td>{{$d['INT_NOTE']}}</td>
                                 </tr>
                             @endforeach
                         @else
