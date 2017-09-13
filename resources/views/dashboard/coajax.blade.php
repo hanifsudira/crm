@@ -60,6 +60,8 @@
                                         <td>Klik Submit Dulu Gan</td>
                                     @elseif($d['MILESTONE']!=$d['MILE_STATUS_INT'])
                                         <td>Status Tidak Update, Hubungi Tim CRM dan Integrasi</td>
+                                    @elseif($d['INT_NOTE']=='Error Fulfill Billing Start')
+                                        <td>Hubungi Tim Integrasi dan TIBS</td>
                                     @else
                                         <td>In Progress. Semoga Lancar</td>
                                     @endif
