@@ -84,7 +84,7 @@ for data in cur.fetchall():
 			else:	
 				cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='DELIVER' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 		elif 'provisionordertsq' in tipe:
-			if 'waitforfalloutrecovery' in tipe2::
+			if 'waitforfalloutrecovery' in tipe2:
 				cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE', INT_NOTE='ERROR TSQ' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
 			else:
 				cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE', INT_NOTE='TSQ' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
