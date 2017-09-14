@@ -99,6 +99,56 @@ class ReportController extends Controller
         return view('report.review',['lead'=>$lead,'quote'=>$quote,'agree'=>$agree,'order'=>$order]);
     }
 
+    public function intrepot(){
+        $pivot = DB::select('select li_status, milestone, 
+                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
+                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
+                                    count(case when INT_NOTE=\'Error Fulfill Billing Start\' then 1 end) efbs,
+                                    count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
+                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
+                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
+                                    count(case when INT_NOTE=\'Complete\' then 1 end) com,
+                                    count(case when INT_NOTE=\'Pending BASO\' then 1 end) pb,
+                                    count(case when INT_NOTE=\'Pending Billing Approval\' then 1 end) pba,
+                                    count(case when INT_NOTE=\'None\' then 1 end) non
+                            from int_report pt group by milestone,li_status');
+
+        $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
+        $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
+
+        $return = array();
+        for($i=0;$i<count($status);$i++){
+
+            #db crm
+            $state = 0;
+            foreach ($pivot as $data){
+                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
+                    $state = 1;
+                    array_push($return,$data);
+                    break;
+                }
+            }
+            if(!$state){
+                $temp = new \stdClass();
+                $temp->li_status = $status[$i];
+                $temp->milestone = $milestone[$i];
+                $temp->et   = 0;
+                $temp->ed   = 0;
+                $temp->efbs = 0;
+                $temp->esc  = 0;
+                $temp->tsq  = 0;
+                $temp->del  = 0;
+                $temp->com  = 0;
+                $temp->pb   = 0;
+                $temp->pba  = 0;
+                $temp->non  = 0;
+                array_push($return,$temp);
+            }
+        }
+        return view('report.intreport',['data'=>$return]);
+    }
+
+
     public function flowdatareturn(){
         $pivot = DB::select('select li_status, milestone, 
                                 count(case when ORDER_SUBTYPE=\'disconnect\' then 1 end) do,

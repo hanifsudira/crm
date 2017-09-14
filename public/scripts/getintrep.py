@@ -75,7 +75,7 @@ for data in cur.fetchall():
 			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE', INT_NOTE='ERROR TSQ' WHERE ORDER_NUM='"+data[0]+"';")
 		else:
 			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE', INT_NOTE='TSQ' WHERE ORDER_NUM='"+data[0]+"';")
-	elif 'basoctivitytask' in tipe:
+	elif 'basoactivitytask' in tipe:
 		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending BASO' ,MILE_STATUS_INT='BASO STARTED', INT_NOTE='Pending BASO' WHERE ORDER_NUM='"+data[0]+"';")
 	elif 'aprovebillingtask' in tipe:
 		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='BILLING APPROVAL STARTED', INT_NOTE='Pending Billing Approval' WHERE ORDER_NUM='"+data[0]+"';")

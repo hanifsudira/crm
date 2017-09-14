@@ -89,6 +89,11 @@ Route::group(['prefix' => 'report'], function () {
         'as'        => 'report.flowdatareturn',
         'uses'      => 'ReportController@flowdatareturn'
     ]);
+
+    Route::get('intreport', [
+        'as'        => 'report.intreport',
+        'uses'      => 'ReportController@intreport'
+    ]);
 });
 
 Route::group(['prefix' => 'ora'], function () {

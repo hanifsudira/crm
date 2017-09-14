@@ -26,6 +26,7 @@
             </a>
             <ul class="treeview-menu">
                 <li><a href="{{route('report.allreport')}}"><i class="fa fa-circle-o"></i>All Report</a></li>
+                <li><a href="{{route('report.intreport')}}"><i class="fa fa-circle-o"></i>Integration Report</a></li>
                 <li><a href="{{route('report.flowreport')}}"><i class="fa fa-circle-o"></i>Flow Report</a></li>
                 <li><a href="{{route('report.reviewtransaksi')}}"><i class="fa fa-circle-o"></i>Transaction Review</a></li>
             </ul>
