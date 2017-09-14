@@ -28,13 +28,14 @@
                                 <th>Milestone</th>
                                 <th>Error TSQ</th>
                                 <th>Error Deliver</th>
-                                <th>Error Sync</th>
+                                <th>Error Sync C</th>
                                 <th>Error Fulfill BS</th>
                                 <th>TSQ</th>
                                 <th>Deliver</th>
                                 <th>Pending BASO</th>
                                 <th>Pending Billing A</th>
                                 <th>None</th>
+                                <th>Total</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -46,15 +47,16 @@
                                         <td>{{$data[$i]->li_status}}</td>
                                     @endif
                                     <td>{{$data[$i]->milestone}}</td>
-                                    <td>{{$data[$i]->et}}</td>
-                                    <td>{{$data[$i]->ed}}</td>
-                                    <td>{{$data[$i]->esc}}</td>
-                                    <td>{{$data[$i]->efbs}}</td>
+                                    <td class="danger">{{$data[$i]->et}}</td>
+                                    <td class="danger">{{$data[$i]->ed}}</td>
+                                    <td class="danger">{{$data[$i]->esc}}</td>
+                                    <td class="danger">{{$data[$i]->efbs}}</td>
                                     <td>{{$data[$i]->tsq}}</td>
                                     <td>{{$data[$i]->del}}</td>
                                     <td>{{$data[$i]->pb}}</td>
                                     <td>{{$data[$i]->pba}}</td>
                                     <td>{{$data[$i]->non}}</td>
+                                    <td>{{$data[$i]->non+$data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non}}</td>
                                 </tr>
                             @endfor
                             </tbody>
