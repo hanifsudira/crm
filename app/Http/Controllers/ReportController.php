@@ -99,7 +99,7 @@ class ReportController extends Controller
         return view('report.review',['lead'=>$lead,'quote'=>$quote,'agree'=>$agree,'order'=>$order]);
     }
 
-    public function intrepot(){
+    public function intreport(){
         $pivot = DB::select('select li_status, milestone, 
                                     count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
                                     count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
