@@ -50,31 +50,28 @@ result = requests.get('http://10.65.10.212/reqi/comaia/json.php?crmid=all')
 result = json.loads(result.content)
 
 for data in cur.fetchall():
-	tipe 	= result[data]['TASK_MNEMONIC'].lower() if result[data]['TASK_MNEMONIC'] is not None else ''
-	tipe2	= result[data]['STATE_MNEMONIC'].lower() if result[data]['STATE_MNEMONIC'] is not None else ''
+	tipe 	= result[data[0]]['TASK_MNEMONIC'].lower() if result[data[0]]['TASK_MNEMONIC'] is not None else ''
+	tipe2	= result[data[0]]['STATE_MNEMONIC'].lower() if result[data[0]]['STATE_MNEMONIC'] is not None else ''
 	if 'provisionordersi' in tipe:
 		if 'waitforfalloutrecovery' in tipe2:
-			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='ERROR DELIVER' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='ERROR DELIVER' WHERE ORDER_NUM='"+data[0]+"';")
 		else:	
-			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='DELIVER' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='DELIVER' WHERE ORDER_NUM='"+data[0]+"';")
 	elif 'provisionordertsq' in tipe:
 		if 'waitforfalloutrecovery' in tipe2:
-			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE', INT_NOTE='ERROR TSQ' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE', INT_NOTE='ERROR TSQ' WHERE ORDER_NUM='"+data[0]+"';")
 		else:
-			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE', INT_NOTE='TSQ' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE', INT_NOTE='TSQ' WHERE ORDER_NUM='"+data[0]+"';")
 	elif 'basoctivitytask' in tipe:
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending BASO' ,MILE_STATUS_INT='BASO STARTED', INT_NOTE='Pending BASO' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending BASO' ,MILE_STATUS_INT='BASO STARTED', INT_NOTE='Pending BASO' WHERE ORDER_NUM='"+data[0]+"';")
 	elif 'aprovebillingtask' in tipe:
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='BILLING APPROVAL STARTED', INT_NOTE='Pending Billing Approval' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='BILLING APPROVAL STARTED', INT_NOTE='Pending Billing Approval' WHERE ORDER_NUM='"+data[0]+"';")
 	elif 'fulfillbillingsitask' in tipe:
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='FULFILL BILLING START', INT_NOTE='Error Fulfill Billing Start' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='FULFILL BILLING START', INT_NOTE='Error Fulfill Billing Start' WHERE ORDER_NUM='"+data[0]+"';")
 	elif ('synccustomerwaitinforsccdresponse' in tipe) or ('synccustomersitask' in tipe):
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER START', INT_NOTE='Error Sync Customer' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+		cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER START', INT_NOTE='Error Sync Customer' WHERE ORDER_NUM='"+data[0]+"';")
 	elif tipe == '' or len(tipe)==0:
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='Complete' ,MILE_STATUS_INT='FULFILL BILLING COMPLETE', INT_NOTE='Complete' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
-		# else:
-		# 	cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
-
+		cur.execute("UPDATE int_report SET LI_STATUS_INT='Complete' ,MILE_STATUS_INT='FULFILL BILLING COMPLETE', INT_NOTE='Complete' WHERE ORDER_NUM='"+data[0]+"';")
 	#result = requests.post('http://10.65.10.212/reqi/comaia/index.php?p=search',data={'search' : str(data[0])})
 	#soup = BeautifulSoup(result.content, 'html.parser')
 	#table = soup.findAll('table')[2]
@@ -102,10 +99,10 @@ for data in cur.fetchall():
 	#if status == 'ProvisionOrderFunction':
 	#FulfillBillingFunction = FULFILL BILLING START
 	# elif status == 'FulfillBillingFunction':
-	# 	cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='FULFILL BILLING START' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+	# 	cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='FULFILL BILLING START' WHERE ORDER_NUM='"+data[0]+"';")
 	# #FulfillBillingFunctionComplete = FULFILL BILLING COMPLETE
 	# elif status == 'FulfillBillingFunctionComplete':
-	#    cur.execute("UPDATE int_report SET LI_STATUS_INT='Complete' ,MILE_STATUS_INT='FULFILL BILLING COMPLETE' WHERE ORDER_NUM='"+data[0]+"' AND ROW_ID='"+data[1]+"';")
+	#    cur.execute("UPDATE int_report SET LI_STATUS_INT='Complete' ,MILE_STATUS_INT='FULFILL BILLING COMPLETE' WHERE ORDER_NUM='"+data[0]+"';")
 db.commit()
 	
 
