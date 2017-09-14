@@ -9,7 +9,7 @@ sys.setdefaultencoding('utf-8')
 con = cx_Oracle.connect('reportcrm/Telkom#2016@10.6.16.8/siebprddb')
 cursor = con.cursor()
 print 'Line items query process'
-orasql = "select t2.order_num as ORDER#, t1.row_id as ROW_ID, t4.attrib_05 as ORDER_SUBTYPE, t2.rev_num as REV, t3.name as PRODUCT, t2.status_cd as OH_STATUS, t1.status_cd as LI_STATUS, t1.milestone_code as MILESTONE, to_char(t1.created+7/24, 'dd-Mon-yyyy hh24:mi:ss') as CREATED_AT, t1.fulflmnt_status_cd as FULFILL_STATUS, t6.X_PTI1_ACCNT_NAS as ACC_NAS, t6.X_PTI1__NIPNAS as NIPNAS, t1.service_num as SID_NUM, decode(t1.status_cd,'Pending',1,'Submitted',2,'In Progress',3,'Pending BASO',4,'Pending Billing Approval',5,'Complete',6,'Failed',7,'Pending Cancel',8,'Cancelled',9,99) OH_SEQ, decode(t1.milestone_code,NULL,0,'SYNC CUSTOMER START',1,'SYNC CUSTOMER COMPLETE',2,'PROVISION START',3,'PROVISION COMPLETE',4,'BASO STARTED',5,'BILLING APPROVAL STARTED',6,'FULFILL BILLING START',7,'FULFILL BILLING COMPLETE',8,99) MSTONE_SEQ , t1.asset_integ_id as INT_ID from sblprd.s_order_item t1 inner join sblprd.s_order t2 on t2.row_id = t1.order_id inner join sblprd.s_prod_int t3 on t3.row_id = t1.prod_id inner join sblprd.s_order_x t4 on t4.par_row_id = t2.row_id inner join sblprd.s_org_ext t6 on t6.row_id = T2.BILL_ACCNT_ID left outer join sblprd.s_doc_agree t5 on t5.row_id = t1.agree_id where T1.CREATED > TO_DATE ('24/07/2017','DD/MM/YYYY') and t1.row_id = t1.root_order_item_id and t2.rev_num = (select max(rev_num) from sblprd.s_order x where x.order_num = t2.order_num and x.status_cd not in ('Abandoned','x')) order by OH_SEQ, MSTONE_SEQ"
+orasql = "select t2.order_num AS ORDER#, t1.row_id AS ROW_ID, t4.attrib_05 AS ORDER_SUBTYPE, t2.rev_num AS REV, t3.name AS PRODUCT, t2.status_cd AS OH_STATUS, t1.status_cd AS LI_STATUS, t1.milestone_code AS MILESTONE, To_char(t1.created + 7 / 24, 'dd-Mon-yyyy hh24:mi:ss') AS CREATED_AT, t1.fulflmnt_status_cd AS FULFILL_STATUS, t6.x_pti1_accnt_nas AS ACC_NAS, t6.x_pti1__nipnas AS NIPNAS, t1.service_num AS SID_NUM, Decode(t1.status_cd, 'Pending', 1, 'Submitted', 2, 'In Progress', 3, 'Pending BASO', 4, 'Pending Billing Approval', 5, 'Complete', 6, 'Failed', 7, 'Pending Cancel', 8, 'Cancelled', 9, 99) OH_SEQ, Decode(t1.milestone_code, NULL, 0, 'SYNC CUSTOMER START', 1, 'SYNC CUSTOMER COMPLETE', 2, 'PROVISION START', 3, 'PROVISION COMPLETE', 4, 'BASO STARTED', 5, 'BILLING APPROVAL STARTED', 6, 'FULFILL BILLING START', 7, 'FULFILL BILLING COMPLETE', 8, 99) MSTONE_SEQ, t1.asset_integ_id AS INT_ID, t9.x_pti1_segment as Segmen FROM sblprd.s_order_item t1 inner join sblprd.s_order t2 ON t2.row_id = t1.order_id inner join sblprd.s_prod_int t3 ON t3.row_id = t1.prod_id inner join sblprd.s_order_x t4 ON t4.par_row_id = t2.row_id inner join sblprd.s_org_ext t6 ON t6.row_id = T2.bill_accnt_id left outer join sblprd.s_doc_agree t5 ON t5.row_id = t1.agree_id left join sblprd.s_org_ext t9 on t9.row_id = T1.OWNER_ACCOUNT_ID WHERE T1.created > To_date('24/07/2017', 'DD/MM/YYYY') AND t1.row_id = t1.root_order_item_id AND t2.rev_num = (SELECT Max(rev_num) FROM sblprd.s_order x WHERE x.order_num = t2.order_num AND x.status_cd NOT IN ( 'Abandoned', 'x')) ORDER BY oh_seq, mstone_seq"
 result = cursor.execute(orasql).fetchall()
 #mysql
 db 		= MySQLdb.connect(host="10.62.170.36", port=3310, user="telkom", passwd="telkom", db="crm_dashboard")
@@ -37,6 +37,7 @@ for i,data in enumerate(result):
 	INT_ID 			= str(data[15])
 	LI_STATUS_INT 	= str(data[6]) 
 	MILE_STATUS_INT = str(data[7])
+	SEGMENT			= str(data[16])
 	sql 			= "insert into int_report (ORDER_NUM, ROW_ID, ORDER_SUBTYPE, REV, PRODUCT, OH_STATUS, LI_STATUS, MILESTONE, CREATED_AT, FULFILL_STATUS, ACC_NAS, NIPNAS, SID_NUM, OH_SEQ, MSTONE_SEQ, LI_STATUS_INT, MILE_STATUS_INT, lastupdate, INT_ID, INT_NOTE) values('"+ORDER+"','"+ROW_ID+"','"+ORDER_SUBTYPE+"','"+REV+"','"+PRODUCT+"','"+OH_STATUS+"','"+LI_STATUS+"','"+MILESTONE+"','"+CREATED_AT+"','"+FULFILL_STATUS+"','"+ACC_NAS+"','"+NIPNAS+"','"+SID_NUM+"','"+OH_SEQ+"','"+MSTONE_SEQ+"','"+LI_STATUS_INT+"','"+MILE_STATUS_INT+"','"+now+"','"+INT_ID+"','None')"
 	cur.execute(sql)
 db.commit()
@@ -50,8 +51,8 @@ result = requests.get('http://10.65.10.212/reqi/comaia/json.php?crmid=all')
 result = json.loads(result.content)
 
 for data in cur.fetchall():
-	tipe 	= result[data[0]]['TASK_MNEMONIC'].lower() if data[0] in result and result[data[0]]['TASK_MNEMONIC'] is not None else ''
-	tipe2	= result[data[0]]['STATE_MNEMONIC'].lower() if data[0] in result and result[data[0]]['STATE_MNEMONIC'] is not None else ''
+	tipe 	= result[data[0]]['TASK_MNEMONIC'].lower() if data[0] in result and result[data[0]]['TASK_MNEMONIC'] is not None else None
+	tipe2	= result[data[0]]['STATE_MNEMONIC'].lower() if data[0] in result and result[data[0]]['STATE_MNEMONIC'] is not None else None
 	if 'provisionordersi' in tipe:
 		if 'waitforfalloutrecovery' in tipe2:
 			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='ERROR DELIVER' WHERE ORDER_NUM='"+data[0]+"';")
