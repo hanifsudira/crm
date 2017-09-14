@@ -41,7 +41,7 @@ for i,data in enumerate(result):
 	cur.execute(sql)
 db.commit()
 print 'ORDER_NUM and ROW_ID query process'
-clause		= "SELECT distinct(order_num) FROM int_report" 
+clause		= "SELECT distinct(order_num) FROM int_report where oh_status<>'Pending'" 
 cur.execute(clause)
 #comaia
 print 'COMAIA and update process'
