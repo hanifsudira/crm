@@ -51,8 +51,10 @@ result = requests.get('http://10.65.10.212/reqi/comaia/json.php?crmid=all')
 result = json.loads(result.content)
 
 for data in cur.fetchall():
-	tipe 	= result[data[0]]['TASK_MNEMONIC'].lower() if data[0] in result and result[data[0]]['TASK_MNEMONIC'] is not None else 'null'
-	tipe2	= result[data[0]]['STATE_MNEMONIC'].lower() if data[0] in result and result[data[0]]['STATE_MNEMONIC'] is not None else 'null'
+	TASK_MNEMONIC 	= str(result[data[0]]['TASK_MNEMONIC'])
+	STATE_MNEMONIC	= str(result[data[0]]['STATE_MNEMONIC'])
+	tipe 	= TASK_MNEMONIC.lower() if data[0] in result else ''
+	tipe2	= STATE_MNEMONIC.lower() if data[0] in result else ''
 	if 'provisionordersi' in tipe:
 		if 'waitforfalloutrecovery' in tipe2:
 			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='ERROR DELIVER' WHERE ORDER_NUM='"+data[0]+"';")
@@ -71,7 +73,7 @@ for data in cur.fetchall():
 		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='FULFILL BILLING START', INT_NOTE='Error Fulfill Billing Start' WHERE ORDER_NUM='"+data[0]+"';")
 	elif ('synccustomerwaitinforsccdresponse' in tipe) or ('synccustomersitask' in tipe):
 		cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER START', INT_NOTE='Error Sync Customer' WHERE ORDER_NUM='"+data[0]+"';")
-	elif tipe == '' or len(tipe)==0:
+	elif tipe == 'None':
 		cur.execute("UPDATE int_report SET LI_STATUS_INT='Complete' ,MILE_STATUS_INT='FULFILL BILLING COMPLETE', INT_NOTE='Complete' WHERE ORDER_NUM='"+data[0]+"';")
 	#result = requests.post('http://10.65.10.212/reqi/comaia/index.php?p=search',data={'search' : str(data[0])})
 	#soup = BeautifulSoup(result.content, 'html.parser')
