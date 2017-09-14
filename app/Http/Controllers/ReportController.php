@@ -701,7 +701,7 @@ class ReportController extends Controller
                 "fromPort"=>"top4",
                 "toPort"=>"top0",
                 "points"=>[513,77,513,59,513,39,1045,39,1045,228,1045,242],
-                "text"=>"15"
+                "text"=>"17"
             ),
             array(
                 "from"=>-15,
@@ -709,7 +709,7 @@ class ReportController extends Controller
                 "fromPort"=>"top5",
                 "toPort"=>"top0",
                 "points"=>[535,77,535,67,984,67,984,147.5,984,228,984,242],
-                "text"=>"17"
+                "text"=>"15"
             ),
             array(
                 "from"=>-15,
