@@ -51,8 +51,20 @@ result = requests.get('http://10.65.10.212/reqi/comaia/json.php?crmid=all')
 result = json.loads(result.content)
 
 for data in cur.fetchall():
-	tipe 	= result[data[0]]['TASK_MNEMONIC'].lower() if data[0] in result and result[data[0]]['TASK_MNEMONIC'] is not None else str(result[data[0]]['TASK_MNEMONIC'])
-	tipe2	= result[data[0]]['STATE_MNEMONIC'].lower() if data[0] in result and result[data[0]]['STATE_MNEMONIC'] is not None else str(result[data[0]]['STATE_MNEMONIC'])
+	if data[0] in result:
+		if result[data[0]]['TASK_MNEMONIC'] is not None:
+			tipe = result[data[0]]['TASK_MNEMONIC'].lower()
+		else:
+			tipe = str(result[data[0]]['TASK_MNEMONIC'])
+
+		if result[data[0]]['STATE_MNEMONIC'] is not None:
+			tipe2 = result[data[0]]['STATE_MNEMONIC'].lower()
+		else:
+			tipe2 = str(result[data[0]]['STATE_MNEMONIC'])
+	else:
+		tipe 	= ''
+		tipe2 	= ''
+
 	if 'provisionordersi' in tipe:
 		if 'waitforfalloutrecovery' in tipe2:
 			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='PROVISION START', INT_NOTE='ERROR DELIVER' WHERE ORDER_NUM='"+data[0]+"';")
