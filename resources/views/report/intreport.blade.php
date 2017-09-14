@@ -56,7 +56,7 @@
                                     <td>{{$data[$i]->pb}}</td>
                                     <td>{{$data[$i]->pba}}</td>
                                     <td>{{$data[$i]->non}}</td>
-                                    <td>{{$data[$i]->non+$data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non}}</td>
+                                    <td>{{$data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non}}</td>
                                 </tr>
                             @endfor
                             </tbody>
