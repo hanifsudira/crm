@@ -55,15 +55,22 @@
                                     @elseif($d['ORDER_SUBTYPE']!='New Install' and $d['SID_NUM']=='None')
                                         <td>SID Kosong. Hubungi Tim CRM</td>
                                     @elseif($d['LI_STATUS']=='Complete')
-                                        <td>Complete Gan</td>
+                                        @if($d['MILESTONE']!=$d['MILE_STATUS_INT'])
+                                            <td>Status Tidak Update, Hubungi Tim CRM dan Integrasi</td>
+                                        @else
+                                            <td>Complete Gan</td>
+                                        @endif
                                     @elseif($d['OH_STATUS']=='Pending')
                                         <td>Klik Submit Dulu Gan</td>
-                                    @elseif($d['MILESTONE']!=$d['MILE_STATUS_INT'])
-                                        <td>Status Tidak Update, Hubungi Tim CRM dan Integrasi</td>
+
                                     @elseif($d['INT_NOTE']=='Error Fulfill Billing Start')
                                         <td>Hubungi Tim Integrasi dan TIBS</td>
                                     @else
-                                        <td>In Progress. Semoga Lancar</td>
+                                        @if($d['MILESTONE']!=$d['MILE_STATUS_INT'])
+                                            <td>Status Tidak Update, Hubungi Tim CRM dan Integrasi</td>
+                                        @else
+                                            <td>In Progress. Semoga Lancar</td>
+                                        @endif
                                     @endif
                                 </tr>
                             @endforeach
