@@ -100,6 +100,7 @@ class ReportController extends Controller
     }
 
     public function intreport(){
+        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
         $pivot = DB::select('select li_status, milestone, 
                                     count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
                                     count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
@@ -145,7 +146,7 @@ class ReportController extends Controller
                 array_push($return,$temp);
             }
         }
-        return view('report.intreport',['data'=>$return]);
+        return view('report.intreport',['data'=>$return,'lu'=>$lastupdate->lastupdate]);
     }
 
 
