@@ -152,8 +152,8 @@ class ReportController extends Controller
             foreach ($return as $data){
                 $counthorarr[0] += $data->et;
                 $counthorarr[1] += $data->ed;
-                $counthorarr[2] += $data->efbs;
-                $counthorarr[3] += $data->esc;
+                $counthorarr[2] += $data->esc;
+                $counthorarr[3] += $data->efbs;
                 $counthorarr[4] += $data->tsq;
                 $counthorarr[5] += $data->del;
                 $counthorarr[6] += $data->com;
