@@ -102,15 +102,15 @@ class ReportController extends Controller
     public function intreport(){
         $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
         $pivot = DB::select('select li_status, milestone, 
+                                    count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
                                     count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
                                     count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
                                     count(case when INT_NOTE=\'Error Fulfill Billing Start\' then 1 end) efbs,
-                                    count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
+                                    count(case when INT_NOTE=\'None\' then 1 end) non,
                                     count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
                                     count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
                                     count(case when INT_NOTE=\'Pending BASO\' then 1 end) pb,
                                     count(case when INT_NOTE=\'Pending Billing Approval\' then 1 end) pba,
-                                    count(case when INT_NOTE=\'None\' then 1 end) non,
                                     count(case when INT_NOTE=\'Complete\' then 1 end) com
                             from int_report pt group by milestone,li_status');
 
@@ -137,15 +137,15 @@ class ReportController extends Controller
                 if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
                     $state = 1;
                     array_push($return,$data);
-                    $counthorarr[0] += $data->et;
-                    $counthorarr[1] += $data->ed;
-                    $counthorarr[2] += $data->esc;
+                    $counthorarr[0] += $data->esc;
+                    $counthorarr[1] += $data->et;
+                    $counthorarr[2] += $data->ed;
                     $counthorarr[3] += $data->efbs;
-                    $counthorarr[4] += $data->tsq;
-                    $counthorarr[5] += $data->del;
-                    $counthorarr[6] += $data->pb;
-                    $counthorarr[7] += $data->pba;
-                    $counthorarr[8] += $data->non;
+                    $counthorarr[4] += $data->non;
+                    $counthorarr[5] += $data->tsq;
+                    $counthorarr[6] += $data->del;
+                    $counthorarr[7] += $data->pb;
+                    $counthorarr[8] += $data->pba;
                     $counthorarr[9] += $data->com;
                     break;
                 }

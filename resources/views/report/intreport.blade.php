@@ -60,10 +60,11 @@
                                         <td align="right">{{$data[$i]->pba}}</td>
                                         <td align="right">{{$data[$i]->non}}</td>
                                     @else
+                                        <td align="right" class="danger">{{$data[$i]->esc}}</td>
                                         <td align="right" class="danger">{{$data[$i]->et}}</td>
                                         <td align="right" class="danger">{{$data[$i]->ed}}</td>
-                                        <td align="right" class="danger">{{$data[$i]->esc}}</td>
                                         <td align="right" class="danger">{{$data[$i]->efbs}}</td>
+                                        <td align="right" class="danger">{{$data[$i]->non}}</td>
                                         @if($i==4)
                                             <td align="right" class="success">{{$data[$i]->tsq}}</td>
                                         @else
@@ -82,12 +83,11 @@
                                             <td align="right" class="warning">{{$data[$i]->pb}}</td>
                                         @endif
 
-                                        @if($i==9)
+                                        @if($i==9 or $i==11)
                                             <td align="right" class="success">{{$data[$i]->pba}}</td>
                                         @else
                                             <td align="right" class="warning">{{$data[$i]->pba}}</td>
                                         @endif
-                                        <td align="right" class="danger">{{$data[$i]->non}}</td>
                                         <td align="right" class="success">{{$data[$i]->com}}</td>
                                     @endif
                                     <td align="right">{{number_format($data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non)}}</td>
