@@ -156,10 +156,10 @@ class ReportController extends Controller
                 $counthorarr[3] += $data->efbs;
                 $counthorarr[4] += $data->tsq;
                 $counthorarr[5] += $data->del;
-                $counthorarr[6] += $data->com;
-                $counthorarr[7] += $data->pb;
-                $counthorarr[8] += $data->pba;
-                $counthorarr[9] += $data->non;
+                $counthorarr[6] += $data->pb;
+                $counthorarr[7] += $data->pba;
+                $counthorarr[8] += $data->non;
+                $counthorarr[9] += $data->com;
             }
         }
         return view('report.intreport',['data'=>$return,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr]);

@@ -1,5 +1,5 @@
 @extends('dashboard.app')
-@section('title', 'All Report')
+@section('title', 'Integrasi Report')
 @section('content')
     <section class="content-header">
         <h1>All Report</h1>
@@ -45,11 +45,11 @@
                                     @if($i-1>-1 and $data[$i]->li_status==$data[$i-1]->li_status)
                                         <td></td>
                                     @else($i)
-                                        <td>{{$data[$i]->li_status}}</td>
+                                        <td align="left">{{$data[$i]->li_status}}</td>
                                     @endif
-                                    <td>{{$data[$i]->milestone}}</td>
+                                    <td align="left">{{$data[$i]->milestone}}</td>
                                     @if($i==0)
-                                        <td>{{$data[$i]->et}}</td>
+                                        <td align="left">{{$data[$i]->et}}</td>
                                         <td>{{$data[$i]->ed}}</td>
                                         <td>{{$data[$i]->esc}}</td>
                                         <td>{{$data[$i]->efbs}}</td>
@@ -90,7 +90,6 @@
                                         <td class="danger">{{$data[$i]->non}}</td>
                                         <td class="success">{{$data[$i]->com}}</td>
                                     @endif
-
                                     <td>{{$data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non}}</td>
                                 </tr>
                             @endfor
