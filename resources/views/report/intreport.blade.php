@@ -45,9 +45,9 @@
                                     @if($i-1>-1 and $data[$i]->li_status==$data[$i-1]->li_status)
                                         <td></td>
                                     @else($i)
-                                        <td align="right">{{$data[$i]->li_status}}</td>
+                                        <td>{{$data[$i]->li_status}}</td>
                                     @endif
-                                    <td align="right">{{$data[$i]->milestone}}</td>
+                                    <td>{{$data[$i]->milestone}}</td>
                                     @if($i==0)
                                         <td align="right">{{$data[$i]->et}}</td>
                                         <td align="right">{{$data[$i]->ed}}</td>
