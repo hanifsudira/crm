@@ -118,10 +118,6 @@ class ReportController extends Controller
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
 
         $return = array();
-        $counthorarr = array();
-
-
-
         for($i=0;$i<count($status);$i++){
             #db crm
             $state = 0;
@@ -149,9 +145,9 @@ class ReportController extends Controller
                 array_push($return,$temp);
             }
 
-            for($i=0;$i<10;$i++){
-                $counthorarr[$i] = 0;
-            }
+            $counthorarr = array();
+            $counthorarr[0] = 0;$counthorarr[1] = 0;$counthorarr[2] = 0;$counthorarr[3] = 0;$counthorarr[4] = 0;$counthorarr[5] = 0;
+            $counthorarr[6] = 0;$counthorarr[7] = 0;$counthorarr[8] = 0;$counthorarr[9] = 0;
 
             foreach ($return as $data){
                 $counthorarr[0] += $data->et;
