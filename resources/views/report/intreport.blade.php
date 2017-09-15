@@ -32,10 +32,10 @@
                                 <th>Error Fulfill BS</th>
                                 <th>TSQ</th>
                                 <th>Deliver</th>
-                                <th>Complete</th>
                                 <th>Pending BASO</th>
                                 <th>Pending Billing A</th>
                                 <th>None</th>
+                                <th>Complete</th>
                                 <th>Total</th>
                             </tr>
                             </thead>
@@ -48,16 +48,51 @@
                                         <td>{{$data[$i]->li_status}}</td>
                                     @endif
                                     <td>{{$data[$i]->milestone}}</td>
-                                    <td class="danger">{{$data[$i]->et}}</td>
-                                    <td class="danger">{{$data[$i]->ed}}</td>
-                                    <td class="danger">{{$data[$i]->esc}}</td>
-                                    <td class="danger">{{$data[$i]->efbs}}</td>
-                                    <td class="warning">{{$data[$i]->tsq}}</td>
-                                    <td class="warning">{{$data[$i]->del}}</td>
-                                    <td class="warning">{{$data[$i]->com}}</td>
-                                    <td class="warning">{{$data[$i]->pb}}</td>
-                                    <td class="warning">{{$data[$i]->pba}}</td>
-                                    <td class="danger">{{$data[$i]->non}}</td>
+                                    @if($i==0)
+                                        <td>{{$data[$i]->et}}</td>
+                                        <td>{{$data[$i]->ed}}</td>
+                                        <td>{{$data[$i]->esc}}</td>
+                                        <td>{{$data[$i]->efbs}}</td>
+                                        <td>{{$data[$i]->tsq}}</td>
+                                        <td>{{$data[$i]->del}}</td>
+                                        <td>{{$data[$i]->com}}</td>
+                                        <td>{{$data[$i]->pb}}</td>
+                                        <td>{{$data[$i]->pba}}</td>
+                                        <td>{{$data[$i]->non}}</td>
+                                    @else
+                                        <td class="danger">{{$data[$i]->et}}</td>
+                                        <td class="danger">{{$data[$i]->ed}}</td>
+                                        <td class="danger">{{$data[$i]->esc}}</td>
+                                        <td class="danger">{{$data[$i]->efbs}}</td>
+                                        @if($i==4)
+                                            <td class="success">{{$data[$i]->tsq}}</td>
+                                        @else
+                                            <td class="warning">{{$data[$i]->tsq}}</td>
+                                        @endif
+
+                                        @if($i==5 or $i==6)
+                                            <td class="success">{{$data[$i]->del}}</td>
+                                        @else
+                                            <td class="warning">{{$data[$i]->del}}</td>
+                                        @endif
+
+                                        @if($i==8)
+                                            <td class="success">{{$data[$i]->pb}}</td>
+                                        @else
+                                            <td class="warning">{{$data[$i]->pb}}</td>
+                                        @endif
+
+                                        @if($i==9)
+                                            <td class="success">{{$data[$i]->pba}}</td>
+                                        @else
+                                            <td class="warning">{{$data[$i]->pba}}</td>
+                                        @endif
+
+                                        <td class="warning">{{$data[$i]->pba}}</td>
+                                        <td class="danger">{{$data[$i]->non}}</td>
+                                        <td class="success">{{$data[$i]->com}}</td>
+                                    @endif
+
                                     <td>{{$data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non}}</td>
                                 </tr>
                             @endfor

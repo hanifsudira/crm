@@ -278,17 +278,7 @@
                     { data: 'MILE_STATUS_INT',name: 'MILE_STATUS_INT'},
                     { data: 'INT_NOTE',name: 'INT_NOTE'},
                     { data: 'SEGMENT',name: 'SEGMENT'}
-                ],initComplete: function () {
-                    this.api().columns().every(function () {
-                        var column = this;
-                        var input = document.createElement("input");
-                        $(input).appendTo($(column.footer()).empty())
-                            .on('change', function () {
-                                var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                                column.search(val ? val : '', true, false).draw();
-                            });
-                    });
-                }
+                ]
             });
         });
     </script>
