@@ -108,10 +108,10 @@ class ReportController extends Controller
                                     count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
                                     count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
                                     count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
-                                    count(case when INT_NOTE=\'Complete\' then 1 end) com,
                                     count(case when INT_NOTE=\'Pending BASO\' then 1 end) pb,
                                     count(case when INT_NOTE=\'Pending Billing Approval\' then 1 end) pba,
-                                    count(case when INT_NOTE=\'None\' then 1 end) non
+                                    count(case when INT_NOTE=\'None\' then 1 end) non,
+                                    count(case when INT_NOTE=\'Complete\' then 1 end) com
                             from int_report pt group by milestone,li_status');
 
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
@@ -146,8 +146,16 @@ class ReportController extends Controller
             }
 
             $counthorarr = array();
-            $counthorarr[0] = 0;$counthorarr[1] = 0;$counthorarr[2] = 0;$counthorarr[3] = 0;$counthorarr[4] = 0;$counthorarr[5] = 0;
-            $counthorarr[6] = 0;$counthorarr[7] = 0;$counthorarr[8] = 0;$counthorarr[9] = 0;
+            $counthorarr[0] = 0;
+            $counthorarr[1] = 0;
+            $counthorarr[2] = 0;
+            $counthorarr[3] = 0;
+            $counthorarr[4] = 0;
+            $counthorarr[5] = 0;
+            $counthorarr[6] = 0;
+            $counthorarr[7] = 0;
+            $counthorarr[8] = 0;
+            $counthorarr[9] = 0;
 
             foreach ($return as $data){
                 $counthorarr[0] += $data->et;

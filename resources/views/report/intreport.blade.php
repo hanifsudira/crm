@@ -106,7 +106,7 @@
                                 <td align="right">{{$hor[7]}}</td>
                                 <td align="right">{{$hor[8]}}</td>
                                 <td align="right">{{$hor[9]}}</td>
-                                <td align="right">{{number_format($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[8])}}</td>
+                                <td align="right">{{number_format($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[9])}}</td>
                             </tr>
                             </tbody>
                         </table>
