@@ -49,16 +49,16 @@
                                     @endif
                                     <td>{{$data[$i]->milestone}}</td>
                                     @if($i==0)
+                                        <td align="right">{{$data[$i]->esc}}</td>
                                         <td align="right">{{$data[$i]->et}}</td>
                                         <td align="right">{{$data[$i]->ed}}</td>
-                                        <td align="right">{{$data[$i]->esc}}</td>
                                         <td align="right">{{$data[$i]->efbs}}</td>
+                                        <td align="right">{{$data[$i]->non}}</td>
                                         <td align="right">{{$data[$i]->tsq}}</td>
                                         <td align="right">{{$data[$i]->del}}</td>
                                         <td align="right">{{$data[$i]->com}}</td>
                                         <td align="right">{{$data[$i]->pb}}</td>
                                         <td align="right">{{$data[$i]->pba}}</td>
-                                        <td align="right">{{$data[$i]->non}}</td>
                                     @else
                                         <td align="right" class="danger">{{$data[$i]->esc}}</td>
                                         <td align="right" class="danger">{{$data[$i]->et}}</td>
