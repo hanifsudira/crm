@@ -120,9 +120,7 @@ class ReportController extends Controller
         $return = array();
         $counthorarr = array();
 
-        for($i=0;$i<10;$i++){
-            $counthorarr[$i] = 0;
-        }
+
 
         for($i=0;$i<count($status);$i++){
             #db crm
@@ -131,16 +129,6 @@ class ReportController extends Controller
                 if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
                     $state = 1;
                     array_push($return,$data);
-                    $counthorarr[0] += $data->et;
-                    $counthorarr[1] += $data->ed;
-                    $counthorarr[2] += $data->efbs;
-                    $counthorarr[3] += $data->esc;
-                    $counthorarr[4] += $data->tsq;
-                    $counthorarr[5] += $data->del;
-                    $counthorarr[6] += $data->com;
-                    $counthorarr[7] += $data->pb;
-                    $counthorarr[8] += $data->pba;
-                    $counthorarr[9] += $data->non;
                     break;
                 }
             }
@@ -159,16 +147,23 @@ class ReportController extends Controller
                 $temp->pba  = 0;
                 $temp->non  = 0;
                 array_push($return,$temp);
-                $counthorarr[0] += 0;
-                $counthorarr[1] += 0;
-                $counthorarr[2] += 0;
-                $counthorarr[3] += 0;
-                $counthorarr[4] += 0;
-                $counthorarr[5] += 0;
-                $counthorarr[6] += 0;
-                $counthorarr[7] += 0;
-                $counthorarr[8] += 0;
-                $counthorarr[9] += 0;
+            }
+
+            for($i=0;$i<10;$i++){
+                $counthorarr[$i] = 0;
+            }
+
+            foreach ($return as $data){
+                $counthorarr[0] += $data->et;
+                $counthorarr[1] += $data->ed;
+                $counthorarr[2] += $data->efbs;
+                $counthorarr[3] += $data->esc;
+                $counthorarr[4] += $data->tsq;
+                $counthorarr[5] += $data->del;
+                $counthorarr[6] += $data->com;
+                $counthorarr[7] += $data->pb;
+                $counthorarr[8] += $data->pba;
+                $counthorarr[9] += $data->non;
             }
         }
         return view('report.intreport',['data'=>$return,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr]);
