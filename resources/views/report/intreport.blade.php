@@ -50,45 +50,45 @@
                                     <td align="left">{{$data[$i]->milestone}}</td>
                                     @if($i==0)
                                         <td align="left">{{$data[$i]->et}}</td>
-                                        <td>{{$data[$i]->ed}}</td>
-                                        <td>{{$data[$i]->esc}}</td>
-                                        <td>{{$data[$i]->efbs}}</td>
-                                        <td>{{$data[$i]->tsq}}</td>
-                                        <td>{{$data[$i]->del}}</td>
-                                        <td>{{$data[$i]->com}}</td>
-                                        <td>{{$data[$i]->pb}}</td>
-                                        <td>{{$data[$i]->pba}}</td>
-                                        <td>{{$data[$i]->non}}</td>
+                                        <td align="left">{{$data[$i]->ed}}</td>
+                                        <td align="left">{{$data[$i]->esc}}</td>
+                                        <td align="left">{{$data[$i]->efbs}}</td>
+                                        <td align="left">{{$data[$i]->tsq}}</td>
+                                        <td align="left">{{$data[$i]->del}}</td>
+                                        <td align="left">{{$data[$i]->com}}</td>
+                                        <td align="left">{{$data[$i]->pb}}</td>
+                                        <td align="left">{{$data[$i]->pba}}</td>
+                                        <td align="left">{{$data[$i]->non}}</td>
                                     @else
-                                        <td class="danger">{{$data[$i]->et}}</td>
-                                        <td class="danger">{{$data[$i]->ed}}</td>
-                                        <td class="danger">{{$data[$i]->esc}}</td>
-                                        <td class="danger">{{$data[$i]->efbs}}</td>
+                                        <td align="left" class="danger">{{$data[$i]->et}}</td>
+                                        <td align="left" class="danger">{{$data[$i]->ed}}</td>
+                                        <td align="left" class="danger">{{$data[$i]->esc}}</td>
+                                        <td align="left" class="danger">{{$data[$i]->efbs}}</td>
                                         @if($i==4)
-                                            <td class="success">{{$data[$i]->tsq}}</td>
+                                            <td align="left" class="success">{{$data[$i]->tsq}}</td>
                                         @else
-                                            <td class="warning">{{$data[$i]->tsq}}</td>
+                                            <td align="left" class="warning">{{$data[$i]->tsq}}</td>
                                         @endif
 
                                         @if($i==5 or $i==6)
-                                            <td class="success">{{$data[$i]->del}}</td>
+                                            <td align="left" class="success">{{$data[$i]->del}}</td>
                                         @else
-                                            <td class="warning">{{$data[$i]->del}}</td>
+                                            <td align="left" class="warning">{{$data[$i]->del}}</td>
                                         @endif
 
                                         @if($i==8)
-                                            <td class="success">{{$data[$i]->pb}}</td>
+                                            <td align="left" class="success">{{$data[$i]->pb}}</td>
                                         @else
-                                            <td class="warning">{{$data[$i]->pb}}</td>
+                                            <td align="left" class="warning">{{$data[$i]->pb}}</td>
                                         @endif
 
                                         @if($i==9)
-                                            <td class="success">{{$data[$i]->pba}}</td>
+                                            <td align="left" class="success">{{$data[$i]->pba}}</td>
                                         @else
-                                            <td class="warning">{{$data[$i]->pba}}</td>
+                                            <td align="left" class="warning">{{$data[$i]->pba}}</td>
                                         @endif
-                                        <td class="danger">{{$data[$i]->non}}</td>
-                                        <td class="success">{{$data[$i]->com}}</td>
+                                        <td align="left" class="danger">{{$data[$i]->non}}</td>
+                                        <td align="left" class="success">{{$data[$i]->com}}</td>
                                     @endif
                                     <td>{{$data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non}}</td>
                                 </tr>
@@ -96,17 +96,17 @@
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td>{{$hor[0]}}</td>
-                                <td>{{$hor[1]}}</td>
-                                <td>{{$hor[2]}}</td>
-                                <td>{{$hor[3]}}</td>
-                                <td>{{$hor[4]}}</td>
-                                <td>{{$hor[5]}}</td>
-                                <td>{{$hor[6]}}</td>
-                                <td>{{$hor[7]}}</td>
-                                <td>{{$hor[8]}}</td>
-                                <td>{{$hor[9]}}</td>
-                                <td>{{$hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[8]}}</td>
+                                <td align="left">{{$hor[0]}}</td>
+                                <td align="left">{{$hor[1]}}</td>
+                                <td align="left">{{$hor[2]}}</td>
+                                <td align="left">{{$hor[3]}}</td>
+                                <td align="left">{{$hor[4]}}</td>
+                                <td align="left">{{$hor[5]}}</td>
+                                <td align="left">{{$hor[6]}}</td>
+                                <td align="left">{{$hor[7]}}</td>
+                                <td align="left">{{$hor[8]}}</td>
+                                <td align="left">{{$hor[9]}}</td>
+                                <td align="left">{{$hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[8]}}</td>
                             </tr>
                             </tbody>
                         </table>
