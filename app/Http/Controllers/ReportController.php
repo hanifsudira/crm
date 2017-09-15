@@ -171,7 +171,7 @@ class ReportController extends Controller
                 $counthorarr[9] += 0;
             }
         }
-        return view('report.intreport',['data'=>$return,'lu'=>$lastupdate->lastupdate,'sum'=>$counthorarr]);
+        return view('report.intreport',['data'=>$return,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr]);
     }
 
 
