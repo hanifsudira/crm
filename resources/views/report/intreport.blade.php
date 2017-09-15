@@ -45,68 +45,68 @@
                                     @if($i-1>-1 and $data[$i]->li_status==$data[$i-1]->li_status)
                                         <td></td>
                                     @else($i)
-                                        <td align="left">{{$data[$i]->li_status}}</td>
+                                        <td align="right">{{$data[$i]->li_status}}</td>
                                     @endif
-                                    <td align="left">{{$data[$i]->milestone}}</td>
+                                    <td align="right">{{$data[$i]->milestone}}</td>
                                     @if($i==0)
-                                        <td align="left">{{$data[$i]->et}}</td>
-                                        <td align="left">{{$data[$i]->ed}}</td>
-                                        <td align="left">{{$data[$i]->esc}}</td>
-                                        <td align="left">{{$data[$i]->efbs}}</td>
-                                        <td align="left">{{$data[$i]->tsq}}</td>
-                                        <td align="left">{{$data[$i]->del}}</td>
-                                        <td align="left">{{$data[$i]->com}}</td>
-                                        <td align="left">{{$data[$i]->pb}}</td>
-                                        <td align="left">{{$data[$i]->pba}}</td>
-                                        <td align="left">{{$data[$i]->non}}</td>
+                                        <td align="right">{{$data[$i]->et}}</td>
+                                        <td align="right">{{$data[$i]->ed}}</td>
+                                        <td align="right">{{$data[$i]->esc}}</td>
+                                        <td align="right">{{$data[$i]->efbs}}</td>
+                                        <td align="right">{{$data[$i]->tsq}}</td>
+                                        <td align="right">{{$data[$i]->del}}</td>
+                                        <td align="right">{{$data[$i]->com}}</td>
+                                        <td align="right">{{$data[$i]->pb}}</td>
+                                        <td align="right">{{$data[$i]->pba}}</td>
+                                        <td align="right">{{$data[$i]->non}}</td>
                                     @else
-                                        <td align="left" class="danger">{{$data[$i]->et}}</td>
-                                        <td align="left" class="danger">{{$data[$i]->ed}}</td>
-                                        <td align="left" class="danger">{{$data[$i]->esc}}</td>
-                                        <td align="left" class="danger">{{$data[$i]->efbs}}</td>
+                                        <td align="right" class="danger">{{$data[$i]->et}}</td>
+                                        <td align="right" class="danger">{{$data[$i]->ed}}</td>
+                                        <td align="right" class="danger">{{$data[$i]->esc}}</td>
+                                        <td align="right" class="danger">{{$data[$i]->efbs}}</td>
                                         @if($i==4)
-                                            <td align="left" class="success">{{$data[$i]->tsq}}</td>
+                                            <td align="right" class="success">{{$data[$i]->tsq}}</td>
                                         @else
-                                            <td align="left" class="warning">{{$data[$i]->tsq}}</td>
+                                            <td align="right" class="warning">{{$data[$i]->tsq}}</td>
                                         @endif
 
                                         @if($i==5 or $i==6)
-                                            <td align="left" class="success">{{$data[$i]->del}}</td>
+                                            <td align="right" class="success">{{$data[$i]->del}}</td>
                                         @else
-                                            <td align="left" class="warning">{{$data[$i]->del}}</td>
+                                            <td align="right" class="warning">{{$data[$i]->del}}</td>
                                         @endif
 
                                         @if($i==8)
-                                            <td align="left" class="success">{{$data[$i]->pb}}</td>
+                                            <td align="right" class="success">{{$data[$i]->pb}}</td>
                                         @else
-                                            <td align="left" class="warning">{{$data[$i]->pb}}</td>
+                                            <td align="right" class="warning">{{$data[$i]->pb}}</td>
                                         @endif
 
                                         @if($i==9)
-                                            <td align="left" class="success">{{$data[$i]->pba}}</td>
+                                            <td align="right" class="success">{{$data[$i]->pba}}</td>
                                         @else
-                                            <td align="left" class="warning">{{$data[$i]->pba}}</td>
+                                            <td align="right" class="warning">{{$data[$i]->pba}}</td>
                                         @endif
-                                        <td align="left" class="danger">{{$data[$i]->non}}</td>
-                                        <td align="left" class="success">{{$data[$i]->com}}</td>
+                                        <td align="right" class="danger">{{$data[$i]->non}}</td>
+                                        <td align="right" class="success">{{$data[$i]->com}}</td>
                                     @endif
-                                    <td>{{$data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non}}</td>
+                                    <td>{{number_format($data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non)}}</td>
                                 </tr>
                             @endfor
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td align="left">{{$hor[0]}}</td>
-                                <td align="left">{{$hor[1]}}</td>
-                                <td align="left">{{$hor[2]}}</td>
-                                <td align="left">{{$hor[3]}}</td>
-                                <td align="left">{{$hor[4]}}</td>
-                                <td align="left">{{$hor[5]}}</td>
-                                <td align="left">{{$hor[6]}}</td>
-                                <td align="left">{{$hor[7]}}</td>
-                                <td align="left">{{$hor[8]}}</td>
-                                <td align="left">{{$hor[9]}}</td>
-                                <td align="left">{{$hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[8]}}</td>
+                                <td align="right">{{$hor[0]}}</td>
+                                <td align="right">{{$hor[1]}}</td>
+                                <td align="right">{{$hor[2]}}</td>
+                                <td align="right">{{$hor[3]}}</td>
+                                <td align="right">{{$hor[4]}}</td>
+                                <td align="right">{{$hor[5]}}</td>
+                                <td align="right">{{$hor[6]}}</td>
+                                <td align="right">{{$hor[7]}}</td>
+                                <td align="right">{{$hor[8]}}</td>
+                                <td align="right">{{$hor[9]}}</td>
+                                <td align="right">{{$hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[8]}}</td>
                             </tr>
                             </tbody>
                         </table>
