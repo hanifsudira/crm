@@ -113,18 +113,20 @@
                     </div>
                 </div>
                 <div class="box">
-                    <fieldset>
-                        <legend>Legend : </legend>
-                            <div class="alert alert-success">
+                    <div class="box-body">
+                        <fieldset>
+                            <legend>Legend : </legend>
+                            <div class="success">
                                 Complete : <strong>{{number_format($hor[9]+($data[4]->tsq+$data[5]->del+$data[6]->del+$data[8]->pb+$data[11]->pb+$data[9]->pba))}}</strong>
                             </div>
-                            <div class="alert alert-warning">
-                               Non error :  <strong>{{number_format(($hor[5]+$hor[6]+$hor[7]+$hor[8])-($data[4]->tsq+$data[5]->del+$data[6]->del+$data[8]->pb+$data[11]->pb+$data[9]->pba))}}</strong>
+                            <div class="warning">
+                                Non error :  <strong>{{number_format(($hor[5]+$hor[6]+$hor[7]+$hor[8])-($data[4]->tsq+$data[5]->del+$data[6]->del+$data[8]->pb+$data[11]->pb+$data[9]->pba))}}</strong>
                             </div>
-                            <div class="alert alert-danger">
-                               Error :  <strong>{{number_format($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4])}}</strong>
+                            <div class="danger">
+                                Error :  <strong>{{number_format($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4])}}</strong>
                             </div>
-                    </fieldset>
+                        </fieldset>
+                    </div>
                 </div>
             </div>
         </div>
