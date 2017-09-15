@@ -90,7 +90,7 @@
                                         <td align="right" class="danger">{{$data[$i]->non}}</td>
                                         <td align="right" class="success">{{$data[$i]->com}}</td>
                                     @endif
-                                    <td>{{number_format($data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non)}}</td>
+                                    <td align="right">{{number_format($data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non)}}</td>
                                 </tr>
                             @endfor
                             <tr>
@@ -106,7 +106,7 @@
                                 <td align="right">{{$hor[7]}}</td>
                                 <td align="right">{{$hor[8]}}</td>
                                 <td align="right">{{$hor[9]}}</td>
-                                <td align="right">{{$hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[8]}}</td>
+                                <td align="right">{{number_format($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[8])}}</td>
                             </tr>
                             </tbody>
                         </table>
