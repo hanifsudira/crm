@@ -87,8 +87,6 @@
                                         @else
                                             <td class="warning">{{$data[$i]->pba}}</td>
                                         @endif
-
-                                        <td class="warning">{{$data[$i]->pba}}</td>
                                         <td class="danger">{{$data[$i]->non}}</td>
                                         <td class="success">{{$data[$i]->com}}</td>
                                     @endif
