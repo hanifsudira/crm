@@ -32,6 +32,7 @@
                                 <th>Error Fulfill BS</th>
                                 <th>TSQ</th>
                                 <th>Deliver</th>
+                                <th>Complete</th>
                                 <th>Pending BASO</th>
                                 <th>Pending Billing A</th>
                                 <th>None</th>
@@ -53,12 +54,28 @@
                                     <td class="danger">{{$data[$i]->efbs}}</td>
                                     <td>{{$data[$i]->tsq}}</td>
                                     <td>{{$data[$i]->del}}</td>
+                                    <td>{{$data[$i]->com}}</td>
                                     <td>{{$data[$i]->pb}}</td>
                                     <td>{{$data[$i]->pba}}</td>
                                     <td>{{$data[$i]->non}}</td>
                                     <td>{{$data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non}}</td>
                                 </tr>
                             @endfor
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>{{$hor[0]}}</td>
+                                <td>{{$hor[1]}}</td>
+                                <td>{{$hor[2]}}</td>
+                                <td>{{$hor[3]}}</td>
+                                <td>{{$hor[4]}}</td>
+                                <td>{{$hor[5]}}</td>
+                                <td>{{$hor[6]}}</td>
+                                <td>{{$hor[7]}}</td>
+                                <td>{{$hor[8]}}</td>
+                                <td>{{$hor[9]}}</td>
+                                <td>{{$hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[8]}}</td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>

@@ -145,8 +145,25 @@ class ReportController extends Controller
                 $temp->non  = 0;
                 array_push($return,$temp);
             }
+
+            $counthorarr = array();
+            for($i=0;$i<10;$i++){
+                $counthorarr[$i] = 0;
+            }
+            foreach ($return as $r){
+                $counthorarr[0] += $r->et;
+                $counthorarr[1] += $r->ed;
+                $counthorarr[2] += $r->efbs;
+                $counthorarr[3] += $r->esc;
+                $counthorarr[4] += $r->tsq;
+                $counthorarr[5] += $r->del;
+                $counthorarr[6] += $r->com;
+                $counthorarr[7] += $r->pb;
+                $counthorarr[8] += $r->pba;
+                $counthorarr[9] += $r->non;
+            }
         }
-        return view('report.intreport',['data'=>$return,'lu'=>$lastupdate->lastupdate]);
+        return view('report.intreport',['data'=>$return,'lu'=>$lastupdate->lastupdate,'sum'=>$counthorarr]);
     }
 
 
