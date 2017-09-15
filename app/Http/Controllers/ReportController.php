@@ -118,14 +118,29 @@ class ReportController extends Controller
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
 
         $return = array();
-        for($i=0;$i<count($status);$i++){
+        $counthorarr = array();
 
+        for($i=0;$i<10;$i++){
+            $counthorarr[$i] = 0;
+        }
+
+        for($i=0;$i<count($status);$i++){
             #db crm
             $state = 0;
             foreach ($pivot as $data){
                 if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
                     $state = 1;
                     array_push($return,$data);
+                    $counthorarr[0] += $data->et;
+                    $counthorarr[1] += $data->ed;
+                    $counthorarr[2] += $data->efbs;
+                    $counthorarr[3] += $data->esc;
+                    $counthorarr[4] += $data->tsq;
+                    $counthorarr[5] += $data->del;
+                    $counthorarr[6] += $data->com;
+                    $counthorarr[7] += $data->pb;
+                    $counthorarr[8] += $data->pba;
+                    $counthorarr[9] += $data->non;
                     break;
                 }
             }
@@ -144,23 +159,16 @@ class ReportController extends Controller
                 $temp->pba  = 0;
                 $temp->non  = 0;
                 array_push($return,$temp);
-            }
-
-            $counthorarr = array();
-            for($i=0;$i<10;$i++){
-                $counthorarr[$i] = 0;
-            }
-            foreach ($return as $r){
-                $counthorarr[0] += $r->et;
-                $counthorarr[1] += $r->ed;
-                $counthorarr[2] += $r->efbs;
-                $counthorarr[3] += $r->esc;
-                $counthorarr[4] += $r->tsq;
-                $counthorarr[5] += $r->del;
-                $counthorarr[6] += $r->com;
-                $counthorarr[7] += $r->pb;
-                $counthorarr[8] += $r->pba;
-                $counthorarr[9] += $r->non;
+                $counthorarr[0] += 0;
+                $counthorarr[1] += 0;
+                $counthorarr[2] += 0;
+                $counthorarr[3] += 0;
+                $counthorarr[4] += 0;
+                $counthorarr[5] += 0;
+                $counthorarr[6] += 0;
+                $counthorarr[7] += 0;
+                $counthorarr[8] += 0;
+                $counthorarr[9] += 0;
             }
         }
         return view('report.intreport',['data'=>$return,'lu'=>$lastupdate->lastupdate,'sum'=>$counthorarr]);
