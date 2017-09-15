@@ -52,12 +52,12 @@
                                     <td class="danger">{{$data[$i]->ed}}</td>
                                     <td class="danger">{{$data[$i]->esc}}</td>
                                     <td class="danger">{{$data[$i]->efbs}}</td>
-                                    <td>{{$data[$i]->tsq}}</td>
-                                    <td>{{$data[$i]->del}}</td>
-                                    <td>{{$data[$i]->com}}</td>
-                                    <td>{{$data[$i]->pb}}</td>
-                                    <td>{{$data[$i]->pba}}</td>
-                                    <td>{{$data[$i]->non}}</td>
+                                    <td class="warning">{{$data[$i]->tsq}}</td>
+                                    <td class="warning">{{$data[$i]->del}}</td>
+                                    <td class="warning">{{$data[$i]->com}}</td>
+                                    <td class="warning">{{$data[$i]->pb}}</td>
+                                    <td class="warning">{{$data[$i]->pba}}</td>
+                                    <td class="danger">{{$data[$i]->non}}</td>
                                     <td>{{$data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non}}</td>
                                 </tr>
                             @endfor

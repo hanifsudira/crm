@@ -137,6 +137,12 @@ class OraController extends Controller
         return view('dashboard.lineitem',['lisummary' => $lisummary, 'lastupdate' => $lastupdate,'luli'=>$luli]);
     }
 
+    public function errorlineitem(){
+        $data = DB::select('SELECT * FROM int_report where OH_STATUS=\'failed\' and int_note like \'error%\';');
+        return Datatables::of($data)->make(true);
+    }
+
+
     //statusorder
     public function statusorder(){
         $lisummary = Lisummary::all();

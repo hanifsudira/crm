@@ -183,6 +183,11 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@getlireport'
     ]);
 
+    Route::get('errorlineitem', [
+        'as'        => 'ora.errorlineitem',
+        'uses'      => 'OraController@errorlineitem'
+    ]);
+
     Route::get('getoreport', [
         'as'        => 'ora.getoreport',
         'uses'      => 'OraController@getoreport'
