@@ -26,15 +26,15 @@
                             <tr>
                                 <th>Status</th>
                                 <th>Milestone</th>
-                                <th>Error Sync C</th>
-                                <th>Error TSQ</th>
-                                <th>Error Deliver</th>
-                                <th>Error Fulfill BS</th>
+                                <th>ESC</th>
+                                <th>ET</th>
+                                <th>ED</th>
+                                <th>EFBS</th>
                                 <th>None</th>
                                 <th>TSQ</th>
                                 <th>Deliver</th>
-                                <th>Pending BASO</th>
-                                <th>Pending Billing A</th>
+                                <th>PB</th>
+                                <th>PBA</th>
                                 <th>Complete</th>
                                 <th>Total</th>
                             </tr>
@@ -112,6 +112,37 @@
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="box">
+                    <div class="box-body">
+                        <fieldset>
+                            <legend>Dictionary : </legend>
+                            <div>
+                                ESC : <strong>Error Sync Customer</strong>
+                            </div>
+                            <div>
+                                ET : <strong>Error TSQ</strong>
+                            </div>
+                            <div>
+                                ED : <strong>Error Deliver</strong>
+                            </div>
+                            <div>
+                                EFBS : <strong>Error Fullfill Billing Start</strong>
+                            </div>
+                            <div>
+                                PB : <strong>Pending BASO</strong>
+                            </div>
+                            <div>
+                                PBA : <strong>Pending Billing Approval</strong>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
                 <div class="box">
                     <div class="box-body">
                         <fieldset>
