@@ -26,15 +26,15 @@
                             <tr>
                                 <th>Status</th>
                                 <th>Milestone</th>
+                                <th>Error Sync C</th>
                                 <th>Error TSQ</th>
                                 <th>Error Deliver</th>
-                                <th>Error Sync C</th>
                                 <th>Error Fulfill BS</th>
+                                <th>None</th>
                                 <th>TSQ</th>
                                 <th>Deliver</th>
                                 <th>Pending BASO</th>
                                 <th>Pending Billing A</th>
-                                <th>None</th>
                                 <th>Complete</th>
                                 <th>Total</th>
                             </tr>
