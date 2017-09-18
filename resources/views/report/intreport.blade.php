@@ -24,8 +24,8 @@
                         <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
                             <thead>
                             <tr>
-                                <th>Status</th>
-                                <th>Milestone</th>
+                                <th rowspan="2">Status</th>
+                                <th rowspan="2">Milestone</th>
                                 <th colspan="2">ESC</th>
                                 <th colspan="2">ET</th>
                                 <th colspan="2">ED</th>
@@ -36,12 +36,10 @@
                                 <th colspan="2">PB</th>
                                 <th colspan="2">PBA</th>
                                 <th colspan="2">Complete</th>
-                                <th>Total</th>
+                                <th rowspan="2">Total</th>
                             </tr>
                             </thead>
                             <tr>
-                                <th></th>
-                                <th></th>
                                 <th>&lt;=24</th>
                                 <th>&gt;24</th>
                                 <th>&lt;=24</th>
@@ -62,7 +60,6 @@
                                 <th>&gt;24</th>
                                 <th>&lt;=24</th>
                                 <th>&gt;24</th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
