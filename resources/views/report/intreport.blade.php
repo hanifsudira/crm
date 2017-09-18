@@ -88,7 +88,13 @@
                                         @else
                                             <td align="right" class="warning">{{$data[$i]->pba}}</td>
                                         @endif
-                                        <td align="right" class="success">{{$data[$i]->com}}</td>
+
+                                        @if($i==12)
+                                            <td align="right" class="success">{{$data[$i]->com}}</td>
+                                        @else
+                                            <td align="right" class="warning">{{$data[$i]->com}}</td>
+                                        @endif
+
                                     @endif
                                     <td align="right">{{number_format($data[$i]->et+$data[$i]->ed+$data[$i]->esc+$data[$i]->efbs+$data[$i]->tsq+$data[$i]->del+$data[$i]->pb+$data[$i]->pba+$data[$i]->non)}}</td>
                                 </tr>
