@@ -220,3 +220,10 @@
         </div>
     </section>
 @endsection
+@section('css')
+    <style>
+        th [colspan="2"] {
+            text-align: center;
+        }
+    </style>
+@endsection
