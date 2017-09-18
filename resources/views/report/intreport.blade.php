@@ -40,8 +40,8 @@
                             </tr>
                             </thead>
                             <tr>
-                                <th>Status</th>
-                                <th>Milestone</th>
+                                <th></th>
+                                <th></th>
                                 <th>&lt;=24</th>
                                 <th>&gt;24</th>
                                 <th>&lt;=24</th>
