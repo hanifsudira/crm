@@ -24,19 +24,19 @@
                         <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
                             <thead>
                             <tr>
-                                <th rowspan="2">Status</th>
-                                <th rowspan="2">Milestone</th>
-                                <th colspan="2">ESC</th>
-                                <th colspan="2">ET</th>
-                                <th colspan="2">ED</th>
-                                <th colspan="2">EFBS</th>
-                                <th colspan="2">None</th>
-                                <th colspan="2">TSQ</th>
-                                <th colspan="2">Deliver</th>
-                                <th colspan="2">PB</th>
-                                <th colspan="2">PBA</th>
-                                <th colspan="2">Complete</th>
-                                <th rowspan="2">Total</th>
+                                <th>Status</th>
+                                <th>Milestone</th>
+                                <th colspan="2" style="text-align: center;">ESC</th>
+                                <th colspan="2" style="text-align: center;">ET</th>
+                                <th colspan="2" style="text-align: center;">ED</th>
+                                <th colspan="2" style="text-align: center;">EFBS</th>
+                                <th colspan="2" style="text-align: center;">None</th>
+                                <th colspan="2" style="text-align: center;">TSQ</th>
+                                <th colspan="2" style="text-align: center;">Deliver</th>
+                                <th colspan="2" style="text-align: center;">PB</th>
+                                <th colspan="2" style="text-align: center;">PBA</th>
+                                <th colspan="2" style="text-align: center;">Complete</th>
+                                <th>Total</th>
                             </tr>
                             </thead>
                             <tr>
@@ -219,11 +219,4 @@
             </div>
         </div>
     </section>
-@endsection
-@section('css')
-    <style>
-        th [colspan="2"] {
-            text-align: center;
-        }
-    </style>
 @endsection
