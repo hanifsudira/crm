@@ -80,33 +80,6 @@ class ReportController extends Controller
             $counthorarr[4] += $r->so;
         }
 
-        $pivotmin24 = DB::select('select li_status, milestone, 
-                                    count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
-                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
-                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
-                                    count(case when INT_NOTE=\'Error Fulfill Billing Start\' then 1 end) efbs,
-                                    count(case when INT_NOTE=\'None\' then 1 end) non,
-                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
-                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
-                                    count(case when INT_NOTE=\'Pending BASO\' then 1 end) pb,
-                                    count(case when INT_NOTE=\'Pending Billing Approval\' then 1 end) pba,
-                                    count(case when INT_NOTE=\'Complete\' then 1 end) com
-                            from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) <=24 group by milestone,li_status;');
-
-        $pivotmax24 = DB::select('select li_status, milestone, 
-                                    count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
-                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
-                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
-                                    count(case when INT_NOTE=\'Error Fulfill Billing Start\' then 1 end) efbs,
-                                    count(case when INT_NOTE=\'None\' then 1 end) non,
-                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
-                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
-                                    count(case when INT_NOTE=\'Pending BASO\' then 1 end) pb,
-                                    count(case when INT_NOTE=\'Pending Billing Approval\' then 1 end) pba,
-                                    count(case when INT_NOTE=\'Complete\' then 1 end) com
-                            from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) >24 group by milestone,li_status;');
-
-
         return view('report.allreport',['data'=>$return,'hor'=>$counthorarr,'ver'=>$countverarr,'countint'=>$countint,'verint'=>$countverarrint,'lu'=>$lastupdate->lastupdate]);
     }
 
@@ -136,10 +109,38 @@ class ReportController extends Controller
                                     count(case when INT_NOTE=\'Complete\' then 1 end) com
                             from int_report pt group by milestone,li_status');
 
+        $pivotmin24 = DB::select('select li_status, milestone, 
+                                    count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
+                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
+                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
+                                    count(case when INT_NOTE=\'Error Fulfill Billing Start\' then 1 end) efbs,
+                                    count(case when INT_NOTE=\'None\' then 1 end) non,
+                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
+                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
+                                    count(case when INT_NOTE=\'Pending BASO\' then 1 end) pb,
+                                    count(case when INT_NOTE=\'Pending Billing Approval\' then 1 end) pba,
+                                    count(case when INT_NOTE=\'Complete\' then 1 end) com
+                            from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) <=24 group by milestone,li_status;');
+
+        $pivotmax24 = DB::select('select li_status, milestone, 
+                                    count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
+                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
+                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
+                                    count(case when INT_NOTE=\'Error Fulfill Billing Start\' then 1 end) efbs,
+                                    count(case when INT_NOTE=\'None\' then 1 end) non,
+                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
+                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
+                                    count(case when INT_NOTE=\'Pending BASO\' then 1 end) pb,
+                                    count(case when INT_NOTE=\'Pending Billing Approval\' then 1 end) pba,
+                                    count(case when INT_NOTE=\'Complete\' then 1 end) com
+                            from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) >24 group by milestone,li_status;');
+
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
         $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
 
         $return = array();
+        $returnmin24 = array();
+        $returnmax24 = array();
         $counthorarr = array();
         $counthorarr[0] = 0;
         $counthorarr[1] = 0;
@@ -152,6 +153,7 @@ class ReportController extends Controller
         $counthorarr[8] = 0;
         $counthorarr[9] = 0;
 
+        #all
         for($i=0;$i<count($status);$i++){
             #db crm
             $state = 0;
@@ -198,11 +200,68 @@ class ReportController extends Controller
                 $counthorarr[8] += 0;
                 $counthorarr[9] += 0;
             }
-
         }
-        return view('report.intreport',['data'=>$return,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr]);
-    }
 
+        #min24
+        for($i=0;$i<count($status);$i++){
+            #db crm
+            $state = 0;
+            foreach ($pivotmin24 as $data){
+                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
+                    $state = 1;
+                    array_push($returnmin24,$data);
+                    break;
+                }
+            }
+            if(!$state){
+                $temp = new \stdClass();
+                $temp->li_status = $status[$i];
+                $temp->milestone = $milestone[$i];
+                $temp->et   = 0;
+                $temp->ed   = 0;
+                $temp->efbs = 0;
+                $temp->esc  = 0;
+                $temp->tsq  = 0;
+                $temp->del  = 0;
+                $temp->com  = 0;
+                $temp->pb   = 0;
+                $temp->pba  = 0;
+                $temp->non  = 0;
+                array_push($returnmin24,$temp);
+            }
+        }
+
+        #max24
+        for($i=0;$i<count($status);$i++){
+            #db crm
+            $state = 0;
+            foreach ($pivotmax24 as $data){
+                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
+                    $state = 1;
+                    array_push($returnmax24,$data);
+                    break;
+                }
+            }
+            if(!$state){
+                $temp = new \stdClass();
+                $temp->li_status = $status[$i];
+                $temp->milestone = $milestone[$i];
+                $temp->et   = 0;
+                $temp->ed   = 0;
+                $temp->efbs = 0;
+                $temp->esc  = 0;
+                $temp->tsq  = 0;
+                $temp->del  = 0;
+                $temp->com  = 0;
+                $temp->pb   = 0;
+                $temp->pba  = 0;
+                $temp->non  = 0;
+                array_push($returnmax24,$temp);
+            }
+        }
+
+        return view('report.intreport',['data'=>$return,'datamin24'=>$returnmin24,'datamax24'=>$returnmax24,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr]);
+    }
 
     public function flowdatareturn(){
         $pivot = DB::select('select li_status, milestone, 

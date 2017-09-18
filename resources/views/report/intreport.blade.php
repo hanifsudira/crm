@@ -26,17 +26,43 @@
                             <tr>
                                 <th>Status</th>
                                 <th>Milestone</th>
-                                <th>ESC</th>
-                                <th>ET</th>
-                                <th>ED</th>
-                                <th>EFBS</th>
-                                <th>None</th>
-                                <th>TSQ</th>
-                                <th>Deliver</th>
-                                <th>PB</th>
-                                <th>PBA</th>
-                                <th>Complete</th>
+                                <th colspan="2">ESC</th>
+                                <th colspan="2">ET</th>
+                                <th colspan="2">ED</th>
+                                <th colspan="2">EFBS</th>
+                                <th colspan="2">None</th>
+                                <th colspan="2">TSQ</th>
+                                <th colspan="2">Deliver</th>
+                                <th colspan="2">PB</th>
+                                <th colspan="2">PBA</th>
+                                <th colspan="2">Complete</th>
                                 <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Milestone</th>
+                                <th>&lt;=24</th>
+                                <th>&gt;24</th>
+                                <th>&lt;=24</th>
+                                <th>&gt;24</th>
+                                <th>&lt;=24</th>
+                                <th>&gt;24</th>
+                                <th>&lt;=24</th>
+                                <th>&gt;24</th>
+                                <th>&lt;=24</th>
+                                <th>&gt;24</th>
+                                <th>&lt;=24</th>
+                                <th>&gt;24</th>
+                                <th>&lt;=24</th>
+                                <th>&gt;24</th>
+                                <th>&lt;=24</th>
+                                <th>&gt;24</th>
+                                <th>&lt;=24</th>
+                                <th>&gt;24</th>
+                                <th>&lt;=24</th>
+                                <th>&gt;24</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,50 +75,75 @@
                                     @endif
                                     <td>{{$data[$i]->milestone}}</td>
                                     @if($i==0)
-                                        <td align="right">{{$data[$i]->esc}}</td>
-                                        <td align="right">{{$data[$i]->et}}</td>
-                                        <td align="right">{{$data[$i]->ed}}</td>
-                                        <td align="right">{{$data[$i]->efbs}}</td>
-                                        <td align="right">{{$data[$i]->non}}</td>
-                                        <td align="right">{{$data[$i]->tsq}}</td>
-                                        <td align="right">{{$data[$i]->del}}</td>
-                                        <td align="right">{{$data[$i]->com}}</td>
-                                        <td align="right">{{$data[$i]->pb}}</td>
-                                        <td align="right">{{$data[$i]->pba}}</td>
+                                        <td align="right">{{$datamin24[$i]->esc}}</td>
+                                            <td align="right">{{$datamax24[$i]->esc}}</td>
+                                        <td align="right">{{$datamin24[$i]->et}}</td>
+                                            <td align="right">{{$datamax24[$i]->et}}</td>
+                                        <td align="right">{{$datamin24[$i]->ed}}</td>
+                                            <td align="right">{{$datamax24[$i]->ed}}</td>
+                                        <td align="right">{{$datamin24[$i]->efbs}}</td>
+                                            <td align="right">{{$datamax24[$i]->efbs}}</td>
+                                        <td align="right">{{$datamin24[$i]->non}}</td>
+                                            <td align="right">{{$datamax24[$i]->non}}</td>
+                                        <td align="right">{{$datamin24[$i]->tsq}}</td>
+                                            <td align="right">{{$datamax24[$i]->tsq}}</td>
+                                        <td align="right">{{$datamin24[$i]->del}}</td>
+                                            <td align="right">{{$datamax24[$i]->del}}</td>
+                                        <td align="right">{{$datamin24[$i]->pb}}</td>
+                                            <td align="right">{{$datamax24[$i]->pb}}</td>
+                                        <td align="right">{{$datamin24[$i]->pba}}</td>
+                                            <td align="right">{{$datamax24[$i]->pba}}</td>
+                                        <td align="right">{{$datamin24[$i]->com}}</td>
+                                            td align="right">{{$datamax24[$i]->com}}</td>
                                     @else
-                                        <td align="right" class="danger">{{$data[$i]->esc}}</td>
-                                        <td align="right" class="danger">{{$data[$i]->et}}</td>
-                                        <td align="right" class="danger">{{$data[$i]->ed}}</td>
-                                        <td align="right" class="danger">{{$data[$i]->efbs}}</td>
-                                        <td align="right" class="danger">{{$data[$i]->non}}</td>
+                                        <td align="right" class="danger">{{$datamin24[$i]->esc}}</td>
+                                            <td align="right" class="danger">{{$datamax24[$i]->esc}}</td>
+                                        <td align="right" class="danger">{{$datamin24[$i]->et}}</td>
+                                            <td align="right" class="danger">{{$datamax24[$i]->et}}</td>
+                                        <td align="right" class="danger">{{$datamin24[$i]->ed}}</td>
+                                            <td align="right" class="danger">{{$datamax24[$i]->ed}}</td>
+                                        <td align="right" class="danger">{{$datamin24[$i]->efbs}}</td>
+                                            <td align="right" class="danger">{{$datamax24[$i]->efbs}}</td>
+                                        <td align="right" class="danger">{{$datamin24[$i]->non}}</td>
+                                            <td align="right" class="danger">{{$datamax24[$i]->non}}</td>
                                         @if($i==4)
-                                            <td align="right" class="success">{{$data[$i]->tsq}}</td>
+                                            <td align="right" class="success">{{$datamin24[$i]->tsq}}</td>
+                                                <td align="right" class="success">{{$datamax24[$i]->tsq}}</td>
                                         @else
-                                            <td align="right" class="warning">{{$data[$i]->tsq}}</td>
+                                            <td align="right" class="warning">{{$datamin24[$i]->tsq}}</td>
+                                                <td align="right" class="warning">{{$datamax24[$i]->tsq}}</td>
                                         @endif
 
                                         @if($i==5 or $i==6)
-                                            <td align="right" class="success">{{$data[$i]->del}}</td>
+                                            <td align="right" class="success">{{$datamin24[$i]->del}}</td>
+                                                <td align="right" class="success">{{$datamax24[$i]->del}}</td>
                                         @else
-                                            <td align="right" class="warning">{{$data[$i]->del}}</td>
+                                            <td align="right" class="warning">{{$datamin24[$i]->del}}</td>
+                                                <td align="right" class="warning">{{$datamax24[$i]->del}}</td>
                                         @endif
 
                                         @if($i==8)
-                                            <td align="right" class="success">{{$data[$i]->pb}}</td>
+                                            <td align="right" class="success">{{$datamin24[$i]->pb}}</td>
+                                                <td align="right" class="success">{{$datamax24[$i]->pb}}</td>
                                         @else
-                                            <td align="right" class="warning">{{$data[$i]->pb}}</td>
+                                            <td align="right" class="warning">{{$datamin24[$i]->pb}}</td>
+                                                <td align="right" class="warning">{{$datamax24[$i]->pb}}</td>
                                         @endif
 
                                         @if($i==9)
-                                            <td align="right" class="success">{{$data[$i]->pba}}</td>
+                                            <td align="right" class="success">{{$datamin24[$i]->pba}}</td>
+                                                <td align="right" class="success">{{$datamax24[$i]->pba}}</td>
                                         @else
-                                            <td align="right" class="warning">{{$data[$i]->pba}}</td>
+                                            <td align="right" class="warning">{{$datamin24[$i]->pba}}</td>
+                                                <td align="right" class="warning">{{$datamax24[$i]->pba}}</td>
                                         @endif
 
                                         @if($i==11 or $i==12 )
-                                            <td align="right" class="success">{{$data[$i]->com}}</td>
+                                            <td align="right" class="success">{{$datamin24[$i]->com}}</td>
+                                                <td align="right" class="success">{{$datamax24[$i]->com}}</td>
                                         @else
-                                            <td align="right" class="warning">{{$data[$i]->com}}</td>
+                                            <td align="right" class="warning">{{$datamin24[$i]->com}}</td>
+                                                <td align="right" class="warning">{{$datamax24[$i]->com}}</td>
                                         @endif
 
                                     @endif
@@ -102,16 +153,16 @@
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td align="right">{{$hor[0]}}</td>
-                                <td align="right">{{$hor[1]}}</td>
-                                <td align="right">{{$hor[2]}}</td>
-                                <td align="right">{{$hor[3]}}</td>
-                                <td align="right">{{$hor[4]}}</td>
-                                <td align="right">{{$hor[5]}}</td>
-                                <td align="right">{{$hor[6]}}</td>
-                                <td align="right">{{$hor[7]}}</td>
-                                <td align="right">{{$hor[8]}}</td>
-                                <td align="right">{{$hor[9]}}</td>
+                                <td colspan="2" align="right">{{$hor[0]}}</td>
+                                <td colspan="2" align="right">{{$hor[1]}}</td>
+                                <td colspan="2" align="right">{{$hor[2]}}</td>
+                                <td colspan="2" align="right">{{$hor[3]}}</td>
+                                <td colspan="2" align="right">{{$hor[4]}}</td>
+                                <td colspan="2" align="right">{{$hor[5]}}</td>
+                                <td colspan="2" align="right">{{$hor[6]}}</td>
+                                <td colspan="2" align="right">{{$hor[7]}}</td>
+                                <td colspan="2" align="right">{{$hor[8]}}</td>
+                                <td colspan="2" align="right">{{$hor[9]}}</td>
                                 <td align="right">{{number_format($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[9])}}</td>
                             </tr>
                             </tbody>
