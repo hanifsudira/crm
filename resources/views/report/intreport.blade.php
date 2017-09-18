@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li>Report</li>
-            <li class="active">All Report</li>
+            <li class="active">Integration Report</li>
         </ol>
     </section>
     <section class="content">
@@ -94,7 +94,7 @@
                                         <td align="right">{{$datamin24[$i]->pba}}</td>
                                             <td align="right">{{$datamax24[$i]->pba}}</td>
                                         <td align="right">{{$datamin24[$i]->com}}</td>
-                                            td align="right">{{$datamax24[$i]->com}}</td>
+                                            <td align="right">{{$datamax24[$i]->com}}</td>
                                     @else
                                         <td align="right" class="danger">{{$datamin24[$i]->esc}}</td>
                                             <td align="right" class="danger">{{$datamax24[$i]->esc}}</td>
