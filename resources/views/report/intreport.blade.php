@@ -77,7 +77,7 @@
                                             <td align="right" class="warning">{{$data[$i]->del}}</td>
                                         @endif
 
-                                        @if($i==8 or $i==11)
+                                        @if($i==8)
                                             <td align="right" class="success">{{$data[$i]->pb}}</td>
                                         @else
                                             <td align="right" class="warning">{{$data[$i]->pb}}</td>
@@ -89,7 +89,7 @@
                                             <td align="right" class="warning">{{$data[$i]->pba}}</td>
                                         @endif
 
-                                        @if($i==12)
+                                        @if($i==11 or $i==12 )
                                             <td align="right" class="success">{{$data[$i]->com}}</td>
                                         @else
                                             <td align="right" class="warning">{{$data[$i]->com}}</td>
