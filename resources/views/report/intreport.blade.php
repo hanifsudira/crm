@@ -40,6 +40,8 @@
                             </tr>
                             </thead>
                             <tr>
+                                <th></th>
+                                <th></th>
                                 <th>&lt;=24</th>
                                 <th>&gt;24</th>
                                 <th>&lt;=24</th>
@@ -60,6 +62,7 @@
                                 <th>&gt;24</th>
                                 <th>&lt;=24</th>
                                 <th>&gt;24</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
