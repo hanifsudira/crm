@@ -1,4 +1,4 @@
-import requests, json, xmltodict, MySQLdb
+import requests, json, xmltodict, MySQLdb, datetime
 
 url="http://10.65.10.125:7777/ws/Report247.WSOUT:TOMSOM_API/Report247_WSOUT_TOMSOM_API_Port"
 headers =   {
@@ -18,7 +18,6 @@ response = requests.post(url, data=body, headers=headers)
 
 d = xmltodict.parse(response.text, xml_attribs=True)
 data = d['SOAP-ENV:Envelope']['SOAP-ENV:Body']['ser-root:getTOMSOMALLDataResponse']['DATA']
-print json.dumps(data)
 
 #mysql
 db 		= MySQLdb.connect(host="10.62.170.36", port=3310, user="telkom", passwd="telkom", db="crm_dashboard")
