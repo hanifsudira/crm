@@ -19,6 +19,9 @@ cur.execute(sqltruncate)
 now = str(datetime.datetime.now())
 print 'Inserting process'
 
+tomsom = requests.get('http://10.62.170.36:1234/report/tomsomget')
+tomsom = json.loads(tomsom.content)
+
 for i,data in enumerate(result):
 	ORDER 			= str(data[0])
 	ROW_ID 			= str(data[1])
@@ -39,7 +42,11 @@ for i,data in enumerate(result):
 	LI_STATUS_INT 	= str(data[6]) 
 	MILE_STATUS_INT = str(data[7])
 	SEGMENT			= str(data[16])
-	sql 			= "insert into int_report (ORDER_NUM, ROW_ID, ORDER_SUBTYPE, REV, PRODUCT, OH_STATUS, LI_STATUS, MILESTONE, CREATED_AT, FULFILL_STATUS, ACC_NAS, NIPNAS, SID_NUM, OH_SEQ, MSTONE_SEQ, LI_STATUS_INT, MILE_STATUS_INT, lastupdate, INT_ID, INT_NOTE, SEGMENT) values('"+ORDER+"','"+ROW_ID+"','"+ORDER_SUBTYPE+"','"+REV+"','"+PRODUCT+"','"+OH_STATUS+"','"+LI_STATUS+"','"+MILESTONE+"','"+CREATED_AT+"','"+FULFILL_STATUS+"','"+ACC_NAS+"','"+NIPNAS+"','"+SID_NUM+"','"+OH_SEQ+"','"+MSTONE_SEQ+"','"+LI_STATUS_INT+"','"+MILE_STATUS_INT+"','"+now+"','"+INT_ID+"','None','"+SEGMENT+"')"
+	TSQ_STATE		= tomsom[INT_ID]['TSQ_STATE'] 
+	TSQ_DESC		= tomsom[INT_ID]['TSQ_DESC']  
+	DELIVER_STATE	= tomsom[INT_ID]['DELIVER_STATE']  
+	DELIVER_DESC	= tomsom[INT_ID]['DELIVER_DESC'] 
+	sql 			= "insert into int_report (ORDER_NUM, ROW_ID, ORDER_SUBTYPE, REV, PRODUCT, OH_STATUS, LI_STATUS, MILESTONE, CREATED_AT, FULFILL_STATUS, ACC_NAS, NIPNAS, SID_NUM, OH_SEQ, MSTONE_SEQ, LI_STATUS_INT, MILE_STATUS_INT, lastupdate, INT_ID, INT_NOTE, SEGMENT, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC) values('"+ORDER+"','"+ROW_ID+"','"+ORDER_SUBTYPE+"','"+REV+"','"+PRODUCT+"','"+OH_STATUS+"','"+LI_STATUS+"','"+MILESTONE+"','"+CREATED_AT+"','"+FULFILL_STATUS+"','"+ACC_NAS+"','"+NIPNAS+"','"+SID_NUM+"','"+OH_SEQ+"','"+MSTONE_SEQ+"','"+LI_STATUS_INT+"','"+MILE_STATUS_INT+"','"+now+"','"+INT_ID+"','None','"+SEGMENT+"','"+TSQ_STATE+"','"+TSQ_DESC+"','"+DELIVER_STATE+"','"+DELIVER_DESC+"')"
 	cur.execute(sql)
 db.commit()
 print 'ORDER_NUM and ROW_ID query process'
