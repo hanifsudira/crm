@@ -25,6 +25,8 @@ data = d['SOAP-ENV:Envelope']['SOAP-ENV:Body']['ser-root:getTOMSOMALLDataRespons
 #mysql
 db 		= MySQLdb.connect(host="10.62.170.36", port=3310, user="telkom", passwd="telkom", db="crm_dashboard")
 cur 	= db.cursor()
+sqltruncate = 'TRUNCATE TABLE tomsom';
+cur.execute(sqltruncate)
 now = str(datetime.datetime.now())
 
 for i, row in enumerate(data):
