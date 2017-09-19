@@ -35,10 +35,10 @@ for i, row in enumerate(data):
 	EXTERNALID			= str(row['EXTERNALID'])
 	PRODUCTNAME			= str(row['PRODUCTNAME'])
 	ORDERTYPE			= str(row['ORDERTYPE']) 
-	TSQ_STATE			= str(row['TSQ_STATE']) if type(row['TSQ_STATE']) == unicode else 'None'
-	TSQ_DESC			= str(row['TSQ_DESC']) if type(row['TSQ_DESC']) == unicode else 'None'
-	DELIVER_STATE		= str(row['DELIVER_STATE']) if type(row['DELIVER_STATE']) == unicode else 'None'
-	DELIVER_DESC		= str(row['DELIVER_DESC']) if type(row['DELIVER_DESC']) == unicode else 'None'
+	TSQ_STATE			= str(row['TSQ_STATE']).replace("'","") if type(row['TSQ_STATE']) == unicode else 'None'
+	TSQ_DESC			= str(row['TSQ_DESC']).replace("'","") if type(row['TSQ_DESC']) == unicode else 'None'
+	DELIVER_STATE		= str(row['DELIVER_STATE']).replace("'","") if type(row['DELIVER_STATE']) == unicode else 'None'
+	DELIVER_DESC		= str(row['DELIVER_DESC']).replace("'","") if type(row['DELIVER_DESC']) == unicode else 'None'
 	sql 			= "insert into tomsom (CRMORDERID, INSTALLEDPRODUCTID, EXTERNALID, PRODUCTNAME, ORDERTYPE, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC, lastupdate) values('"+CRMORDERID+"','"+INSTALLEDPRODUCTID+"','"+EXTERNALID+"','"+PRODUCTNAME+"','"+ORDERTYPE+"','"+TSQ_STATE+"','"+TSQ_DESC+"','"+DELIVER_STATE+"','"+DELIVER_DESC+"','"+now+"')"
 	cur.execute(sql)
 db.commit()
