@@ -76,15 +76,15 @@ for data in cur.fetchall():
 		else:
 			cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER COMPLETE', INT_NOTE='TSQ' WHERE ORDER_NUM='"+data[0]+"';")
 	elif 'basoactivitytask' in tipe:
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending BASO' ,MILE_STATUS_INT='BASO STARTED', INT_NOTE='Pending BASO' WHERE ORDER_NUM='"+data[0]+"';")
+		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending BASO' ,MILE_STATUS_INT='BASO STARTED', INT_NOTE='PENDING BASO' WHERE ORDER_NUM='"+data[0]+"';")
 	elif 'aprovebillingtask' in tipe:
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='BILLING APPROVAL STARTED', INT_NOTE='Pending Billing Approval' WHERE ORDER_NUM='"+data[0]+"';")
+		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='BILLING APPROVAL STARTED', INT_NOTE='PENDING BILLING APPROVAL' WHERE ORDER_NUM='"+data[0]+"';")
 	elif 'fulfillbillingsitask' in tipe:
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='FULFILL BILLING START', INT_NOTE='Error Fulfill Billing Start' WHERE ORDER_NUM='"+data[0]+"';")
+		cur.execute("UPDATE int_report SET LI_STATUS_INT='Pending Billing Approval' ,MILE_STATUS_INT='FULFILL BILLING START', INT_NOTE='ERROR FULFILL BILLING START' WHERE ORDER_NUM='"+data[0]+"';")
 	elif ('synccustomerwaitinforsccdresponse' in tipe) or ('synccustomersitask' in tipe):
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER START', INT_NOTE='Error Sync Customer' WHERE ORDER_NUM='"+data[0]+"';")
+		cur.execute("UPDATE int_report SET LI_STATUS_INT='In Progress' ,MILE_STATUS_INT='SYNC CUSTOMER START', INT_NOTE='ERROR SYNC CUSTOMER' WHERE ORDER_NUM='"+data[0]+"';")
 	elif tipe == 'None':
-		cur.execute("UPDATE int_report SET LI_STATUS_INT='Complete' ,MILE_STATUS_INT='FULFILL BILLING COMPLETE', INT_NOTE='Complete' WHERE ORDER_NUM='"+data[0]+"';")
+		cur.execute("UPDATE int_report SET LI_STATUS_INT='Complete' ,MILE_STATUS_INT='FULFILL BILLING COMPLETE', INT_NOTE='COMPLETE' WHERE ORDER_NUM='"+data[0]+"';")
 	#result = requests.post('http://10.65.10.212/reqi/comaia/index.php?p=search',data={'search' : str(data[0])})
 	#soup = BeautifulSoup(result.content, 'html.parser')
 	#table = soup.findAll('table')[2]
