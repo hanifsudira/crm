@@ -948,4 +948,21 @@ class ReportController extends Controller
         return view('report.flowreport',['lu'=>$lastupdate->lastupdate]);
     }
 
+    public function tomsomget(){
+        $data = DB::select('SELECT distinct(CRMORDERID), TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC FROM tomsom;');
+
+        $return = array();
+        foreach ($data as $d){
+            $temp  = [
+                $d->CRMORDERID => array(
+                    'TSQ_STATE'     => $d->TSQ_STATE,
+                    'TSQ_DESC'      => $d->TSQ_DESC,
+                    'DELIVER_STATE' => $d->DELIVER_STATE,
+                    'DELIVER_DESC'  => $d->DELIVER_DESC
+                )
+            ];
+            array_push($return,$temp);
+        }
+        print json_encode($return);
+    }
 }

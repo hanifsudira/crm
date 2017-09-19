@@ -95,9 +95,14 @@ Route::group(['prefix' => 'report'], function () {
         'uses'      => 'ReportController@intreport'
     ]);
 
-    Route::get('getchild/{id}/{parent_num}/{rev_num}/{agg_num}/{level}/{site}',[
-        'as'        => 'ora.getchild',
-        'uses'      => 'TreeController@getchild'
+    Route::get('getchild/{status}/{milestone}/{report}/{agg_num}',[
+        'as'        => 'ora.getorderdetail',
+        'uses'      => 'ReportController@getorderdetail'
+    ]);
+
+    Route::get('tomsomget', [
+        'as'        => 'report.tomsomget',
+        'uses'      => 'ReportController@tomsomget'
     ]);
 });
 
