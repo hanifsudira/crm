@@ -953,13 +953,12 @@ class ReportController extends Controller
 
         $return = array();
         foreach ($data as $d){
-            $temp  = array(
-                $d->CRMORDERID => array(
+            $temp  =
+                $d->CRMORDERID = array(
                     'TSQ_STATE'     => $d->TSQ_STATE,
                     'TSQ_DESC'      => $d->TSQ_DESC,
                     'DELIVER_STATE' => $d->DELIVER_STATE,
                     'DELIVER_DESC'  => $d->DELIVER_DESC
-                )
             );
             $return[] = $temp;
         }
