@@ -981,7 +981,7 @@ class ReportController extends Controller
         }
 
         $data = DB::select($sql);
-
-        return view('report.orderdetail',['data'=>$data]);
+        var_dump($data);
+        #return view('report.orderdetail',['data'=>$data]);
     }
 }
