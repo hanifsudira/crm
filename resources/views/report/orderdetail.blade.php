@@ -26,6 +26,7 @@
                     <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
                         <thead>
                         <tr>
+                            <th>No</th>
                             <th>ORDER_NUM</th>
                             <th>ROW_ID</th>
                             <th>PRODUCT</th>
@@ -36,8 +37,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($data as $d)
+                        @foreach($data as $i => $d)
                             <tr>
+                                <td>$i</td>
                                 <td>{{$d->order_num}}</td>
                                 <td>{{$d->row_id}}</td>
                                 <td>{{$d->product}}</td>
