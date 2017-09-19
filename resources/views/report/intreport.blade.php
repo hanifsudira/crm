@@ -187,7 +187,7 @@
                                 ED : <strong>Error Deliver</strong>
                             </div>
                             <div>
-                                EFBS : <strong>Error Fullfill Billing Start</strong>
+                                EFBS : <strong>Error Fulfill Billing Start</strong>
                             </div>
                             <div>
                                 PB : <strong>Pending BASO</strong>
