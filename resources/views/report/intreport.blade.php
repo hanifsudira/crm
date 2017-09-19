@@ -42,26 +42,26 @@
                             <tr>
                                 <th></th>
                                 <th></th>
-                                <th>&lt;=24</th>
-                                <th>&gt;24</th>
-                                <th>&lt;=24</th>
-                                <th>&gt;24</th>
-                                <th>&lt;=24</th>
-                                <th>&gt;24</th>
-                                <th>&lt;=24</th>
-                                <th>&gt;24</th>
-                                <th>&lt;=24</th>
-                                <th>&gt;24</th>
-                                <th>&lt;=24</th>
-                                <th>&gt;24</th>
-                                <th>&lt;=24</th>
-                                <th>&gt;24</th>
-                                <th>&lt;=24</th>
-                                <th>&gt;24</th>
-                                <th>&lt;=24</th>
-                                <th>&gt;24</th>
-                                <th>&lt;=24</th>
-                                <th>&gt;24</th>
+                                <th>24</th>
+                                <th>&gt;</th>
+                                <th>24</th>
+                                <th>&gt;</th>
+                                <th>24</th>
+                                <th>&gt;</th>
+                                <th>24</th>
+                                <th>&gt;</th>
+                                <th>24</th>
+                                <th>&gt;</th>
+                                <th>24</th>
+                                <th>&gt;</th>
+                                <th>24</th>
+                                <th>&gt;</th>
+                                <th>24</th>
+                                <th>&gt;</th>
+                                <th>24</th>
+                                <th>&gt;</th>
+                                <th>24</th>
+                                <th>&gt;</th>
                                 <th></th>
                             </tr>
                             </thead>
