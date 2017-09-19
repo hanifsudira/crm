@@ -966,14 +966,14 @@ class ReportController extends Controller
     public function getorderdetail($status,$milestone,$report,$state){
 
         if($state=='min'){
-            $sql = "SELECT order_num, row_id, product, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC 
+            $sql = "SELECT order_num, row_id, product, int_note, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC 
                     FROM int_report 
                     WHERE li_status='$status' and 
                     milestone='$milestone' and 
                     int_note='$report' and timestampdiff(HOUR,  str_to_date(created_at,'%d-%b-%Y %H:%i:%s'),now()) <= 24;";
         }
         else{
-            $sql = "SELECT order_num, row_id, product, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC 
+            $sql = "SELECT order_num, row_id, product, int_note, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC 
                     FROM int_report 
                     WHERE li_status='$status' and 
                     milestone='$milestone' and 

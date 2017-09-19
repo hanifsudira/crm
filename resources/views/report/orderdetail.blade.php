@@ -30,6 +30,7 @@
                             <th>ORDER_NUM</th>
                             <th>ROW_ID</th>
                             <th>PRODUCT</th>
+                            <th>INT_NOTE</th>
                             <th>TSQ_STATE</th>
                             <th>TSQ_DESC</th>
                             <th>DELIVER_STATE</th>
@@ -43,6 +44,7 @@
                                 <td>{{$d->order_num}}</td>
                                 <td>{{$d->row_id}}</td>
                                 <td>{{$d->product}}</td>
+                                <td>{{$d->int_note}}</td>
                                 <td>{{$d->TSQ_STATE}}</td>
                                 <td>{{$d->TSQ_DESC}}</td>
                                 <td>{{$d->DELIVER_STATE}}</td>
