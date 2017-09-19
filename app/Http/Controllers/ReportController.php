@@ -949,22 +949,22 @@ class ReportController extends Controller
     }
 
     public function tomsomget(){
-        $data = DB::select('SELECT INSTALLEDPRODUCTID, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC FROM tomsom;');
+        $data = DB::select('SELECT INSTALLEDPRODUCTID, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC FROM tomsom;')->keyBy('INSTALLEDPRODUCTID');
 
-        $return = array();
-        foreach ($data as $d){
-            $temp  = array(
-                $d->INSTALLEDPRODUCTID => array(
-                    'TSQ_STATE'     => $d->TSQ_STATE,
-                    'TSQ_DESC'      => $d->TSQ_DESC,
-                    'DELIVER_STATE' => $d->DELIVER_STATE,
-                    'DELIVER_DESC'  => $d->DELIVER_DESC
-                )
-            );
-            array_push($return,$temp);
-        }
+//        $return = array();
+//        foreach ($data as $d){
+//            $temp  = array(
+//                $d->INSTALLEDPRODUCTID => array(
+//                    'TSQ_STATE'     => $d->TSQ_STATE,
+//                    'TSQ_DESC'      => $d->TSQ_DESC,
+//                    'DELIVER_STATE' => $d->DELIVER_STATE,
+//                    'DELIVER_DESC'  => $d->DELIVER_DESC
+//                )
+//            );
+//            array_push($return,$temp);
+//        }
         echo '<pre>';
-        print_r($return);
+        print_r($data);
         echo '</pre>';
     }
 }
