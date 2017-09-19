@@ -97,42 +97,42 @@ class ReportController extends Controller
     public function intreport(){
         $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
         $pivot = DB::select('select li_status, milestone, 
-                                    count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
+                                    count(case when INT_NOTE=\'ERROR SYNC CUSTOMER\' then 1 end) esc,
                                     count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
                                     count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
-                                    count(case when INT_NOTE=\'Error Fulfill Billing Start\' then 1 end) efbs,
+                                    count(case when INT_NOTE=\'ERROR FULFILL BILLING START\' then 1 end) efbs,
                                     count(case when INT_NOTE=\'None\' then 1 end) non,
                                     count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
                                     count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
-                                    count(case when INT_NOTE=\'Pending BASO\' then 1 end) pb,
-                                    count(case when INT_NOTE=\'Pending Billing Approval\' then 1 end) pba,
-                                    count(case when INT_NOTE=\'Complete\' then 1 end) com
+                                    count(case when INT_NOTE=\'PENDING BASO\' then 1 end) pb,
+                                    count(case when INT_NOTE=\'PENDING BILLING APPROVAL\' then 1 end) pba,
+                                    count(case when INT_NOTE=\'COMPLETE\' then 1 end) com
                             from int_report pt group by milestone,li_status');
 
         $pivotmin24 = DB::select('select li_status, milestone, 
-                                    count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
+                                    count(case when INT_NOTE=\'ERROR SYNC CUSTOMER\' then 1 end) esc,
                                     count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
                                     count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
-                                    count(case when INT_NOTE=\'Error Fulfill Billing Start\' then 1 end) efbs,
+                                    count(case when INT_NOTE=\'ERROR FULFILL BILLING START\' then 1 end) efbs,
                                     count(case when INT_NOTE=\'None\' then 1 end) non,
                                     count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
                                     count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
-                                    count(case when INT_NOTE=\'Pending BASO\' then 1 end) pb,
-                                    count(case when INT_NOTE=\'Pending Billing Approval\' then 1 end) pba,
-                                    count(case when INT_NOTE=\'Complete\' then 1 end) com
+                                    count(case when INT_NOTE=\'PENDING BASO\' then 1 end) pb,
+                                    count(case when INT_NOTE=\'PENDING BILLING APPROVAL\' then 1 end) pba,
+                                    count(case when INT_NOTE=\'COMPLETE\' then 1 end) com
                             from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) <=24 group by milestone,li_status;');
 
         $pivotmax24 = DB::select('select li_status, milestone, 
-                                    count(case when INT_NOTE=\'Error Sync Customer\' then 1 end) esc,
+                                    count(case when INT_NOTE=\'ERROR SYNC CUSTOMER\' then 1 end) esc,
                                     count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
                                     count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
-                                    count(case when INT_NOTE=\'Error Fulfill Billing Start\' then 1 end) efbs,
+                                    count(case when INT_NOTE=\'ERROR FULFILL BILLING START\' then 1 end) efbs,
                                     count(case when INT_NOTE=\'None\' then 1 end) non,
                                     count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
                                     count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
-                                    count(case when INT_NOTE=\'Pending BASO\' then 1 end) pb,
-                                    count(case when INT_NOTE=\'Pending Billing Approval\' then 1 end) pba,
-                                    count(case when INT_NOTE=\'Complete\' then 1 end) com
+                                    count(case when INT_NOTE=\'PENDING BASO\' then 1 end) pb,
+                                    count(case when INT_NOTE=\'PENDING BILLING APPROVAL\' then 1 end) pba,
+                                    count(case when INT_NOTE=\'COMPLETE\' then 1 end) com
                             from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) >24 group by milestone,li_status;');
 
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
