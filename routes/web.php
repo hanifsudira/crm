@@ -94,6 +94,11 @@ Route::group(['prefix' => 'report'], function () {
         'as'        => 'report.intreport',
         'uses'      => 'ReportController@intreport'
     ]);
+
+    Route::get('getchild/{id}/{parent_num}/{rev_num}/{agg_num}/{level}/{site}',[
+        'as'        => 'ora.getchild',
+        'uses'      => 'TreeController@getchild'
+    ]);
 });
 
 Route::group(['prefix' => 'ora'], function () {
@@ -212,7 +217,6 @@ Route::group(['prefix' => 'ora'], function () {
         'as'        => 'ora.getnossftenoss',
         'uses'      => 'OraController@getnossftenoss'
     ]);
-
 });
 
 Route::group(['prefix' => 'force'], function () {
