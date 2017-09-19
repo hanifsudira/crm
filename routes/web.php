@@ -183,6 +183,11 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@downloadexcel'
     ]);
 
+    Route::get('massivedownload', [
+        'as'        => 'ora.massivedownload',
+        'uses'      => 'OraController@massivedownload'
+    ]);
+
     Route::get('downloadexcelli', [
         'as'        => 'ora.downloadexcelli',
         'uses'      => 'OraController@downloadexcelli'

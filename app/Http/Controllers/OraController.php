@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Oracexcel,App\Oracount,App\Lireport,App\Lisummary,App\Oreport,App\Osummary;
+use App\Oracexcel,App\Oracount,App\Lireport,App\Lisummary,App\Oreport,App\Osummary, App\Massive;
 use Yajra\Datatables\Datatables;
 use Excel;
 use Illuminate\Support\Facades\Crypt;
@@ -159,6 +159,15 @@ class OraController extends Controller
     public function downloadexcelli(){
         $data =  Lireport::all()->toArray();
         return Excel::create('line_item', function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        })->download('xlsx');
+    }
+
+    public function massivedownload(){
+        $data = Massive::all()->toArray();
+        return Excel::create('Massive_line_item', function($excel) use ($data) {
             $excel->sheet('mySheet', function($sheet) use ($data) {
                 $sheet->fromArray($data);
             });
