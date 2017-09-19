@@ -1,4 +1,7 @@
-import requests, json, xmltodict, MySQLdb, datetime
+import requests, json, xmltodict, MySQLdb, datetime, sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 url="http://10.65.10.125:7777/ws/Report247.WSOUT:TOMSOM_API/Report247_WSOUT_TOMSOM_API_Port"
 headers =   {
@@ -30,8 +33,8 @@ for i, row in enumerate(data):
 	EXTERNALID			= str(row['EXTERNALID'])
 	PRODUCTNAME			= str(row['PRODUCTNAME'])
 	ORDERTYPE			= str(row['ORDERTYPE']) 
-	TSQ_STATE			= str(row['TSQ_STATE']) if type(row['TSQ_STATE']) == unicode else str(row['TSQ_STATE'][0][1])
-	TSQ_DESC			= str(row['TSQ_DESC']) if type(row['TSQ_DESC']) == unicode else str(row['TSQ_DESC'][0][1])
+	TSQ_STATE			= str(row['TSQ_STATE']) #if type(row['TSQ_STATE']) == unicode else str(row['TSQ_STATE'][0][1])
+	TSQ_DESC			= str(row['TSQ_DESC']) #if type(row['TSQ_DESC']) == unicode else str(row['TSQ_DESC'][0][1])
 	DELIVER_STATE		= str(row['DELIVER_STATE']) 
 	DELIVER_DESC		= str(row['DELIVER_DESC'])
 	sql 			= "insert into tomsom (CRMORDERID, INSTALLEDPRODUCTID, EXTERNALID, PRODUCTNAME, ORDERTYPE, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC, lastupdate) values('"+CRMORDERID+"','"+INSTALLEDPRODUCTID+"','"+EXTERNALID+"','"+PRODUCTNAME+"','"+ORDERTYPE+"','"+TSQ_STATE+"','"+TSQ_DESC+"','"+DELIVER_STATE+"','"+DELIVER_DESC+"','"+now+"')"
