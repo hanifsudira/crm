@@ -104,7 +104,7 @@ for data in cur.fetchall():
 	elif DELIVER_STATE =='ERROR':
 		if DELIVER_DESC == 'AREA CODE is Null':
 			cur.execute("UPDATE int_report SET INT_NOTE='ERROR AREA' WHERE INT_ID='"+INT_ID+"';")
-		else
+		else:
 			cur.execute("UPDATE int_report SET INT_NOTE='ERROR DELIVER' WHERE INT_ID='"+INT_ID+"';")
 			
 	elif DELIVER_STATE == 'None':
@@ -117,7 +117,7 @@ for data in cur.fetchall():
 		elif TSQ_STATE == 'ERROR':
 			if TSQ_DESC == 'AREA CODE is Null':
 				cur.execute("UPDATE int_report SET INT_NOTE='ERROR AREA' WHERE INT_ID='"+INT_ID+"';")
-			else
+			else:
 				cur.execute("UPDATE int_report SET INT_NOTE='ERROR TSQ' WHERE INT_ID='"+INT_ID+"';")
 		elif TSQ_STATE == 'None':
 			if ('synccustomerwaitinforsccdresponse' in tipe) or ('synccustomersitask' in tipe):
