@@ -122,7 +122,7 @@
                                             <td align="right" class="warning"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"DELIVER","max"])}}" target="_blank">{{$datamax24[$i]->del}}</a></td>
                                         @endif
 
-                                        @if($i==8)
+                                        @if($i==8 or $i==11)
                                             <td align="right" class="success"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"PENDING BASO","min"])}}" target="_blank">{{$datamin24[$i]->pb}}</a></td>
                                             <td align="right" class="success"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"PENDING BASO","max"])}}" target="_blank">{{$datamax24[$i]->pb}}</a></td>
                                         @else
