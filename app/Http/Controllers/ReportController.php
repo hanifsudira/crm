@@ -963,6 +963,6 @@ class ReportController extends Controller
             ];
             array_push($return,$temp);
         }
-        print json_encode($return);
+        return json_encode($return);
     }
 }
