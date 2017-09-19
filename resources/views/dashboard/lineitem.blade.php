@@ -41,7 +41,6 @@
                                                     <th>ORDER_NUM</th>
                                                     <th>ROW_ID</th>
                                                     <th>INT_ID</th>
-                                                    <th>ROWID_ORDER</th>
                                                     <th>ORDER_SUBTYPE</th>
                                                     <th>REV</th>
                                                     <th>PRODUCT</th>
@@ -67,7 +66,6 @@
                                                 </thead>
                                                 <tfoot>
                                                 <tr>
-                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -119,7 +117,6 @@
                                                     <th>ORDER_NUM</th>
                                                     <th>ROW_ID</th>
                                                     <th>INT_ID</th>
-                                                    <th>ROWID_ORDER</th>
                                                     <th>ORDER_SUBTYPE</th>
                                                     <th>REV</th>
                                                     <th>PRODUCT</th>
@@ -145,7 +142,6 @@
                                                 </thead>
                                                 <tfoot>
                                                 <tr>
-                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -243,7 +239,6 @@
                     { data: 'ORDER_NUM',name: 'ORDER_NUM'},
                     { data: 'ROW_ID',name: 'ROW_ID'},
                     { data: 'INT_ID',name: 'INT_ID'},
-                    { data: 'ROWID_ORDER',name: 'ROWID_ORDER'},
                     { data: 'ORDER_SUBTYPE',name: 'ORDER_SUBTYPE'},
                     { data: 'REV',name: 'REV'},
                     { data: 'PRODUCT',name: 'PRODUCT'},
