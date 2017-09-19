@@ -92,9 +92,9 @@
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"PENDING BASO","min"])}}" target="_blank">{{$datamin24[$i]->pb}}</a></td>
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"PENDING BASO","max"])}}" target="_blank">{{$datamax24[$i]->pb}}</a></td>
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"PENDING BILLING APPROVAL","min"])}}" target="_blank">{{$datamin24[$i]->pba}}</a></td>
-                                        <td align="right"><td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"PENDING BILLING APPROVAL","max"])}}" target="_blank">{{$datamax24[$i]->pba}}</a></td>
-                                        <td align="right"><td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","min"])}}" target="_blank">{{$datamin24[$i]->com}}</a></td>
-                                        <td align="right"><td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","max"])}}" target="_blank">{{$datamax24[$i]->com}}</a></td>
+                                        <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"PENDING BILLING APPROVAL","max"])}}" target="_blank">{{$datamax24[$i]->pba}}</a></td>
+                                        <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","min"])}}" target="_blank">{{$datamin24[$i]->com}}</a></td>
+                                        <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","max"])}}" target="_blank">{{$datamax24[$i]->com}}</a></td>
                                     @else
                                         <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR SYNC CUSTOMER","min"])}}" target="_blank">{{$datamin24[$i]->esc}}</a></td>
                                         <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR SYNC CUSTOMER","max"])}}" target="_blank">{{$datamax24[$i]->esc}}</a></td>
