@@ -75,7 +75,7 @@
                                     @endif
                                     <td>{{$data[$i]->milestone}}</td>
                                     @if($i==0)
-                                        <td align="right">{{$datamin24[$i]->esc}}</td>
+                                        <td align="right"><a href="{{route('ora.getorder',[$data[$i]->li_status,$data[$i]->milestone,"ERROR SYNC CUSTOMER","min",])}}" target="_blank">{{$datamin24[$i]->esc}}</a></td>
                                             <td align="right">{{$datamax24[$i]->esc}}</td>
                                         <td align="right">{{$datamin24[$i]->et}}</td>
                                             <td align="right">{{$datamax24[$i]->et}}</td>

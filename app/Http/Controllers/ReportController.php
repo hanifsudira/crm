@@ -962,4 +962,11 @@ class ReportController extends Controller
         }
         return json_encode($return);
     }
+
+    public function getorderdetail($status,$milestone,$report,$state){
+        echo $status;
+        echo $milestone;
+        echo $report;
+        echo $state;
+    }
 }

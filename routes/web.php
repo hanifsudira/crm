@@ -95,7 +95,7 @@ Route::group(['prefix' => 'report'], function () {
         'uses'      => 'ReportController@intreport'
     ]);
 
-    Route::get('getchild/{status}/{milestone}/{report}/{agg_num}',[
+    Route::get('getorderdetail/{status}/{milestone}/{report}/{state}',[
         'as'        => 'ora.getorderdetail',
         'uses'      => 'ReportController@getorderdetail'
     ]);
