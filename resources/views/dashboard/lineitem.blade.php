@@ -58,10 +58,18 @@
                                                     <th>MILE_STATUS_INT</th>
                                                     <th>INT_NOTE</th>
                                                     <th>SEGMENT</th>
+                                                    <th>TSQ_STATE</th>
+                                                    <th>TSQ_DESC</th>
+                                                    <th>DELIVER_STATE</th>
+                                                    <th>DELIVER_DESC</th>
                                                 </tr>
                                                 </thead>
                                                 <tfoot>
                                                 <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -126,10 +134,18 @@
                                                     <th>MILE_STATUS_INT</th>
                                                     <th>INT_NOTE</th>
                                                     <th>SEGMENT</th>
+                                                    <th>TSQ_STATE</th>
+                                                    <th>TSQ_DESC</th>
+                                                    <th>DELIVER_STATE</th>
+                                                    <th>DELIVER_DESC</th>
                                                 </tr>
                                                 </thead>
                                                 <tfoot>
                                                 <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -239,7 +255,11 @@
                     { data: 'LI_STATUS_INT',name: 'LI_STATUS_INT'},
                     { data: 'MILE_STATUS_INT',name: 'MILE_STATUS_INT'},
                     { data: 'INT_NOTE',name: 'INT_NOTE'},
-                    { data: 'SEGMENT',name: 'SEGMENT'}
+                    { data: 'SEGMENT',name: 'SEGMENT'},
+                    { data: 'TSQ_STATE',name: 'TSQ_STATE'},
+                    { data: 'TSQ_DESC',name: 'TSQ_DESC'},
+                    { data: 'DELIVER_STATE',name: 'DELIVER_STATE'},
+                    { data: 'DELIVER_DESC',name: 'DELIVER_DESC'}
                 ],initComplete: function () {
                     this.api().columns().every(function () {
                         var column = this;
