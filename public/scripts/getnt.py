@@ -1,4 +1,4 @@
-import requests, json, xmltodict
+import requests, json, xmltodict, MySQLdb
 
 url="http://10.65.10.125:7777/ws/Report247.WSOUT:TOMSOM_API/Report247_WSOUT_TOMSOM_API_Port"
 headers =   {
@@ -19,3 +19,22 @@ response = requests.post(url, data=body, headers=headers)
 d = xmltodict.parse(response.text, xml_attribs=True)
 data = d['SOAP-ENV:Envelope']['SOAP-ENV:Body']['ser-root:getTOMSOMALLDataResponse']['DATA']
 print json.dumps(data)
+
+#mysql
+db 		= MySQLdb.connect(host="10.62.170.36", port=3310, user="telkom", passwd="telkom", db="crm_dashboard")
+cur 	= db.cursor()
+now = str(datetime.datetime.now())
+
+for i, row in enumerate(data):
+	CRMORDERID			= str(row['CRMORDERID']) 
+	INSTALLEDPRODUCTID 	= str(row['INSTALLEDPRODUCTID'])
+	EXTERNALID			= str(row['EXTERNALID'])
+	PRODUCTNAME			= str(row['PRODUCTNAME'])
+	ORDERTYPE			= str(row['ORDERTYPE']) 
+	TSQ_STATE			= str(row['TSQ_STATE']) 
+	TSQ_DESC			= str(row['TSQ_DESC'])
+	DELIVER_STATE		= str(row['DELIVER_STATE']) 
+	DELIVER_DESC		= str(row['DELIVER_DESC'])
+	sql 			= "insert into tomsom (CRMORDERID, INSTALLEDPRODUCTID, EXTERNALID, PRODUCTNAME, ORDERTYPE, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC, lastupdate) values('"+CRMORDERID+"','"+INSTALLEDPRODUCTID+"','"+EXTERNALID+"','"+PRODUCTNAME+"','"+PRODUCT+"','"+ORDERTYPE+"','"+TSQ_STATE+"','"+TSQ_DESC+"','"+DELIVER_STATE+"','"+DELIVER_DESC+"','"+now+"')"
+	cur.execute(sql)
+db.commit()
