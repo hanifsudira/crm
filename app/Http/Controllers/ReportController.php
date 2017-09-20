@@ -370,7 +370,7 @@ class ReportController extends Controller
             }
         }
 
-        return view('report.intreport',['data'=>$return,'datamin24'=>$returnmin24,'datamax24'=>$returnmax24,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr,'homin24'=>$counthorarrmin24,'hormax24'=>$counthorarrmax24]);
+        return view('report.intreport',['data'=>$return,'datamin24'=>$returnmin24,'datamax24'=>$returnmax24,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr,'hormin24'=>$counthorarrmin24,'hormax24'=>$counthorarrmax24]);
     }
 
     public function flowdatareturn(){
