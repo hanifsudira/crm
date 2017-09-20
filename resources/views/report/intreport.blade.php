@@ -182,6 +182,7 @@
                                 <td colspan="2" align="right">{{$hor[1]}}</td>
                                 <td colspan="2" align="right">{{$hor[2]}}</td>
                                 <td colspan="2" align="right">{{$hor[3]}}</td>
+                                <td colspan="2" align="right">{{$hor[12]}}</td>
                                 <td colspan="2" align="right">{{$hor[4]}}</td>
                                 <td colspan="2" align="right">{{$hor[10]}}</td>
                                 <td colspan="2" align="right">{{$hor[11]}}</td>
