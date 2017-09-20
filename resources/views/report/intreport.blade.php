@@ -248,7 +248,7 @@
                                 Need User Action :  <strong>{{number_format(($hor[10]+$hor[11]+$data[0]->non) - ($data[0]->cfo+$data[0]->ea))}}</strong>
                             </div>
                             <div style="background-color : #F2DEDE;">
-                                Error :  <strong>{{number_format(($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[12]) - ($data[0]->esc+$data[0]->et+$data[0]->ed+$data[0]->nd+$data[0]->efbs))}}</strong>
+                                Error :  <strong>{{number_format(($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[12]) - ($data[0]->esc+$data[0]->et+$data[0]->ed+$data[0]->efbs+$data[0]->nd+$data[0]->non))}}</strong>
                             </div>
                         </fieldset>
                     </div>
