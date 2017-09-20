@@ -89,6 +89,12 @@
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR FULFILL BILLING START","max"])}}" target="_blank">{{$datamax24[$i]->efbs}}</a></td>
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"None","min"])}}" target="_blank">{{$datamin24[$i]->non}}</a></td>
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"None","max"])}}" target="_blank">{{$datamax24[$i]->non}}</a></td>
+
+                                        <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"CANCEL FROM OSS","min"])}}" target="_blank">{{$datamin24[$i]->cfo}}</a></td>
+                                        <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"CANCEL FROM OSS","max"])}}" target="_blank">{{$datamax24[$i]->cfo}}</a></td>
+                                        <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR AREA","min"])}}" target="_blank">{{$datamin24[$i]->ea}}</a></td>
+                                        <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR AREA","max"])}}" target="_blank">{{$datamax24[$i]->ea}}</a></td>
+
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"TSQ","min"])}}" target="_blank">{{$datamin24[$i]->tsq}}</a></td>
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"TSQ","max"])}}" target="_blank">{{$datamax24[$i]->tsq}}</a></td>
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"DELIVER","min"])}}" target="_blank">{{$datamin24[$i]->del}}</a></td>
