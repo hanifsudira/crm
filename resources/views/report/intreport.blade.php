@@ -251,7 +251,7 @@
                                 Error :  <strong>{{number_format(($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[12]) - ($data[0]->esc+$data[0]->et+$data[0]->ed+$data[0]->efbs+$data[0]->nd+$data[0]->non))}}</strong>
                             </div>
                             <div style="background-color : #ce93d8;">
-                                Anomali :  <strong>{{number_format(($data[0]->esc+$data[0]->et+$data[0]->ed+$data[0]->efbs+$data[0]->nd+$data[0]->cfo+$data[0]->ea+$data[0]->tsq+$data[0]->del+$data[0]->pb+$data[0]->pba+$data[0]->com)}}</strong>
+                                Anomali :  <strong>{{number_format($data[0]->esc+$data[0]->et+$data[0]->ed+$data[0]->efbs+$data[0]->nd+$data[0]->cfo+$data[0]->ea+$data[0]->tsq+$data[0]->del+$data[0]->pb+$data[0]->pba+$data[0]->com)}}</strong>
                             </div>
                         </fieldset>
                     </div>
