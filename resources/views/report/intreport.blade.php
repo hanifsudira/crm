@@ -245,5 +245,6 @@
 @section('css')
     <style>
         a:link { color:black; }
+        a:visited { color:black; }
     </style>
 @endsection
