@@ -178,19 +178,19 @@
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td colspan="2" align="right">{{$hor[0]}}</td>
-                                <td colspan="2" align="right">{{$hor[1]}}</td>
-                                <td colspan="2" align="right">{{$hor[2]}}</td>
-                                <td colspan="2" align="right">{{$hor[3]}}</td>
-                                <td colspan="2" align="right">{{$hor[12]}}</td>
-                                <td colspan="2" align="right">{{$hor[4]}}</td>
-                                <td colspan="2" align="right">{{$hor[10]}}</td>
-                                <td colspan="2" align="right">{{$hor[11]}}</td>
-                                <td colspan="2" align="right">{{$hor[5]}}</td>
-                                <td colspan="2" align="right">{{$hor[6]}}</td>
-                                <td colspan="2" align="right">{{$hor[7]}}</td>
-                                <td colspan="2" align="right">{{$hor[8]}}</td>
-                                <td colspan="2" align="right">{{$hor[9]}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[0])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[1])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[2])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[3])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[12])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[4])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[10])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[11])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[5])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[6])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[7])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[8])}}</td>
+                                <td colspan="2" align="right">{{number_format($hor[9])}}</td>
                                 <td align="right">{{number_format($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[9]+$hor[10]+$hor[11])}}</td>
                             </tr>
                             </tbody>
