@@ -90,7 +90,19 @@ for data in cur.fetchall():
 		cur.execute("UPDATE int_report SET INT_NOTE='DELIVER' WHERE INT_ID='"+INT_ID+"';")
 	
 	elif DELIVER_STATE == 'CLOSED':
-		if 'basoactivitytask' in tipe:
+		if ('synccustomerwaitinforsccdresponse' in tipe) or ('synccustomersitask' in tipe):
+				cur.execute("UPDATE int_report SET INT_NOTE='ERROR SYNC CUSTOMER' WHERE INT_ID='"+INT_ID+"';")
+		elif 'provisionordersi' in tipe:
+			if 'waitforfalloutrecovery' in tipe2:
+				cur.execute("UPDATE int_report SET INT_NOTE='ERROR DELIVER' WHERE INT_ID='"+INT_ID+"';")
+			else:	
+				cur.execute("UPDATE int_report SET INT_NOTE='DELIVER' WHERE INT_ID='"+INT_ID+"';")
+		elif 'provisionordertsq' in tipe:
+			if 'waitforfalloutrecovery' in tipe2:
+				cur.execute("UPDATE int_report SET INT_NOTE='ERROR TSQ' WHERE INT_ID='"+INT_ID+"';")
+			else:
+				cur.execute("UPDATE int_report SET INT_NOTE='TSQ' WHERE INT_ID='"+INT_ID+"';")
+		elif 'basoactivitytask' in tipe:
 			cur.execute("UPDATE int_report SET INT_NOTE='PENDING BASO' WHERE INT_ID='"+INT_ID+"';")
 		elif 'aprovebillingtask' in tipe:
 			cur.execute("UPDATE int_report SET INT_NOTE='PENDING BILLING APPROVAL' WHERE INT_ID='"+INT_ID+"';")
@@ -98,8 +110,6 @@ for data in cur.fetchall():
 			cur.execute("UPDATE int_report SET INT_NOTE='ERROR FULFILL BILLING START' WHERE INT_ID='"+INT_ID+"';")
 		elif tipe == 'None':
 			cur.execute("UPDATE int_report SET INT_NOTE='COMPLETE' WHERE INT_ID='"+INT_ID+"';")
-		else:
-			cur.execute("UPDATE int_report SET INT_NOTE='OSS COMPLETE' WHERE INT_ID='"+INT_ID+"';")
 
 	elif DELIVER_STATE =='ERROR':
 		if DELIVER_DESC == 'AREA CODE is Null':
@@ -108,7 +118,9 @@ for data in cur.fetchall():
 			cur.execute("UPDATE int_report SET INT_NOTE='ERROR DELIVER' WHERE INT_ID='"+INT_ID+"';")
 			
 	elif DELIVER_STATE == 'None':
-		if TSQ_STATE == 'INPROGRESS' or TSQ_STATE=='PROPOSED' or TSQ_STATE=='WAITERS':
+		if DELIVER_DESC == 'AREA CODE is Null':
+			cur.execute("UPDATE int_report SET INT_NOTE='ERROR AREA' WHERE INT_ID='"+INT_ID+"';")
+		elif TSQ_STATE == 'INPROGRESS' or TSQ_STATE=='PROPOSED' or TSQ_STATE=='WAITERS':
 			cur.execute("UPDATE int_report SET INT_NOTE='TSQ' WHERE INT_ID='"+INT_ID+"';")
 		elif TSQ_STATE == 'CANCELLED':
 			cur.execute("UPDATE int_report SET INT_NOTE='CANCEL FROM OSS' WHERE INT_ID='"+INT_ID+"';")
@@ -120,7 +132,9 @@ for data in cur.fetchall():
 			else:
 				cur.execute("UPDATE int_report SET INT_NOTE='ERROR TSQ' WHERE INT_ID='"+INT_ID+"';")
 		elif TSQ_STATE == 'None':
-			if ('synccustomerwaitinforsccdresponse' in tipe) or ('synccustomersitask' in tipe):
+			if TSQ_DESC == 'AREA CODE is Null':
+				cur.execute("UPDATE int_report SET INT_NOTE='ERROR AREA' WHERE INT_ID='"+INT_ID+"';")
+			elif ('synccustomerwaitinforsccdresponse' in tipe) or ('synccustomersitask' in tipe):
 				cur.execute("UPDATE int_report SET INT_NOTE='ERROR SYNC CUSTOMER' WHERE INT_ID='"+INT_ID+"';")
 			elif 'provisionordersi' in tipe:
 				if 'waitforfalloutrecovery' in tipe2:
