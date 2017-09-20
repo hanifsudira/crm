@@ -121,6 +121,8 @@
                                         <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR DELIVER","max"])}}" target="_blank">{{$datamax24[$i]->ed}}</a></td>
                                         <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR FULFILL BILLING START","min"])}}" target="_blank">{{$datamin24[$i]->efbs}}</a></td>
                                         <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR FULFILL BILLING START","max"])}}" target="_blank">{{$datamax24[$i]->efbs}}</a></td>
+                                        <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"NEED DELIVER","min"])}}" target="_blank">{{$datamin24[$i]->nd}}</a></td>
+                                        <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"NEED DELIVER","max"])}}" target="_blank">{{$datamax24[$i]->nd}}</a></td>
                                         <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"None","min"])}}" target="_blank">{{$datamin24[$i]->non}}</a></td>
                                         <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"None","max"])}}" target="_blank">{{$datamax24[$i]->non}}</a></td>
 
