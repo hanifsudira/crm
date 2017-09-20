@@ -167,8 +167,8 @@
                                             <td align="right" class="success"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","min"])}}" target="_blank">{{$datamin24[$i]->com}}</a></td>
                                             <td align="right" class="success"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","max"])}}" target="_blank">{{$datamax24[$i]->com}}</a></td>
                                         @elseif($i==11 or $i==12)
-                                            <td align="right" bgcolor="black"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","min"])}}" target="_blank">{{$datamin24[$i]->com}}</a></td>
-                                            <td align="right" bgcolor="black><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","max"])}}" target="_blank">{{$datamax24[$i]->com}}</a></td>
+                                            <td align="right" bgcolor="black"><a style="color: inherit" href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","min"])}}" target="_blank">{{$datamin24[$i]->com}}</a></td>
+                                            <td align="right" bgcolor="black"><a style="color: inherit" href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","max"])}}" target="_blank">{{$datamax24[$i]->com}}</a></td>
                                         @else
                                             <td align="right" class="warning"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","min"])}}" target="_blank">{{$datamin24[$i]->com}}</a></td>
                                             <td align="right" class="warning"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","max"])}}" target="_blank">{{$datamax24[$i]->com}}</a></td>
