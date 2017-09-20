@@ -242,3 +242,8 @@
         </div>
     </section>
 @endsection
+@section('css')
+    <style>
+        #link_bar a:link { color:black; }
+    </style>
+@endsection
