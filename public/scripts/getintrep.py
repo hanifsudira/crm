@@ -52,7 +52,7 @@ db.commit()
 
 #tomsom
 print 'tomsom query process'
-clause 		= "SELECT ORDER_NUM, INT_ID, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC FROM int_report where oh_status<>'Pending'"
+clause 		= "SELECT ORDER_NUM, INT_ID, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC, PRODUCT FROM int_report where oh_status<>'Pending'"
 cur.execute(clause)
 
 #comaia
@@ -67,6 +67,7 @@ for data in cur.fetchall():
 	TSQ_DESC		= str(data[3]).strip()
 	DELIVER_STATE	= str(data[4]).strip()
 	DELIVER_DESC	= str(data[5]).strip()
+	PRODUCT			= str(data[6]).strip()
 
 	if ORDER_NUM in result:
 		if result[ORDER_NUM]['TASK_MNEMONIC'] is not None:
@@ -90,8 +91,10 @@ for data in cur.fetchall():
 		cur.execute("UPDATE int_report SET INT_NOTE='DELIVER' WHERE INT_ID='"+INT_ID+"';")
 	
 	elif DELIVER_STATE == 'CLOSED':
-		if ('synccustomerwaitinforsccdresponse' in tipe) or ('synccustomersitask' in tipe):
-				cur.execute("UPDATE int_report SET INT_NOTE='ERROR SYNC CUSTOMER' WHERE INT_ID='"+INT_ID+"';")
+		if PRODUCT == 'Telkom Metro Network' or PRODUCT == 'MPLS VPN IP Network' or PRODUCT == 'VSAT IP Network':
+			cur.execute("UPDATE int_report SET INT_NOTE='COMPLETE' WHERE INT_ID='"+INT_ID+"';")
+		elif ('synccustomerwaitinforsccdresponse' in tipe) or ('synccustomersitask' in tipe):
+			cur.execute("UPDATE int_report SET INT_NOTE='ERROR SYNC CUSTOMER' WHERE INT_ID='"+INT_ID+"';")
 		elif 'provisionordersi' in tipe:
 			if 'waitforfalloutrecovery' in tipe2:
 				cur.execute("UPDATE int_report SET INT_NOTE='ERROR DELIVER' WHERE INT_ID='"+INT_ID+"';")
