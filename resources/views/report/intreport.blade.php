@@ -30,6 +30,7 @@
                                 <th colspan="2" style="text-align: center;">ET</th>
                                 <th colspan="2" style="text-align: center;">ED</th>
                                 <th colspan="2" style="text-align: center;">EFBS</th>
+                                <th colspan="2" style="text-align: center;">ND</th>
                                 <th colspan="2" style="text-align: center;">None</th>
                                 <th colspan="2" style="text-align: center;">CFO</th>
                                 <th colspan="2" style="text-align: center;">EA</th>
@@ -44,6 +45,8 @@
                             <tr>
                                 <th></th>
                                 <th></th>
+                                <th>24</th>
+                                <th>&gt;</th>
                                 <th>24</th>
                                 <th>&gt;</th>
                                 <th>24</th>
@@ -89,6 +92,8 @@
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR DELIVER","max"])}}" target="_blank">{{$datamax24[$i]->ed}}</a></td>
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR FULFILL BILLING START","min"])}}" target="_blank">{{$datamin24[$i]->efbs}}</a></td>
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR FULFILL BILLING START","max"])}}" target="_blank">{{$datamax24[$i]->efbs}}</a></td>
+                                        <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"NEED DELIVER","min"])}}" target="_blank">{{$datamin24[$i]->nd}}</a></td>
+                                        <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"NEED DELIVER","max"])}}" target="_blank">{{$datamax24[$i]->nd}}</a></td>
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"None","min"])}}" target="_blank">{{$datamin24[$i]->non}}</a></td>
                                         <td align="right"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"None","max"])}}" target="_blank">{{$datamax24[$i]->non}}</a></td>
 
@@ -197,30 +202,15 @@
                     <div class="box-body">
                         <fieldset>
                             <legend>Dictionary : </legend>
-                            <div>
-                                ESC : <strong>Error Sync Customer</strong>
-                            </div>
-                            <div>
-                                ET : <strong>Error TSQ</strong>
-                            </div>
-                            <div>
-                                ED : <strong>Error Deliver</strong>
-                            </div>
-                            <div>
-                                EFBS : <strong>Error Fulfill Billing Start</strong>
-                            </div>
-                            <div>
-                                PB : <strong>Pending BASO</strong>
-                            </div>
-                            <div>
-                                PBA : <strong>Pending Billing Approval</strong>
-                            </div>
-                            <div>
-                                CFO : <strong>Cancel From OSS</strong>
-                            </div>
-                            <div>
-                                EA : <strong>Error Area</strong>
-                            </div>
+                            <div>ESC : <strong>Error Sync Customer</strong></div>
+                            <div>ET : <strong>Error TSQ</strong></div>
+                            <div>ED : <strong>Error Deliver</strong></div>
+                            <div>EFBS : <strong>Error Fulfill Billing Start</strong></div>
+                            <div>PB : <strong>Pending BASO</strong></div>
+                            <div>PBA : <strong>Pending Billing Approval</strong></div>
+                            <div>CFO : <strong>Cancel From OSS</strong></div>
+                            <div>EA : <strong>Error Area</strong></div>
+                            <div>ND : <strong>Need Deliver</strong></div>
                         </fieldset>
                     </div>
                 </div>
@@ -240,7 +230,7 @@
                                 Need User Action :  <strong>{{number_format(($hor[10]+$hor[11]) - ($data[0]->cfo+$data[0]->ea))}}</strong>
                             </div>
                             <div style="background-color : #F2DEDE;">
-                                Error :  <strong>{{number_format(($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]) - ($data[0]->esc+$data[0]->et+$data[0]->ed+$data[0]->efbs+$data[0]->non))}}</strong>
+                                Error :  <strong>{{number_format(($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[12]) - ($data[0]->esc+$data[0]->et+$data[0]->ed+$data[0]->efbs+$data[0]->non))}}</strong>
                             </div>
                         </fieldset>
                     </div>

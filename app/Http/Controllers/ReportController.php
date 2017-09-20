@@ -109,8 +109,7 @@ class ReportController extends Controller
                                     count(case when INT_NOTE=\'COMPLETE\' then 1 end) com,
                                     count(case when INT_NOTE=\'CANCEL FROM OSS\' then 1 end) cfo,
                                     count(case when INT_NOTE=\'ERROR AREA\' then 1 end) ea,
-                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd,
-                                    count(case when INT_NOTE=\'OSS COMPLETE\' then 1 end) oc
+                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd
                             from int_report pt group by milestone,li_status');
 
         $pivotmin24 = DB::select('select li_status, milestone, 
@@ -126,8 +125,7 @@ class ReportController extends Controller
                                     count(case when INT_NOTE=\'COMPLETE\' then 1 end) com,
                                     count(case when INT_NOTE=\'CANCEL FROM OSS\' then 1 end) cfo,
                                     count(case when INT_NOTE=\'ERROR AREA\' then 1 end) ea,
-                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd,
-                                    count(case when INT_NOTE=\'OSS COMPLETE\' then 1 end) oc
+                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd
                             from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) <=24 group by milestone,li_status;');
 
         $pivotmax24 = DB::select('select li_status, milestone, 
@@ -143,8 +141,7 @@ class ReportController extends Controller
                                     count(case when INT_NOTE=\'COMPLETE\' then 1 end) com,
                                     count(case when INT_NOTE=\'CANCEL FROM OSS\' then 1 end) cfo,
                                     count(case when INT_NOTE=\'ERROR AREA\' then 1 end) ea,
-                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd,
-                                    count(case when INT_NOTE=\'OSS COMPLETE\' then 1 end) oc
+                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd
                             from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) >24 group by milestone,li_status;');
 
         $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
@@ -167,7 +164,6 @@ class ReportController extends Controller
         $counthorarr[10] = 0;
         $counthorarr[11] = 0;
         $counthorarr[12] = 0;
-        $counthorarr[13] = 0;
 
         #all
         for($i=0;$i<count($status);$i++){
@@ -190,7 +186,6 @@ class ReportController extends Controller
                     $counthorarr[10] += $data->cfo;
                     $counthorarr[11] += $data->ea;
                     $counthorarr[12] += $data->nd;
-                    $counthorarr[13] += $data->oc;
                     break;
                 }
             }
@@ -211,7 +206,6 @@ class ReportController extends Controller
                 $temp->cfo  = 0;
                 $temp->ea   = 0;
                 $temp->nd   = 0;
-                $temp->oc   = 0;
                 array_push($return,$temp);
                 $counthorarr[0] += 0;
                 $counthorarr[1] += 0;
@@ -226,7 +220,6 @@ class ReportController extends Controller
                 $counthorarr[10] += 0;
                 $counthorarr[11] += 0;
                 $counthorarr[12] += 0;
-                $counthorarr[13] += 0;
             }
         }
 
@@ -258,7 +251,6 @@ class ReportController extends Controller
                 $temp->cfo  = 0;
                 $temp->ea   = 0;
                 $temp->nd   = 0;
-                $temp->oc   = 0;
                 array_push($returnmin24,$temp);
             }
         }
@@ -291,7 +283,6 @@ class ReportController extends Controller
                 $temp->cfo  = 0;
                 $temp->ea   = 0;
                 $temp->nd   = 0;
-                $temp->oc   = 0;
                 array_push($returnmax24,$temp);
             }
         }
