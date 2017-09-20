@@ -180,19 +180,32 @@
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td colspan="2" align="right">{{number_format($hor[0])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[1])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[2])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[3])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[12])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[4])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[10])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[11])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[5])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[6])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[7])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[8])}}</td>
-                                <td colspan="2" align="right">{{number_format($hor[9])}}</td>
+                                <td align="right">{{number_format($hormin24[0])}}</td>
+                                <td align="right">{{number_format($hormax24[0])}}</td>
+                                <td align="right">{{number_format($hormin24[1])}}</td>
+                                <td align="right">{{number_format($hormax24[1])}}</td>
+                                <td align="right">{{number_format($hormin24[2])}}</td>
+                                <td align="right">{{number_format($hormax24[2])}}</td>
+                                <td align="right">{{number_format($hormin24[3])}}</td>
+                                <td align="right">{{number_format($hormax24[3])}}</td>
+                                <td align="right">{{number_format($hormin24[12])}}</td>
+                                <td align="right">{{number_format($hormax24[12])}}</td>
+                                <td align="right">{{number_format($hormin24[4])}}</td>
+                                <td align="right">{{number_format($hormax24[4])}}</td>
+                                <td align="right">{{number_format($hormin24[10])}}</td>
+                                <td align="right">{{number_format($hormax24[10])}}</td>
+                                <td align="right">{{number_format($hormin24[11])}}</td>
+                                <td align="right">{{number_format($hormax24[11])}}</td>
+                                <td align="right">{{number_format($hormin24[5])}}</td>
+                                <td align="right">{{number_format($hormax24[5])}}</td>
+                                <td align="right">{{number_format($hormin24[6])}}</td>
+                                <td align="right">{{number_format($hormax24[6])}}</td>
+                                <td align="right">{{number_format($hormin24[7])}}</td>
+                                <td align="right">{{number_format($hormax24[7])}}</td>
+                                <td align="right">{{number_format($hormin24[8])}}</td>
+                                <td align="right">{{number_format($hormax24[8])}}</td>
+                                <td align="right">{{number_format($hormin24[9])}}</td>
+                                <td align="right">{{number_format($hormax24[9])}}</td>
                                 <td align="right">{{number_format($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[9]+$hor[10]+$hor[11])}}</td>
                             </tr>
                             </tbody>

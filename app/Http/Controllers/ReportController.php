@@ -150,6 +150,7 @@ class ReportController extends Controller
         $return = array();
         $returnmin24 = array();
         $returnmax24 = array();
+
         $counthorarr = array();
         $counthorarr[0] = 0;
         $counthorarr[1] = 0;
@@ -164,6 +165,36 @@ class ReportController extends Controller
         $counthorarr[10] = 0;
         $counthorarr[11] = 0;
         $counthorarr[12] = 0;
+
+        $counthorarrmin24 = array();
+        $counthorarrmin24[0] = 0;
+        $counthorarrmin24[1] = 0;
+        $counthorarrmin24[2] = 0;
+        $counthorarrmin24[3] = 0;
+        $counthorarrmin24[4] = 0;
+        $counthorarrmin24[5] = 0;
+        $counthorarrmin24[6] = 0;
+        $counthorarrmin24[7] = 0;
+        $counthorarrmin24[8] = 0;
+        $counthorarrmin24[9] = 0;
+        $counthorarrmin24[10] = 0;
+        $counthorarrmin24[11] = 0;
+        $counthorarrmin24[12] = 0;
+
+        $counthorarrmax24 = array();
+        $counthorarrmax24[0] = 0;
+        $counthorarrmax24[1] = 0;
+        $counthorarrmax24[2] = 0;
+        $counthorarrmax24[3] = 0;
+        $counthorarrmax24[4] = 0;
+        $counthorarrmax24[5] = 0;
+        $counthorarrmax24[6] = 0;
+        $counthorarrmax24[7] = 0;
+        $counthorarrmax24[8] = 0;
+        $counthorarrmax24[9] = 0;
+        $counthorarrmax24[10] = 0;
+        $counthorarrmax24[11] = 0;
+        $counthorarrmax24[12] = 0;
 
         #all
         for($i=0;$i<count($status);$i++){
@@ -231,6 +262,19 @@ class ReportController extends Controller
                 if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
                     $state = 1;
                     array_push($returnmin24,$data);
+                    $counthorarrmin24[0] += $data->esc;
+                    $counthorarrmin24[1] += $data->et;
+                    $counthorarrmin24[2] += $data->ed;
+                    $counthorarrmin24[3] += $data->efbs;
+                    $counthorarrmin24[4] += $data->non;
+                    $counthorarrmin24[5] += $data->tsq;
+                    $counthorarrmin24[6] += $data->del;
+                    $counthorarrmin24[7] += $data->pb;
+                    $counthorarrmin24[8] += $data->pba;
+                    $counthorarrmin24[9] += $data->com;
+                    $counthorarrmin24[10] += $data->cfo;
+                    $counthorarrmin24[11] += $data->ea;
+                    $counthorarrmin24[12] += $data->nd;
                     break;
                 }
             }
@@ -252,6 +296,19 @@ class ReportController extends Controller
                 $temp->ea   = 0;
                 $temp->nd   = 0;
                 array_push($returnmin24,$temp);
+                $counthorarrmin24[0] += 0;
+                $counthorarrmin24[1] += 0;
+                $counthorarrmin24[2] += 0;
+                $counthorarrmin24[3] += 0;
+                $counthorarrmin24[4] += 0;
+                $counthorarrmin24[5] += 0;
+                $counthorarrmin24[6] += 0;
+                $counthorarrmin24[7] += 0;
+                $counthorarrmin24[8] += 0;
+                $counthorarrmin24[9] += 0;
+                $counthorarrmin24[10] += 0;
+                $counthorarrmin24[11] += 0;
+                $counthorarrmin24[12] += 0;
             }
         }
 
@@ -263,6 +320,19 @@ class ReportController extends Controller
                 if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
                     $state = 1;
                     array_push($returnmax24,$data);
+                    $counthorarrmax24[0] += $data->esc;
+                    $counthorarrmax24[1] += $data->et;
+                    $counthorarrmax24[2] += $data->ed;
+                    $counthorarrmax24[3] += $data->efbs;
+                    $counthorarrmax24[4] += $data->non;
+                    $counthorarrmax24[5] += $data->tsq;
+                    $counthorarrmax24[6] += $data->del;
+                    $counthorarrmax24[7] += $data->pb;
+                    $counthorarrmax24[8] += $data->pba;
+                    $counthorarrmax24[9] += $data->com;
+                    $counthorarrmax24[10] += $data->cfo;
+                    $counthorarrmax24[11] += $data->ea;
+                    $counthorarrmax24[12] += $data->nd;
                     break;
                 }
             }
@@ -284,10 +354,23 @@ class ReportController extends Controller
                 $temp->ea   = 0;
                 $temp->nd   = 0;
                 array_push($returnmax24,$temp);
+                $counthorarrmax24[0] += 0;
+                $counthorarrmax24[1] += 0;
+                $counthorarrmax24[2] += 0;
+                $counthorarrmax24[3] += 0;
+                $counthorarrmax24[4] += 0;
+                $counthorarrmax24[5] += 0;
+                $counthorarrmax24[6] += 0;
+                $counthorarrmax24[7] += 0;
+                $counthorarrmax24[8] += 0;
+                $counthorarrmax24[9] += 0;
+                $counthorarrmax24[10] += 0;
+                $counthorarrmax24[11] += 0;
+                $counthorarrmax24[12] += 0;
             }
         }
 
-        return view('report.intreport',['data'=>$return,'datamin24'=>$returnmin24,'datamax24'=>$returnmax24,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr]);
+        return view('report.intreport',['data'=>$return,'datamin24'=>$returnmin24,'datamax24'=>$returnmax24,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr,'homin24'=>$counthorarrmin24,'hormax24'=>$counthorarrmax24]);
     }
 
     public function flowdatareturn(){
