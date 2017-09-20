@@ -61,23 +61,23 @@ result = requests.get('http://10.65.10.212/reqi/comaia/json.php?crmid=all')
 result = json.loads(result.content)
 
 for data in cur.fetchall():
-	ORDER_NUM 		= data[0]
-	INT_ID 			= data[1]
-	TSQ_STATE		= data[2]
-	TSQ_DESC		= data[3]
-	DELIVER_STATE	= data[4]
-	DELIVER_DESC	= data[5]
+	ORDER_NUM 		= str(data[0]).strip()
+	INT_ID 			= str(data[1]).strip()
+	TSQ_STATE		= str(data[2]).strip()
+	TSQ_DESC		= str(data[3]).strip()
+	DELIVER_STATE	= str(data[4]).strip()
+	DELIVER_DESC	= str(data[5]).strip()
 
 	if ORDER_NUM in result:
 		if result[ORDER_NUM]['TASK_MNEMONIC'] is not None:
-			tipe = result[ORDER_NUM]['TASK_MNEMONIC'].lower()
+			tipe = result[ORDER_NUM]['TASK_MNEMONIC'].lower().strip()
 		else:
-			tipe = str(result[ORDER_NUM]['TASK_MNEMONIC'])
+			tipe = str(result[ORDER_NUM]['TASK_MNEMONIC']).strip()
 
 		if result[ORDER_NUM]['STATE_MNEMONIC'] is not None:
-			tipe2 = result[ORDER_NUM]['STATE_MNEMONIC'].lower()
+			tipe2 = result[ORDER_NUM]['STATE_MNEMONIC'].lower().strip()
 		else:
-			tipe2 = str(result[ORDER_NUM]['STATE_MNEMONIC'])
+			tipe2 = str(result[ORDER_NUM]['STATE_MNEMONIC']).strip()
 	else:
 		tipe 	= ''
 		tipe2 	= ''
@@ -154,12 +154,4 @@ for data in cur.fetchall():
 				cur.execute("UPDATE int_report SET INT_NOTE='ERROR FULFILL BILLING START' WHERE INT_ID='"+INT_ID+"';")
 			elif tipe == 'None':
 				cur.execute("UPDATE int_report SET INT_NOTE='COMPLETE' WHERE INT_ID='"+INT_ID+"';")
-db.commit()
-	
-
-
-
-
-
-
-	
+db.commit()	
