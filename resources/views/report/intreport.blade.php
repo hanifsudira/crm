@@ -31,6 +31,8 @@
                                 <th colspan="2" style="text-align: center;">ED</th>
                                 <th colspan="2" style="text-align: center;">EFBS</th>
                                 <th colspan="2" style="text-align: center;">None</th>
+                                <th colspan="2" style="text-align: center;">CFO</th>
+                                <th colspan="2" style="text-align: center;">EA</th>
                                 <th colspan="2" style="text-align: center;">TSQ</th>
                                 <th colspan="2" style="text-align: center;">Deliver</th>
                                 <th colspan="2" style="text-align: center;">PB</th>
@@ -42,6 +44,8 @@
                             <tr>
                                 <th></th>
                                 <th></th>
+                                <th>24</th>
+                                <th>&gt;</th>
                                 <th>24</th>
                                 <th>&gt;</th>
                                 <th>24</th>
@@ -106,6 +110,12 @@
                                         <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR FULFILL BILLING START","max"])}}" target="_blank">{{$datamax24[$i]->efbs}}</a></td>
                                         <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"None","min"])}}" target="_blank">{{$datamin24[$i]->non}}</a></td>
                                         <td align="right" class="danger"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"None","max"])}}" target="_blank">{{$datamax24[$i]->non}}</a></td>
+
+                                        <td align="right" class="info"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"CANCEL FROM OSS","min"])}}" target="_blank">{{$datamin24[$i]->cfo}}</a></td>
+                                        <td align="right" class="info"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"CANCEL FROM OSS","max"])}}" target="_blank">{{$datamax24[$i]->cfo}}</a></td>
+                                        <td align="right" class="info"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR AREA","min"])}}" target="_blank">{{$datamin24[$i]->ea}}</a></td>
+                                        <td align="right" class="info"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"ERROR AREA","max"])}}" target="_blank">{{$datamax24[$i]->ea}}</a></td>
+
                                         @if($i==4)
                                             <td align="right" class="success"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"TSQ","min"])}}" target="_blank">{{$datamin24[$i]->tsq}}</a></td>
                                             <td align="right" class="success"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"TSQ","max"])}}" target="_blank">{{$datamax24[$i]->tsq}}</a></td>
@@ -138,7 +148,7 @@
                                                 <td align="right" class="warning"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"PENDING BILLING APPROVAL","max"])}}" target="_blank">{{$datamax24[$i]->pba}}</a></td>
                                         @endif
 
-                                        @if($i==11 or $i==12 )
+                                        @if($i==8 or $i==11 or $i==12 )
                                                 <td align="right" class="success"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","min"])}}" target="_blank">{{$datamin24[$i]->com}}</a></td>
                                                 <td align="right" class="success"><a href="{{route('ora.getorderdetail',[$data[$i]->li_status,$data[$i]->milestone,"COMPLETE","max"])}}" target="_blank">{{$datamax24[$i]->com}}</a></td>
                                         @else
@@ -158,12 +168,14 @@
                                 <td colspan="2" align="right">{{$hor[2]}}</td>
                                 <td colspan="2" align="right">{{$hor[3]}}</td>
                                 <td colspan="2" align="right">{{$hor[4]}}</td>
+                                <td colspan="2" align="right">{{$hor[10]}}</td>
+                                <td colspan="2" align="right">{{$hor[11]}}</td>
                                 <td colspan="2" align="right">{{$hor[5]}}</td>
                                 <td colspan="2" align="right">{{$hor[6]}}</td>
                                 <td colspan="2" align="right">{{$hor[7]}}</td>
                                 <td colspan="2" align="right">{{$hor[8]}}</td>
                                 <td colspan="2" align="right">{{$hor[9]}}</td>
-                                <td align="right">{{number_format($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[9])}}</td>
+                                <td align="right">{{number_format($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]+$hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[9]+$hor[10]+$hor[11])}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -195,6 +207,12 @@
                             <div>
                                 PBA : <strong>Pending Billing Approval</strong>
                             </div>
+                            <div>
+                                CFO : <strong>Cancel From OSS</strong>
+                            </div>
+                            <div>
+                                EA : <strong>Error Area</strong>
+                            </div>
                         </fieldset>
                     </div>
                 </div>
@@ -209,6 +227,9 @@
                             </div>
                             <div style="background-color : #FCF8E3;">
                                 Status Tidak Terupdate :  <strong>{{number_format(($hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[9])-($data[4]->tsq+$data[5]->del+$data[6]->del+$data[8]->pb+$data[11]->pb+$data[9]->pba+$data[11]->com+$data[12]->com) - ($data[0]->tsq+$data[0]->del+$data[0]->pb+$data[0]->pba+$data[0]->com))}}</strong>
+                            </div>
+                            <div style="background-color : #D9EDF7;">
+                                Need User Action :  <strong>{{number_format(($hor[10]+$hor[11])}}</strong>
                             </div>
                             <div style="background-color : #F2DEDE;">
                                 Error :  <strong>{{number_format(($hor[0]+$hor[1]+$hor[2]+$hor[3]+$hor[4]) - ($data[0]->esc+$data[0]->et+$data[0]->ed+$data[0]->efbs+$data[0]->non))}}</strong>
