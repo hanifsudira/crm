@@ -66,6 +66,8 @@
                                 <th>&gt;</th>
                                 <th>24</th>
                                 <th>&gt;</th>
+                                <th>24</th>
+                                <th>&gt;</th>
                                 <th></th>
                             </tr>
                             </thead>
