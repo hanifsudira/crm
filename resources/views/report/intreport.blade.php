@@ -258,6 +258,19 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <fieldset>
+                            <legend>HINT : </legend>
+                            <div><strong>CFO :</strong> Perbaiki kesalahan yang membuat order ter-cancel dengan menanyakan ke user TeNOSS</div>
+                            <div><strong>ET :</strong> Perbaiki <i>latitude & longitude</i> pada <i>address</i> SA (Service Account) sesuai dengan SOP <i>Get STO</i> yang ada di group Kawal New CRM</div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection
 @section('css')
