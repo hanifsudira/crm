@@ -238,7 +238,7 @@
                     <div class="box-body">
                         <fieldset>
                             <legend>Legend : </legend>
-                            <div style="background-color : black; ">
+                            <div style="background-color : black; color: white">
                                 Complete : <strong>{{number_format($data[11]->com+$data[12]->com)}}</strong>
                             </div>
                             <div style="background-color : #DFF0D8; ">
