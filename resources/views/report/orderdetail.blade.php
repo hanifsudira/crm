@@ -51,7 +51,7 @@
                                 <td>{{$d->TSQ_DESC}}</td>
                                 <td>{{$d->DELIVER_STATE}}</td>
                                 <td>{{$d->DELIVER_DESC}}</td>
-                                <td>{{$d->SEGMENTS}}</td>
+                                <td>{{$d->SEGMENT}}</td>
                                 <td>{{$d->CC}}</td>
                             </tr>
                         @endforeach
