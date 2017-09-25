@@ -35,6 +35,8 @@
                             <th>TSQ_DESC</th>
                             <th>DELIVER_STATE</th>
                             <th>DELIVER_DESC</th>
+                            <th>SEGMENTS</th>
+                            <th>CC</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -49,6 +51,8 @@
                                 <td>{{$d->TSQ_DESC}}</td>
                                 <td>{{$d->DELIVER_STATE}}</td>
                                 <td>{{$d->DELIVER_DESC}}</td>
+                                <td>{{$d->SEGMENTS}}</td>
+                                <td>{{$d->CC}}</td>
                             </tr>
                         @endforeach
                         </tbody>
