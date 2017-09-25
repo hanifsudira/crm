@@ -35,7 +35,7 @@
                             <th>TSQ_DESC</th>
                             <th>DELIVER_STATE</th>
                             <th>DELIVER_DESC</th>
-                            <th>SEGMENTS</th>
+                            <th>SEGMENT</th>
                             <th>CC</th>
                         </tr>
                         </thead>

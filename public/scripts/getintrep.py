@@ -43,6 +43,7 @@ for i,data in enumerate(result):
 	MILE_STATUS_INT = str(data[7])
 	SEGMENT			= str(data[16])
 	CC 				= str(data[17])
+	print CC
 	TSQ_STATE		= tomsom[INT_ID]['TSQ_STATE'] if INT_ID in tomsom.keys() else 'None'
 	TSQ_DESC		= tomsom[INT_ID]['TSQ_DESC'] if INT_ID in tomsom.keys() else 'None'
 	DELIVER_STATE	= tomsom[INT_ID]['DELIVER_STATE'] if INT_ID in tomsom.keys() else 'None' 
