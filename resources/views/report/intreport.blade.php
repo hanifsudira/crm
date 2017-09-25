@@ -268,7 +268,7 @@
                         <fieldset>
                             <legend>HINT : </legend>
                             <div><strong>CFO :</strong> Perbaiki kesalahan yang membuat order ter-cancel dengan menanyakan ke user TeNOSS</div>
-                            <div><strong>ET :</strong> Perbaiki <i>latitude & longitude</i> pada <i>address</i> SA (Service Account) sesuai dengan SOP <i>Get STO</i> yang ada di grup <i>Kawal New CRM</i></div>
+                            <div><strong>EA :</strong> Perbaiki <i>latitude & longitude</i> pada <i>address</i> SA (Service Account) sesuai dengan SOP <i>Get STO</i> yang ada di grup <i>Kawal New CRM</i></div>
                         </fieldset>
                     </div>
                 </div>
