@@ -29,6 +29,7 @@
                             <th>No</th>
                             <th>ORDER_NUM</th>
                             <th>ROW_ID</th>
+                            <th>INT_ID</th>
                             <th>PRODUCT</th>
                             <th>INT_NOTE</th>
                             <th>TSQ_STATE</th>
@@ -46,6 +47,7 @@
                                 <td>{{$i+1}}</td>
                                 <td>{{$d->order_num}}</td>
                                 <td>{{$d->row_id}}</td>
+                                <td>{{$d->INT_ID}}</td>
                                 <td>{{$d->product}}</td>
                                 <td>{{$d->int_note}}</td>
                                 <td>{{$d->TSQ_STATE}}</td>
