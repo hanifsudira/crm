@@ -95,17 +95,17 @@ for data in cur.fetchall():
 		if PRODUCT == 'Telkom Metro Network' or PRODUCT == 'MPLS VPN IP Network' or PRODUCT == 'VSAT IP Network':
 			cur.execute("UPDATE int_report SET INT_NOTE='COMPLETE' WHERE INT_ID='"+INT_ID+"';")
 		elif ('synccustomerwaitinforsccdresponse' in tipe) or ('synccustomersitask' in tipe):
-			cur.execute("UPDATE int_report SET INT_NOTE='ERROR SYNC CUSTOMER' WHERE INT_ID='"+INT_ID+"';")
+			cur.execute("UPDATE int_report SET INT_NOTE='PENDING BASO' WHERE INT_ID='"+INT_ID+"';")
 		elif 'provisionordersi' in tipe:
 			if 'waitforfalloutrecovery' in tipe2:
-				cur.execute("UPDATE int_report SET INT_NOTE='ERROR DELIVER' WHERE INT_ID='"+INT_ID+"';")
+				cur.execute("UPDATE int_report SET INT_NOTE='PENDING BASO' WHERE INT_ID='"+INT_ID+"';")
 			else:	
-				cur.execute("UPDATE int_report SET INT_NOTE='DELIVER' WHERE INT_ID='"+INT_ID+"';")
+				cur.execute("UPDATE int_report SET INT_NOTE='PENDING BASO' WHERE INT_ID='"+INT_ID+"';")
 		elif 'provisionordertsq' in tipe:
 			if 'waitforfalloutrecovery' in tipe2:
-				cur.execute("UPDATE int_report SET INT_NOTE='ERROR TSQ' WHERE INT_ID='"+INT_ID+"';")
+				cur.execute("UPDATE int_report SET INT_NOTE='PENDING BASO' WHERE INT_ID='"+INT_ID+"';")
 			else:
-				cur.execute("UPDATE int_report SET INT_NOTE='TSQ' WHERE INT_ID='"+INT_ID+"';")
+				cur.execute("UPDATE int_report SET INT_NOTE='PENDING BASO' WHERE INT_ID='"+INT_ID+"';")
 		elif 'basoactivitytask' in tipe:
 			cur.execute("UPDATE int_report SET INT_NOTE='PENDING BASO' WHERE INT_ID='"+INT_ID+"';")
 		elif 'aprovebillingtask' in tipe:
