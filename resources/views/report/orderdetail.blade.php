@@ -69,16 +69,20 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="exampleModalLabel">Action</h4>
+                                <h4 class="modal-title" id="exampleModalLabel">Action - <span id="append"></span></h4>
                             </div>
                             <div class="modal-body">
                                 <form>
                                     <div class="form-group">
-                                        <label for="recipient-name" class="control-label">Recipient:</label>
-                                        <input type="text" class="form-control" id="recipient-name">
+                                        <label for="recipient-name" class="control-label">Follow Up By</label>
+                                        <input type="text" class="form-control" id="fuby">
                                     </div>
                                     <div class="form-group">
-                                        <label for="message-text" class="control-label">Message:</label>
+                                        <label for="recipient-name" class="control-label">Solved By</label>
+                                        <input type="text" class="form-control" id="sby">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="control-label">Note</label>
                                         <textarea class="form-control" id="message-text"></textarea>
                                     </div>
                                 </form>
@@ -100,10 +104,20 @@
 <script src="{{ URL::asset('assets/plugins/iCheck/icheck.min.js') }}"></script>
 <script>
     $(function () {
+
+    });
+
+    $(document).ready(function () {
         $('input').iCheck({
             checkboxClass: 'icheckbox_square-blue',
             radioClass: 'iradio_square-blue',
             increaseArea: '20%' // optional
+        });
+
+        $('#actionModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var finaltext = 'order_num : '+ button.data('ordernum') + ' row_id : ' + button.data('rowid');
+            $(this).find('#append').text(finaltext);
         });
     });
 </script>
