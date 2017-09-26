@@ -37,6 +37,7 @@
                             <th>DELIVER_DESC</th>
                             <th>SEGMENT</th>
                             <th>CC</th>
+                            <th>SID_NUM</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -53,6 +54,7 @@
                                 <td>{{$d->DELIVER_DESC}}</td>
                                 <td>{{$d->SEGMENT}}</td>
                                 <td>{{$d->CC}}</td>
+                                <td>{{$d->SID_NUM}}</td>
                             </tr>
                         @endforeach
                         </tbody>
