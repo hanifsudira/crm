@@ -137,7 +137,7 @@
                 }
             });
         });
-        $('#myActionForm').submit(function (event) {
+        $('#myActionForm').on('submit', (function (event) {
             console.log('masuk');
             event.preventDefault();
             $.ajax({
