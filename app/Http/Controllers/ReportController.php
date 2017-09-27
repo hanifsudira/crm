@@ -1120,10 +1120,11 @@ class ReportController extends Controller
 
     public function storedetailaction(Request $request){
         $intnote = new Intnotes;
-        $intnote->rowid = $request->rowid;
-        $intnote->fuby  = $request->fuby;
-        $intnote->sby   = $request->sby;
-        $intnote->fus_note = $request->note;
-        $intnote->save();
+        var_dump($request);
+//        $intnote->rowid     = $request->rowid;
+//        $intnote->fuby      = $request->fuby;
+//        $intnote->sby       = $request->sby;
+//        $intnote->fus_note  = $request->note;
+//        $intnote->save();
     }
 }
