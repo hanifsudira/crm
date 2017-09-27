@@ -72,7 +72,7 @@
                                 <h4 class="modal-title" id="exampleModalLabel">Action - <span id="append"></span></h4>
                             </div>
                             <div class="modal-body">
-                                <form method="post" {{ route('report.storedetailaction') }} id="myActionForm" class="modalform" >
+                                <form id="myActionForm" class="modalform" >
                                     <input type="hidden" id="rowid" name="rowid">
                                     <div class="form-group">
                                         <label for="recipient-name" class="control-label">Follow Up By</label>
@@ -89,9 +89,6 @@
                                     <input type="submit" class="btn btn-primary">
                                 </form>
                             </div>
-                            {{--<div class="modal-footer">--}}
-                                {{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
-                            {{--</div>--}}
                         </div>
                     </div>
                 </div>
@@ -137,21 +134,21 @@
                 }
             });
         });
-        {{--$('#myActionForm').on('submit', function (event) {--}}
-            {{--console.log('masuk');--}}
-            {{--$.ajax({--}}
-                {{--headers : {--}}
-                    {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-                {{--},--}}
-                {{--type    : 'GET',--}}
-                {{--url     : '{{ route('report.storedetailaction') }}',--}}
-                {{--data    : $('#myActionForm').serialize(),--}}
-                {{--complete: function (result) {--}}
-                    {{--console.log(result);--}}
-                {{--}--}}
-            {{--});--}}
-            {{--event.preventDefault();--}}
-        {{--});--}}
+        $('#myActionForm').on('submit', function (event) {
+            console.log('masuk');
+            $.ajax({
+                headers : {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type    : 'POST',
+                url     : '{{ route('report.storedetailaction') }}',
+                data    : $('#myActionForm').serialize(),
+                complete: function (result) {
+                    console.log(result);
+                }
+            });
+            event.preventDefault();
+        });
     });
 </script>
 </body>
