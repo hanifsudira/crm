@@ -73,6 +73,7 @@
                             </div>
                             <div class="modal-body">
                                 <form id="myActionForm" class="modalform" >
+                                    {{ csrf_field() }}
                                     <input type="hidden" id="rowid" name="rowid">
                                     <div class="form-group">
                                         <label for="recipient-name" class="control-label">Follow Up By</label>
@@ -140,7 +141,7 @@
                 headers : {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                type    : 'GET',
+                type    : 'POST',
                 url     : '{{ route('report.storedetailaction') }}',
                 data    : $('#myActionForm').serialize(),
                 complete: function (result) {
