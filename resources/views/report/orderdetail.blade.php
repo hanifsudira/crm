@@ -127,7 +127,8 @@
                 },
                 complete : function (result) {
                     console.log(result.responseText);
-                    var data = JSON.parse(result.responseText)
+                    var data = JSON.parse(result.responseText);
+                    console.log(data.fuby);
                     $(this).find('.modal-body #fuby').val(data.fuby);
                     $(this).find('.modal-body #sby').val(data.sby);
                     $(this).find('.modal-body #fus_note').val(data.note);
