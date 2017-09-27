@@ -245,7 +245,7 @@
                                 Normal Order : <strong>{{number_format($data[4]->tsq+$data[5]->del+$data[6]->del+$data[8]->pb+$data[11]->pb+$data[9]->pba+$data[8]->com)}}</strong>
                             </div>
                             <div style="background-color : #FCF8E3;">
-                                Status Tidak Terupdate :  <strong>{{number_format(($hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[9])-($data[4]->tsq+$data[5]->del+$data[6]->del+$data[8]->pb+$data[11]->pb+$data[9]->pba+$data[8]->com+$data[11]->com+$data[12]->com) - ($data[0]->tsq+$data[0]->del+$data[0]->pb+$data[0]->pba+$data[0]->com))}}</strong>
+                                Need Status Refresh :  <strong>{{number_format(($hor[5]+$hor[6]+$hor[7]+$hor[8]+$hor[9])-($data[4]->tsq+$data[5]->del+$data[6]->del+$data[8]->pb+$data[11]->pb+$data[9]->pba+$data[8]->com+$data[11]->com+$data[12]->com) - ($data[0]->tsq+$data[0]->del+$data[0]->pb+$data[0]->pba+$data[0]->com))}}</strong>
                             </div>
                             <div style="background-color : #D9EDF7;">
                                 Need User Action :  <strong>{{number_format(($hor[10]+$hor[11]+$data[0]->non) - ($data[0]->cfo+$data[0]->ea))}}</strong>
