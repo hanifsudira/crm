@@ -90,7 +90,7 @@
                                         <label for="message-text" class="control-label">Note</label>
                                         <textarea class="form-control" id="fus_note" name="note"></textarea>
                                     </div>
-                                    <input type="submit" data-dismiss="modal" class="btn btn-primary">
+                                    <input type="submit" class="btn btn-primary">
                                 </form>
                             </div>
                         </div>
@@ -171,6 +171,7 @@
                 }
             });
             event.preventDefault();
+            return false;
         });
     });
 </script>
