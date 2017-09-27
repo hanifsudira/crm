@@ -109,6 +109,11 @@ Route::group(['prefix' => 'report'], function () {
         'as'        => 'report.getorderactiondetail',
         'uses'      => 'ReportController@getorderactiondetail'
     ]);
+
+    Route::get('storedetailaction', [
+        'as'        => 'report.storedetailaction',
+        'uses'      => 'ReportController@storedetailaction'
+    ]);
 });
 
 Route::group(['prefix' => 'ora'], function () {

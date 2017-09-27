@@ -72,24 +72,25 @@
                                 <h4 class="modal-title" id="exampleModalLabel">Action - <span id="append"></span></h4>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form id="myActionForm" class="modalform">
+                                    <input type="hidden" id="rowid" name="rowid">
                                     <div class="form-group">
                                         <label for="recipient-name" class="control-label">Follow Up By</label>
-                                        <input type="text" class="form-control" id="fuby">
+                                        <input type="text" class="form-control" id="fuby" name="fuby">
                                     </div>
                                     <div class="form-group">
                                         <label for="recipient-name" class="control-label">Solved By</label>
-                                        <input type="text" class="form-control" id="sby">
+                                        <input type="text" class="form-control" id="sby" name="sby">
                                     </div>
                                     <div class="form-group">
                                         <label for="message-text" class="control-label">Note</label>
-                                        <textarea class="form-control" id="fus_note"></textarea>
+                                        <textarea class="form-control" id="fus_note" name="note"></textarea>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </div>
                     </div>
@@ -115,6 +116,7 @@
             var finaltext = 'ORDER NUM : '+ button.data('ordernum') + ' ROW ID : ' + button.data('rowid');
             $(this).find('#append').text(finaltext);
             var modal = $(this);
+            modal.find('#rowid').val(button.data('rowid'));
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -132,6 +134,20 @@
                     modal.find('#fuby').val(data.fuby);
                     modal.find('#sby').val(data.sby);
                     modal.find('#fus_note').val(data.note);
+                }
+            });
+        });
+        $('#myActionForm').submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                headers : {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type    : 'GET',
+                url     : '{{ route('report.storedetailaction') }}',
+                data    : $('form.modalform').serialize(),
+                complete: function (result) {
+                    console.log(result);
                 }
             });
         });
