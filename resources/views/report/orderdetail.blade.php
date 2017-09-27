@@ -72,7 +72,7 @@
                                 <h4 class="modal-title" id="exampleModalLabel">Action - <span id="append"></span></h4>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('report.storedetailaction') }}" method="post" id="myActionForm" class="modalform" >
+                                <form method="post" id="myActionForm" class="modalform" >
                                     <input type="hidden" id="rowid" name="rowid">
                                     <div class="form-group">
                                         <label for="recipient-name" class="control-label">Follow Up By</label>
@@ -137,21 +137,21 @@
                 }
             });
         });
-        {{--$('#myActionForm').submit(function (event) {--}}
-            {{--console.log('masuk');--}}
-            {{--event.preventDefault();--}}
-            {{--$.ajax({--}}
-                {{--headers : {--}}
-                    {{--'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
-                {{--},--}}
-                {{--type    : 'GET',--}}
-                {{--url     : '{{ route('report.storedetailaction') }}',--}}
-                {{--data    : $('form.modalform').serialize(),--}}
-                {{--complete: function (result) {--}}
-                    {{--console.log(result);--}}
-                {{--}--}}
-            {{--});--}}
-        {{--});--}}
+        $('#myActionForm').submit(function (event) {
+            console.log('masuk');
+            event.preventDefault();
+            $.ajax({
+                headers : {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type    : 'GET',
+                url     : '{{ route('report.storedetailaction') }}',
+                data    : $('#myActionForm').serialize(),
+                complete: function (result) {
+                    console.log(result);
+                }
+            });
+        });
     });
 </script>
 </body>
