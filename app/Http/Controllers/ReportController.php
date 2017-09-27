@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Oracexcel;
 use function MongoDB\BSON\fromJSON;
@@ -1093,5 +1094,12 @@ class ReportController extends Controller
         $data = DB::select($sql);
         #var_dump($data);
         return view('report.orderdetail',['data'=>$data]);
+    }
+
+    public function getorderactiondetail(Request $request){
+        $ordernum = $request->order;
+        $rowid = $request->rowid;
+        $data =  DB::select("select fuby,sby,fus_note from int_report_notes where row_id='$rowid';");
+        return json_encode($data);
     }
 }

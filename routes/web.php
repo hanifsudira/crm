@@ -104,6 +104,11 @@ Route::group(['prefix' => 'report'], function () {
         'as'        => 'report.tomsomget',
         'uses'      => 'ReportController@tomsomget'
     ]);
+
+    Route::get('getorderactiondetail', [
+        'as'        => 'report.getorderactiondetail',
+        'uses'      => 'ReportController@getorderactiondetail'
+    ]);
 });
 
 Route::group(['prefix' => 'ora'], function () {

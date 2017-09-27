@@ -103,10 +103,6 @@
 <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/iCheck/icheck.min.js') }}"></script>
 <script>
-    $(function () {
-
-    });
-
     $(document).ready(function () {
         $('input').iCheck({
             checkboxClass: 'icheckbox_square-blue',
@@ -116,8 +112,30 @@
 
         $('#actionModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
-            var finaltext = 'order_num : '+ button.data('ordernum') + ' row_id : ' + button.data('rowid');
+            var finaltext = 'ORDER NUM : '+ button.data('ordernum') + ' ROW ID : ' + button.data('rowid');
             $(this).find('#append').text(finaltext);
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type    : 'POST',
+                url     : '{{ route('ora.getcheckorder2') }}',
+                data    : {
+                    order: button.data('ordernum'),
+                    rowid: button.data('rowid')
+                },
+                succes  : function () {
+                    console.log('Sukses');
+                },
+                error   : function (xhr, status, error) {
+                    console.log(xhr);
+                    console.log(status);
+                    console.log(error);
+                },
+                complete : function (result) {
+                    console.log(result);
+                }
+            });
         });
     });
 </script>
