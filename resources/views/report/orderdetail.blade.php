@@ -119,7 +119,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type    : 'POST',
-                url     : '{{ route('ora.getcheckorder2') }}',
+                url     : '{{ route('ora.getorderactiondetail') }}',
                 data    : {
                     order: button.data('ordernum'),
                     rowid: button.data('rowid')
