@@ -1123,6 +1123,6 @@ class ReportController extends Controller
         $fuby   = $request->fuby;
         $sby    = $request->sby;
         $note   = $request->note;
-        DB::select("INSERT INTO int_report_note (row_id,fuby,sby,fus_note) VALUES ($rowid,$fuby,$sby,$note) ON DUPLICATE KEY UPDATE fuby=VALUES(fuby),sby=VALUES(sby),fus_note=VALUES(fus_note),");
+        DB::select("INSERT INTO int_report_note (row_id,fuby,sby,fus_note) VALUES ($rowid,$fuby,$sby,$note) ON DUPLICATE KEY UPDATE fuby=VALUES(fuby),sby=VALUES(sby),fus_note=VALUES(fus_note);");
     }
 }

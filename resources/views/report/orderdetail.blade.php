@@ -72,7 +72,7 @@
                                 <h4 class="modal-title" id="exampleModalLabel">Action - <span id="append"></span></h4>
                             </div>
                             <div class="modal-body">
-                                <form id="myActionForm" class="modalform" action="{{ route('report.storedetailaction') }}" method="post">
+                                <form action="{{ route('report.storedetailaction') }}" method="post" id="myActionForm" class="modalform" >
                                     <input type="hidden" id="rowid" name="rowid">
                                     <div class="form-group">
                                         <label for="recipient-name" class="control-label">Follow Up By</label>
