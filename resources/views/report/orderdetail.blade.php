@@ -146,11 +146,15 @@
             console.log('masuk');
             console.log($('#myActionForm').serialize());
             $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type    : 'POST',
                 url     : '{{ route('report.storedetailaction') }}',
+                type    : 'POST',
+                beforeSend: function (xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+
+                    if (token) {
+                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
                 data    : $('#myActionForm').serialize(),
                 complete: function (result) {
                     console.log(result);
