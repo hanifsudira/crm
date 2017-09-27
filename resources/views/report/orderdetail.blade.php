@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>View</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}">
@@ -109,6 +110,12 @@
             increaseArea: '20%' // optional
         });
 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         $('#actionModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var finaltext = 'ORDER NUM : '+ button.data('ordernum') + ' ROW ID : ' + button.data('rowid');
@@ -137,8 +144,9 @@
         });
         $('#myActionForm').on('submit', function (event) {
             console.log('masuk');
+            console.log($('#myActionForm').serialize());
             $.ajax({
-                headers : {
+                headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type    : 'POST',
