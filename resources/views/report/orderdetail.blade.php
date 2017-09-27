@@ -134,7 +134,7 @@
                     console.log(error);
                 },
                 complete : function (result) {
-                    console.log(result);
+                    console.log(result.responseText);
                 }
             });
         });
