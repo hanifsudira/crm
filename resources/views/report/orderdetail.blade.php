@@ -119,6 +119,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 type    : 'POST',
+                datatype: 'json',
                 url     : '{{ route('report.getorderactiondetail') }}',
                 data    : {
                     order: button.data('ordernum'),
