@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="message-text" class="control-label">Note</label>
-                                        <textarea class="form-control" id="message-text"></textarea>
+                                        <textarea class="form-control" id="fus_note"></textarea>
                                     </div>
                                 </form>
                             </div>
@@ -125,16 +125,12 @@
                     order: button.data('ordernum'),
                     rowid: button.data('rowid')
                 },
-                succes  : function () {
-                    console.log('Sukses');
-                },
-                error   : function (xhr, status, error) {
-                    console.log(xhr);
-                    console.log(status);
-                    console.log(error);
-                },
                 complete : function (result) {
                     console.log(result.responseText);
+                    var data = JSON.parse(result.responseText)
+                    $(this).find('.modal-body #fuby').val(data.fuby);
+                    $(this).find('.modal-body #sby').val(data.sby);
+                    $(this).find('.modal-body #fus_note').val(data.note);
                 }
             });
         });
