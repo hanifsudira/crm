@@ -114,6 +114,7 @@
             var button = $(event.relatedTarget);
             var finaltext = 'ORDER NUM : '+ button.data('ordernum') + ' ROW ID : ' + button.data('rowid');
             $(this).find('#append').text(finaltext);
+            var modal = $(this);
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -128,10 +129,9 @@
                 complete : function (result) {
                     console.log(result.responseText);
                     var data = JSON.parse(result.responseText);
-                    console.log(data.fuby);
-                    $(this).find('#fuby').val(data.fuby);
-                    $(this).find('#sby').val(data.sby);
-                    $(this).find('#fus_note').val(data.note);
+                    modal.find('#fuby').val(data.fuby);
+                    modal.find('#sby').val(data.sby);
+                    modal.find('#fus_note').val(data.note);
                 }
             });
         });
