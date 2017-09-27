@@ -105,7 +105,7 @@ Route::group(['prefix' => 'report'], function () {
         'uses'      => 'ReportController@tomsomget'
     ]);
 
-    Route::post('getorderactiondetail', [
+    Route::get('getorderactiondetail', [
         'as'        => 'report.getorderactiondetail',
         'uses'      => 'ReportController@getorderactiondetail'
     ]);

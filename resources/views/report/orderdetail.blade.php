@@ -118,7 +118,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                type    : 'POST',
+                type    : 'GET',
                 url     : '{{ route('report.getorderactiondetail') }}',
                 datatype: 'JSON',
                 data    : {
