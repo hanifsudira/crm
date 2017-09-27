@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ URL::asset('assets/dist/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/plugins/iCheck/square/blue.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.5.0/alertify.core.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.5.0/alertify.default.min.css">
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <link rel="stylesheet" href="{{ URL::asset('assets/plugins/alertifyjs/css/alertify.css') }}">
@@ -88,7 +90,7 @@
                                         <label for="message-text" class="control-label">Note</label>
                                         <textarea class="form-control" id="fus_note" name="note"></textarea>
                                     </div>
-                                    <input type="submit" class="btn btn-primary">
+                                    <input type="submit" data-dismiss="modal" class="btn btn-primary">
                                 </form>
                             </div>
                         </div>
@@ -102,6 +104,7 @@
 <script src="{{ URL::asset('assets/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/iCheck/icheck.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.5.0/alertify.min.js"></script>
 <script>
     $(document).ready(function () {
         $('input').iCheck({
@@ -157,7 +160,14 @@
                 },
                 data    : $('#myActionForm').serialize(),
                 complete: function (result) {
-                    console.log(result);
+                    var data = JSON.parse(result.responseText);
+                    if(data.status){
+                        alertify.success('Berhasil');
+                    }
+                    else {
+                        alertify.error('Gagal');
+                    }
+
                 }
             });
             event.preventDefault();
