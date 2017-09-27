@@ -146,8 +146,6 @@
             });
         });
         $('#myActionForm').on('submit', function (event) {
-            console.log('masuk');
-            console.log($('#myActionForm').serialize());
             $.ajax({
                 url     : '{{ route('report.storedetailaction') }}',
                 type    : 'POST',
@@ -161,6 +159,7 @@
                 data    : $('#myActionForm').serialize(),
                 complete: function (result) {
                     var data = JSON.parse(result.responseText);
+                    $('#actionModal').modal('hide');
                     if(data.status){
                         alertify.success('Berhasil');
                     }
@@ -171,7 +170,6 @@
                 }
             });
             event.preventDefault();
-            return false;
         });
     });
 </script>
