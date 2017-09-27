@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Oracexcel;
+use App\Oracexcel, App\Intnotes;
 use function MongoDB\BSON\fromJSON;
 use phpDocumentor\Reflection\Types\Null_;
 
@@ -1119,10 +1119,11 @@ class ReportController extends Controller
     }
 
     public function storedetailaction(Request $request){
-        $rowid  = $request->rowid;
-        $fuby   = $request->fuby;
-        $sby    = $request->sby;
-        $note   = $request->note;
-        DB::select("INSERT INTO int_report_note (row_id,fuby,sby,fus_note) VALUES ($rowid,$fuby,$sby,$note);");
+        $intnote = new Intnotes;
+        $intnote->rowid = $request->rowid;
+        $intnote->fuby  = $request->fuby;
+        $intnote->sby   = $request->sby;
+        $intnote->fus_note = $request->note;
+        $intnote->save();
     }
 }
