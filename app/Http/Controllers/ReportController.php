@@ -1100,6 +1100,21 @@ class ReportController extends Controller
         $ordernum = $request->order;
         $rowid = $request->rowid;
         $data =  DB::select("select fuby,sby,fus_note from int_report_notes where row_id='$rowid';");
-        return json_encode($data);
+        if(!$data){
+            $temp = array(
+                'fuby'  => '',
+                'sby'   => '',
+                'note'  => ''
+            );
+            return json_encode($temp);
+        }
+        else{
+            $temp = array(
+                'fuby'  => $data[0]->fuby,
+                'sby'   => $data[0]->sby,
+                'note'  => $data[0]->fus_note
+            );
+            return json_encode($temp);
+        }
     }
 }
