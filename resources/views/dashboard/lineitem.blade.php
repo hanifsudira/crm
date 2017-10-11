@@ -62,10 +62,14 @@
                                                     <th>TSQ_DESC</th>
                                                     <th>DELIVER_STATE</th>
                                                     <th>DELIVER_DESC</th>
+                                                    <th>AGREE_NUM</th>
+                                                    <th>AGREE_REV</th>
                                                 </tr>
                                                 </thead>
                                                 <tfoot>
                                                 <tr>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td></td>
                                                     <td></td>
                                                     <td></td>
@@ -259,7 +263,9 @@
                     { data: 'TSQ_STATE',name: 'TSQ_STATE'},
                     { data: 'TSQ_DESC',name: 'TSQ_DESC'},
                     { data: 'DELIVER_STATE',name: 'DELIVER_STATE'},
-                    { data: 'DELIVER_DESC',name: 'DELIVER_DESC'}
+                    { data: 'DELIVER_DESC',name: 'DELIVER_DESC'},
+                    { data: 'AGREE_NUM',name: 'AGREE_NUM'},
+                    { data: 'AGREE_REV',name: 'AGREE_REV'}
                 ],initComplete: function () {
                     this.api().columns().every(function () {
                         var column = this;
