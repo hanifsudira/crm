@@ -31,6 +31,7 @@
                         <tr>
                             <th>No</th>
                             <th>ORDER_NUM</th>
+                            <th>ORDER_SUBTYPE</th>
                             <th>ROW_ID</th>
                             <th>INT_ID</th>
                             <th>PRODUCT</th>
@@ -50,6 +51,7 @@
                             <tr>
                                 <td>{{$i+1}}</td>
                                 <td>{{$d->order_num}}</td>
+                                <td>{{$d->order_subtype}}</td>
                                 <td>{{$d->row_id}}</td>
                                 <td>{{$d->INT_ID}}</td>
                                 <td>{{$d->product}}</td>
