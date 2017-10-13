@@ -110,6 +110,11 @@ Route::group(['prefix' => 'report'], function () {
         'uses'      => 'ReportController@getorderactiondetail'
     ]);
 
+    Route::get('billing', [
+        'as'        => 'report.billing',
+        'uses'      => 'ReportController@billing'
+    ]);
+
     Route::post('storedetailaction', [
         'as'        => 'report.storedetailaction',
         'uses'      => 'ReportController@storedetailaction'

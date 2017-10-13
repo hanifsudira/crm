@@ -1126,4 +1126,8 @@ class ReportController extends Controller
         $query = DB::insert("INSERT INTO int_report_notes (row_id,fuby,sby,fus_note) VALUES ('$rowid','$fuby','$sby','$note') ON DUPLICATE KEY UPDATE fuby=VALUES(fuby),sby=VALUES(sby),fus_note=VALUES(fus_note)");
         return $query ? json_encode(['status'=>1]) : json_encode(['status'=>1]);
     }
+
+    public function billing(){
+        return view('report.billing');
+    }
 }
