@@ -1128,6 +1128,8 @@ class ReportController extends Controller
     }
 
     public function billing(){
-        return view('report.billing');
+        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
+        $lastupdate = $lastupdate->lastupdate !=null ? $lastupdate->lastupdate : 'Unknown';
+        return view('report.billing',['lastupdate'=>$lastupdate]);
     }
 }
