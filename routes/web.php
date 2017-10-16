@@ -115,6 +115,11 @@ Route::group(['prefix' => 'report'], function () {
         'uses'      => 'ReportController@billing'
     ]);
 
+    Route::get('quote', [
+        'as'        => 'report.quote',
+        'uses'      => 'ReportController@quote'
+    ]);
+
     Route::post('storedetailaction', [
         'as'        => 'report.storedetailaction',
         'uses'      => 'ReportController@storedetailaction'
