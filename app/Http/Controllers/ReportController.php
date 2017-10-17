@@ -1154,7 +1154,7 @@ class ReportController extends Controller
                     milestone='$milestone' and 
                     int_note='$report' and timestampdiff(HOUR,  str_to_date(created_at,'%d-%b-%Y %H:%i:%s'),now()) > 24;";
         }
-        $data = DB::select($sql)->get()->toArray();
+        $data = DB::select($sql);
         return Excel::create('line_item', function($excel) use ($data) {
             $excel->sheet('mySheet', function($sheet) use ($data) {
                 $sheet->fromArray($data);
