@@ -1156,10 +1156,10 @@ class ReportController extends Controller
                     int_note='$report' and timestampdiff(HOUR,  str_to_date(created_at,'%d-%b-%Y %H:%i:%s'),now()) > 24;";
         }
         $data = DB::select($sql);
-//        $push = array();
-//        foreach ($data as $a){
-//            array_push($push,$a);
-//        }
+        $push = array();
+        foreach ($data as $a){
+            array_push($push,$a);
+        }
         return Excel::create('line_item', function($excel) use ($data) {
             $excel->sheet('mySheet', function($sheet) use ($data) {
                 $sheet->fromArray($data);
