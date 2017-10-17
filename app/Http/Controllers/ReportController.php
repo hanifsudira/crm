@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Oracexcel;
+use Excel;
 use function MongoDB\BSON\fromJSON;
 use phpDocumentor\Reflection\Types\Null_;
 
@@ -1155,13 +1156,13 @@ class ReportController extends Controller
                     int_note='$report' and timestampdiff(HOUR,  str_to_date(created_at,'%d-%b-%Y %H:%i:%s'),now()) > 24;";
         }
         $data = DB::select($sql);
-        $push = array();
-        foreach ($data as $a){
-            array_push($push,$a);
-        }
-        return Excel::create('line_item', function($excel) use ($push) {
-            $excel->sheet('mySheet', function($sheet) use ($push) {
-                $sheet->fromArray($push);
+//        $push = array();
+//        foreach ($data as $a){
+//            array_push($push,$a);
+//        }
+        return Excel::create('line_item', function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data) {
+                $sheet->fromArray($data);
             });
         })->download('xlsx');
     }
