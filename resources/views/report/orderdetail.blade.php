@@ -26,7 +26,7 @@
             <div class="box">
                 @if($count>10)
                     <div class="box-body">
-                        <a href="{{ Route('report.download',$param) }}" class="btn btn-app" id="btn-upload"><i class="fa fa-cloud-upload"></i>Export Excel</a>
+                        <a href="{{ Route('report.download',[$param[0],$param[1],$param[2],$param[3]]) }}" class="btn btn-app" id="btn-upload"><i class="fa fa-cloud-upload"></i>Export Excel</a>
                     </div>
                 @endif
                 <div class="box-body">
