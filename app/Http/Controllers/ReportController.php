@@ -1160,9 +1160,9 @@ class ReportController extends Controller
         foreach ($data as $a){
             array_push($push,$a);
         }
-        return Excel::create('line_item', function($excel) use ($data) {
-            $excel->sheet('mySheet', function($sheet) use ($data) {
-                $sheet->fromArray($data);
+        return Excel::create('line_item', function($excel) use ($push) {
+            $excel->sheet('mySheet', function($sheet) use ($push) {
+                $sheet->fromArray($push);
             });
         })->download('xlsx');
     }
