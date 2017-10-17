@@ -24,6 +24,11 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
+                @if($count>10)
+                    <div class="box-body">
+                        <a href="{{ Route('report.download',$param) }}" class="btn btn-app" id="btn-upload"><i class="fa fa-cloud-upload"></i>Export Excel</a>
+                    </div>
+                @endif
                 <div class="box-body">
                     <h1>Order Detail</h1>
                     <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">

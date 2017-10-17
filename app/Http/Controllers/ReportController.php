@@ -1075,7 +1075,7 @@ class ReportController extends Controller
     }
 
     public function getorderdetail($status,$milestone,$report,$state){
-
+        $param = [$status,$milestone,$report,$state];
         if($state=='min'){
             $sql = "SELECT order_num, order_subtype, row_id, product, int_note, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC, SEGMENT, CC, SID_NUM, INT_ID 
                     FROM int_report 
@@ -1093,7 +1093,7 @@ class ReportController extends Controller
 
         $data = DB::select($sql);
         #var_dump($data);
-        return view('report.orderdetail',['data'=>$data]);
+        return view('report.orderdetail',['data'=>$data,'param'=>$param,'count'=>count($data)]);
     }
 
     public function getorderactiondetail(Request $request){
@@ -1137,6 +1137,29 @@ class ReportController extends Controller
         $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
         $lastupdate = $lastupdate->lastupdate !=null ? $lastupdate->lastupdate : 'Unknown';
         return view('report.quote',['lastupdate'=>$lastupdate]);
+    }
+
+    public function download($status,$milestone,$report,$state){
+        if($state=='min'){
+            $sql = "SELECT order_num, order_subtype, row_id, product, int_note, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC, SEGMENT, CC, SID_NUM, INT_ID 
+                    FROM int_report 
+                    WHERE li_status='$status' and 
+                    milestone='$milestone' and 
+                    int_note='$report' and timestampdiff(HOUR,  str_to_date(created_at,'%d-%b-%Y %H:%i:%s'),now()) <= 24;";
+        }
+        else{
+            $sql = "SELECT order_num, order_subtype, row_id, product, int_note, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC, SEGMENT, CC, SID_NUM, INT_ID  
+                    FROM int_report 
+                    WHERE li_status='$status' and 
+                    milestone='$milestone' and 
+                    int_note='$report' and timestampdiff(HOUR,  str_to_date(created_at,'%d-%b-%Y %H:%i:%s'),now()) > 24;";
+        }
+        $data = DB::select($sql)->toArray();
+        return Excel::create('line_item', function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        })->download('xlsx');
     }
 
 }
