@@ -1079,17 +1079,17 @@ class ReportController extends Controller
         $param = [$status,$milestone,$report,$state];
         if($state=='min'){
             $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t2.fuby, t2.fus_note
-                    FROM int_report t1 inner join int_report_notes t2 on t2.row_id = t1.ROW_ID
-                    WHERE li_status='$status' and 
-                    milestone='$milestone' and 
-                    int_note='$report' and timestampdiff(HOUR,  str_to_date(created_at,'%d-%b-%Y %H:%i:%s'),now()) <= 24;";
+                    FROM int_report t1 left join int_report_notes t2 on t1.row_id = t2.row_id
+                    WHERE t1.li_status='In Progress' and 
+                    t1.milestone='SYNC CUSTOMER COMPLETE' and 
+                    t1.int_note='TSQ' and timestampdiff(HOUR,  str_to_date(t1.created_at,'%d-%b-%Y %H:%i:%s'),now()) <= 24;";
         }
         else{
             $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t2.fuby, t2.fus_note
-                    FROM int_report t1 inner join int_report_notes t2 on t2.row_id = t1.ROW_ID
-                    WHERE li_status='$status' and 
-                    milestone='$milestone' and 
-                    int_note='$report' and timestampdiff(HOUR,  str_to_date(created_at,'%d-%b-%Y %H:%i:%s'),now()) <= 24;";
+            FROM int_report t1 left join int_report_notes t2 on t1.row_id = t2.row_id
+            WHERE t1.li_status='In Progress' and 
+            t1.milestone='SYNC CUSTOMER COMPLETE' and 
+            t1.int_note='TSQ' and timestampdiff(HOUR,  str_to_date(t1.created_at,'%d-%b-%Y %H:%i:%s'),now()) > 24;";
         }
 
         $data = DB::select($sql);
@@ -1142,18 +1142,19 @@ class ReportController extends Controller
     public function download($status,$milestone,$report,$state){
         if($state=='min'){
             $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t2.fuby, t2.fus_note
-                    FROM int_report t1 inner join int_report_notes t2 on t2.row_id = t1.ROW_ID
-                    WHERE li_status='$status' and 
-                    milestone='$milestone' and 
-                    int_note='$report' and timestampdiff(HOUR,  str_to_date(created_at,'%d-%b-%Y %H:%i:%s'),now()) <= 24;";
+                    FROM int_report t1 left join int_report_notes t2 on t1.row_id = t2.row_id
+                    WHERE t1.li_status='In Progress' and 
+                    t1.milestone='SYNC CUSTOMER COMPLETE' and 
+                    t1.int_note='TSQ' and timestampdiff(HOUR,  str_to_date(t1.created_at,'%d-%b-%Y %H:%i:%s'),now()) <= 24;";
         }
         else{
             $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t2.fuby, t2.fus_note
-                    FROM int_report t1 inner join int_report_notes t2 on t2.row_id = t1.ROW_ID
-                    WHERE li_status='$status' and 
-                    milestone='$milestone' and 
-                    int_note='$report' and timestampdiff(HOUR,  str_to_date(created_at,'%d-%b-%Y %H:%i:%s'),now()) <= 24;";
+            FROM int_report t1 left join int_report_notes t2 on t1.row_id = t2.row_id
+            WHERE t1.li_status='In Progress' and 
+            t1.milestone='SYNC CUSTOMER COMPLETE' and 
+            t1.int_note='TSQ' and timestampdiff(HOUR,  str_to_date(t1.created_at,'%d-%b-%Y %H:%i:%s'),now()) > 24;";
         }
+        
         $data = DB::select($sql);
         $data = json_decode( json_encode($data), true);
         return Excel::create('line_item', function($excel) use ($data) {
