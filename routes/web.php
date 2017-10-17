@@ -125,7 +125,7 @@ Route::group(['prefix' => 'report'], function () {
         'uses'      => 'ReportController@storedetailaction'
     ]);
 
-    Route::get('download', [
+    Route::get('download/{status}/{milestone}/{report}/{state}', [
         'as'        => 'report.download',
         'uses'      => 'ReportController@download'
     ]);
