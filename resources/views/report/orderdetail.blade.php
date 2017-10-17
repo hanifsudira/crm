@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                @if($count>10)
+                @if($count>0)
                     <div class="box-body">
                         <a href="{{ Route('report.download',$param) }}" class="btn btn-app" id="btn-upload"><i class="fa fa-cloud-upload"></i>Export Excel</a>
                     </div>
