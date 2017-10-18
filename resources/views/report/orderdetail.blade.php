@@ -47,7 +47,7 @@
                             <th>TSQ_STATE</th>
                             <th>TSQ_DESC</th>
                             <th>DELIVER_STATE</th>
-                            <th></th>DELIVER_DESC</th>
+                            <th>DELIVER_DESC</th>
                             <th>Follow Up By</th>
                             <th>Action Note</th>
                             <th>ACTION</th>

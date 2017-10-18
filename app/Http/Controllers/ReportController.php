@@ -1166,6 +1166,14 @@ class ReportController extends Controller
 
     public function orderreport(){
         $query = DB::select("select count(tanggal) as newcount, tanggal as newtanggal from (select str_to_date(created_at,'%d-%b-%Y') as tanggal, ORDER_NUM as orderid from int_report group by ORDER_NUM) as t group by tanggal desc limit 10");
-        return view('report.orderreport',['data'=>$query]);
+        $command    = "/usr/bin/python /var/www/html/crm/public/scripts/getrt.py";
+        $output     = shell_exec($command);
+        $output     = json_decode($output);
+        $lead       = $output[0];
+        $quote      = $output[1];
+        $agree      = $output[2];
+        $order      = $output[3];
+        //return view('report.review',['lead'=>$lead,'quote'=>$quote,'agree'=>$agree,'order'=>$order]);
+        return view('report.orderreport',['data'=>$query,'lead'=>$lead,'quote'=>$quote,'agree'=>$agree,'order'=>$order]);
     }
 }
