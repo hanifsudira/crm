@@ -1078,14 +1078,14 @@ class ReportController extends Controller
     public function getorderdetail($status,$milestone,$report,$state){
         $param = [$status,$milestone,$report,$state];
         if($state=='min'){
-            $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t2.fuby, t2.fus_note
+            $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t1.TSQ_STATE, t1.TSQ_DESC, t1.DELIVER_STATE, t1.DELIVER_DESC, t2.fuby, t2.fus_note
                     FROM int_report t1 left join int_report_notes t2 on t1.row_id = t2.row_id
                     WHERE t1.li_status='$status' and 
                     t1.milestone='$milestone' and 
                     t1.int_note='$report' and timestampdiff(HOUR,  str_to_date(t1.created_at,'%d-%b-%Y %H:%i:%s'),now()) <= 24;";
         }
         else{
-            $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t2.fuby, t2.fus_note
+            $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t1.TSQ_STATE, t1.TSQ_DESC, t1.DELIVER_STATE, t1.DELIVER_DESC, t2.fuby, t2.fus_note
             FROM int_report t1 left join int_report_notes t2 on t1.row_id = t2.row_id
             WHERE t1.li_status='$status' and 
             t1.milestone='$milestone' and 
@@ -1141,14 +1141,14 @@ class ReportController extends Controller
 
     public function download($status,$milestone,$report,$state){
         if($state=='min'){
-            $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t2.fuby, t2.fus_note
+            $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t1.TSQ_STATE, t1.TSQ_DESC, t1.DELIVER_STATE, t1.DELIVER_DESC, t2.fuby, t2.fus_note
                     FROM int_report t1 left join int_report_notes t2 on t1.row_id = t2.row_id
                     WHERE t1.li_status='$status' and 
                     t1.milestone='$milestone' and 
                     t1.int_note='$report' and timestampdiff(HOUR,  str_to_date(t1.created_at,'%d-%b-%Y %H:%i:%s'),now()) <= 24;";
         }
         else{
-            $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t2.fuby, t2.fus_note
+            $sql = "SELECT t1.order_num, t1.order_subtype, t1.row_id, t1.product, t1.int_note, t1.SEGMENT, t1.CC, t1.SID_NUM, t1.INT_ID, t1.TSQ_STATE, t1.TSQ_DESC, t1.DELIVER_STATE, t1.DELIVER_DESC, t2.fuby, t2.fus_note
             FROM int_report t1 left join int_report_notes t2 on t1.row_id = t2.row_id
             WHERE t1.li_status='$status' and 
             t1.milestone='$milestone' and 

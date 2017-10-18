@@ -44,6 +44,10 @@
                             <th>SEGMENT</th>
                             <th>CC</th>
                             <th>SID_NUM</th>
+                            <th>TSQ_STATE</th>
+                            <th>TSQ_DESC</th>
+                            <th>DELIVER_STATE</th>
+                            <th></th>DELIVER_DESC</th>
                             <th>Follow Up By</th>
                             <th>Action Note</th>
                             <th>ACTION</th>
@@ -62,6 +66,10 @@
                                 <td>{{$d->SEGMENT}}</td>
                                 <td>{{$d->CC}}</td>
                                 <td>{{$d->SID_NUM}}</td>
+                                <td>{{$d->TSQ_STATE}}</td>
+                                <td>{{$d->TSQ_DESC}}</td>
+                                <td>{{$d->DELIVER_STATE}}</td>
+                                <td>{{$d->DELIVER_DESC}}</td>
                                 <td>{{$d->fuby}}</td>
                                 <td>{{$d->fus_note}}</td>
                                 <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#actionModal"  data-ordernum="{{$d->order_num}}" data-rowid="{{$d->row_id}}">Action</button></td>
