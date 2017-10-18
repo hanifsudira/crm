@@ -26,8 +26,8 @@
                             <div class="col-lg-1 col-md-6 col-sm-6">
                                 <div class="card card-stats">
                                     <div class="card-content">
-                                        <p class="category">{{$d[0]}},{{$d[1]}}</p>
-                                        <h1 class="title">{{$d[2]}}</h1>
+                                        <p class="category">{{$d->newtanggal}}</p>
+                                        <h1 class="title">{{$d->newcount}}</h1>
                                     </div>
                                 </div>
                             </div>
