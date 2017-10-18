@@ -129,6 +129,11 @@ Route::group(['prefix' => 'report'], function () {
         'as'        => 'report.download',
         'uses'      => 'ReportController@download'
     ]);
+
+    Route::get('orderreport', [
+        'as'        => 'report.orderreport',
+        'uses'      => 'ReportController@orderreport'
+    ]);
 });
 
 Route::group(['prefix' => 'ora'], function () {

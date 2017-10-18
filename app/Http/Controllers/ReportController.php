@@ -1164,4 +1164,14 @@ class ReportController extends Controller
         })->download('xlsx');
     }
 
+    public function orderreport(){
+        $query = DB::select('select count(tanggal) as newcount, tanggal as newtanggal from (select str_to_date(created_at,\'%d-%b-%Y\') as tanggal, ORDER_NUM as orderid from int_report group by ORDER_NUM) as t group by tanggal desc limit 10;');
+        $return = array();
+        foreach ($query as $d){
+            $datetime = DateTime::createFromFormat('%Y-%b-%d', $d->newtanggal);
+            $temp = [$datetime->format('D'),$d->newtanggal,$d->newcount];
+            array_push($return,$temp);
+        }
+        return view('report.orderreport',['data'=>$return]);
+    }
 }
