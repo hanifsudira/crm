@@ -19,15 +19,15 @@ cur.execute(sqltruncate)
 
 now = str(datetime.datetime.now())
 for i,data in enumerate(result):
-	AGREE_NUM 		= str(data[0]), 
-	AGREE_NAME		= str(data[1]), 
-	REV 			= str(data[2]), 
-	STATUS 			= str(data[3]), 
-	TYPE			= str(data[4]), 
-	START_DATE 		= str(data[5]), 
-	END_DATE 		= str(data[6]), 
-	NUM_PARENT 		= str(data[7]), 
-	REV_PARENT 		= str(data[8]), 
+	AGREE_NUM 		= str(data[0]) 
+	AGREE_NAME		= str(data[1]) 
+	REV 			= str(data[2]) 
+	STATUS 			= str(data[3]) 
+	TYPE			= str(data[4]) 
+	START_DATE 		= str(data[5]) 
+	END_DATE 		= str(data[6]) 
+	NUM_PARENT 		= str(data[7]) 
+	REV_PARENT 		= str(data[8]) 
 	SEGMEN 			= str(data[9])
 	sql 			= "insert into segment (AGREE_NUM, AGREE_NAME, REV, STATUS, TYPE, START_DATE, END_DATE, NUM_PARENT, REV_PARENT, SEGMEN, lastupdate) values('"+AGREE_NUM+"','"+AGREE_NAME+"','"+REV+"','"+STATUS+"','"+TYPE+"','"+START_DATE+"','"+END_DATE+"','"+NUM_PARENT+"','"+REV_PARENT+"','"+SEGMEN+"','"+now+"')"
 	cur.execute(sql)
