@@ -1200,6 +1200,7 @@ class ReportController extends Controller
                                     count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=12 then 1 end) des
                             from segment where END_DATE!='None' and SEGMEN!='None' and year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=year(curdate()) group by SEGMEN;");
         $year = DB::select("select distinct year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s')) as tahun FROM segment where END_DATE!='None' order by tahun;");
+        $nowyear = date('Y');
         $temp = array();
         $temp[0]=0;
         $temp[1]=0;
@@ -1227,7 +1228,7 @@ class ReportController extends Controller
             $temp[10]+=$item->nov;
             $temp[11]+=$item->des;
         }
-        return view('report.segmentpivot',['data'=>$query,'count'=>$temp,'year'=>$year]);
+        return view('report.segmentpivot',['data'=>$query,'count'=>$temp,'year'=>$year,'nowyear'=>$nowyear]);
     }
 
     public function segmentpivotchange(Request $request){
@@ -1273,7 +1274,7 @@ class ReportController extends Controller
             $temp[10]+=$item->nov;
             $temp[11]+=$item->des;
         }
-        return view('report.segmentpivotajax',['data'=>$query,'count'=>$temp]);
+        return view('report.segmentpivotajax',['data'=>$query,'count'=>$temp,'nowyear'=>$tahun]);
     }
 
     public function segmentdetail($segment,$bulan,$tahun){

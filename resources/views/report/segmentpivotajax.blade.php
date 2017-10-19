@@ -24,18 +24,18 @@
     @foreach($data as $d)
         <tr>
             <td>{{$d->SEGMEN}}</td>
-            <td align="right">{{$d->jan}}</td>
-            <td align="right">{{$d->feb}}</td>
-            <td align="right">{{$d->mar}}</td>
-            <td align="right">{{$d->apr}}</td>
-            <td align="right">{{$d->mei}}</td>
-            <td align="right">{{$d->jun}}</td>
-            <td align="right">{{$d->jul}}</td>
-            <td align="right">{{$d->agu}}</td>
-            <td align="right">{{$d->sep}}</td>
-            <td align="right">{{$d->okt}}</td>
-            <td align="right">{{$d->nov}}</td>
-            <td align="right">{{$d->des}}</td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'01',$nowyear])}}" target="_blank">{{$d->jan}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'02',$nowyear])}}" target="_blank">{{$d->feb}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'03',$nowyear])}}" target="_blank">{{$d->mar}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'04',$nowyear])}}" target="_blank">{{$d->apr}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'05',$nowyear])}}" target="_blank">{{$d->mei}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'06',$nowyear])}}" target="_blank">{{$d->jun}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'07',$nowyear])}}" target="_blank">{{$d->jul}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'08',$nowyear])}}" target="_blank">{{$d->agu}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'09',$nowyear])}}" target="_blank">{{$d->sep}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'10',$nowyear])}}" target="_blank">{{$d->okt}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'11',$nowyear])}}" target="_blank">{{$d->nov}}</a></td>
+            <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'12',$nowyear])}}" target="_blank">{{$d->des}}</a></td>
             <td align="right">{{$d->jan+$d->feb+$d->mar+$d->apr+$d->mei+$d->jun+$d->jul+$d->agu+$d->sep+$d->okt+$d->nov+$d->des}}</td>
         </tr>
     @endforeach
