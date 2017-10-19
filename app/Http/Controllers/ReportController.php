@@ -1229,4 +1229,50 @@ class ReportController extends Controller
         }
         return view('report.segmentpivot',['data'=>$query,'count'=>$temp,'year'=>$year]);
     }
+
+    public function segmentpivotchange(Request $request){
+        $tahun = $request->tahun;
+        $query = DB::select("select SEGMEN, 
+                                    count(case when year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=01 then 1 end) jan,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=02 then 1 end) feb,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=03 then 1 end) mar,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=04 then 1 end) apr,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=05 then 1 end) mei,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=06 then 1 end) jun,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=07 then 1 end) jul,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=08 then 1 end) agu,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=09 then 1 end) sep,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=10 then 1 end) okt,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=11 then 1 end) nov,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=12 then 1 end) des
+                            from segment where END_DATE!='None' and SEGMEN!='None' and year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun' group by SEGMEN;");
+        $temp = array();
+        $temp[0]=0;
+        $temp[1]=0;
+        $temp[2]=0;
+        $temp[3]=0;
+        $temp[4]=0;
+        $temp[5]=0;
+        $temp[6]=0;
+        $temp[7]=0;
+        $temp[8]=0;
+        $temp[9]=0;
+        $temp[10]=0;
+        $temp[11]=0;
+        foreach ($query as $item) {
+            $temp[0]+=$item->jan;
+            $temp[1]+=$item->feb;
+            $temp[2]+=$item->mar;
+            $temp[3]+=$item->apr;
+            $temp[4]+=$item->mei;
+            $temp[5]+=$item->jun;
+            $temp[6]+=$item->jul;
+            $temp[7]+=$item->agu;
+            $temp[8]+=$item->sep;
+            $temp[9]+=$item->okt;
+            $temp[10]+=$item->nov;
+            $temp[11]+=$item->des;
+        }
+        return view('report.segmentpivotajax',['data'=>$query,'count'=>$temp]);
+    }
 }

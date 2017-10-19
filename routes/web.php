@@ -149,6 +149,10 @@ Route::group(['prefix' => 'report'], function () {
         'as'        => 'report.segmentpivot',
         'uses'      => 'ReportController@segmentpivot'
     ]);
+    Route::get('segmentpivotchange', [
+        'as'        => 'report.segmentpivotchange',
+        'uses'      => 'ReportController@segmentpivotchange'
+    ]);
 });
 
 Route::group(['prefix' => 'ora'], function () {
