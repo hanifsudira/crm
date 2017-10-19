@@ -18,7 +18,7 @@
                             <thead>
                             <tr>
                                 <th rowspan="2">SEGMEN</th>
-                                <th colspan="13">Jumlah ID-AGREE</th>
+                                <th colspan="13" style="text-align: center;">Jumlah ID-AGREE</th>
                             </tr>
                             <tr>
                                 <th>Januari</th>
