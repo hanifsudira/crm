@@ -18,6 +18,24 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="bos-body">
+                            <div class="form-group">
+                                <label>Pilih Tahun</label>
+                                <select class="form-control" disabled>
+                                    @foreach($year as $y)
+                                        <option value="{{$y->tahun}}">{{$y->tahun}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-body">
@@ -63,6 +81,7 @@
                                 </tr>
                             @endforeach
                             <tr>
+                                <td></td>
                                 <td align="right">{{$count[0]}}</td>
                                 <td align="right">{{$count[1]}}</td>
                                 <td align="right">{{$count[2]}}</td>
@@ -75,6 +94,7 @@
                                 <td align="right">{{$count[9]}}</td>
                                 <td align="right">{{$count[10]}}</td>
                                 <td align="right">{{$count[11]}}</td>
+                                <td></td>
                             </tr>
                             </tbody>
 
