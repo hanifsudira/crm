@@ -6,7 +6,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li>Report</li>
-            <li class="active">Integration Report</li>
+            <li class="active">Segment Pivot Report</li>
         </ol>
     </section>
     <section class="content">
@@ -47,34 +47,34 @@
                             @foreach($data as $d)
                                 <tr>
                                     <td>{{$d->SEGMEN}}</td>
-                                    <td>{{$d->jan}}</td>
-                                    <td>{{$d->feb}}</td>
-                                    <td>{{$d->mar}}</td>
-                                    <td>{{$d->apr}}</td>
-                                    <td>{{$d->mei}}</td>
-                                    <td>{{$d->jun}}</td>
-                                    <td>{{$d->jul}}</td>
-                                    <td>{{$d->agu}}</td>
-                                    <td>{{$d->sep}}</td>
-                                    <td>{{$d->okt}}</td>
-                                    <td>{{$d->nov}}</td>
-                                    <td>{{$d->des}}</td>
-                                    <td>{{$d->jan+$d->feb+$d->mar+$d->apr+$d->mei+$d->jun+$d->jul+$d->agu+$d->sep+$d->okt+$d->nov+$d->des}}</td>
+                                    <td align="right">{{$d->jan}}</td>
+                                    <td align="right">{{$d->feb}}</td>
+                                    <td align="right">{{$d->mar}}</td>
+                                    <td align="right">{{$d->apr}}</td>
+                                    <td align="right">{{$d->mei}}</td>
+                                    <td align="right">{{$d->jun}}</td>
+                                    <td align="right">{{$d->jul}}</td>
+                                    <td align="right">{{$d->agu}}</td>
+                                    <td align="right">{{$d->sep}}</td>
+                                    <td align="right">{{$d->okt}}</td>
+                                    <td align="right">{{$d->nov}}</td>
+                                    <td align="right">{{$d->des}}</td>
+                                    <td align="right">{{$d->jan+$d->feb+$d->mar+$d->apr+$d->mei+$d->jun+$d->jul+$d->agu+$d->sep+$d->okt+$d->nov+$d->des}}</td>
                                 </tr>
                             @endforeach
                             <tr>
-                                <td>{{$count[0]}}</td>
-                                <td>{{$count[1]}}</td>
-                                <td>{{$count[2]}}</td>
-                                <td>{{$count[3]}}</td>
-                                <td>{{$count[4]}}</td>
-                                <td>{{$count[5]}}</td>
-                                <td>{{$count[6]}}</td>
-                                <td>{{$count[7]}}</td>
-                                <td>{{$count[8]}}</td>
-                                <td>{{$count[9]}}</td>
-                                <td>{{$count[10]}}</td>
-                                <td>{{$count[11]}}</td>
+                                <td align="right">{{$count[0]}}</td>
+                                <td align="right">{{$count[1]}}</td>
+                                <td align="right">{{$count[2]}}</td>
+                                <td align="right">{{$count[3]}}</td>
+                                <td align="right">{{$count[4]}}</td>
+                                <td align="right">{{$count[5]}}</td>
+                                <td align="right">{{$count[6]}}</td>
+                                <td align="right">{{$count[7]}}</td>
+                                <td align="right">{{$count[8]}}</td>
+                                <td align="right">{{$count[9]}}</td>
+                                <td align="right">{{$count[10]}}</td>
+                                <td align="right">{{$count[11]}}</td>
                             </tr>
                             </tbody>
 
