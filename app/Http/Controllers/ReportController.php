@@ -1186,7 +1186,7 @@ class ReportController extends Controller
 
     public function segmentpivot(){
         $query = DB::select("select SEGMEN, 
-                                    count(case when year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=01 then 1 end) jan,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=01 then 1 end) jan,
                                     count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=02 then 1 end) feb,
                                     count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=03 then 1 end) mar,
                                     count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=04 then 1 end) apr,
@@ -1233,7 +1233,7 @@ class ReportController extends Controller
     public function segmentpivotchange(Request $request){
         $tahun = $request->tahun;
         $query = DB::select("select SEGMEN, 
-                                    count(case when year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=01 then 1 end) jan,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=01 then 1 end) jan,
                                     count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=02 then 1 end) feb,
                                     count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=03 then 1 end) mar,
                                     count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=04 then 1 end) apr,
@@ -1275,4 +1275,29 @@ class ReportController extends Controller
         }
         return view('report.segmentpivotajax',['data'=>$query,'count'=>$temp]);
     }
+
+    public function segmentdetail($segment,$bulan,$tahun){
+        $param = [$segment,$bulan,$tahun];
+        $sql = "select * from segment where 
+                SEGMEN='$segment' and 
+                month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$bulan' and 
+                year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun'";
+        $data = DB::select($sql);
+        return view('report.segmentdetail',['data'=>$data,'param'=>$param,'count'=>count($data)]);
+    }
+
+    public function downloadsegment($segment,$bulan,$tahun){
+        $sql = "select * from segment where 
+                SEGMEN='$segment' and 
+                month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$bulan' and 
+                year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun'";
+        $data = DB::select($sql);;
+        $data = json_decode( json_encode($data), true);
+        return Excel::create('segment_detail', function($excel) use ($data) {
+            $excel->sheet('mySheet', function($sheet) use ($data) {
+                $sheet->fromArray($data);
+            });
+        })->download('xlsx');
+    }
+
 }
