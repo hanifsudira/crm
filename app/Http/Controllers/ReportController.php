@@ -1185,6 +1185,21 @@ class ReportController extends Controller
     }
 
     public function segmentpivot(){
-
+        $query = DB::select("select SEGMEN, 
+                                    count(case when year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=01 then 1 end) jan,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=02 then 1 end) feb,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=03 then 1 end) mar,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=04 then 1 end) apr,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=05 then 1 end) mei,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=06 then 1 end) jun,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=07 then 1 end) jul,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=08 then 1 end) agu,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=09 then 1 end) sep,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=10 then 1 end) okt,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=11 then 1 end) nov,
+                                    count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=12 then 1 end) des
+                            from segment where END_DATE!='None' and SEGMEN!='None' and year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=year(curdate()) group by SEGMEN;");
+        var_dump($query);
+        #return view('report.segmentpivot',['data'=>$query]);
     }
 }
