@@ -2,7 +2,7 @@
 @section('title', 'Integrasi Report')
 @section('content')
     <section class="content-header">
-        <h1>All Report</h1>
+        <h1>Segment Pivot</h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li>Report</li>
@@ -10,6 +10,13 @@
         </ol>
     </section>
     <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-header">
+                    <h1 class="box-title">Tahun : <a>{{date('Y')}}</a></h1>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
@@ -55,7 +62,22 @@
                                     <td>{{$d->jan+$d->feb+$d->mar+$d->apr+$d->mei+$d->jun+$d->jul+$d->agu+$d->sep+$d->okt+$d->nov+$d->des}}</td>
                                 </tr>
                             @endforeach
+                            <tr>
+                                <td>{{$count[0]}}</td>
+                                <td>{{$count[1]}}</td>
+                                <td>{{$count[2]}}</td>
+                                <td>{{$count[3]}}</td>
+                                <td>{{$count[4]}}</td>
+                                <td>{{$count[5]}}</td>
+                                <td>{{$count[6]}}</td>
+                                <td>{{$count[7]}}</td>
+                                <td>{{$count[8]}}</td>
+                                <td>{{$count[9]}}</td>
+                                <td>{{$count[10]}}</td>
+                                <td>{{$count[11]}}</td>
+                            </tr>
                             </tbody>
+
                         </table>
                     </div>
                 </div>
