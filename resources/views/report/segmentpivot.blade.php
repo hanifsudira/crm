@@ -138,7 +138,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     type    : 'POST',
-                    url     : '{{ route('ora.getcheckorder2') }}',
+                    url     : '{{ route('report.segmentpivotchange') }}',
                     data    : {tahun: tahun},
                     succes  : function () {
                         console.log('Sukses');
