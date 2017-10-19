@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>View</title>
+    <title>Segment</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -30,10 +30,11 @@
                     </div>
                 @endif
                 <div class="box-body">
-                    <h1>Order Detail</h1>
+                    <h1>Segment Detail</h1>
                     <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
                         <thead>
                         <tr>
+                            <th>No</th>
                             <th>AGREE_NUM</th>
                             <th>AGREE_NAME</th>
                             <th>REV</th>
