@@ -18,34 +18,20 @@
             </div>
         </div>
         <div class="row">
-            <div class="box">
-                <div class="box-body">
-                    <form role="form">
-                        <div class="form-group">
-                            <label>Pilih Tahun</label>
-                            <select class="form-control">
-                                @foreach($year as $y)
-                                    <option value="{{$y->tahun}}">{{$y->tahun}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box ">
-                    <form role="form">
-                        <div class="form-group">
-                            <label>Pilih Tahun</label>
-                            <select class="form-control" disabled>
-                                @foreach($year as $y)
-                                    <option value="{{$y->tahun}}">{{$y->tahun}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </form>
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Pilih Tahun</label>
+                                <select class="form-control">
+                                    @foreach($year as $y)
+                                        <option value="{{$y->tahun}}">{{$y->tahun}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
