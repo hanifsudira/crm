@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Oracexcel;
+use App\Segment;
 use Excel;
-use function MongoDB\BSON\fromJSON;
+use Yajra\Datatables\Datatables;
 use phpDocumentor\Reflection\Types\Null_;
 
 class ReportController extends Controller
@@ -1173,7 +1173,18 @@ class ReportController extends Controller
         $quote      = $output[1];
         $agree      = $output[2];
         $order      = $output[3];
-        //return view('report.review',['lead'=>$lead,'quote'=>$quote,'agree'=>$agree,'order'=>$order]);
         return view('report.orderreport',['data'=>$query,'lead'=>$lead,'quote'=>$quote,'agree'=>$agree,'order'=>$order]);
+    }
+
+    public function segment(){
+        return view('report.segment');
+    }
+
+    public function getsegmentdata(){
+        return Datatables::of(Segment::all())->make(true);
+    }
+
+    public function segmentpivot(){
+
     }
 }

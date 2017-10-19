@@ -134,6 +134,21 @@ Route::group(['prefix' => 'report'], function () {
         'as'        => 'report.orderreport',
         'uses'      => 'ReportController@orderreport'
     ]);
+
+    Route::get('segment', [
+        'as'        => 'report.segment',
+        'uses'      => 'ReportController@segment'
+    ]);
+
+    Route::get('getsegmentdata', [
+        'as'        => 'report.getsegmentdata',
+        'uses'      => 'ReportController@getsegmentdata'
+    ]);
+
+    Route::get('segmentpivot', [
+        'as'        => 'report.segmentpivot',
+        'uses'      => 'ReportController@segmentpivot'
+    ]);
 });
 
 Route::group(['prefix' => 'ora'], function () {
