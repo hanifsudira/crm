@@ -1287,7 +1287,7 @@ class ReportController extends Controller
         return view('report.segmentdetail',['data'=>$data,'param'=>$param,'count'=>count($data)]);
     }
 
-    public function downloadsegment($segment,$bulan,$tahun){
+    public function downloadsegmentdetail($segment,$bulan,$tahun){
         $sql = "select * from segment where 
                 SEGMEN='$segment' and 
                 month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$bulan' and 
