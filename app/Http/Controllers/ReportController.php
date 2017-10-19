@@ -1199,7 +1199,6 @@ class ReportController extends Controller
                                     count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=11 then 1 end) nov,
                                     count(case when month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=12 then 1 end) des
                             from segment where END_DATE!='None' and SEGMEN!='None' and year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))=year(curdate()) group by SEGMEN;");
-        var_dump($query);
-        #return view('report.segmentpivot',['data'=>$query]);
+        return view('report.segmentpivot',['data'=>$query]);
     }
 }
