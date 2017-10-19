@@ -37,22 +37,24 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $d)
-                                    <tr>{{$d->SEGMEN}}</tr>
-                                    <tr>{{$d->jan}}</tr>
-                                    <tr>{{$d->feb}}</tr>
-                                    <tr>{{$d->mar}}</tr>
-                                    <tr>{{$d->apr}}</tr>
-                                    <tr>{{$d->mei}}</tr>
-                                    <tr>{{$d->jun}}</tr>
-                                    <tr>{{$d->jul}}</tr>
-                                    <tr>{{$d->agu}}</tr>
-                                    <tr>{{$d->sep}}</tr>
-                                    <tr>{{$d->okt}}</tr>
-                                    <tr>{{$d->nov}}</tr>
-                                    <tr>{{$d->des}}</tr>
-                                    <tr>{{$d->jan+$d->feb+$d->mar+$d->apr+$d->mei+$d->jun+$d->jul+$d->agu+$d->sep+$d->okt+$d->nov+$d->des}}</tr>
-                                @endforeach
+                            @foreach($data as $d)
+                                <tr>
+                                    <td>{{$d->SEGMEN}}</td>
+                                    <td>{{$d->jan}}</td>
+                                    <td>{{$d->feb}}</td>
+                                    <td>{{$d->mar}}</td>
+                                    <td>{{$d->apr}}</td>
+                                    <td>{{$d->mei}}</td>
+                                    <td>{{$d->jun}}</td>
+                                    <td>{{$d->jul}}</td>
+                                    <td>{{$d->agu}}</td>
+                                    <td>{{$d->sep}}</td>
+                                    <td>{{$d->okt}}</td>
+                                    <td>{{$d->nov}}</td>
+                                    <td>{{$d->des}}</td>
+                                    <td>{{$d->jan+$d->feb+$d->mar+$d->apr+$d->mei+$d->jun+$d->jul+$d->agu+$d->sep+$d->okt+$d->nov+$d->des}}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
