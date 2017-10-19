@@ -1,5 +1,5 @@
 @extends('dashboard.app')
-@section('title', 'Integrasi Report')
+@section('title', 'Segment Report')
 @section('content')
     <section class="content-header">
         <h1>Segment Pivot</h1>
