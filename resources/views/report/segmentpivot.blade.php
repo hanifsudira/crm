@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="box-header">
-                    <h1 class="box-title">Tahun : <a>{{date('Y')}}</a></h1>
+                    <h1 id="changetext" class="box-title">Tahun : <a>{{date('Y')}}</a></h1>
                 </div>
             </div>
         </div>
@@ -132,6 +132,7 @@
         $(document).ready(function() {
             $('select#tahun').change(function(){
                 var tahun = $('select#tahun').val();
+                $("#changetext").text("Tahun : "+tahun);
                 $('#loading-image').show();
                 $.ajax({
                     headers: {
