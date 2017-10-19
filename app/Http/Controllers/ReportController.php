@@ -1221,7 +1221,7 @@ class ReportController extends Controller
             $temp[5]+=$item->jun;
             $temp[6]+=$item->jul;
             $temp[7]+=$item->agu;
-            $temp[8]+=$item->sept;
+            $temp[8]+=$item->sep;
             $temp[9]+=$item->okt;
             $temp[10]+=$item->nov;
             $temp[11]+=$item->des;
