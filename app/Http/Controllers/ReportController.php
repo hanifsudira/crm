@@ -1228,7 +1228,8 @@ class ReportController extends Controller
             $temp[10]+=$item->nov;
             $temp[11]+=$item->des;
         }
-        return view('report.segmentpivot',['data'=>$query,'count'=>$temp,'year'=>$year,'nowyear'=>$nowyear]);
+        $grandtotal = $temp[0]+$temp[1]+$temp[2]+$temp[3]+$temp[4]+$temp[5]+$temp[6]+$temp[7]+$temp[8]+$temp[9]+$temp[10]+$temp[11];
+        return view('report.segmentpivot',['data'=>$query,'count'=>$temp,'year'=>$year,'nowyear'=>$nowyear,'grandtotal'=>$grandtotal]);
     }
 
     public function segmentpivotchange(Request $request){
@@ -1274,7 +1275,8 @@ class ReportController extends Controller
             $temp[10]+=$item->nov;
             $temp[11]+=$item->des;
         }
-        return view('report.segmentpivotajax',['data'=>$query,'count'=>$temp,'nowyear'=>$tahun]);
+        $grandtotal = $temp[0]+$temp[1]+$temp[2]+$temp[3]+$temp[4]+$temp[5]+$temp[6]+$temp[7]+$temp[8]+$temp[9]+$temp[10]+$temp[11];
+        return view('report.segmentpivotajax',['data'=>$query,'count'=>$temp,'nowyear'=>$tahun,'grandtotal'=>$grandtotal]);
     }
 
     public function segmentdetail($segment,$bulan,$tahun){

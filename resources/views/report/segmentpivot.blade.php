@@ -95,7 +95,7 @@
                                     <td align="right">{{$count[9]}}</td>
                                     <td align="right">{{$count[10]}}</td>
                                     <td align="right">{{$count[11]}}</td>
-                                    <td></td>
+                                    <td align="right">{{$grandtotal}}</td>
                                 </tr>
                                 </tbody>
 
