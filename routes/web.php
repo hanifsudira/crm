@@ -190,15 +190,15 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@order'
     ]);
 
-    Route::get('checkorder', [
-        'as'        => 'ora.checkorder',
-        'uses'      => 'OraController@checkorder'
-    ]);
-
-    Route::get('checkorder2', [
-        'as'        => 'ora.checkorder2',
-        'uses'      => 'OraController@checkorder2'
-    ]);
+//    Route::get('checkorder', [
+//        'as'        => 'ora.checkorder',
+//        'uses'      => 'OraController@checkorder'
+//    ]);
+//
+//    Route::get('checkorder2', [
+//        'as'        => 'ora.checkorder2',
+//        'uses'      => 'OraController@checkorder2'
+//    ]);
 
     Route::get('checkproduct', [
         'as'        => 'ora.checkproduct',
