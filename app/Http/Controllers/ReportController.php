@@ -1294,7 +1294,7 @@ class ReportController extends Controller
         $agreenum = Crypt::encrypt($agreenum);
         $sql = "select ORDER_NUM,PRODUCT,SID_NUM,CC,AM_PRIMARY from segment_line where agree_num='$agreenum'";
         $data = DB::select($sql);
-        return view('report.segmenlinedetail',['data'=>$data,'agree'=>$agreenum]);
+        return view('report.segmentlinedetail',['data'=>$data,'agree'=>$agreenum]);
     }
 
     public function downloadsegmentdetail($segment,$bulan,$tahun){
