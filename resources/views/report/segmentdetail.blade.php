@@ -85,9 +85,11 @@
                             <th>TYPE</th>
                             <th>START_DATE</th>
                             <th>END_DATE</th>
-                            <th>NUM_PARENT</th>
-                            <th>REV_PARENT</th>
+                            <th>PARENT</th>
+                            <th>PARENT_REV</th>
                             <th>SEGMEN</th>
+                            <th>CC</th>
+                            <th>AM_PRIMARY</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -104,6 +106,8 @@
                                 <td>{{$d->NUM_PARENT}}</td>
                                 <td>{{$d->REV_PARENT}}</td>
                                 <td>{{$d->SEGMEN}}</td>
+                                <td>{{$d->CC}}</td>
+                                <td>{{$d->AM_PRIMARY}}</td>
                             </tr>
                         @endforeach
                         </tbody>
