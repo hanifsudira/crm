@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/plugins/alertifyjs/css/alertify.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('assets/plugins/alertifyjs/css/themes/bootstrap.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+        tbody {
+            overflow: auto;    /* Trigger vertical scroll    */
+        }
+    </style>
 </head>
 <body class="hold-transition login-page">
 <div class="tab-pane" id="summary">
