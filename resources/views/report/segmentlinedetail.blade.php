@@ -76,8 +76,6 @@
                             <td>ORDER_NUM</td>
                             <td>PRODUCT</td>
                             <td>SID_NUM</td>
-                            <td>CC</td>
-                            <td>AM_PRIMARY</td>
                         </tr>
                         </thead>
                         <tbody>
