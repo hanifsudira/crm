@@ -7,6 +7,7 @@ use App\Segment;
 use Excel;
 use Yajra\Datatables\Datatables;
 use phpDocumentor\Reflection\Types\Null_;
+use Illuminate\Support\Facades\Crypt;
 
 class ReportController extends Controller
 {
@@ -1290,7 +1291,7 @@ class ReportController extends Controller
     }
 
     public function segmentlinedetail($agreenum){
-        $agreenum = openssl_decrypt($agreenum);
+        $agreenum = Crypt::encrypt($agreenum);
         $sql = "select ORDER_NUM,PRODUCT,SID_NUM,CC,AM_PRIMARY from segment_line where agree_num='$agreenum'";
         $data = DB::select($sql);
         return view('report.segmenlinedetail',['data'=>$data,'agree'=>$agreenum]);
