@@ -1290,6 +1290,7 @@ class ReportController extends Controller
     }
 
     public function segmentlinedetail($agreenum){
+        $agreenum = openssl_decrypt($agreenum);
         $sql = "select ORDER_NUM,PRODUCT,SID_NUM,CC,AM_PRIMARY from segment_line where agree_num='$agreenum'";
         $data = DB::select($sql);
         return view('report.segmenlinedetail',['data'=>$data,'agree'=>$agreenum]);

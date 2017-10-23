@@ -94,7 +94,7 @@
                         @foreach($data as $i => $d)
                             <tr>
                                 <td>{{$i+1}}</td>
-                                <td><a href="{{route('report.segmentlinedetail',[$d->AGREE_NUM])}}" target="_blank">{{$d->AGREE_NUM}}</a></td>
+                                <td><a href="{{route('report.segmentlinedetail',[openssl_encrypt($d->AGREE_NUM)])}}" target="_blank">{{$d->AGREE_NUM}}</a></td>
                                 <td>{{$d->AGREE_NAME}}</td>
                                 <td>{{$d->REV}}</td>
                                 <td>{{$d->STATUS}}</td>
