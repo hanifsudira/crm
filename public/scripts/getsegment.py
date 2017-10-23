@@ -17,6 +17,8 @@ cur 	= db.cursor()
 sqltruncate = 'TRUNCATE TABLE segment';
 cur.execute(sqltruncate)
 
+forbid = ['OC_DES_AM','SADMIN','UNIVERSALQUEUE']
+
 now = str(datetime.datetime.now())
 for i,data in enumerate(result):
 	AGREE_NUM 		= str(data[0]).replace("'","\\'") 
@@ -33,6 +35,7 @@ for i,data in enumerate(result):
 	CC 				= str(data[11]).replace("'","\\'")
 	ORDER_NUM 		= str(data[12]).replace("'","\\'")
 	AM_PRIMARY		= str(data[13]).replace("'","\\'")
+	AM_PRIMARY 		= 'None' if AM_PRIMARY in forbid else AM_PRIMARY
 	sql 			= "insert into segment (AGREE_NUM, AGREE_NAME, REV, STATUS, TYPE, START_DATE, END_DATE, NUM_PARENT, REV_PARENT, SEGMEN, lastupdate, SID_NUM, CC, ORDER_NUM, AM_PRIMARY) values('"+AGREE_NUM+"','"+AGREE_NAME+"','"+REV+"','"+STATUS+"','"+TYPE+"','"+START_DATE+"','"+END_DATE+"','"+NUM_PARENT+"','"+REV_PARENT+"','"+SEGMEN+"','"+now+"','"+SID_NUM+"','"+CC+"','"+ORDER_NUM+"','"+AM_PRIMARY+"')"
 	cur.execute(sql)
 db.commit()
