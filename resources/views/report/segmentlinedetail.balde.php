@@ -67,44 +67,29 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                @if($count>0)
-                    <div class="box-body">
-                        <a href="{{ Route('report.downloadsegmentdetail',$param) }}" class="btn btn-app" id="btn-upload"><i class="fa fa-cloud-upload"></i>Export Excel</a>
-                    </div>
-                @endif
                 <div class="box-body">
-                    <h1>Segment Detail</h1>
+                    <h1>Segment Line Detail Agree Num : {{$agree}}</h1>
                     <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
                         <thead>
                         <tr>
-                            <th>No</th>
-                            <th>AGREE_NUM</th>
-                            <th>AGREE_NAME</th>
-                            <th>REV</th>
-                            <th>STATUS</th>
-                            <th>TYPE</th>
-                            <th>START_DATE</th>
-                            <th>END_DATE</th>
-                            <th>NUM_PARENT</th>
-                            <th>REV_PARENT</th>
-                            <th>SEGMEN</th>
+                            <td>No</td>
+                            <td>ORDER_NUM</td>
+                            <td>PRODUCT</td>
+                            <td>SID_NUM</td>
+                            <td>CC</td>
+                            <td>AM_PRIMARY</td>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($data as $i => $d)
-                            <tr>
-                                <td>{{$i+1}}</td>
-                                <td><a href="{{route('report.segmentlinedetail',[$d->AGREE_NUM])}}" target="_blank">{{$d->AGREE_NUM}}</a></td>
-                                <td>{{$d->AGREE_NAME}}</td>
-                                <td>{{$d->REV}}</td>
-                                <td>{{$d->STATUS}}</td>
-                                <td>{{$d->TYPE}}</td>
-                                <td>{{$d->START_DATE}}</td>
-                                <td>{{$d->END_DATE}}</td>
-                                <td>{{$d->NUM_PARENT}}</td>
-                                <td>{{$d->REV_PARENT}}</td>
-                                <td>{{$d->SEGMEN}}</td>
-                            </tr>
+                        <tr>
+                            <td>{{$i+1}}</td>
+                            <td>{{$d->ORDER_NUM}}</td>
+                            <td>{{$d->PRODUCT}}</td>
+                            <td>{{$d->SID_NUM}}</td>
+                            <td>{{$d->CC}}</td>
+                            <td>{{$d->AM_PRIMARY}}</td>
+                        </tr>
                         @endforeach
                         </tbody>
                     </table>

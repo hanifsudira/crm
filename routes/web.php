@@ -158,6 +158,12 @@ Route::group(['prefix' => 'report'], function () {
         'as'        => 'report.segmentdetail',
         'uses'      => 'ReportController@segmentdetail'
     ]);
+
+    Route::get('segmentlinedetail/{agreenum}',[
+        'as'        => 'report.segmentlinedetail',
+        'uses'      => 'ReportController@segmentlinedetail'
+    ]);
+
     Route::get('downloadsegmentdetail/{segment}/{bulan}/{tahun}',[
         'as'        => 'report.downloadsegmentdetail',
         'uses'      => 'ReportController@downloadsegmentdetail'
