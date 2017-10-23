@@ -78,7 +78,6 @@
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>ORDER_NUM</th>
                             <th>AGREE_NUM</th>
                             <th>AGREE_NAME</th>
                             <th>REV</th>
@@ -89,7 +88,6 @@
                             <th>NUM_PARENT</th>
                             <th>REV_PARENT</th>
                             <th>SEGMEN</th>
-                            <th>SID_NUM</th>
                             <th>CC</th>
                             <th>AM_PRIMARY</th>
                         </tr>
@@ -98,7 +96,6 @@
                         @foreach($data as $i => $d)
                             <tr>
                                 <td>{{$i+1}}</td>
-                                <td>{{$d->ORDER_NUM}}</td>
                                 <td>{{$d->AGREE_NUM}}</td>
                                 <td>{{$d->AGREE_NAME}}</td>
                                 <td>{{$d->REV}}</td>
@@ -109,7 +106,6 @@
                                 <td>{{$d->NUM_PARENT}}</td>
                                 <td>{{$d->REV_PARENT}}</td>
                                 <td>{{$d->SEGMEN}}</td>
-                                <td>{{$d->SID_NUM}}</td>
                                 <td>{{$d->CC}}</td>
                                 <td>{{$d->AM_PRIMARY}}</td>
                             </tr>
