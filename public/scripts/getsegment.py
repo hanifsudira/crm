@@ -29,6 +29,10 @@ for i,data in enumerate(result):
 	NUM_PARENT 		= str(data[7]).replace("'","\\'") 
 	REV_PARENT 		= str(data[8]).replace("'","\\'") 
 	SEGMEN 			= str(data[9]).replace("'","\\'")
-	sql 			= "insert into segment (AGREE_NUM, AGREE_NAME, REV, STATUS, TYPE, START_DATE, END_DATE, NUM_PARENT, REV_PARENT, SEGMEN, lastupdate) values('"+AGREE_NUM+"','"+AGREE_NAME+"','"+REV+"','"+STATUS+"','"+TYPE+"','"+START_DATE+"','"+END_DATE+"','"+NUM_PARENT+"','"+REV_PARENT+"','"+SEGMEN+"','"+now+"')"
+	SID_NUM 		= str(data[10]).replace("'","\\'")
+	CC 				= str(data[11]).replace("'","\\'")
+	ORDER_NUM 		= str(data[12]).replace("'","\\'")
+	AM_PRIMARY		= str(data[13]).replace("'","\\'")
+	sql 			= "insert into segment (AGREE_NUM, AGREE_NAME, REV, STATUS, TYPE, START_DATE, END_DATE, NUM_PARENT, REV_PARENT, SEGMEN, lastupdate, SID_NUM, CC, ORDER_NUM, AM_PRIMARY) values('"+AGREE_NUM+"','"+AGREE_NAME+"','"+REV+"','"+STATUS+"','"+TYPE+"','"+START_DATE+"','"+END_DATE+"','"+NUM_PARENT+"','"+REV_PARENT+"','"+SEGMEN+"','"+now+"','"+SID_NUM+"','"+CC+"','"+ORDER_NUM+"','"+AM_PRIMARY+"')"
 	cur.execute(sql)
 db.commit()
