@@ -19,6 +19,14 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/plugins/alertifyjs/css/themes/bootstrap.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <style>
+
+        html, body{
+            height:100%;
+            width:100%;
+            padding:0;
+            margin:0;
+        }
+
         table.scroll {
             /* width: 100%; */ /* Optional */
             /* border-collapse: collapse; */
