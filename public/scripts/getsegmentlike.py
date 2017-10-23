@@ -37,6 +37,6 @@ for i,data in enumerate(result):
 	AM_PRIMARY		= str(data[13]).replace("'","\\'")
 	AM_PRIMARY 		= 'None' if AM_PRIMARY in forbid else AM_PRIMARY
 	PRODUCT 		= str(data[14]).replace("'","\\'")
-	sql 			= "insert into segment (AGREE_NUM, AGREE_NAME, REV, STATUS, TYPE, START_DATE, END_DATE, NUM_PARENT, REV_PARENT, SEGMEN, lastupdate, SID_NUM, CC, ORDER_NUM, AM_PRIMARY, PRODUCT) values('"+AGREE_NUM+"','"+AGREE_NAME+"','"+REV+"','"+STATUS+"','"+TYPE+"','"+START_DATE+"','"+END_DATE+"','"+NUM_PARENT+"','"+REV_PARENT+"','"+SEGMEN+"','"+now+"','"+SID_NUM+"','"+CC+"','"+ORDER_NUM+"','"+AM_PRIMARY+"','"+PRODUCT+"')"
+	sql 			= "insert into segment_like (AGREE_NUM, AGREE_NAME, REV, STATUS, TYPE, START_DATE, END_DATE, NUM_PARENT, REV_PARENT, SEGMEN, lastupdate, SID_NUM, CC, ORDER_NUM, AM_PRIMARY, PRODUCT) values('"+AGREE_NUM+"','"+AGREE_NAME+"','"+REV+"','"+STATUS+"','"+TYPE+"','"+START_DATE+"','"+END_DATE+"','"+NUM_PARENT+"','"+REV_PARENT+"','"+SEGMEN+"','"+now+"','"+SID_NUM+"','"+CC+"','"+ORDER_NUM+"','"+AM_PRIMARY+"','"+PRODUCT+"')"
 	cur.execute(sql)
 db.commit()
