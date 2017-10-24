@@ -1299,13 +1299,13 @@ class ReportController extends Controller
     }
 
     public function downloadsegmentdetail($segment,$bulan,$tahun,$type){
-        if($type==1){
+        if($type=='1'){
             $sql = "select * from segment where 
                 SEGMEN='$segment' and 
                 month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$bulan' and 
                 year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun'";
         }
-        else if($type==2){
+        else if($type=='2'){
             $sql = "select * from segment where 
                 month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$bulan' and 
                 year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun'";
