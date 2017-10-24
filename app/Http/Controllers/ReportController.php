@@ -1280,12 +1280,24 @@ class ReportController extends Controller
         return view('report.segmentpivotajax',['data'=>$query,'count'=>$temp,'nowyear'=>$tahun,'grandtotal'=>$grandtotal]);
     }
 
-    public function segmentdetail($segment,$bulan,$tahun){
-        $param = [$segment,$bulan,$tahun];
-        $sql = "select * from segment where 
+    public function segmentdetail($segment,$bulan,$tahun,$type){
+        $param = [$segment,$bulan,$tahun,$type];
+        if($type=='1'){
+            $sql = "select * from segment where 
                 SEGMEN='$segment' and 
                 month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$bulan' and 
                 year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun'";
+        }
+        else if($type=='2'){
+            $sql = "select * from segment where 
+                month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$bulan' and 
+                year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun'";
+        }
+        else{
+            $sql = "select * from segment where 
+                SEGMEN='$segment' and  
+                year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun'";
+        }
         $data = DB::select($sql);
         return view('report.segmentdetail',['data'=>$data,'param'=>$param,'count'=>count($data)]);
     }

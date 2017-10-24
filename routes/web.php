@@ -154,7 +154,7 @@ Route::group(['prefix' => 'report'], function () {
         'uses'      => 'ReportController@segmentpivotchange'
     ]);
 
-    Route::get('segmentdetail/{segment}/{bulan}/{tahun}',[
+    Route::get('segmentdetail/{segment}/{bulan}/{tahun}/{type}',[
         'as'        => 'report.segmentdetail',
         'uses'      => 'ReportController@segmentdetail'
     ]);
