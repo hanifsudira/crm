@@ -1298,11 +1298,24 @@ class ReportController extends Controller
         return view('report.segmentlinedetail',['data'=>$data,'agree'=>$agreenum]);
     }
 
-    public function downloadsegmentdetail($segment,$bulan,$tahun){
-        $sql = "select * from segment where 
+    public function downloadsegmentdetail($segment,$bulan,$tahun,$type){
+        if($type==1){
+            $sql = "select * from segment where 
                 SEGMEN='$segment' and 
                 month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$bulan' and 
                 year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun'";
+        }
+        else if($type==2){
+            $sql = "select * from segment where 
+                month(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$bulan' and 
+                year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun'";
+        }
+        else{
+            $sql = "select * from segment where 
+                SEGMEN='$segment' and  
+                year(str_to_date(END_DATE,'%Y-%m-%d %H:%i:%s'))='$tahun'";
+        }
+
         $data = DB::select($sql);;
         $data = json_decode( json_encode($data), true);
         return Excel::create('segment_detail', function($excel) use ($data) {
