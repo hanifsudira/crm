@@ -79,13 +79,23 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($data as $d)
-                        <tr>
-                            <td>{{$d[0]}}</td>
-                            <td>{{$d[1]}}</td>
-                            <td>{{$d[2]}}</td>
-                        </tr>
-                        @endforeach
+                        @if($data)
+                            @foreach($data as $i => $d)
+                                <tr>
+                                    <td>{{$i+1}}</td>
+                                    <td>{{$d[0]}}</td>
+                                    <td>{{$d[1]}}</td>
+                                    <td>{{$d[2]}}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endif
                         </tbody>
                     </table>
                 </div>
