@@ -82,11 +82,9 @@
                         @foreach($data as $i => $d)
                         <tr>
                             <td>{{$i+1}}</td>
-                            <td>{{$d->ORDER_NUM}}</td>
-                            <td>{{$d->PRODUCT}}</td>
-                            <td>{{$d->SID_NUM}}</td>
-                            <td>{{$d->CC}}</td>
-                            <td>{{$d->AM_PRIMARY}}</td>
+                            <td>{{$d[0]}}</td>
+                            <td>{{$d[1]}}</td>
+                            <td>{{$d[2]}}</td>
                         </tr>
                         @endforeach
                         </tbody>

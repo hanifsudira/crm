@@ -1292,8 +1292,9 @@ class ReportController extends Controller
 
     public function segmentlinedetail($agreenum){
         $agreenum = Crypt::decrypt($agreenum);
-        $sql = "select ORDER_NUM,PRODUCT,SID_NUM,CC,AM_PRIMARY from segment_line where agree_num='$agreenum'";
-        $data = DB::select($sql);
+        $command = "/usr/bin/python /var/www/html/crm/public/scripts/getwp.py ".$agreenum;
+        $output = shell_exec($command);
+        $data = json_decode($output);
         return view('report.segmentlinedetail',['data'=>$data,'agree'=>$agreenum]);
     }
 
