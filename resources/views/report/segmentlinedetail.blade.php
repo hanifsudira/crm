@@ -79,9 +79,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($data as $i => $d)
+                        @foreach($data as $d)
                         <tr>
-                            <td>{{$i+1}}</td>
                             <td>{{$d[0]}}</td>
                             <td>{{$d[1]}}</td>
                             <td>{{$d[2]}}</td>
