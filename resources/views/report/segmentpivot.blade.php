@@ -83,18 +83,18 @@
                                 @endforeach
                                 <tr>
                                     <td></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'01','00','2'])}}" target="_blank">{{$count[0]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'02','00','2'])}}" target="_blank">{{$count[1]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'03','00','2'])}}" target="_blank">{{$count[2]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'04','00','2'])}}" target="_blank">{{$count[3]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'05','00','2'])}}" target="_blank">{{$count[4]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'06','00','2'])}}" target="_blank">{{$count[5]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'07','00','2'])}}" target="_blank">{{$count[6]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'08','00','2'])}}" target="_blank">{{$count[7]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'09','00','2'])}}" target="_blank">{{$count[8]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'10','00','2'])}}" target="_blank">{{$count[9]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'11','00','2'])}}" target="_blank">{{$count[10]}}</a></td>
-                                    <td align="right"><a href="{{route('report.segmentdetail',[$d->SEGMEN,'12','00','2'])}}" target="_blank">{{$count[11]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','01',$nowyear,'2'])}}" target="_blank">{{$count[0]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','02',$nowyear,'2'])}}" target="_blank">{{$count[1]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','03',$nowyear,'2'])}}" target="_blank">{{$count[2]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','04',$nowyear,'2'])}}" target="_blank">{{$count[3]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','05',$nowyear,'2'])}}" target="_blank">{{$count[4]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','06',$nowyear,'2'])}}" target="_blank">{{$count[5]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','07',$nowyear,'2'])}}" target="_blank">{{$count[6]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','08',$nowyear,'2'])}}" target="_blank">{{$count[7]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','09',$nowyear,'2'])}}" target="_blank">{{$count[8]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','10',$nowyear,'2'])}}" target="_blank">{{$count[9]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','11',$nowyear,'2'])}}" target="_blank">{{$count[10]}}</a></td>
+                                    <td align="right"><a href="{{route('report.segmentdetail',['','12',$nowyear,'2'])}}" target="_blank">{{$count[11]}}</a></td>
                                     <td align="right">{{$grandtotal}}</td>
                                 </tr>
                                 </tbody>
