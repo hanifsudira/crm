@@ -73,7 +73,7 @@
                         <thead>
                         <tr>
                             <td>No</td>
-                            <td>ORDER_NUM</td>
+                            <td>LAST_ORDER_NUM</td>
                             <td>PRODUCT</td>
                             <td>SID_NUM</td>
                         </tr>
