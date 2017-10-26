@@ -36,7 +36,7 @@ for i,data in enumerate(result):
 	AM_PRIMARY 		= 'None' if AM_PRIMARY in forbid else AM_PRIMARY
 	ROW_ID 			= str(data[12]).replace("'","\\'")
 	CC_NAME 		= str(data[13]).replace("'","\\'")
-	LAST_ORDER_NUM 	= str(data[13]).replace("'","\\'")
+	LAST_ORDER_NUM 	= str(data[14]).replace("'","\\'")
 	sql 			= "insert into segment (AGREE_NUM, AGREE_NAME, REV, STATUS, TYPE, START_DATE, END_DATE, NUM_PARENT, REV_PARENT, SEGMEN, lastupdate, CC, AM_PRIMARY, ROW_ID, CC_NAME, LAST_ORDER_NUM) values('"+AGREE_NUM+"','"+AGREE_NAME+"','"+REV+"','"+STATUS+"','"+TYPE+"','"+START_DATE+"','"+END_DATE+"','"+NUM_PARENT+"','"+REV_PARENT+"','"+SEGMEN+"','"+now+"','"+CC+"','"+AM_PRIMARY+"','"+ROW_ID+"','"+CC_NAME+"','"+LAST_ORDER_NUM+"')"
 	cur.execute(sql)
 db.commit()
