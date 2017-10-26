@@ -89,6 +89,7 @@
                             <th>PARENT_REV</th>
                             <th>SEGMEN</th>
                             <th>CC</th>
+                            <th>CC_NAME</th>
                             <th>AM_PRIMARY</th>
                         </tr>
                         </thead>
@@ -107,6 +108,7 @@
                                 <td>{{$d->REV_PARENT}}</td>
                                 <td>{{$d->SEGMEN}}</td>
                                 <td>{{$d->CC}}</td>
+                                <td>{{$d->CC_NAME}}</td>
                                 <td>{{$d->AM_PRIMARY}}</td>
                             </tr>
                         @endforeach
