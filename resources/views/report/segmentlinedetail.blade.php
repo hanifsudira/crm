@@ -68,12 +68,11 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-body">
-                    <h1>Line Detail Agree Num : {{$agree}}</h1>
+                    <h1>Row ID Agreement : {{$agree}}</h1>
                     <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
                         <thead>
                         <tr>
                             <td>No</td>
-                            <td>LAST_ORDER_NUM</td>
                             <td>PRODUCT</td>
                             <td>SID_NUM</td>
                         </tr>
@@ -83,7 +82,6 @@
                             @foreach($data as $i => $d)
                                 <tr>
                                     <td>{{$i+1}}</td>
-                                    <td>{{$d[0]}}</td>
                                     <td>{{$d[1]}}</td>
                                     <td>{{$d[2]}}</td>
                                 </tr>
