@@ -16,7 +16,7 @@ cursor = con.cursor()
 
 
 #query = "select t3.order_num as order_num, t2.name as product, t1.service_num as sid_num from sblprd.s_order_item t1 left join sblprd.s_prod_int t2 on t2.row_id = t1.prod_id left join sblprd.s_order t3 on t3.row_id = t1.order_id where t1.agree_id='"+order_num+"'" 
-query = "select t3.order_num as order_num, t2.name as product, t1.service_num as sid_num from sblprd.s_order_item t1 left join sblprd.s_prod_int t2 on t2.row_id = t1.prod_id left join sblprd.s_order t3 on t3.row_id = t1.order_id where t1.agree_id='"+order_num+"' and t2.billing_type_cd = 'Service Bundle' and t3.rev_num =(select max(rev_num) from sblprd.s_order x where x.order_num = t3.order_num and x.status_cd not in ('Abandoned','Pending'))"
+query = "select t2.name as product, t1.service_num as sid_num, t4.loc as ca, t5.loc as ba, t6.loc as sa from sblprd.s_order_item t1 left join sblprd.s_prod_int t2 on t2.row_id = t1.prod_id left join sblprd.s_order t3 on t3.row_id = t1.order_id left join sblprd.s_org_ext t4 on t4.par_row_id = t1.owner_account_id left join sblprd.s_org_ext t5 on t5.row_id = t1.bill_accnt_id left join sblprd.s_org_ext t6 on t6.row_id = t1.serv_accnt_id where t1.agree_id='1-LTP80' and t2.billing_type_cd = 'Service Bundle' and t3.rev_num =(select max(rev_num) from sblprd.s_order x where x.order_num = t3.order_num and x.status_cd not in ('Abandoned','Pending')"
 result = cursor.execute(query).fetchall()
 	
 if result:

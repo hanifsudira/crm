@@ -75,6 +75,9 @@
                             <td>No</td>
                             <td>PRODUCT</td>
                             <td>SID_NUM</td>
+                            <td>CA</td>
+                            <td>BA</td>
+                            <td>SA</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -82,12 +85,17 @@
                             @foreach($data as $i => $d)
                                 <tr>
                                     <td>{{$i+1}}</td>
+                                    <td>{{$d[0]}}</td>
                                     <td>{{$d[1]}}</td>
                                     <td>{{$d[2]}}</td>
+                                    <td>{{$d[3]}}</td>
+                                    <td>{{$d[4]}}</td>
                                 </tr>
                             @endforeach
                         @else
                             <tr>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
