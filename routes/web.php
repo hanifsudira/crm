@@ -176,10 +176,10 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@statusorder'
     ]);
     
-    Route::get('oraexcel', [
-        'as'        => 'ora.oraexcel',
-        'uses'      => 'OraController@index'
-    ]);
+//    Route::get('oraexcel', [
+//        'as'        => 'ora.oraexcel',
+//        'uses'      => 'OraController@index'
+//    ]);
 
     Route::get('tomsom/{id}',[
         'as'        => 'ora.tomsom',
