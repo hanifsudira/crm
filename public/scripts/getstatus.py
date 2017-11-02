@@ -10,7 +10,8 @@ cursor = con.cursor()
 
 with open('status.txt','rb') as f:
 	for line in f.read():
-		orasql "select t2.status_cd AS OH_STATUS, t1.status_cd AS LI_STATUS, t1.milestone_code AS MILESTONE, t1.fulflmnt_status_cd AS FULFILL_STATUS from sblprd.s_order_item t1 left join sblprd.s_order t2 on t2.row_id = t1.order_id where t2.order_num = '"+line[0].strip()+"'"
+		ordernum = line[0].strip()
+		orasql "select t2.status_cd AS OH_STATUS, t1.status_cd AS LI_STATUS, t1.milestone_code AS MILESTONE, t1.fulflmnt_status_cd AS FULFILL_STATUS from sblprd.s_order_item t1 left join sblprd.s_order t2 on t2.row_id = t1.order_id where t2.order_num = '"+ordernum+"'"
 		result = cursor.execute(orasql).fetchall()
 		for data in result:
 			with open('new.txt','ab+') as nf:
