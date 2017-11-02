@@ -97,288 +97,288 @@ class ReportController extends Controller
         return view('report.review',['lead'=>$lead,'quote'=>$quote,'agree'=>$agree,'order'=>$order]);
     }
 
-    public function intreport(){
-        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
-        $pivot = DB::select('select li_status, milestone,
-                                    count(case when INT_NOTE=\'ERROR SYNC CUSTOMER\' then 1 end) esc,
-                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
-                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
-                                    count(case when INT_NOTE=\'ERROR FULFILL BILLING START\' then 1 end) efbs,
-                                    count(case when INT_NOTE=\'None\' then 1 end) non,
-                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
-                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
-                                    count(case when INT_NOTE=\'PENDING BASO\' then 1 end) pb,
-                                    count(case when INT_NOTE=\'PENDING BILLING APPROVAL\' then 1 end) pba,
-                                    count(case when INT_NOTE=\'COMPLETE\' then 1 end) com,
-                                    count(case when INT_NOTE=\'CANCEL FROM OSS\' then 1 end) cfo,
-                                    count(case when INT_NOTE=\'ERROR AREA\' then 1 end) ea,
-                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd
-                            from int_report pt group by milestone,li_status');
-
-        $pivotmin24 = DB::select('select li_status, milestone,
-                                    count(case when INT_NOTE=\'ERROR SYNC CUSTOMER\' then 1 end) esc,
-                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
-                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
-                                    count(case when INT_NOTE=\'ERROR FULFILL BILLING START\' then 1 end) efbs,
-                                    count(case when INT_NOTE=\'None\' then 1 end) non,
-                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
-                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
-                                    count(case when INT_NOTE=\'PENDING BASO\' then 1 end) pb,
-                                    count(case when INT_NOTE=\'PENDING BILLING APPROVAL\' then 1 end) pba,
-                                    count(case when INT_NOTE=\'COMPLETE\' then 1 end) com,
-                                    count(case when INT_NOTE=\'CANCEL FROM OSS\' then 1 end) cfo,
-                                    count(case when INT_NOTE=\'ERROR AREA\' then 1 end) ea,
-                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd
-                            from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) <=24 group by milestone,li_status;');
-
-        $pivotmax24 = DB::select('select li_status, milestone,
-                                    count(case when INT_NOTE=\'ERROR SYNC CUSTOMER\' then 1 end) esc,
-                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
-                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
-                                    count(case when INT_NOTE=\'ERROR FULFILL BILLING START\' then 1 end) efbs,
-                                    count(case when INT_NOTE=\'None\' then 1 end) non,
-                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
-                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
-                                    count(case when INT_NOTE=\'PENDING BASO\' then 1 end) pb,
-                                    count(case when INT_NOTE=\'PENDING BILLING APPROVAL\' then 1 end) pba,
-                                    count(case when INT_NOTE=\'COMPLETE\' then 1 end) com,
-                                    count(case when INT_NOTE=\'CANCEL FROM OSS\' then 1 end) cfo,
-                                    count(case when INT_NOTE=\'ERROR AREA\' then 1 end) ea,
-                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd
-                            from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) >24 group by milestone,li_status;');
-
-        $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
-        $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
-
-        $return = array();
-        $returnmin24 = array();
-        $returnmax24 = array();
-
-        $counthorarr = array();
-        $counthorarr[0] = 0;
-        $counthorarr[1] = 0;
-        $counthorarr[2] = 0;
-        $counthorarr[3] = 0;
-        $counthorarr[4] = 0;
-        $counthorarr[5] = 0;
-        $counthorarr[6] = 0;
-        $counthorarr[7] = 0;
-        $counthorarr[8] = 0;
-        $counthorarr[9] = 0;
-        $counthorarr[10] = 0;
-        $counthorarr[11] = 0;
-        $counthorarr[12] = 0;
-
-        $counthorarrmin24 = array();
-        $counthorarrmin24[0] = 0;
-        $counthorarrmin24[1] = 0;
-        $counthorarrmin24[2] = 0;
-        $counthorarrmin24[3] = 0;
-        $counthorarrmin24[4] = 0;
-        $counthorarrmin24[5] = 0;
-        $counthorarrmin24[6] = 0;
-        $counthorarrmin24[7] = 0;
-        $counthorarrmin24[8] = 0;
-        $counthorarrmin24[9] = 0;
-        $counthorarrmin24[10] = 0;
-        $counthorarrmin24[11] = 0;
-        $counthorarrmin24[12] = 0;
-
-        $counthorarrmax24 = array();
-        $counthorarrmax24[0] = 0;
-        $counthorarrmax24[1] = 0;
-        $counthorarrmax24[2] = 0;
-        $counthorarrmax24[3] = 0;
-        $counthorarrmax24[4] = 0;
-        $counthorarrmax24[5] = 0;
-        $counthorarrmax24[6] = 0;
-        $counthorarrmax24[7] = 0;
-        $counthorarrmax24[8] = 0;
-        $counthorarrmax24[9] = 0;
-        $counthorarrmax24[10] = 0;
-        $counthorarrmax24[11] = 0;
-        $counthorarrmax24[12] = 0;
-
-        #all
-        for($i=0;$i<count($status);$i++){
-            #db crm
-            $state = 0;
-            foreach ($pivot as $data){
-                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
-                    $state = 1;
-                    array_push($return,$data);
-                    $counthorarr[0] += $data->esc;
-                    $counthorarr[1] += $data->et;
-                    $counthorarr[2] += $data->ed;
-                    $counthorarr[3] += $data->efbs;
-                    $counthorarr[4] += $data->non;
-                    $counthorarr[5] += $data->tsq;
-                    $counthorarr[6] += $data->del;
-                    $counthorarr[7] += $data->pb;
-                    $counthorarr[8] += $data->pba;
-                    $counthorarr[9] += $data->com;
-                    $counthorarr[10] += $data->cfo;
-                    $counthorarr[11] += $data->ea;
-                    $counthorarr[12] += $data->nd;
-                    break;
-                }
-            }
-            if(!$state){
-                $temp = new \stdClass();
-                $temp->li_status = $status[$i];
-                $temp->milestone = $milestone[$i];
-                $temp->et   = 0;
-                $temp->ed   = 0;
-                $temp->efbs = 0;
-                $temp->esc  = 0;
-                $temp->tsq  = 0;
-                $temp->del  = 0;
-                $temp->com  = 0;
-                $temp->pb   = 0;
-                $temp->pba  = 0;
-                $temp->non  = 0;
-                $temp->cfo  = 0;
-                $temp->ea   = 0;
-                $temp->nd   = 0;
-                array_push($return,$temp);
-                $counthorarr[0] += 0;
-                $counthorarr[1] += 0;
-                $counthorarr[2] += 0;
-                $counthorarr[3] += 0;
-                $counthorarr[4] += 0;
-                $counthorarr[5] += 0;
-                $counthorarr[6] += 0;
-                $counthorarr[7] += 0;
-                $counthorarr[8] += 0;
-                $counthorarr[9] += 0;
-                $counthorarr[10] += 0;
-                $counthorarr[11] += 0;
-                $counthorarr[12] += 0;
-            }
-        }
-
-        #min24
-        for($i=0;$i<count($status);$i++){
-            #db crm
-            $state = 0;
-            foreach ($pivotmin24 as $data){
-                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
-                    $state = 1;
-                    array_push($returnmin24,$data);
-                    $counthorarrmin24[0] += $data->esc;
-                    $counthorarrmin24[1] += $data->et;
-                    $counthorarrmin24[2] += $data->ed;
-                    $counthorarrmin24[3] += $data->efbs;
-                    $counthorarrmin24[4] += $data->non;
-                    $counthorarrmin24[5] += $data->tsq;
-                    $counthorarrmin24[6] += $data->del;
-                    $counthorarrmin24[7] += $data->pb;
-                    $counthorarrmin24[8] += $data->pba;
-                    $counthorarrmin24[9] += $data->com;
-                    $counthorarrmin24[10] += $data->cfo;
-                    $counthorarrmin24[11] += $data->ea;
-                    $counthorarrmin24[12] += $data->nd;
-                    break;
-                }
-            }
-            if(!$state){
-                $temp = new \stdClass();
-                $temp->li_status = $status[$i];
-                $temp->milestone = $milestone[$i];
-                $temp->et   = 0;
-                $temp->ed   = 0;
-                $temp->efbs = 0;
-                $temp->esc  = 0;
-                $temp->tsq  = 0;
-                $temp->del  = 0;
-                $temp->com  = 0;
-                $temp->pb   = 0;
-                $temp->pba  = 0;
-                $temp->non  = 0;
-                $temp->cfo  = 0;
-                $temp->ea   = 0;
-                $temp->nd   = 0;
-                array_push($returnmin24,$temp);
-                $counthorarrmin24[0] += 0;
-                $counthorarrmin24[1] += 0;
-                $counthorarrmin24[2] += 0;
-                $counthorarrmin24[3] += 0;
-                $counthorarrmin24[4] += 0;
-                $counthorarrmin24[5] += 0;
-                $counthorarrmin24[6] += 0;
-                $counthorarrmin24[7] += 0;
-                $counthorarrmin24[8] += 0;
-                $counthorarrmin24[9] += 0;
-                $counthorarrmin24[10] += 0;
-                $counthorarrmin24[11] += 0;
-                $counthorarrmin24[12] += 0;
-            }
-        }
-
-        #max24
-        for($i=0;$i<count($status);$i++){
-            #db crm
-            $state = 0;
-            foreach ($pivotmax24 as $data){
-                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
-                    $state = 1;
-                    array_push($returnmax24,$data);
-                    $counthorarrmax24[0] += $data->esc;
-                    $counthorarrmax24[1] += $data->et;
-                    $counthorarrmax24[2] += $data->ed;
-                    $counthorarrmax24[3] += $data->efbs;
-                    $counthorarrmax24[4] += $data->non;
-                    $counthorarrmax24[5] += $data->tsq;
-                    $counthorarrmax24[6] += $data->del;
-                    $counthorarrmax24[7] += $data->pb;
-                    $counthorarrmax24[8] += $data->pba;
-                    $counthorarrmax24[9] += $data->com;
-                    $counthorarrmax24[10] += $data->cfo;
-                    $counthorarrmax24[11] += $data->ea;
-                    $counthorarrmax24[12] += $data->nd;
-                    break;
-                }
-            }
-            if(!$state){
-                $temp = new \stdClass();
-                $temp->li_status = $status[$i];
-                $temp->milestone = $milestone[$i];
-                $temp->et   = 0;
-                $temp->ed   = 0;
-                $temp->efbs = 0;
-                $temp->esc  = 0;
-                $temp->tsq  = 0;
-                $temp->del  = 0;
-                $temp->com  = 0;
-                $temp->pb   = 0;
-                $temp->pba  = 0;
-                $temp->non  = 0;
-                $temp->cfo  = 0;
-                $temp->ea   = 0;
-                $temp->nd   = 0;
-                array_push($returnmax24,$temp);
-                $counthorarrmax24[0] += 0;
-                $counthorarrmax24[1] += 0;
-                $counthorarrmax24[2] += 0;
-                $counthorarrmax24[3] += 0;
-                $counthorarrmax24[4] += 0;
-                $counthorarrmax24[5] += 0;
-                $counthorarrmax24[6] += 0;
-                $counthorarrmax24[7] += 0;
-                $counthorarrmax24[8] += 0;
-                $counthorarrmax24[9] += 0;
-                $counthorarrmax24[10] += 0;
-                $counthorarrmax24[11] += 0;
-                $counthorarrmax24[12] += 0;
-            }
-        }
-
-        return view('report.intreport',['data'=>$return,'datamin24'=>$returnmin24,'datamax24'=>$returnmax24,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr,'hormin24'=>$counthorarrmin24,'hormax24'=>$counthorarrmax24]);
-    }
-
 //    public function intreport(){
-//        return view('report.maintenance');
+//        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
+//        $pivot = DB::select('select li_status, milestone,
+//                                    count(case when INT_NOTE=\'ERROR SYNC CUSTOMER\' then 1 end) esc,
+//                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
+//                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
+//                                    count(case when INT_NOTE=\'ERROR FULFILL BILLING START\' then 1 end) efbs,
+//                                    count(case when INT_NOTE=\'None\' then 1 end) non,
+//                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
+//                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
+//                                    count(case when INT_NOTE=\'PENDING BASO\' then 1 end) pb,
+//                                    count(case when INT_NOTE=\'PENDING BILLING APPROVAL\' then 1 end) pba,
+//                                    count(case when INT_NOTE=\'COMPLETE\' then 1 end) com,
+//                                    count(case when INT_NOTE=\'CANCEL FROM OSS\' then 1 end) cfo,
+//                                    count(case when INT_NOTE=\'ERROR AREA\' then 1 end) ea,
+//                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd
+//                            from int_report pt group by milestone,li_status');
+//
+//        $pivotmin24 = DB::select('select li_status, milestone,
+//                                    count(case when INT_NOTE=\'ERROR SYNC CUSTOMER\' then 1 end) esc,
+//                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
+//                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
+//                                    count(case when INT_NOTE=\'ERROR FULFILL BILLING START\' then 1 end) efbs,
+//                                    count(case when INT_NOTE=\'None\' then 1 end) non,
+//                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
+//                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
+//                                    count(case when INT_NOTE=\'PENDING BASO\' then 1 end) pb,
+//                                    count(case when INT_NOTE=\'PENDING BILLING APPROVAL\' then 1 end) pba,
+//                                    count(case when INT_NOTE=\'COMPLETE\' then 1 end) com,
+//                                    count(case when INT_NOTE=\'CANCEL FROM OSS\' then 1 end) cfo,
+//                                    count(case when INT_NOTE=\'ERROR AREA\' then 1 end) ea,
+//                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd
+//                            from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) <=24 group by milestone,li_status;');
+//
+//        $pivotmax24 = DB::select('select li_status, milestone,
+//                                    count(case when INT_NOTE=\'ERROR SYNC CUSTOMER\' then 1 end) esc,
+//                                    count(case when INT_NOTE=\'ERROR TSQ\' then 1 end) et,
+//                                    count(case when INT_NOTE=\'ERROR DELIVER\' then 1 end) ed,
+//                                    count(case when INT_NOTE=\'ERROR FULFILL BILLING START\' then 1 end) efbs,
+//                                    count(case when INT_NOTE=\'None\' then 1 end) non,
+//                                    count(case when INT_NOTE=\'TSQ\' then 1 end) tsq,
+//                                    count(case when INT_NOTE=\'DELIVER\' then 1 end) del,
+//                                    count(case when INT_NOTE=\'PENDING BASO\' then 1 end) pb,
+//                                    count(case when INT_NOTE=\'PENDING BILLING APPROVAL\' then 1 end) pba,
+//                                    count(case when INT_NOTE=\'COMPLETE\' then 1 end) com,
+//                                    count(case when INT_NOTE=\'CANCEL FROM OSS\' then 1 end) cfo,
+//                                    count(case when INT_NOTE=\'ERROR AREA\' then 1 end) ea,
+//                                    count(case when INT_NOTE=\'NEED DELIVER\' then 1 end) nd
+//                            from int_report pt where timestampdiff(HOUR,  str_to_date(created_at,\'%d-%b-%Y %H:%i:%s\'),now()) >24 group by milestone,li_status;');
+//
+//        $status = ['Pending', 'Submitted', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'In Progress', 'Pending BASO', 'Pending BASO', 'Pending Billing Approval', 'Pending Billing Approval', 'Complete', 'Complete', 'Failed', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Pending Cancel', 'Cancelled', 'Cancelled'];
+//        $milestone = ['None', 'None', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION ISSUED', 'PROVISION COMPLETE', 'BASO STARTED', 'BILLING APPROVAL STARTED', 'FULFILL BILLING START', 'PROVISION COMPLETE', 'FULFILL BILLING COMPLETE', 'SYNC CUSTOMER START', 'None', 'SYNC CUSTOMER START', 'SYNC CUSTOMER COMPLETE', 'PROVISION START', 'PROVISION COMPLETE', 'None', 'SYNC CUSTOMER COMPLETE'];
+//
+//        $return = array();
+//        $returnmin24 = array();
+//        $returnmax24 = array();
+//
+//        $counthorarr = array();
+//        $counthorarr[0] = 0;
+//        $counthorarr[1] = 0;
+//        $counthorarr[2] = 0;
+//        $counthorarr[3] = 0;
+//        $counthorarr[4] = 0;
+//        $counthorarr[5] = 0;
+//        $counthorarr[6] = 0;
+//        $counthorarr[7] = 0;
+//        $counthorarr[8] = 0;
+//        $counthorarr[9] = 0;
+//        $counthorarr[10] = 0;
+//        $counthorarr[11] = 0;
+//        $counthorarr[12] = 0;
+//
+//        $counthorarrmin24 = array();
+//        $counthorarrmin24[0] = 0;
+//        $counthorarrmin24[1] = 0;
+//        $counthorarrmin24[2] = 0;
+//        $counthorarrmin24[3] = 0;
+//        $counthorarrmin24[4] = 0;
+//        $counthorarrmin24[5] = 0;
+//        $counthorarrmin24[6] = 0;
+//        $counthorarrmin24[7] = 0;
+//        $counthorarrmin24[8] = 0;
+//        $counthorarrmin24[9] = 0;
+//        $counthorarrmin24[10] = 0;
+//        $counthorarrmin24[11] = 0;
+//        $counthorarrmin24[12] = 0;
+//
+//        $counthorarrmax24 = array();
+//        $counthorarrmax24[0] = 0;
+//        $counthorarrmax24[1] = 0;
+//        $counthorarrmax24[2] = 0;
+//        $counthorarrmax24[3] = 0;
+//        $counthorarrmax24[4] = 0;
+//        $counthorarrmax24[5] = 0;
+//        $counthorarrmax24[6] = 0;
+//        $counthorarrmax24[7] = 0;
+//        $counthorarrmax24[8] = 0;
+//        $counthorarrmax24[9] = 0;
+//        $counthorarrmax24[10] = 0;
+//        $counthorarrmax24[11] = 0;
+//        $counthorarrmax24[12] = 0;
+//
+//        #all
+//        for($i=0;$i<count($status);$i++){
+//            #db crm
+//            $state = 0;
+//            foreach ($pivot as $data){
+//                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
+//                    $state = 1;
+//                    array_push($return,$data);
+//                    $counthorarr[0] += $data->esc;
+//                    $counthorarr[1] += $data->et;
+//                    $counthorarr[2] += $data->ed;
+//                    $counthorarr[3] += $data->efbs;
+//                    $counthorarr[4] += $data->non;
+//                    $counthorarr[5] += $data->tsq;
+//                    $counthorarr[6] += $data->del;
+//                    $counthorarr[7] += $data->pb;
+//                    $counthorarr[8] += $data->pba;
+//                    $counthorarr[9] += $data->com;
+//                    $counthorarr[10] += $data->cfo;
+//                    $counthorarr[11] += $data->ea;
+//                    $counthorarr[12] += $data->nd;
+//                    break;
+//                }
+//            }
+//            if(!$state){
+//                $temp = new \stdClass();
+//                $temp->li_status = $status[$i];
+//                $temp->milestone = $milestone[$i];
+//                $temp->et   = 0;
+//                $temp->ed   = 0;
+//                $temp->efbs = 0;
+//                $temp->esc  = 0;
+//                $temp->tsq  = 0;
+//                $temp->del  = 0;
+//                $temp->com  = 0;
+//                $temp->pb   = 0;
+//                $temp->pba  = 0;
+//                $temp->non  = 0;
+//                $temp->cfo  = 0;
+//                $temp->ea   = 0;
+//                $temp->nd   = 0;
+//                array_push($return,$temp);
+//                $counthorarr[0] += 0;
+//                $counthorarr[1] += 0;
+//                $counthorarr[2] += 0;
+//                $counthorarr[3] += 0;
+//                $counthorarr[4] += 0;
+//                $counthorarr[5] += 0;
+//                $counthorarr[6] += 0;
+//                $counthorarr[7] += 0;
+//                $counthorarr[8] += 0;
+//                $counthorarr[9] += 0;
+//                $counthorarr[10] += 0;
+//                $counthorarr[11] += 0;
+//                $counthorarr[12] += 0;
+//            }
+//        }
+//
+//        #min24
+//        for($i=0;$i<count($status);$i++){
+//            #db crm
+//            $state = 0;
+//            foreach ($pivotmin24 as $data){
+//                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
+//                    $state = 1;
+//                    array_push($returnmin24,$data);
+//                    $counthorarrmin24[0] += $data->esc;
+//                    $counthorarrmin24[1] += $data->et;
+//                    $counthorarrmin24[2] += $data->ed;
+//                    $counthorarrmin24[3] += $data->efbs;
+//                    $counthorarrmin24[4] += $data->non;
+//                    $counthorarrmin24[5] += $data->tsq;
+//                    $counthorarrmin24[6] += $data->del;
+//                    $counthorarrmin24[7] += $data->pb;
+//                    $counthorarrmin24[8] += $data->pba;
+//                    $counthorarrmin24[9] += $data->com;
+//                    $counthorarrmin24[10] += $data->cfo;
+//                    $counthorarrmin24[11] += $data->ea;
+//                    $counthorarrmin24[12] += $data->nd;
+//                    break;
+//                }
+//            }
+//            if(!$state){
+//                $temp = new \stdClass();
+//                $temp->li_status = $status[$i];
+//                $temp->milestone = $milestone[$i];
+//                $temp->et   = 0;
+//                $temp->ed   = 0;
+//                $temp->efbs = 0;
+//                $temp->esc  = 0;
+//                $temp->tsq  = 0;
+//                $temp->del  = 0;
+//                $temp->com  = 0;
+//                $temp->pb   = 0;
+//                $temp->pba  = 0;
+//                $temp->non  = 0;
+//                $temp->cfo  = 0;
+//                $temp->ea   = 0;
+//                $temp->nd   = 0;
+//                array_push($returnmin24,$temp);
+//                $counthorarrmin24[0] += 0;
+//                $counthorarrmin24[1] += 0;
+//                $counthorarrmin24[2] += 0;
+//                $counthorarrmin24[3] += 0;
+//                $counthorarrmin24[4] += 0;
+//                $counthorarrmin24[5] += 0;
+//                $counthorarrmin24[6] += 0;
+//                $counthorarrmin24[7] += 0;
+//                $counthorarrmin24[8] += 0;
+//                $counthorarrmin24[9] += 0;
+//                $counthorarrmin24[10] += 0;
+//                $counthorarrmin24[11] += 0;
+//                $counthorarrmin24[12] += 0;
+//            }
+//        }
+//
+//        #max24
+//        for($i=0;$i<count($status);$i++){
+//            #db crm
+//            $state = 0;
+//            foreach ($pivotmax24 as $data){
+//                if($data->li_status==$status[$i] and $data->milestone==$milestone[$i]){
+//                    $state = 1;
+//                    array_push($returnmax24,$data);
+//                    $counthorarrmax24[0] += $data->esc;
+//                    $counthorarrmax24[1] += $data->et;
+//                    $counthorarrmax24[2] += $data->ed;
+//                    $counthorarrmax24[3] += $data->efbs;
+//                    $counthorarrmax24[4] += $data->non;
+//                    $counthorarrmax24[5] += $data->tsq;
+//                    $counthorarrmax24[6] += $data->del;
+//                    $counthorarrmax24[7] += $data->pb;
+//                    $counthorarrmax24[8] += $data->pba;
+//                    $counthorarrmax24[9] += $data->com;
+//                    $counthorarrmax24[10] += $data->cfo;
+//                    $counthorarrmax24[11] += $data->ea;
+//                    $counthorarrmax24[12] += $data->nd;
+//                    break;
+//                }
+//            }
+//            if(!$state){
+//                $temp = new \stdClass();
+//                $temp->li_status = $status[$i];
+//                $temp->milestone = $milestone[$i];
+//                $temp->et   = 0;
+//                $temp->ed   = 0;
+//                $temp->efbs = 0;
+//                $temp->esc  = 0;
+//                $temp->tsq  = 0;
+//                $temp->del  = 0;
+//                $temp->com  = 0;
+//                $temp->pb   = 0;
+//                $temp->pba  = 0;
+//                $temp->non  = 0;
+//                $temp->cfo  = 0;
+//                $temp->ea   = 0;
+//                $temp->nd   = 0;
+//                array_push($returnmax24,$temp);
+//                $counthorarrmax24[0] += 0;
+//                $counthorarrmax24[1] += 0;
+//                $counthorarrmax24[2] += 0;
+//                $counthorarrmax24[3] += 0;
+//                $counthorarrmax24[4] += 0;
+//                $counthorarrmax24[5] += 0;
+//                $counthorarrmax24[6] += 0;
+//                $counthorarrmax24[7] += 0;
+//                $counthorarrmax24[8] += 0;
+//                $counthorarrmax24[9] += 0;
+//                $counthorarrmax24[10] += 0;
+//                $counthorarrmax24[11] += 0;
+//                $counthorarrmax24[12] += 0;
+//            }
+//        }
+//
+//        return view('report.intreport',['data'=>$return,'datamin24'=>$returnmin24,'datamax24'=>$returnmax24,'lu'=>$lastupdate->lastupdate,'hor'=>$counthorarr,'hormin24'=>$counthorarrmin24,'hormax24'=>$counthorarrmax24]);
 //    }
+
+    public function intreport(){
+        return view('report.maintenance');
+    }
 
     public function flowdatareturn(){
         $pivot = DB::select('select li_status, milestone, 

@@ -129,16 +129,16 @@ class OraController extends Controller
     }
 
     //line item
-    public function lineitem(){
-        $lisummary = Lisummary::all();
-        $luli = $lisummary[0]->lastupdate;
-        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
-        $lastupdate = $lastupdate->lastupdate !=null ? $lastupdate->lastupdate : 'Unknown';
-        return view('dashboard.lineitem',['lisummary' => $lisummary, 'lastupdate' => $lastupdate,'luli'=>$luli]);
-    }
 //    public function lineitem(){
-//        return view('report.maintenance');
+//        $lisummary = Lisummary::all();
+//        $luli = $lisummary[0]->lastupdate;
+//        $lastupdate = DB::select('select lastupdate from int_report limit 1')[0];
+//        $lastupdate = $lastupdate->lastupdate !=null ? $lastupdate->lastupdate : 'Unknown';
+//        return view('dashboard.lineitem',['lisummary' => $lisummary, 'lastupdate' => $lastupdate,'luli'=>$luli]);
 //    }
+    public function lineitem(){
+        return view('report.maintenance');
+    }
 
     public function errorlineitem(){
         $data = DB::select('SELECT * FROM int_report where OH_STATUS=\'failed\' and int_note like \'error%\';');
