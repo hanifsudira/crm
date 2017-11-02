@@ -1,5 +1,5 @@
 import cx_Oracle
-import csv 
+import csv , sys
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
