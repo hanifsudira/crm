@@ -74,8 +74,11 @@
                         <tr>
                             <td>No</td>
                             <td>ASSET_NUM</td>
-                            <td>PRODUCT</td>
+                            <td>PRODUCT_NAME</td>
+                            <td>SID</td>
                             <td>CA</td>
+                            <td>BA</td>
+                            <td>SA</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -86,10 +89,16 @@
                                     <td>{{$d[0]}}</td>
                                     <td>{{$d[1]}}</td>
                                     <td>{{$d[2]}}</td>
+                                    <td>{{$d[3]}}</td>
+                                    <td>{{$d[4]}}</td>
+                                    <td>{{$d[5]}}</td>
                                 </tr>
                             @endforeach
                         @else
                             <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
