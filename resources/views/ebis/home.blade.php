@@ -1,4 +1,4 @@
-@extends('dashboard.app')
+@extends('ebis.app')
 @section('title', 'EBIS Home')
 @section('content')
 <section class="content-header">
