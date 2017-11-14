@@ -1,16 +1,17 @@
 @extends('ebis.app')
-@section('title', 'EBIS Home')
+@section('title', 'DES Home')
 @section('content')
 <section class="content-header">
-	<h1>Home of EBIS<small></small></h1>
+	<h1>Home of DES<small></small></h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li class="active">EBIS</li>
+		<li>EBIS</li>
+		<li class="active">DES</li>
 	</ol>
 </section>
 
 <section class="content">
-	<h4>Some EBIS things</h4>
+	<h4>Some DES things</h4>
 </section>
 @endsection
 @section('js')

@@ -329,7 +329,19 @@ Route::group(['prefix' => 'tree'], function () {
 
 Route::group(['prefix' => 'ebis'], function() {
     Route::get('home', [
-        'as'    => 'ebis.dgs',
+        'as'    => 'ebis.home',
         'uses'  => 'EbisController@index'
+    ]);
+    Route::get('des', [
+        'as'    => 'ebis.des',
+        'uses'  => 'EbisController@viewDES'
+    ]);
+    Route::get('dbs', [
+        'as'    => 'ebis.dbs',
+        'uses'  => 'EbisController@viewDBS'
+    ]);
+    Route::get('dgs', [
+        'as'    => 'ebis.dgs',
+        'uses'  => 'EbisController@viewDGS'
     ]);
 });
