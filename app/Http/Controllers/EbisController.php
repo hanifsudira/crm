@@ -12,8 +12,24 @@ class EbisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index()
+    {
         return view('ebis.home');
+    }
+
+    public function viewDES()
+    {
+    	return view('ebis.des');
+    }
+
+    public function viewDBS()
+    {
+    	return view('ebis.dbs');
+    }
+
+    public function viewDGS()
+    {
+    	return view('ebis.dgs');
     }
 }
 

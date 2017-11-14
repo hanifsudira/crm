@@ -52,7 +52,7 @@
         <section class="sidebar">
             <ul class="sidebar-menu">
                 <li class="header">MAIN NAVIGATION</li>
-                    @include('dashboard.adminMenu')
+                    @include('ebis.adminMenu')
             </ul>
         </section>
     </aside>
