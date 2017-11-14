@@ -5,7 +5,7 @@
 	<h1>Home of TREG 2<small></small></h1>
 	<ol class="breadcrumb">
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-		<li>EBIS</li>
+		<li>Regional</li>
 		<li class="active">TREG 2</li>
 	</ol>
 </section>
