@@ -31,6 +31,41 @@ class EbisController extends Controller
     {
     	return view('ebis.dgs');
     }
+
+    public function viewTR1()
+    {
+    	return view('ebis.tr1');
+    }
+
+    public function viewTR2()
+    {
+    	return view('ebis.tr2');
+    }
+
+    public function viewTR3()
+    {
+    	return view('ebis.tr3');
+    }
+
+    public function viewTR4()
+    {
+    	return view('ebis.tr4');
+    }
+
+    public function viewTR5()
+    {
+    	return view('ebis.tr5');
+    }
+
+    public function viewTR6()
+    {
+    	return view('ebis.tr6');
+    }
+
+    public function viewTR7()
+    {
+    	return view('ebis.tr7');
+    }
 }
 
 ?>
