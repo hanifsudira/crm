@@ -21,13 +21,13 @@
             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
         </a>
         <ul class="treeview-menu">                
-            <li><a href="#"><i class="fa fa-circle-o"></i>TREG 1</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>TREG 2</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>TREG 3</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>TREG 4</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>TREG 5</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>TREG 6</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>TREG 7</a></li>
+            <li><a href="{{route('ebis.tr1')}}"><i class="fa fa-circle-o"></i>TREG 1</a></li>
+            <li><a href="{{route('ebis.tr2')}}"><i class="fa fa-circle-o"></i>TREG 2</a></li>
+            <li><a href="{{route('ebis.tr3')}}"><i class="fa fa-circle-o"></i>TREG 3</a></li>
+            <li><a href="{{route('ebis.tr4')}}"><i class="fa fa-circle-o"></i>TREG 4</a></li>
+            <li><a href="{{route('ebis.tr5')}}"><i class="fa fa-circle-o"></i>TREG 5</a></li>
+            <li><a href="{{route('ebis.tr6')}}"><i class="fa fa-circle-o"></i>TREG 6</a></li>
+            <li><a href="{{route('ebis.tr7')}}"><i class="fa fa-circle-o"></i>TREG 7</a></li>
         </ul>
     </li>
 </ul>
