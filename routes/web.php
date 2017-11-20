@@ -326,3 +326,50 @@ Route::group(['prefix' => 'tree'], function () {
         'uses'      => 'TreeController@getchild'
     ]);
 });
+
+Route::group(['prefix' => 'ebis'], function() {
+    Route::get('home', [
+        'as'    => 'ebis.home',
+        'uses'  => 'EbisController@index'
+    ]);
+    Route::get('des', [
+        'as'    => 'ebis.des',
+        'uses'  => 'EbisController@viewDES'
+    ]);
+    Route::get('dbs', [
+        'as'    => 'ebis.dbs',
+        'uses'  => 'EbisController@viewDBS'
+    ]);
+    Route::get('dgs', [
+        'as'    => 'ebis.dgs',
+        'uses'  => 'EbisController@viewDGS'
+    ]);
+    Route::get('tr1', [
+        'as'    => 'ebis.tr1',
+        'uses'  => 'EbisController@viewTR1'
+    ]);
+    Route::get('tr2', [
+        'as'    => 'ebis.tr2',
+        'uses'  => 'EbisController@viewTR2'
+    ]);
+    Route::get('tr3', [
+        'as'    => 'ebis.tr3',
+        'uses'  => 'EbisController@viewTR3'
+    ]);
+    Route::get('tr4', [
+        'as'    => 'ebis.tr4',
+        'uses'  => 'EbisController@viewTR4'
+    ]);
+    Route::get('tr5', [
+        'as'    => 'ebis.tr5',
+        'uses'  => 'EbisController@viewTR5'
+    ]);
+    Route::get('tr6', [
+        'as'    => 'ebis.tr6',
+        'uses'  => 'EbisController@viewTR6'
+    ]);
+    Route::get('tr7', [
+        'as'    => 'ebis.tr7',
+        'uses'  => 'EbisController@viewTR7'
+    ]);
+});
