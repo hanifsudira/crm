@@ -80,7 +80,6 @@
                             <th>No</th>
                             <th>AGREE_NUM</th>
                             <th>AGREE_NAME</th>
-                            <th>LAST_ORDER_NUM</th>
                             <th>REV</th>
                             <th>STATUS</th>
                             <th>TYPE</th>
@@ -100,7 +99,6 @@
                                 <td>{{$i+1}}</td>
                                 <td><a href="{{route('report.segmentlinedetail',[Crypt::encrypt($d->ROW_ID)])}}" target="_blank">{{$d->AGREE_NUM}}</a></td>
                                 <td>{{$d->AGREE_NAME}}</td>
-                                <td>{{$d->LAST_ORDER_NUM}}</td>
                                 <td>{{$d->REV}}</td>
                                 <td>{{$d->STATUS}}</td>
                                 <td>{{$d->TYPE}}</td>

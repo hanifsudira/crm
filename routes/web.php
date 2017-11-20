@@ -12,51 +12,51 @@
 */
 
 Route::get('/',['as' => 'home', 'uses' => function () {
-    return redirect('crm/chart');
+    return redirect('report/intreport');
 }]);
 
-Route::group(['prefix' => 'crm'], function () {
-    Route::get('data', [
-        'as'        => 'home.data',
-        'uses'      => 'HomeController@index'
-    ]);
+// Route::group(['prefix' => 'crm'], function () {
+//     Route::get('data', [
+//         'as'        => 'home.data',
+//         'uses'      => 'HomeController@index'
+//     ]);
 
-    Route::get('chart', [
-        'as'        => 'home.chart',
-        'uses'      => 'HomeController@chart'
-    ]);
+//     Route::get('chart', [
+//         'as'        => 'home.chart',
+//         'uses'      => 'HomeController@chart'
+//     ]);
 
-    Route::get('input', [
-        'as'        => 'home.input',
-        'uses'      => 'HomeController@input'
-    ]);
+//     Route::get('input', [
+//         'as'        => 'home.input',
+//         'uses'      => 'HomeController@input'
+//     ]);
 
-    //get data
-    Route::get('getall',[
-        'as'        => 'home.getall',
-        'uses'      => 'HomeController@getall'
-    ]);
+//     //get data
+//     Route::get('getall',[
+//         'as'        => 'home.getall',
+//         'uses'      => 'HomeController@getall'
+//     ]);
 
-    Route::get('getbydate',[
-        'as'        => 'home.getbydate',
-        'uses'      => 'HomeController@getbydate'
-    ]);
+//     Route::get('getbydate',[
+//         'as'        => 'home.getbydate',
+//         'uses'      => 'HomeController@getbydate'
+//     ]);
 
-    Route::get('getbystatus',[
-        'as'        => 'home.getbystatus',
-        'uses'      => 'HomeController@getbystatus'
-    ]);
+//     Route::get('getbystatus',[
+//         'as'        => 'home.getbystatus',
+//         'uses'      => 'HomeController@getbystatus'
+//     ]);
 
-    Route::get('getbysumber',[
-        'as'        => 'home.getbysumber',
-        'uses'      => 'HomeController@getbysumber'
-    ]);
+//     Route::get('getbysumber',[
+//         'as'        => 'home.getbysumber',
+//         'uses'      => 'HomeController@getbysumber'
+//     ]);
 
-    Route::get('getbykategori',[
-        'as'        => 'home.getbykategori',
-        'uses'      => 'HomeController@getbykategori'
-    ]);
-});
+//     Route::get('getbykategori',[
+//         'as'        => 'home.getbykategori',
+//         'uses'      => 'HomeController@getbykategori'
+//     ]);
+// });
 
 Route::group(['prefix' => 'feedback'], function () {
     Route::get('input', [
