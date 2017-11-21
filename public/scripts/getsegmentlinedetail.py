@@ -18,9 +18,7 @@ query = "select t1.asset_num AS ASSET_NUM, t3.name AS PRODUCT_NAME, t1.serial_nu
 query2 = "select t2.order_num as order_num, t3.name as product, t1.service_num as sid_num, t5.loc as CA, t6.loc AS BA, t7.loc AS SA from sblprd.s_order_item t1 left join sblprd.s_order t2 on t2.row_id = t1.order_id left join sblprd.s_prod_int t3 on t3.row_id = t1.prod_id left join sblprd.s_doc_agree t4 on t4.row_id = t2.agree_id left join sblprd.s_org_ext t5 on t5.row_id = t1.owner_account_id left join sblprd.s_org_ext t6 on t6.row_id = t1.bill_accnt_id left join sblprd.s_org_ext t7 on t7.row_id = t1.serv_accnt_id where t3.billing_type_cd = 'Service Bundle' and t4.row_id = '"+order_num+"'"
 result = cursor.execute(query).fetchall()
 result2 = cursor.execute(query2).fetchall()
-allreturn = []
-allreturn[0] = result
-allreturn[1] = result2	
+allreturn = [result,result2]
 
 mareturn = json.dumps(allreturn)
 print mareturn
