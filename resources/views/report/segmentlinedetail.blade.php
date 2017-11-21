@@ -82,8 +82,46 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if($data)
-                            @foreach($data as $i => $d)
+                        @if($data[0])
+                            @foreach($data[0] as $i => $d)
+                                <tr>
+                                    <td>{{$i+1}}</td>
+                                    <td>{{$d[0]}}</td>
+                                    <td>{{$d[1]}}</td>
+                                    <td>{{$d[2]}}</td>
+                                    <td>{{$d[3]}}</td>
+                                    <td>{{$d[4]}}</td>
+                                    <td>{{$d[5]}}</td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endif
+                        </tbody>
+                    </table>
+                    <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
+                        <thead>
+                        <tr>
+                            <td>No</td>
+                            <td>ORDER_NUM</td>
+                            <td>PRODUCT_NAME</td>
+                            <td>SID</td>
+                            <td>CA</td>
+                            <td>BA</td>
+                            <td>SA</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if($data[1])
+                            @foreach($data[1] as $i => $d)
                                 <tr>
                                     <td>{{$i+1}}</td>
                                     <td>{{$d[0]}}</td>
