@@ -107,6 +107,8 @@
                         @endif
                         </tbody>
                     </table>
+                </div>
+                <div class="box-body">
                     <table id="datatable" class="table table-bordered table-striped" style="overflow-x: scroll;">
                         <thead>
                         <tr>
