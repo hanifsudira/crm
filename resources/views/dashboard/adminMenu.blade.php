@@ -8,7 +8,7 @@
     <ul class="treeview-menu">
         {{--<li><a href="{{route('home.chart')}}"><i class="fa fa-circle-o"></i>Chart</a></li>--}}
         {{--<li><a href="{{route('home.data')}}"><i class="fa fa-circle-o"></i>Data Table</a></li>--}}
-        <li class="treeview menu-open">
+        {{--<li class="treeview menu-open">
             <a href="#"><i class="fa fa-circle-o"></i>Siebel Query
                 <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
             </a>
@@ -19,7 +19,7 @@
                 {{--<li><a href="{{route('ora.nossftenoss')}}"><i class="fa fa-circle-o"></i>Nossf-Tenoss</a></li>--}}
                 {{--<li><a href="{{route('ora.com')}}"><i class="fa fa-circle-o"></i>COM</a></li>--}}
             </ul>
-        </li>
+        </li>--}}
         <li class="treeview menu-open">
             <a href="#"><i class="fa fa-circle-o"></i>Report
                 <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>

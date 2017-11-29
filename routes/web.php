@@ -186,10 +186,10 @@ Route::group(['prefix' => 'ora'], function () {
         'uses'      => 'OraController@tomsom'
     ]);
 
-    Route::get('lineitem', [
-        'as'        => 'ora.lineitem',
-        'uses'      => 'OraController@lineitem'
-    ]);
+    // Route::get('lineitem', [
+    //     'as'        => 'ora.lineitem',
+    //     'uses'      => 'OraController@lineitem'
+    // ]);
 
     Route::get('order', [
         'as'        => 'ora.order',
