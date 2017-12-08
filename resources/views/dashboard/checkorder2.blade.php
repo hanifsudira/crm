@@ -48,6 +48,7 @@
                                         <th>CA</th>
                                         <th>BA</th>
                                         <th>SA</th>
+                                        <th>CC</th>
                                         <th>CA_CONT</th>
                                         <th>BA_CONT</th>
                                     </tr>
@@ -70,6 +71,7 @@
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>
+                                        <th>-</th>
                                         <td>-</td>
                                         <td>-</td>
                                         <td>-</td>

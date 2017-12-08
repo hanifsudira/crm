@@ -25,6 +25,7 @@
                             <th>CA</th>
                             <th>BA</th>
                             <th>SA</th>
+                            <th>CC</th>
                             <th>CA_CONT</th>
                             <th>BA_CONT</th>
                         </tr>
@@ -53,10 +54,12 @@
                                     <td>{{$d[17]}}</td>
                                     <td>{{$d[18]}}</td>
                                     <td>{{$d[19]}}</td>
+                                    <td>{{$d[20]}}</td>
                                 </tr>
                             @endforeach
                         @else
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
