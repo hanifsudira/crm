@@ -63,10 +63,10 @@ for i,data in enumerate(result):
 	ATTRIB_05 		= str(data[6])
 	ASSET_INTEG_ID 	= str(data[7])
 	AM 				= str(data[8])
-	TSQ_STATE		= str(tomsom[ASSET_INTEG_ID]['TSQ_STATE']) if ASSET_INTEG_ID in tomsom.keys() else 'None'
-	TSQ_DESC		= str(tomsom[ASSET_INTEG_ID]['TSQ_DESC']) if ASSET_INTEG_ID in tomsom.keys() else 'None'
-	DELIVER_STATE	= str(tomsom[ASSET_INTEG_ID]['DELIVER_STATE']) if ASSET_INTEG_ID in tomsom.keys() else 'None' 
-	DELIVER_DESC	= str(tomsom[ASSET_INTEG_ID]['DELIVER_DESC']) if ASSET_INTEG_ID in tomsom.keys() else 'None'
+	TSQ_STATE		= 'None'#str(tomsom[ASSET_INTEG_ID]['TSQ_STATE']) if ASSET_INTEG_ID in tomsom.keys() and len(tomsom) > 0 else 'None'
+	TSQ_DESC		= 'None'#str(tomsom[ASSET_INTEG_ID]['TSQ_DESC']) if ASSET_INTEG_ID in tomsom.keys() and len(tomsom) > 0 else 'None'
+	DELIVER_STATE	= 'None'#str(tomsom[ASSET_INTEG_ID]['DELIVER_STATE']) if ASSET_INTEG_ID in tomsom.keys() and len(tomsom) > 0 else 'None' 
+	DELIVER_DESC	= 'None'#str(tomsom[ASSET_INTEG_ID]['DELIVER_DESC']) if ASSET_INTEG_ID in tomsom.keys() and len(tomsom) > 0 else 'None'
 	PRODUCT_STATUS	= str(mydict[ORDER_NUM][0]) if ORDER_NUM in mydict else 'None'
 	EFFECTIVE_DTM	= str(mydict[ORDER_NUM][1]) if ORDER_NUM in mydict else 'None'
 	STATUS_REASON_TXT = str(mydict[ORDER_NUM][2]) if ORDER_NUM in mydict else 'None'
