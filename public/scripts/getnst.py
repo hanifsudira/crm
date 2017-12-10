@@ -23,7 +23,7 @@ con2 = cx_Oracle.connect('tosdb/telkom#123@10.60.185.132/tosdb')
 cursor2 = con2.cursor()
 
 print 'Line items query process'
-orasql = "select t2.order_num, t1.service_num, t4.NAME, t1.status_cd, t1.milestone_code, t1.created, t3.attrib_05, t1.asset_integ_id FROM sblprd.s_order_item t1 LEFT JOIN sblprd.s_order t2 ON t2.row_id = t1.order_id LEFT JOIN sblprd.s_order_x t3 ON t3.par_row_id = t2.row_id LEFT JOIN sblprd.s_prod_int t4 ON t4.row_id = t1.prod_id WHERE t1.created > To_date('22/07/2017', 'DD/MM/YYYY') AND t4.billing_type_cd = 'Service Bundle' AND t3.attrib_05 IN( 'Suspend', 'Resume') AND t2.change_reason_cd <> 'System Request'"
+orasql = "select t2.order_num, t1.service_num, t4.NAME, t1.status_cd, t1.milestone_code, t1.created, t3.attrib_05, t1.asset_integ_id, t9.login as am FROM sblprd.s_order_item t1 LEFT JOIN sblprd.s_order t2 ON t2.row_id = t1.order_id LEFT JOIN sblprd.s_order_x t3 ON t3.par_row_id = t2.row_id LEFT JOIN sblprd.s_prod_int t4 ON t4.row_id = t1.prod_id LEFT JOIN sblprd.s_doc_agree t5 ON t5.row_id = t1.agree_id LEFT JOIN sblprd.s_postn t6 ON t6.row_id = t5.sales_rep_postn_id LEFT JOIN sblprd.s_user t9 ON t9.row_id = t6.pr_emp_id WHERE(t1.created >= To_date('22/07/2017', 'DD/MM/YYYY') AND t1.created < To_date('1/11/2017', 'DD/MM/YYYY') OR t1.created >= To_date('2/11/2017', 'DD/MM/YYYY')) AND t2.order_num like '1-%' AND t2.rev_num = (SELECT Max(rev_num) FROM sblprd.s_order X WHERE X.order_num = T2.order_num AND X.status_cd NOT IN ( 'Abandoned', 'x')) AND t4.billing_type_cd = 'Service Bundle' AND t3.attrib_05 IN( 'Suspend', 'Resume' )"
 result = cursor.execute(orasql).fetchall()
 
 #mysql
@@ -61,6 +61,7 @@ for i,data in enumerate(result):
 	CREATED 		= str(data[5]) 
 	ATTRIB_05 		= str(data[6])
 	ASSET_INTEG_ID 	= str(data[7])
+	AM 				= str(data[8])
 	TSQ_STATE		= str(tomsom[ASSET_INTEG_ID]['TSQ_STATE']) if ASSET_INTEG_ID in tomsom.keys() else 'None'
 	TSQ_DESC		= str(tomsom[ASSET_INTEG_ID]['TSQ_DESC']) if ASSET_INTEG_ID in tomsom.keys() else 'None'
 	DELIVER_STATE	= str(tomsom[ASSET_INTEG_ID]['DELIVER_STATE']) if ASSET_INTEG_ID in tomsom.keys() else 'None' 
@@ -68,7 +69,7 @@ for i,data in enumerate(result):
 	PRODUCT_STATUS	= str(mydict[ORDER_NUM][0]) if ORDER_NUM in mydict else 'None'
 	EFFECTIVE_DTM	= str(mydict[ORDER_NUM][1]) if ORDER_NUM in mydict else 'None'
 	STATUS_REASON_TXT = str(mydict[ORDER_NUM][2]) if ORDER_NUM in mydict else 'None'
-	sql 			= "insert into nst (ORDER_NUM,SERVICE_NUM,NAME,STATUS_CD,MILESTONE_CODE,CREATED,ATTRIB_05,ASSET_INTEG_ID,TSQ_STATE,TSQ_DESC,DELIVER_STATE,DELIVER_DESC,PRODUCT_STATUS,EFFECTIVE_DTM,STATUS_REASON_TXT) values('"+ORDER_NUM+"','"+SERVICE_NUM+"','"+NAME+"','"+STATUS_CD+"','"+MILESTONE_CODE+"','"+CREATED+"','"+ATTRIB_05+"','"+ASSET_INTEG_ID+"','"+TSQ_STATE+"','"+TSQ_DESC+"','"+DELIVER_STATE+"','"+DELIVER_DESC+"','"+PRODUCT_STATUS+"','"+EFFECTIVE_DTM+"','"+STATUS_REASON_TXT+"')"
+	sql 			= "insert into nst (ORDER_NUM,SERVICE_NUM,NAME,STATUS_CD,MILESTONE_CODE,CREATED,ATTRIB_05,ASSET_INTEG_ID,TSQ_STATE,TSQ_DESC,DELIVER_STATE,DELIVER_DESC,PRODUCT_STATUS,EFFECTIVE_DTM,STATUS_REASON_TXT, AM) values('"+ORDER_NUM+"','"+SERVICE_NUM+"','"+NAME+"','"+STATUS_CD+"','"+MILESTONE_CODE+"','"+CREATED+"','"+ATTRIB_05+"','"+ASSET_INTEG_ID+"','"+TSQ_STATE+"','"+TSQ_DESC+"','"+DELIVER_STATE+"','"+DELIVER_DESC+"','"+PRODUCT_STATUS+"','"+EFFECTIVE_DTM+"','"+STATUS_REASON_TXT+"','"+AM+"')"
 	cur.execute(sql)
 db.commit()
 
