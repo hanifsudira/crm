@@ -51,6 +51,7 @@ for item in flat_list:
 	if item[0] not in mydict:
 		mydict[str(item[0])] = [item[1],item[2],item[3]]
 
+now = str(datetime.datetime.now())
 print 'Inserting process'
 for i,data in enumerate(result):
 	ORDER_NUM 		= str(data[0])
@@ -69,7 +70,7 @@ for i,data in enumerate(result):
 	PRODUCT_STATUS	= str(mydict[ORDER_NUM][0]) if ORDER_NUM in mydict else 'None'
 	EFFECTIVE_DTM	= str(mydict[ORDER_NUM][1]) if ORDER_NUM in mydict else 'None'
 	STATUS_REASON_TXT = str(mydict[ORDER_NUM][2]) if ORDER_NUM in mydict else 'None'
-	sql 			= "insert into nst (ORDER_NUM,SERVICE_NUM,NAME,STATUS_CD,MILESTONE_CODE,CREATED,ATTRIB_05,ASSET_INTEG_ID,TSQ_STATE,TSQ_DESC,DELIVER_STATE,DELIVER_DESC,PRODUCT_STATUS,EFFECTIVE_DTM,STATUS_REASON_TXT, AM) values('"+ORDER_NUM+"','"+SERVICE_NUM+"','"+NAME+"','"+STATUS_CD+"','"+MILESTONE_CODE+"','"+CREATED+"','"+ATTRIB_05+"','"+ASSET_INTEG_ID+"','"+TSQ_STATE+"','"+TSQ_DESC+"','"+DELIVER_STATE+"','"+DELIVER_DESC+"','"+PRODUCT_STATUS+"','"+EFFECTIVE_DTM+"','"+STATUS_REASON_TXT+"','"+AM+"')"
+	sql 			= "insert into nst (ORDER_NUM,SERVICE_NUM,NAME,STATUS_CD,MILESTONE_CODE,CREATED,ATTRIB_05,ASSET_INTEG_ID,TSQ_STATE,TSQ_DESC,DELIVER_STATE,DELIVER_DESC,PRODUCT_STATUS,EFFECTIVE_DTM,STATUS_REASON_TXT, AM, LASTUPDATE) values('"+ORDER_NUM+"','"+SERVICE_NUM+"','"+NAME+"','"+STATUS_CD+"','"+MILESTONE_CODE+"','"+CREATED+"','"+ATTRIB_05+"','"+ASSET_INTEG_ID+"','"+TSQ_STATE+"','"+TSQ_DESC+"','"+DELIVER_STATE+"','"+DELIVER_DESC+"','"+PRODUCT_STATUS+"','"+EFFECTIVE_DTM+"','"+STATUS_REASON_TXT+"','"+AM+"','"+now+"')"
 	cur.execute(sql)
 db.commit()
 
