@@ -48,10 +48,10 @@ for i,data in enumerate(result):
 	OTC 			= str(data[20])
 	MRC 			= str(data[21])
 	QUOTE 			= str(data[22])
-	TSQ_STATE		= tomsom[INT_ID]['TSQ_STATE'] if INT_ID in tomsom.keys() else 'None'
-	TSQ_DESC		= tomsom[INT_ID]['TSQ_DESC'] if INT_ID in tomsom.keys() else 'None'
-	DELIVER_STATE	= tomsom[INT_ID]['DELIVER_STATE'] if INT_ID in tomsom.keys() else 'None' 
-	DELIVER_DESC	= tomsom[INT_ID]['DELIVER_DESC'] if INT_ID in tomsom.keys() else 'None'
+	TSQ_STATE		= 'None'#tomsom[INT_ID]['TSQ_STATE'] if INT_ID in tomsom.keys() else 'None'
+	TSQ_DESC		= 'None'#tomsom[INT_ID]['TSQ_DESC'] if INT_ID in tomsom.keys() else 'None'
+	DELIVER_STATE	= 'None'#tomsom[INT_ID]['DELIVER_STATE'] if INT_ID in tomsom.keys() else 'None' 
+	DELIVER_DESC	= 'None'#tomsom[INT_ID]['DELIVER_DESC'] if INT_ID in tomsom.keys() else 'None'
 	sql 			= "insert into int_report (ORDER_NUM, ROW_ID, ORDER_SUBTYPE, REV, PRODUCT, OH_STATUS, LI_STATUS, MILESTONE, CREATED_AT, FULFILL_STATUS, ACC_NAS, NIPNAS, SID_NUM, OH_SEQ, MSTONE_SEQ, LI_STATUS_INT, MILE_STATUS_INT, lastupdate, INT_ID, INT_NOTE, SEGMENT, TSQ_STATE, TSQ_DESC, DELIVER_STATE, DELIVER_DESC, CC, AGREE_NUM, AGREE_REV, OTC, MRC, QUOTE) values('"+ORDER+"','"+ROW_ID+"','"+ORDER_SUBTYPE+"','"+REV+"','"+PRODUCT+"','"+OH_STATUS+"','"+LI_STATUS+"','"+MILESTONE+"','"+CREATED_AT+"','"+FULFILL_STATUS+"','"+ACC_NAS+"','"+NIPNAS+"','"+SID_NUM+"','"+OH_SEQ+"','"+MSTONE_SEQ+"','"+LI_STATUS_INT+"','"+MILE_STATUS_INT+"','"+now+"','"+INT_ID+"','None','"+SEGMENT+"','"+TSQ_STATE+"','"+TSQ_DESC+"','"+DELIVER_STATE+"','"+DELIVER_DESC+"','"+CC+"','"+AGREE_NUM+"','"+AGREE_REV+"','"+OTC+"','"+MRC+"','"+QUOTE+"')"
 	cur.execute(sql)
 db.commit()
