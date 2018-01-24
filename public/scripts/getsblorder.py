@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import cx_Oracle,MySQLdb,sys,time
+import cx_Oracle,MySQLdb,sys,time, datetime
 from bs4 import BeautifulSoup
 
 reload(sys)
@@ -21,6 +21,8 @@ print 'Truncating process'
 sqltruncate = 'TRUNCATE TABLE sblorder';
 cur.execute(sqltruncate)
 
+cur.execute(sqltruncate)
+now = str(datetime.datetime.now())
 print 'Inserting process'
 for i,data in enumerate(result):
 	ORDER_NUM 		= str(data[0])
@@ -36,7 +38,7 @@ for i,data in enumerate(result):
 	SEGMENT 		= str(data[10])
 	REGION 			= str(data[11])
 	DIVISI 			= str(data[12])
-	sql 			= "insert into sblorder (ORDER_NUM, ROW_ID, ORDER_SUBTYPE, PRODUCT, OH_STATUS, LI_STATUS, MILESTONE, FULFILL_STATUS, DATES, WITEL, SEGMENT, REGION, DIVISI) values('"+ORDER_NUM+"', '"+ROW_ID+"', '"+ORDER_SUBTYPE+"', '"+PRODUCT+"', '"+OH_STATUS+"', '"+LI_STATUS+"', '"+MILESTONE+"', '"+FULFILL_STATUS+"', '"+DATES+"', '"+WITEL+"', '"+SEGMENT+"', '"+REGION+"', '"+DIVISI+"')"
+	sql 			= "insert into sblorder (ORDER_NUM, ROW_ID, ORDER_SUBTYPE, PRODUCT, OH_STATUS, LI_STATUS, MILESTONE, FULFILL_STATUS, DATES, WITEL, SEGMENT, REGION, DIVISI, lastupdate) values('"+ORDER_NUM+"', '"+ROW_ID+"', '"+ORDER_SUBTYPE+"', '"+PRODUCT+"', '"+OH_STATUS+"', '"+LI_STATUS+"', '"+MILESTONE+"', '"+FULFILL_STATUS+"', '"+DATES+"', '"+WITEL+"', '"+SEGMENT+"', '"+REGION+"', '"+DIVISI+"','"+now+"')"
 	cur.execute(sql)
 db.commit()
 end_time = time.time()
